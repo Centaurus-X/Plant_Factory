@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["tank level","füllstand","storage"],"animierbare_bereiche":["[data-pf-state-target=\"level\"]",".pid-primary"],"bindings":[],"breite":80,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"family":"tank-level","favorite":false,"geometry_profile":"vessel","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":110,"id":"Tank_vessel_(wde)","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Behälter","library_role":"process","name":"Tank mit Füllstand","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"in","id":"inlet","kind":"process","name":"Zulauf","role":"main","rx":0.0,"ry":0.6363636363636364,"x":0,"y":70},{"direction":"out","id":"outlet","kind":"process","name":"Ablauf","role":"main","rx":1.0,"ry":0.6363636363636364,"x":80,"y":70},{"direction":"out","id":"level_signal","kind":"signal","name":"Füllstandssignal","role":"main","rx":1.0,"ry":0.3090909090909091,"x":80,"y":34},{"direction":"out","id":"drain","kind":"utility","name":"Entleerung","role":"main","rx":0.5,"ry":1.0,"x":40,"y":110}],"profile":"vessel","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":20,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","symbol_type":"tank-level","tag_prefix":"T","view_box":[0,0,80,110]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 110" width="80" height="110" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="tank-level" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-outline" d="M16 17 C16 10 64 10 64 17 L64 92 C64 101 16 101 16 92 Z"/>
+  <path class="pid-detail" d="M16 17 C16 24 64 24 64 17 M16 92 C16 85 64 85 64 92"/>
+  <path class="pid-state-fill" data-pf-state-target="level" d="M18 60 C18 56 62 56 62 60 L62 92 C62 97 18 97 18 92 Z"/>
+  <path class="pid-primary" d="M66 28 H73 V88 H66 M70 34 V82"/>
+  <path class="pid-flow" d="M0 70 H16 M64 70 H80"/>
+</g>
+</svg>

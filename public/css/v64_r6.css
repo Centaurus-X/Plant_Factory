@@ -1,0 +1,90 @@
+/**
+ * Plant Factory V64_r6: accessible library navigation and structured plant
+ * assemblies. The rules are additive and keep every V64_r5 layout contract.
+ */
+
+.category-chips {
+  max-width: 100%;
+  padding: 0 1px 7px;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--v9-accent) var(--v9-surface-2);
+}
+
+.category-chips::-webkit-scrollbar {
+  display: block;
+  height: 8px;
+}
+
+.category-chips::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: var(--v9-surface-2);
+}
+
+.category-chips::-webkit-scrollbar-thumb {
+  min-width: 32px;
+  border: 2px solid var(--v9-surface-2);
+  border-radius: 999px;
+  background: var(--v9-accent);
+}
+
+.category-chips::-webkit-scrollbar-thumb:hover {
+  background: var(--v9-accent-hover);
+}
+
+.category-chip:focus-visible {
+  outline: 2px solid var(--v9-accent);
+  outline-offset: 1px;
+}
+
+.template-item[data-composition-mode="structured-assembly"] .template-standard-badge {
+  border-color: var(--v9-accent-line);
+  background: var(--v9-accent-bg);
+  color: var(--v9-accent-hover);
+}
+.svg-element--assembly-layout .element-label,
+.svg-element--assembly-layout .element-port-layer {
+  display: none;
+}
+
+.v64-r6-assembly-upgrade {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 12px;
+  border: 1px solid var(--v9-accent-line);
+  border-radius: 10px;
+  background: var(--v9-accent-bg);
+  color: var(--v9-ink);
+}
+
+.v64-r6-assembly-upgrade strong {
+  font-size: 12px;
+}
+
+.v64-r6-assembly-upgrade p {
+  margin: 0;
+  color: var(--v9-ink-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.v64-r6-assembly-upgrade .btn {
+  min-height: 36px;
+  white-space: normal;
+}
+
+.svg-element--assembly-layout {
+  pointer-events: none;
+}
+
+@media (forced-colors: active) {
+  .category-chips {
+    scrollbar-color: CanvasText Canvas;
+  }
+
+  .category-chip:focus-visible {
+    outline-color: Highlight;
+  }
+}

@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="plant-factory-base-release" content="64 · V9">
+    <title>HMI/P&amp;ID Studio · Engineering Workspace · V64_r6</title>
+
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+
+    <!-- Stylesheet order is part of the visual contract:
+           tokens      single source for current and compatibility variables
+           fonts       local system bindings and robust fallbacks
+           style       legacy V50 component rules without a token root
+           layout      base structure and canvas environment
+           components  V9 components (.v9-*)
+           bridge      compatibility geometry for legacy classes
+           workspace   V58.2 optimized application shell and canvas behavior
+           v60         merged V1 inspector, responsive menus, palette and minimap
+           v61         canonical PF-PID-V1 objects, ports, labels and connections
+           v62         managed modals, context actions and guided HMI setup
+           v63.2       stability patches and canonical Automation V9 bridge
+           v63.3       compact I/O register and explicit Widget/Object workflow
+           v63.4       single HMI navigation and guided state/appearance UX -->
+    <link rel="stylesheet" href="/public/css/tokens.css">
+    <link rel="stylesheet" href="/public/css/fonts.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/layout.css">
+    <link rel="stylesheet" href="/public/css/components.css">
+    <link rel="stylesheet" href="/public/css/bridge.css">
+    <link rel="stylesheet" href="/public/css/workspace.css">
+    <link rel="stylesheet" href="/public/css/v60.css">
+    <link rel="stylesheet" href="/public/css/v61.css">
+    <link rel="stylesheet" href="/public/css/v62.css">
+    <link rel="stylesheet" href="/public/css/v63.css">
+    <link rel="stylesheet" href="/public/css/v63_2.css">
+    <link rel="stylesheet" href="/public/css/v63_3.css">
+    <link rel="stylesheet" href="/public/css/v63_4.css">
+    <link rel="stylesheet" href="/public/css/v64.css">
+    <link rel="stylesheet" href="/public/css/v64_r1.css">
+    <link rel="stylesheet" href="/public/css/v64_r2.css">
+    <link rel="stylesheet" href="/public/css/v64_r3.css">
+    <link rel="stylesheet" href="/public/css/v64_r4.css">
+    <link rel="stylesheet" href="/public/css/v64_r5.css">
+    <link rel="stylesheet" href="/public/css/v64_r6.css">
+</head>
+
+<body>
+
+    <!-- =====================================================================
+         Inline icon sprite
+         =====================================================================
+         The sprite stays inline so controls remain available over file://,
+         inside embedded frames and behind strict proxies. This avoids an
+         additional request and keeps the package self-contained.
+         Canonical source: public/icons.svg.
+         ================================================================== -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+
+  
+  <symbol id="ico-save" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 5h11l3 3v11H5z"></path><path d="M9 5v5h6V5M8 19v-6h8v6"></path>
+  </symbol>
+  <symbol id="ico-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 19V6h6l2 2.5h10V19z"></path>
+  </symbol>
+  <symbol id="ico-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4v11m0 0l-4.2-4.2M12 15l4.2-4.2M4 19h16"></path>
+  </symbol>
+  <symbol id="ico-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 20V9m0 0L7.8 13.2M12 9l4.2 4.2M4 5h16"></path>
+  </symbol>
+  <symbol id="ico-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19.5 12a7.5 7.5 0 11-2.3-5.4M20 4v4h-4"></path>
+  </symbol>
+
+  
+  <symbol id="ico-cursor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 3.5l12.5 7.2-5.3 1.4-1.9 5.3z"></path>
+  </symbol>
+  <symbol id="ico-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 11.5V5.4a1.4 1.4 0 012.8 0v5.6m0-1.2a1.4 1.4 0 012.8 0v1.2m0-.8a1.4 1.4 0 012.8 0v4.4a5.6 5.6 0 01-5.6 5.6h-1a4.6 4.6 0 01-3.5-1.6l-2.3-2.8a1.5 1.5 0 012.3-1.9l1.7 1.7"></path>
+  </symbol>
+  <symbol id="ico-zoom-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10.5" cy="10.5" r="6"></circle><path d="M15 15l5 5M8 10.5h5M10.5 8v5"></path>
+  </symbol>
+  <symbol id="ico-zoom-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10.5" cy="10.5" r="6"></circle><path d="M15 15l5 5M8 10.5h5"></path>
+  </symbol>
+  <symbol id="ico-fit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path>
+  </symbol>
+  <symbol id="ico-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16v16H4zM4 9.3h16M4 14.6h16M9.3 4v16M14.6 4v16"></path>
+  </symbol>
+  <symbol id="ico-magnet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 4v8a6 6 0 0012 0V4h-4v8a2 2 0 01-4 0V4z"></path><path d="M6 8h4M14 8h4"></path>
+  </symbol>
+  <symbol id="ico-undo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 7L4 11l4 4"></path><path d="M4 11h9a5 5 0 010 10H9"></path>
+  </symbol>
+  <symbol id="ico-redo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 7l4 4-4 4"></path><path d="M20 11h-9a5 5 0 000 10h4"></path>
+  </symbol>
+  <symbol id="ico-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10 11v5M14 11v5"></path>
+  </symbol>
+  <symbol id="ico-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"></path></symbol>
+  <symbol id="ico-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h12"></path></symbol>
+
+  
+  <symbol id="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.5 14.2A8 8 0 119.8 3.5a7 7 0 0010.7 10.7z"></path>
+  </symbol>
+  <symbol id="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2.5v2.6M12 18.9v2.6M21.5 12h-2.6M5.1 12H2.5M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8M18.7 18.7l-1.8-1.8M7.1 7.1L5.3 5.3"></path>
+  </symbol>
+  <symbol id="ico-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></symbol>
+  <symbol id="ico-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></symbol>
+  <symbol id="ico-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L21 21"></path>
+  </symbol>
+  <symbol id="ico-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3l9 5-9 5-9-5z"></path><path d="M3 13l9 5 9-5"></path>
+  </symbol>
+  <symbol id="ico-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="3.2"></circle>
+    <path d="M12 3.5v2.6M12 17.9v2.6M20.5 12h-2.6M6.1 12H3.5M18 6l-1.8 1.8M7.8 16.2L6 18M18 18l-1.8-1.8M7.8 7.8L6 6"></path>
+  </symbol>
+  <symbol id="ico-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l4.5 4.5 10-10"></path></symbol>
+  <symbol id="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"></path></symbol>
+  <symbol id="ico-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 10-5.7-5.7L11.6 6.7"></path>
+    <path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 105.7 5.7l1.4-1.4"></path>
+  </symbol>
+  <symbol id="ico-rule" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6h14M5 12h9M5 18h5"></path></symbol>
+  <symbol id="ico-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18V7M9 18V4M14 18v-8M19 18v-5"></path></symbol>
+  <symbol id="ico-shard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v5H4zM4 13h16v5H4z"></path></symbol>
+  <symbol id="ico-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"></circle><path d="M12 7v5l3.2 2"></path></symbol>
+  <symbol id="ico-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="1.5"></rect>
+    <path d="M9.5 3v3M14.5 3v3M9.5 18v3M14.5 18v3M3 9.5h3M3 14.5h3M18 9.5h3M18 14.5h3"></path>
+  </symbol>
+  <symbol id="ico-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4l9 16H3z"></path><path d="M12 10v4.5M12 17.4v.1"></path>
+  </symbol>
+  <symbol id="ico-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.2"></circle><path d="M9.7 9.5a2.35 2.35 0 114 1.65c-.65.65-1.7 1.05-1.7 2.15"></path><path d="M12 16.5v.1"></path>
+  </symbol>
+
+  <symbol id="ico-workspace" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"></rect><path d="M17 13.5v7M13.5 17h7"></path>
+  </symbol>
+  <symbol id="ico-flow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="6" cy="6" r="2.2"></circle><circle cx="18" cy="6" r="2.2"></circle><circle cx="12" cy="18" r="2.2"></circle><path d="M8.2 6h7.6M7.5 8l3.2 7.8M16.5 8l-3.2 7.8"></path>
+  </symbol>
+  <symbol id="ico-topology" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="9" y="3" width="6" height="5" rx="1"></rect><rect x="3" y="16" width="6" height="5" rx="1"></rect><rect x="15" y="16" width="6" height="5" rx="1"></rect><path d="M12 8v4M6 12h12M6 12v4M18 12v4"></path>
+  </symbol>
+  <symbol id="ico-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="13" rx="1.5"></rect><path d="M8 21h8M12 17v4M6.5 13l3-3 2.3 2.2 4.2-5 1.5 1.6"></path>
+  </symbol>
+  <symbol id="ico-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3l7 3v5.3c0 4.6-2.8 7.7-7 9.7-4.2-2-7-5.1-7-9.7V6z"></path><path d="M8.5 12l2.2 2.2 4.8-5"></path>
+  </symbol>
+  <symbol id="ico-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.8 12s3.5-6 9.2-6 9.2 6 9.2 6-3.5 6-9.2 6-9.2-6-9.2-6z"></path><circle cx="12" cy="12" r="2.5"></circle>
+  </symbol>
+  <symbol id="ico-more" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"></circle><circle cx="12" cy="12" r="1.7"></circle><circle cx="19" cy="12" r="1.7"></circle></symbol>
+  <symbol id="ico-connection" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="5" cy="12" r="2.2"></circle><circle cx="19" cy="7" r="2.2"></circle><circle cx="19" cy="17" r="2.2"></circle><path d="M7.2 12h4.2c2.3 0 2.8-5 5.4-5M11.4 12c2.3 0 2.8 5 5.4 5"></path>
+  </symbol>
+  <symbol id="ico-properties" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 6h10M18 6h2M4 12h3M11 12h9M4 18h7M15 18h5"></path><circle cx="16" cy="6" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="13" cy="18" r="2"></circle>
+  </symbol>
+</svg>
+
+    <a class="v9-skip-link" href="#canvas-container">Zum Zeichenbereich springen</a>
+
+    <div id="app-container">
+        <header id="app-header">
+            <div class="header-left brand-block">
+                <span class="app-mark" aria-hidden="true"><svg class="ico"><use href="#ico-workspace"></use></svg></span>
+                <div class="brand-copy">
+                    <div class="brand-title-row">
+                        <h1>HMI/P&amp;ID Studio</h1>
+                        <span class="version">64_r6 · V9</span>
+                    </div>
+                    <span class="brand-subtitle">Industrial Automation Workspace</span>
+                </div>
+            </div>
+
+            <div class="header-center">
+                <div class="project-context-card">
+                    <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-folder"></use></svg>
+                    <span class="project-site" id="project-site-label">site_main</span>
+                    <span class="project-divider">/</span>
+                    <input type="text" id="projekt-name" aria-label="Projektname" placeholder="Projektname" value="Unbenannt">
+                    <span class="project-context-spacer"></span>
+                    <span class="v9-context" id="node-context" title="Aktiver Standort und Node">
+                        <span class="v9-context__dot" id="node-context-dot"></span>
+                        <span id="node-context-text">—</span>
+                    </span>
+                    <span class="dirty-dot" id="projekt-dirty" title="Ungespeicherte Änderungen"></span>
+                    <span class="v9-code project-fingerprint" id="fingerprint-chip" title="Fingerprint der geladenen Konfiguration">fp —</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <span class="v9-status v9-status--ok header-contract" id="contract-chip" title="Zustand der V9-Konfiguration">
+                    <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-check"></use></svg>
+                    <span class="v9-badge v9-badge--muted" id="contract-chip-badge">PRÜFE</span>
+                    <span class="v9-status__text" id="contract-chip-text">Konfiguration wird geladen</span>
+                </span>
+                <button id="btn-preview" class="btn btn-secondary" type="button" title="HMI-Vorschau öffnen">
+                    <svg class="ico" aria-hidden="true"><use href="#ico-eye"></use></svg><span>Vorschau</span>
+                </button>
+                <button id="btn-speichern" class="btn btn-primary" type="button" title="Projekt speichern (Strg+S)">
+                    <svg class="ico" aria-hidden="true"><use href="#ico-save"></use></svg><span>Speichern</span>
+                </button>
+                <div class="header-action-menu">
+                    <button id="btn-header-more" class="btn btn-secondary header-more-button" type="button"
+                            aria-label="Weitere Projektaktionen" title="Weitere Projektaktionen"
+                            aria-haspopup="menu" aria-expanded="false" aria-controls="header-more-menu">
+                        <svg class="ico" aria-hidden="true"><use href="#ico-more"></use></svg>
+                    </button>
+                    <div id="header-more-menu" class="header-more-menu" role="menu" hidden>
+                        <button id="btn-laden" class="header-menu-item" type="button" role="menuitem" title="Projekt laden">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-folder"></use></svg><span>Projekt laden</span>
+                        </button>
+                        <button id="btn-exportieren" class="header-menu-item" type="button" role="menuitem" title="SCADA-Bundle exportieren">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-download"></use></svg><span>SCADA-Bundle exportieren</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="main-content">
+            <nav id="workspace-rail" class="workspace-rail" aria-label="Hauptarbeitsbereiche">
+                <button class="workspace-nav-button active" type="button" data-target-tab="elements" data-workspace="engineering" aria-label="Anlagenbild" title="Anlagenbild">
+                    <svg class="ico" aria-hidden="true"><use href="#ico-workspace"></use></svg>
+                    <span class="workspace-nav-label" aria-hidden="true">Anlage</span>
+                </button>
+                <button id="workspace-plant-drawing-button" class="workspace-nav-button" type="button" data-target-tab="plant-drawing" data-workspace="drawing" aria-label="Anlagen-Zeicheneditor" title="Anlagen-Zeicheneditor">
+                    <svg class="ico" aria-hidden="true"><use href="#ico-connection"></use></svg>
+                    <span class="workspace-nav-label" aria-hidden="true">Zeichnen</span>
+                </button>
+                <button id="workspace-logic-button" class="workspace-nav-button" type="button" data-target-tab="logic" data-workspace="logic" aria-label="Schaltlogik" title="Schaltlogik">
+                    <svg class="ico" aria-hidden="true"><use href="#ico-flow"></use></svg>
+                    <span class="workspace-nav-label" aria-hidden="true">Logik</span>
+                </button>
+                <button class="workspace-nav-button" type="button" data-target-tab="v9-automation" data-workspace="automation" aria-label="Automatisierung" title="Automatisierung">
+                    <svg class="ico" aria-hidden="true"><use href="#ico-flow"></use></svg>
+                    <span class="workspace-nav-label" aria-hidden="true">Automation</span>
+                </button>
+                <button class="workspace-nav-button" type="button" data-target-tab="v9-topology" data-workspace="topology" aria-label="Topologie und Rollout" title="Topologie und Rollout">
+                    <svg class="ico" aria-hidden="true"><use href="#ico-topology"></use></svg>
+                    <span class="workspace-nav-label" aria-hidden="true">Topologie</span>
+                </button>
+                <button class="workspace-nav-button" type="button" data-target-tab="hmi" data-workspace="runtime" aria-label="HMI und Runtime" title="HMI und Runtime">
+                    <svg class="ico" aria-hidden="true"><use href="#ico-monitor"></use></svg>
+                    <span class="workspace-nav-label" aria-hidden="true">Runtime</span>
+                </button>
+                <span class="workspace-rail-divider" aria-hidden="true"></span>
+                <button class="workspace-nav-button" type="button" data-target-tab="v9-validate" data-workspace="validation" aria-label="Validierung" title="Validierung">
+                    <svg class="ico" aria-hidden="true"><use href="#ico-shield"></use></svg>
+                    <span class="workspace-nav-label" aria-hidden="true">Prüfung</span>
+                    <span class="workspace-nav-badge" id="workspace-validation-badge">…</span>
+                </button>
+                <span class="workspace-rail-spacer"></span>
+                <button id="palette-toggle" class="workspace-nav-button workspace-palette-button" type="button"
+                        aria-label="Dunkle Farbpalette: Dunkelblau" title="Dunkelblau/Braun umschalten"
+                        aria-pressed="false">
+                    <svg class="ico" aria-hidden="true"><use href="#ico-settings"></use></svg>
+                    <span class="palette-swatch" aria-hidden="true"></span>
+                    <span class="workspace-nav-label" aria-hidden="true">Palette</span>
+                </button>
+                <button id="theme-toggle" class="workspace-nav-button" type="button" aria-label="Hell/Dunkel umschalten" title="Hell/Dunkel umschalten">
+                    <svg class="ico theme-icon" aria-hidden="true"><use href="#ico-moon" id="theme-icon-use"></use></svg>
+                    <span class="workspace-nav-label" aria-hidden="true">Theme</span>
+                </button>
+            </nav>
+
+            <aside id="sidebar-left" class="sidebar library-panel" aria-label="Symbolbibliothek">
+                <div class="library-header">
+                    <div class="library-heading-row">
+                        <div>
+                            <span class="panel-eyebrow">Bibliothek</span>
+                            <h2>Prozesssymbole</h2>
+                        </div>
+                        <div class="library-heading-actions">
+                            <span id="symbol-standard-badge" class="symbol-standard-badge" data-valid="true"
+                                  title="PF-PID-V1 Objektstandard">PF-PID-V1 · 0</span>
+                            <span class="count-chip" id="template-count">0</span>
+                            <button id="btn-templates-neu-laden" class="btn-icon" type="button" title="Vorlagen neu einlesen">
+                                <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-refresh"></use></svg>
+                                <span class="sr-only">Vorlagen neu einlesen</span>
+                            </button>
+                        </div>
+                    </div>
+                    <label class="library-search" for="template-suche">
+                        <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-search"></use></svg>
+                        <input type="search" id="template-suche" placeholder="Symbol suchen …" class="search-input">
+                        <kbd>Ctrl K</kbd>
+                    </label>
+                    <select id="kategorie-filter" class="select-input library-category-select" aria-label="Kategorie">
+                        <option value="">Alle Kategorien</option>
+                    </select>
+                    <span id="category-chips-help" class="sr-only">Inventarkategorien. Mit horizontaler Scrollleiste oder den Pfeiltasten navigieren; Pos1 und Ende springen an den Anfang beziehungsweise das Ende.</span>
+                    <div id="category-chips" class="category-chips" role="tablist"
+                         aria-label="Inventarkategorien" aria-describedby="category-chips-help"></div>
+                </div>
+
+                <div id="template-palette" class="template-palette">
+                    <!-- Templates are loaded dynamically. -->
+                </div>
+
+                <div class="library-footer">
+                    <button id="btn-template-hochladen" class="btn btn-secondary btn--block" type="button">
+                        <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-upload"></use></svg><span>Eigenes SVG importieren</span>
+                    </button>
+                </div>
+            </aside>
+
+            <section id="workspace-center" class="workspace-center">
+                <main id="canvas-area">
+                    <div class="canvas-toolbar">
+                        <div class="toolbar-group">
+                            <button id="btn-select" class="tool-btn active" data-tool="select" title="Auswählen (V)">
+                                <svg class="ico" aria-hidden="true"><use href="#ico-cursor"></use></svg>
+                                <span class="sr-only">Auswählen</span>
+                            </button>
+                            <button id="btn-pan" class="tool-btn" data-tool="pan" title="Verschieben (H, oder Strg gedrückt halten)">
+                                <svg class="ico" aria-hidden="true"><use href="#ico-hand"></use></svg>
+                                <span class="sr-only">Verschieben</span>
+                            </button>
+                        </div>
+
+                        <div class="toolbar-group">
+                            <button id="btn-grid" class="tool-btn active" data-toggle="grid" title="Raster ein/aus (G)">
+                                <svg class="ico" aria-hidden="true"><use href="#ico-grid"></use></svg>
+                                <span class="sr-only">Raster</span>
+                            </button>
+                            <button id="btn-snap" class="tool-btn active" data-toggle="snap" title="Am Raster einrasten (S)">
+                                <svg class="ico" aria-hidden="true"><use href="#ico-magnet"></use></svg>
+                                <span class="sr-only">Einrasten</span>
+                            </button>
+                        </div>
+
+                        <div class="toolbar-group">
+                            <button id="btn-undo" class="tool-btn" title="Rückgängig (Strg+Z)">
+                                <svg class="ico" aria-hidden="true"><use href="#ico-undo"></use></svg>
+                                <span class="sr-only">Rückgängig</span>
+                            </button>
+                            <button id="btn-redo" class="tool-btn" title="Wiederholen (Strg+Y)">
+                                <svg class="ico" aria-hidden="true"><use href="#ico-redo"></use></svg>
+                                <span class="sr-only">Wiederholen</span>
+                            </button>
+                        </div>
+
+                        <span class="spacer"></span>
+                        <span class="canvas-mode-label">Modus <strong>Engineering</strong></span>
+                        <button id="btn-hmi-overlay" class="tool-btn hmi-overlay-toggle" type="button"
+                                aria-pressed="false" aria-label="Optionale HMI-Bedienelemente einblenden"
+                                title="Optionale HMI-Bedienelemente einblenden">
+                            <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-monitor"></use></svg>
+                            <span class="hmi-overlay-label">HMI optional</span>
+                        </button>
+                        <span class="toolbar-divider" aria-hidden="true"></span>
+                        <button id="btn-delete" class="tool-btn" title="Löschen (Entf)">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-trash"></use></svg>
+                            <span class="sr-only">Löschen</span>
+                        </button>
+                        <span class="toolbar-divider" aria-hidden="true"></span>
+                        <button id="btn-shortcuts" class="tool-btn" title="Tastaturkürzel anzeigen (?)">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-help"></use></svg>
+                            <span class="sr-only">Tastaturkürzel anzeigen</span>
+                        </button>
+                    </div>
+
+                    <div class="canvas-stage">
+                        <div class="canvas-corner"></div>
+                        <div class="canvas-ruler canvas-ruler--h" id="ruler-h" aria-hidden="true">
+                            <span class="canvas-ruler__cursor" id="ruler-h-cursor"></span>
+                        </div>
+                        <div class="canvas-ruler canvas-ruler--v" id="ruler-v" aria-hidden="true">
+                            <span class="canvas-ruler__cursor" id="ruler-v-cursor"></span>
+                        </div>
+
+                        <div id="canvas-container" class="canvas-container">
+                            <div class="canvas-sheet-meta">
+                                <strong id="canvas-project-label">Unbenannt</strong>
+                                <span class="canvas-sheet-tag">P&amp;ID-01</span>
+                            </div>
+                            <span class="canvas-live-state"><span></span>Live-Daten bereit</span>
+
+                            <svg id="main-canvas" xmlns="http://www.w3.org/2000/svg" width="2000" height="2000">
+                                <defs>
+                                    <pattern id="grid-pattern" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <circle cx="0.9" cy="0.9" r="0.9" fill="var(--grid-color, #cbd5e1)"/>
+                                    </pattern>
+                                    <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5"
+                                            markerWidth="6" markerHeight="6" orient="auto-start-reverse"
+                                            markerUnits="strokeWidth">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
+                                    </marker>
+                                    <marker id="arrowhead-open" viewBox="0 0 10 10" refX="9" refY="5"
+                                            markerWidth="7" markerHeight="7" orient="auto-start-reverse"
+                                            markerUnits="strokeWidth">
+                                        <path d="M 0 0 L 10 5 L 0 10" fill="none"
+                                              stroke="context-stroke" stroke-width="1.5"/>
+                                    </marker>
+                                </defs>
+                                <rect id="grid-background" width="100%" height="100%" fill="url(#grid-pattern)" class="grid-layer"/>
+                                <g id="connections-layer" transform="translate(0,0) scale(1)"></g>
+                                <g id="elements-layer" transform="translate(0,0) scale(1)"></g>
+                            </svg>
+
+                            <div class="canvas-note" id="canvas-note">2000 × 2000 px · Raster 20</div>
+                            <div class="canvas-selection-chip" id="canvas-selection-chip">
+                                <span id="canvas-selection-name"></span>
+                                <span class="canvas-selection-chip__sep"></span>
+                                <span class="canvas-selection-chip__meta" id="canvas-selection-meta"></span>
+                            </div>
+                            <div class="canvas-shortcut-hint"><kbd>Space</kbd><span>verschieben</span><kbd>Ctrl</kbd><span>Mehrfachauswahl</span></div>
+
+                            <div id="canvas-minimap" class="canvas-minimap" aria-label="Übersicht der Zeichnung">
+                                <svg id="canvas-minimap-svg" viewBox="0 0 2000 2000" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                                    <use href="#connections-layer"></use>
+                                    <use href="#elements-layer"></use>
+                                </svg>
+                            </div>
+
+                            <div class="canvas-float canvas-float--zoom">
+                                <button id="btn-zoom-out" class="tool-btn" title="Verkleinern (−)">
+                                    <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-minus"></use></svg>
+                                    <span class="sr-only">Verkleinern</span>
+                                </button>
+                                <span id="zoom-level" class="zoom-indicator">100 %</span>
+                                <button id="btn-zoom-in" class="tool-btn" title="Vergrößern (+)">
+                                    <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-plus"></use></svg>
+                                    <span class="sr-only">Vergrößern</span>
+                                </button>
+                                <span class="header-divider"></span>
+                                <button id="btn-zoom-reset" class="tool-btn" title="Zeichnung einpassen (0)">
+                                    <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-fit"></use></svg>
+                                    <span class="sr-only">Zeichnung einpassen</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="canvas-empty-state" class="canvas-empty-state">
+                            <span class="canvas-empty-icon"><svg class="ico" aria-hidden="true"><use href="#ico-workspace"></use></svg></span>
+                            <strong>Anlagenbild aufbauen</strong>
+                            <span>Symbol aus der Bibliothek auf die Zeichenfläche ziehen oder ein bestehendes Projekt laden.</span>
+                        </div>
+                    </div>
+                </main>
+
+                <section id="workspace-global" class="workspace-global" aria-live="polite">
+                    <header class="workspace-global-header">
+                        <div class="workspace-global-title-block">
+                            <span class="panel-eyebrow" id="global-workspace-eyebrow">Automatisierung</span>
+                            <h2 id="global-workspace-title">Prozesse</h2>
+                            <p id="global-workspace-subtitle">Prozesszustände, Regeln und Runtime-Verträge zentral bearbeiten.</p>
+                        </div>
+                        <nav id="global-workspace-nav" class="workspace-subnav" aria-label="Bereiche">
+                            <button type="button" data-target-tab="v9-automation">Automation Studio</button>
+                            <button type="button" data-target-tab="processes" data-legacy-route="true">Prozesse</button>
+                            <button type="button" data-target-tab="rules" data-legacy-route="true">Regeln</button>
+                            <button type="button" data-target-tab="v9-states" data-legacy-route="true">States V9</button>
+                            <button type="button" data-target-tab="v9-rules" data-legacy-route="true">Rules V9</button>
+                            <button type="button" data-target-tab="v9-topology">Topologie</button>
+                            <button type="button" data-target-tab="v9-cross">Cross V8</button>
+                            <button type="button" data-target-tab="v9-validate">Validierung</button>
+                            <button type="button" data-target-tab="export">Export</button>
+                        </nav>
+                    </header>
+                    <div id="global-tab-panels" class="global-tab-panels"></div>
+                </section>
+            </section>
+
+
+            <section id="logic-workspace" class="logic-workspace" aria-label="PF-LOGIC-V1 Schaltlogik" hidden>
+                <aside class="logic-inventory" aria-label="Logik-Inventar">
+                    <header class="logic-inventory-header">
+                        <span class="panel-eyebrow">Inventar</span>
+                        <h2>Schaltlogik</h2>
+                        <span class="logic-standard-badge">PF-LOGIC-V1</span>
+                    </header>
+                    <div class="logic-inventory-tabs" role="tablist" aria-label="Logik-Inventarbereiche">
+                        <button class="logic-inventory-tab active" type="button" role="tab" aria-selected="true" data-logic-inventory="diagrams">Schaltpläne</button>
+                        <button class="logic-inventory-tab" type="button" role="tab" aria-selected="false" data-logic-inventory="blocks">Bausteine</button>
+                        <button class="logic-inventory-tab" type="button" role="tab" aria-selected="false" data-logic-inventory="signals">Signale</button>
+                    </div>
+                    <div class="logic-inventory-toolbar">
+                        <label class="logic-search" for="logic-inventory-search">
+                            <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-search"></use></svg>
+                            <input id="logic-inventory-search" type="search" placeholder="Suchen …" autocomplete="off">
+                        </label>
+                        <select id="logic-category-filter" aria-label="Logik-Kategorie">
+                            <option value="">Alle Kategorien</option>
+                        </select>
+                    </div>
+                    <div id="logic-inventory-content" class="logic-inventory-content"></div>
+                    <footer class="logic-inventory-footer">
+                        <button id="logic-new-diagram" class="btn btn-primary btn--block" type="button">+ Schaltplan</button>
+                        <button id="logic-load-demo" class="btn btn-secondary btn--block" type="button">Timer-/Counter-Demo</button>
+                    </footer>
+                </aside>
+
+                <main class="logic-editor-shell">
+                    <header class="logic-editor-header">
+                        <div class="logic-title-block">
+                            <span class="panel-eyebrow">Additiver Function-Block-Editor</span>
+                            <div class="logic-title-row">
+                                <h2 id="logic-active-title">Kein Schaltplan</h2>
+                                <span id="logic-target-profile" class="logic-target-chip">Universal</span>
+                            </div>
+                            <p id="logic-active-description">Plant, HMI und Logik greifen auf dasselbe kanonische Projektmodell zu.</p>
+                        </div>
+                        <div class="logic-header-actions">
+                            <button id="logic-validate" class="btn btn-secondary" type="button">Prüfen</button>
+                            <button id="logic-compile" class="btn btn-primary" type="button">Übersetzen &amp; Exportieren</button>
+                        </div>
+                    </header>
+                    <div class="logic-toolbar" role="toolbar" aria-label="Schaltplan-Werkzeuge">
+                        <button id="logic-tool-select" class="tool-btn active" type="button" title="Auswählen und verschieben">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-cursor"></use></svg><span class="sr-only">Auswählen</span>
+                        </button>
+                        <button id="logic-tool-connect" class="tool-btn" type="button" title="Ports verbinden">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-connection"></use></svg><span class="sr-only">Verbinden</span>
+                        </button>
+                        <span class="toolbar-divider" aria-hidden="true"></span>
+                        <button id="logic-undo" class="tool-btn" type="button" title="Rückgängig">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-undo"></use></svg><span class="sr-only">Rückgängig</span>
+                        </button>
+                        <button id="logic-redo" class="tool-btn" type="button" title="Wiederholen">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-redo"></use></svg><span class="sr-only">Wiederholen</span>
+                        </button>
+                        <button id="logic-delete" class="tool-btn" type="button" title="Auswahl löschen">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-trash"></use></svg><span class="sr-only">Löschen</span>
+                        </button>
+                        <span class="spacer"></span>
+                        <span id="logic-mode-hint" class="logic-mode-hint">Auswahlmodus</span>
+                        <button id="logic-fit" class="tool-btn" type="button" title="Schaltplan einpassen">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-fit"></use></svg><span class="sr-only">Einpassen</span>
+                        </button>
+                        <button id="logic-zoom-out" class="tool-btn" type="button" title="Verkleinern">−</button>
+                        <span id="logic-zoom-label" class="zoom-indicator">100 %</span>
+                        <button id="logic-zoom-in" class="tool-btn" type="button" title="Vergrößern">+</button>
+                    </div>
+                    <div id="logic-canvas-viewport" class="logic-canvas-viewport" tabindex="0" aria-label="Schaltplan-Zeichenfläche">
+                        <svg id="logic-canvas" class="logic-canvas" xmlns="http://www.w3.org/2000/svg" width="2400" height="1400" viewBox="0 0 2400 1400" aria-label="Schaltplan">
+                            <defs>
+                                <pattern id="logic-grid-small" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <circle cx="1" cy="1" r="1" class="logic-grid-dot"></circle>
+                                </pattern>
+                                <filter id="logic-node-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feDropShadow dx="0" dy="4" stdDeviation="5" flood-opacity="0.14"></feDropShadow>
+                                </filter>
+                                <marker id="logic-edge-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" class="logic-edge-arrow"></path>
+                                </marker>
+                            </defs>
+                            <rect class="logic-canvas-background" x="0" y="0" width="2400" height="1400" fill="url(#logic-grid-small)"></rect>
+                            <g id="logic-canvas-transform">
+                                <g id="logic-edges-layer"></g>
+                                <g id="logic-nodes-layer"></g>
+                                <g id="logic-preview-layer"></g>
+                            </g>
+                        </svg>
+                        <div id="logic-empty-state" class="logic-empty-state">
+                            <strong>Schaltplan anlegen</strong>
+                            <span>Bausteine aus dem Inventar einfügen und über typisierte Ports verbinden.</span>
+                            <button id="logic-empty-create" class="btn btn-primary" type="button">Ersten Schaltplan erstellen</button>
+                        </div>
+                        <div class="logic-canvas-status">
+                            <span id="logic-validation-status">Bereit</span>
+                            <span id="logic-coordinate-status">X: 0 · Y: 0</span>
+                        </div>
+                    </div>
+                </main>
+
+                <aside class="logic-inspector" aria-label="Logik-Inspektor">
+                    <header class="logic-inspector-header">
+                        <span class="panel-eyebrow">Inspektor</span>
+                        <h2 id="logic-inspector-title">Schaltplan</h2>
+                        <p id="logic-inspector-context">Kein Baustein ausgewählt</p>
+                    </header>
+                    <div class="logic-inspector-tabs" role="tablist" aria-label="Logik-Konfiguration">
+                        <button class="logic-inspector-tab active" type="button" role="tab" aria-selected="true" data-logic-inspector="details">Details</button>
+                        <button class="logic-inspector-tab" type="button" role="tab" aria-selected="false" data-logic-inspector="binding">Binding</button>
+                        <button class="logic-inspector-tab" type="button" role="tab" aria-selected="false" data-logic-inspector="target">Ziel</button>
+                        <button class="logic-inspector-tab" type="button" role="tab" aria-selected="false" data-logic-inspector="diagnostics">Diagnose</button>
+                    </div>
+                    <div id="logic-inspector-content" class="logic-inspector-content"></div>
+                </aside>
+            </section>
+
+            <section id="plant-drawing-workspace" class="plant-drawing-workspace" aria-label="Anlagen-Zeicheneditor" hidden>
+                <aside class="plant-drawing-inventory" aria-label="Zeicheninventar">
+                    <header class="plant-drawing-panel-header">
+                        <span class="panel-eyebrow">Anlage · Zeichnen</span>
+                        <h2>Zeichen-Inventar</h2>
+                        <p>Elementare Teile zusammenstecken, Baugruppen speichern und wiederverwenden.</p>
+                    </header>
+                    <div class="plant-drawing-inventory-tabs" role="tablist" aria-label="Zeichen-Inventar">
+                        <button class="plant-drawing-inventory-tab active" type="button" role="tab" aria-selected="true" data-inventory-tab="elements">Elemente</button>
+                        <button class="plant-drawing-inventory-tab" type="button" role="tab" aria-selected="false" data-inventory-tab="structure" title="Gestell und Aufhängung (eigene Ebene)">Gestell <span id="plant-drawing-structure-count" class="plant-drawing-inventory-tab__count">0</span></button>
+                        <button class="plant-drawing-inventory-tab" type="button" role="tab" aria-selected="false" data-inventory-tab="assemblies">Baugruppen <span id="plant-drawing-assembly-count" class="plant-drawing-inventory-tab__count">0</span></button>
+                    </div>
+                    <label class="library-search" for="plant-drawing-search">
+                        <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-search"></use></svg>
+                        <input id="plant-drawing-search" type="search" class="search-input" placeholder="Komponente suchen …">
+                    </label>
+                    <select id="plant-drawing-category" class="select-input" aria-label="Komponentenkategorie">
+                        <option value="">Alle Kategorien</option>
+                    </select>
+                    <section class="plant-drawing-primitives" aria-labelledby="plant-drawing-primitives-title">
+                        <h3 id="plant-drawing-primitives-title">Freies Zeichnen</h3>
+                        <div class="plant-drawing-primitive-grid">
+                            <button type="button" data-drawing-tool="polyline" title="Leitung mit Stützpunkten zeichnen (L) · Darstellung: Rohr, Kapillare, heiß, kalt, Spülgas, Signal">Leitung</button>
+                            <button type="button" data-drawing-tool="region" title="Bereich mit gestricheltem Rahmen und Titel (B)">Bereich</button>
+                            <button type="button" data-drawing-tool="dimension" title="Bemaßung mit Pfeilen und Maßtext (D)">Bemaßung</button>
+                            <button type="button" data-drawing-tool="line">Linie</button>
+                            <button type="button" data-drawing-tool="rect">Rechteck</button>
+                            <button type="button" data-drawing-tool="ellipse">Ellipse</button>
+                            <button type="button" data-drawing-tool="text">Text</button>
+                        </div>
+                        <details class="plant-drawing-assembly-guide">
+                            <summary>Flansch-Baugruppen verstehen</summary>
+                            <p>Das Flanschpaar ist ein elementares Zwischenstück mit Ein- und Ausgang. Rohr, Flanschpaar und Gerät einzeln platzieren und mit der Maus an einen freien Port heranführen: die Teile rasten ein und sind gesteckt. Die klassische Verbindung im Modus „Verbinden“ bleibt für Signal- und Medienlinien erhalten.</p>
+                        </details>
+                    </section>
+                    <div id="plant-drawing-template-palette" class="plant-drawing-template-palette" aria-live="polite"></div>
+                    <div id="plant-drawing-assembly-palette" class="plant-drawing-template-palette plant-drawing-assembly-palette" aria-live="polite" hidden></div>
+                    <section id="plant-drawing-import-section" class="plant-drawing-import-section" aria-labelledby="plant-drawing-import-title">
+                        <h3 id="plant-drawing-import-title">Aus Anlagen-Inventar übernehmen</h3>
+                        <label class="sr-only" for="plant-drawing-import-select">Anlagen-Symbol wählen</label>
+                        <select id="plant-drawing-import-select" class="select-input"></select>
+                        <button id="plant-drawing-import-button" class="btn btn-secondary btn--block" type="button">In Zeichen-Inventar übernehmen</button>
+                        <p>Eigene und Legacy-Symbole des Anlagenbilds bleiben getrennt und werden nur auf Wunsch als Zeichenelement bereitgestellt.</p>
+                    </section>
+                    <footer class="plant-drawing-inventory-footer">
+                        <section class="plant-drawing-reference-loader" aria-labelledby="plant-drawing-reference-title">
+                            <h3 id="plant-drawing-reference-title">Referenzanlagen</h3>
+                            <label class="sr-only" for="plant-drawing-reference-select">Referenzanlage auswählen</label>
+                            <select id="plant-drawing-reference-select" class="select-input">
+                                <option value="reactor">Reaktor-P&amp;ID · animiert</option>
+                                <option value="furnace">Rohrofen-Template · animiert</option>
+                                <option value="plant">P&amp;ID-Anlage · animiert</option>
+                            </select>
+                            <button id="plant-drawing-reference-load" class="btn btn-primary btn--block" type="button">Elementar &amp; animiert laden</button>
+                            <p>Originalgetreue SVG-Elemente mit SMIL und Event-Zielen laden.</p>
+                        </section>
+                        <button id="plant-drawing-classic-demo" class="btn btn-primary btn--block" type="button" title="Klassisches Reaktor-P&amp;ID mit gefüllten Rohren, Flanschen, Kapillaren, Ventilpanel, Gestell und Bemaßung laden">Klassik: Reaktor-P&amp;ID laden</button>
+                        <button id="plant-drawing-classic-template-demo" class="btn btn-primary btn--block" type="button" title="Klassische Symbolvariante mit Gasflaschen, Gasmischer, Kolonne und Kreis-Apparaten laden">Klassik: Symbolvariante laden</button>
+                        <button id="plant-drawing-r4-demo" class="btn btn-secondary btn--block" type="button" title="Rohrofen-Anlage mit Grenzstellen, Kapillaren, Swagelok-Fittings und Gasmischer laden (r4)">Rohrofen mit Fittings &amp; Mischer (r4)</button>
+                        <button id="plant-drawing-assembly-demo" class="btn btn-secondary btn--block" type="button" title="Rohrofen-Anlage aus gesteckten Elementarteilen laden (r3)">Gesteckte Rohrofen-Anlage (r3)</button>
+                        <button id="plant-drawing-demo" class="btn btn-secondary btn--block" type="button" title="Elementares Rohrofen-Beispiel (r1, klassische Verbindungen)">Elementares Beispiel (r1) laden</button>
+                    </footer>
+                </aside>
+
+                <main class="plant-drawing-main">
+                    <header class="plant-drawing-toolbar" aria-label="Zeichenwerkzeuge">
+                        <div class="toolbar-group">
+                            <button class="tool-btn active" type="button" data-drawing-tool="select" title="Auswählen und verschieben (V)">
+                                <svg class="ico" aria-hidden="true"><use href="#ico-cursor"></use></svg><span class="sr-only">Auswählen</span>
+                            </button>
+                            <button class="tool-btn" type="button" data-drawing-tool="pan" title="Zeichenfläche horizontal und vertikal verschieben (H, Leertaste oder Strg + Ziehen)">
+                                <svg class="ico" aria-hidden="true"><use href="#ico-hand"></use></svg><span class="sr-only">Zeichenfläche verschieben</span>
+                            </button>
+                            <button class="tool-btn" type="button" data-drawing-tool="connect" title="Ports durch Rohr oder Verbindung koppeln">
+                                <svg class="ico" aria-hidden="true"><use href="#ico-connection"></use></svg><span class="sr-only">Verbinden</span>
+                            </button>
+                        </div>
+                        <div class="toolbar-group plant-drawing-connection-kind" role="group" aria-label="Verbindungstyp">
+                            <button class="plant-drawing-kind active" type="button" data-connection-kind="process">Prozess</button>
+                            <button class="plant-drawing-kind" type="button" data-connection-kind="utility">Medium</button>
+                            <button class="plant-drawing-kind" type="button" data-connection-kind="signal">Signal</button>
+                            <button class="plant-drawing-kind" type="button" data-connection-kind="power">Energie</button>
+                        </div>
+                        <span class="spacer"></span>
+                        <button id="plant-drawing-grid-toggle" class="tool-btn active" type="button" title="Raster ein-/ausblenden">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-grid"></use></svg><span class="sr-only">Raster</span>
+                        </button>
+                        <button id="plant-drawing-snap-toggle" class="tool-btn active" type="button" title="Am Raster und an freien Ports einrasten">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-magnet"></use></svg><span class="sr-only">Einrasten</span>
+                        </button>
+                        <button id="plant-drawing-port-toggle" class="tool-btn active" type="button" title="Freie Ports anzeigen" aria-pressed="true">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-eye"></use></svg><span class="sr-only">Ports anzeigen</span>
+                        </button>
+                        <button id="plant-drawing-linked-toggle" class="tool-btn active" type="button" title="Verbund mitziehen: gesteckte Teile bewegen sich gemeinsam (Alt + Ziehen löst ein Teil)" aria-pressed="true">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-link"></use></svg><span class="sr-only">Verbund mitziehen</span>
+                        </button>
+                        <span class="toolbar-divider" aria-hidden="true"></span>
+                        <div class="toolbar-group plant-drawing-layer-group" role="group" aria-label="Ebenen">
+                            <button class="plant-drawing-layer-toggle active" type="button" data-drawing-layer="process" title="Ebene Prozess ein-/ausblenden" aria-pressed="true">Prozess</button>
+                            <button class="plant-drawing-layer-toggle active" type="button" data-drawing-layer="structure" title="Ebene Gestell / Aufhängung ein-/ausblenden" aria-pressed="true">Gestell</button>
+                            <button class="plant-drawing-layer-toggle active" type="button" data-drawing-layer="annotation" title="Ebene Beschriftung (Bereiche, Bemaßung, Texte) ein-/ausblenden" aria-pressed="true">Beschriftung</button>
+                        </div>
+                        <button id="plant-drawing-animation-toggle" class="tool-btn" type="button" title="Animation der Laufstriche (Durchfluss) starten/anhalten" aria-pressed="false">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-flow"></use></svg><span class="sr-only">Animation</span>
+                        </button>
+                        <span class="toolbar-divider" aria-hidden="true"></span>
+                        <button id="plant-drawing-rotate" class="tool-btn" type="button" title="Auswahl um 90° drehen (R)">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-refresh"></use></svg><span class="sr-only">Drehen</span>
+                        </button>
+                        <button id="plant-drawing-group" class="tool-btn" type="button" title="Auswahl als Baugruppe gruppieren (Strg+G)">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-layers"></use></svg><span class="sr-only">Gruppieren</span>
+                        </button>
+                        <button id="plant-drawing-delete" class="tool-btn" type="button" title="Auswahl löschen">
+                            <svg class="ico" aria-hidden="true"><use href="#ico-trash"></use></svg><span class="sr-only">Löschen</span>
+                        </button>
+                        <span class="toolbar-divider" aria-hidden="true"></span>
+                        <button id="plant-drawing-zoom-out" class="tool-btn" type="button" title="Verkleinern"><svg class="ico"><use href="#ico-minus"></use></svg></button>
+                        <span id="plant-drawing-zoom-label" class="zoom-indicator">100 %</span>
+                        <button id="plant-drawing-zoom-in" class="tool-btn" type="button" title="Vergrößern"><svg class="ico"><use href="#ico-plus"></use></svg></button>
+                        <button id="plant-drawing-zoom-fit" class="tool-btn" type="button" title="Einpassen"><svg class="ico"><use href="#ico-fit"></use></svg></button>
+                    </header>
+                    <div class="plant-drawing-stage" id="plant-drawing-stage">
+                        <svg id="plant-drawing-canvas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Anlagenskizze">
+                            <defs>
+                                <pattern id="plant-drawing-grid-pattern" width="10" height="10" patternUnits="userSpaceOnUse">
+                                    <path d="M10 0H0V10" fill="none" stroke="currentColor" stroke-opacity=".16" stroke-width=".7"></path>
+                                </pattern>
+                                <marker id="plant-drawing-flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M0 0L10 5L0 10Z" fill="context-stroke"></path>
+                                </marker>
+                            </defs>
+                            <rect id="plant-drawing-grid-background" x="-1600" y="-1000" width="4800" height="3000" fill="url(#plant-drawing-grid-pattern)"></rect>
+                            <rect id="plant-drawing-sheet-frame" class="plant-drawing-sheet-frame" x="0" y="0" width="1600" height="1000" fill="none" vector-effect="non-scaling-stroke"></rect>
+                            <g id="plant-drawing-connections-layer"></g>
+                            <g id="plant-drawing-primitives-layer"></g>
+                            <g id="plant-drawing-entities-layer"></g>
+                            <g id="plant-drawing-ports-layer"></g>
+                            <g id="plant-drawing-selection-layer"></g>
+                        </svg>
+                        <div id="plant-drawing-empty" class="plant-drawing-empty-state">
+                            <strong>Anlage aus Elementarteilen zusammenstecken</strong>
+                            <span>Teile aus dem Zeichen-Inventar ziehen und an freie Ports heranführen – sie rasten ein und sind gesteckt. Doppelklick wählt den Verbund, R dreht, F spiegelt, I invertiert die Flussrichtung, Alt + Ziehen löst ein Teil. Rechtsklick öffnet das Kontextmenü, Strg + Ziehen oder Leertaste verschiebt die Ansicht.</span>
+                        </div>
+                        <div class="plant-drawing-statusbar">
+                            <span id="plant-drawing-status">Bereit</span>
+                            <span id="plant-drawing-coordinate">X: 0 · Y: 0</span>
+                        </div>
+                    </div>
+                </main>
+
+                <aside class="plant-drawing-inspector" aria-label="Zeicheninspektor">
+                    <header class="plant-drawing-panel-header">
+                        <span class="panel-eyebrow">Inspektor</span>
+                        <h2 id="plant-drawing-inspector-title">Anlagenskizze</h2>
+                        <p id="plant-drawing-inspector-context">Kein Objekt ausgewählt</p>
+                    </header>
+                    <div id="plant-drawing-properties" class="plant-drawing-properties"></div>
+                    <section class="plant-drawing-preview-card" aria-labelledby="plant-drawing-preview-title">
+                        <header>
+                            <div><h3 id="plant-drawing-preview-title">Inventar-Vorschau</h3><p>Auswahl als eigenständige SVG-Entity prüfen.</p></div>
+                        </header>
+                        <div id="plant-drawing-preview" class="plant-drawing-preview"></div>
+                    </section>
+                    <section class="plant-drawing-inventory-card" aria-labelledby="plant-drawing-inventory-title">
+                        <header><h3 id="plant-drawing-inventory-title">Übernehmen</h3></header>
+                        <label class="form-group" for="plant-drawing-inventory-name">
+                            <span>Name</span><input id="plant-drawing-inventory-name" class="text-input" value="Eigene Baugruppe">
+                        </label>
+                        <label class="form-group" for="plant-drawing-inventory-category">
+                            <span>Kategorie</span><input id="plant-drawing-inventory-category" class="text-input" value="Custom">
+                        </label>
+                        <div class="plant-drawing-inventory-group">
+                            <span class="plant-drawing-inventory-group__label">Zeichen-Inventar</span>
+                            <div class="plant-drawing-inventory-actions">
+                                <button id="plant-drawing-save-assembly" class="btn btn-primary" type="button">Als Baugruppe speichern</button>
+                            </div>
+                            <p class="hint-text">Teile, Steckverbindungen und freie Ports bleiben erhalten; beim Platzieren entstehen wieder einzelne Entities.</p>
+                        </div>
+                        <div class="plant-drawing-inventory-group">
+                            <span class="plant-drawing-inventory-group__label">Anlagen-Inventar &amp; Anlagenbild</span>
+                            <div class="plant-drawing-inventory-actions">
+                                <button id="plant-drawing-place-in-plant-parts" class="btn btn-primary" type="button">Elementar ins Anlagenbild (editierbar)</button>
+                                <button id="plant-drawing-save-inventory" class="btn btn-secondary" type="button">Als flaches SVG ins Anlagen-Inventar</button>
+                                <button id="plant-drawing-use-in-plant" class="btn btn-secondary" type="button">Flaches SVG speichern &amp; einsetzen</button>
+                            </div>
+                            <p class="hint-text">Elementar: jedes Gerät bleibt für Details, I/O, HMI, Verbindungen und Ebenen separat editierbar. Flaches SVG: bewusst genau eine gemeinsame Grafik-Entity.</p>
+                        </div>
+                    </section>
+                    <section class="plant-drawing-export-card">
+                        <h3>Skizze</h3>
+                        <div class="plant-drawing-export-actions">
+                            <button id="plant-drawing-export-svg" class="btn btn-secondary" type="button">SVG exportieren</button>
+                            <button id="plant-drawing-export-json" class="btn btn-secondary" type="button">JSON exportieren</button>
+                        </div>
+                        <div id="plant-drawing-validation" class="plant-drawing-validation"></div>
+                    </section>
+                </aside>
+            </section>
+
+            <div id="logic-context-menu" class="logic-context-menu" role="menu" hidden></div>
+
+            <div id="right-splitter" class="splitter splitter-right" role="separator"
+                 aria-label="Größe des Inspektors ändern" aria-orientation="vertical"></div>
+
+            <aside id="sidebar-right" class="sidebar inspector-panel" aria-label="Inspektor">
+                <div class="inspector-header">
+                    <div class="inspector-heading">
+                        <h2 id="right-breadcrumb">Inspektor</h2>
+                        <span id="right-context">Kein Element ausgewählt</span>
+                    </div>
+                    <div class="inspector-header-actions">
+                        <div class="inspector-menu">
+                            <button id="btn-inspector-more" class="btn-icon inspector-more-button" type="button"
+                                    title="Weitere Inspektorbereiche" aria-label="Weitere Inspektorbereiche"
+                                    aria-haspopup="menu" aria-expanded="false" aria-controls="inspector-more-menu">
+                                <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-more"></use></svg>
+                            </button>
+                            <div id="inspector-more-menu" class="inspector-more-menu" role="menu" hidden>
+                                <button class="inspector-nav-button inspector-overflow-item" type="button" role="menuitem"
+                                        data-target-tab="hmi" data-inspector-view="hmi" title="HMI-Konfiguration">
+                                    <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-monitor"></use></svg><span>HMI-Konfiguration</span>
+                                </button>
+                                <button class="inspector-nav-button inspector-overflow-item" type="button" role="menuitem"
+                                        data-target-tab="connections" data-inspector-view="connections" title="Verbindungen">
+                                    <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-connection"></use></svg><span>Verbindungen</span>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="btn-right-collapse" class="btn-icon collapse-btn" type="button" title="Inspektor ein-/ausklappen"
+                                aria-expanded="true" aria-controls="sidebar-right">
+                            <svg class="ico ico--sm collapse-icon" aria-hidden="true"><use href="#ico-chevron-right"></use></svg>
+                            <span class="sr-only">Inspektor ein- oder ausklappen</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="inspector-nav" role="tablist" aria-label="Inspektorbereiche">
+                    <button class="inspector-nav-button active" type="button" role="tab" aria-selected="true" data-target-tab="elements" data-inspector-view="elements" title="Eigenschaften">
+                        <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-properties"></use></svg><span>Details</span>
+                    </button>
+                    <button class="inspector-nav-button" type="button" role="tab" aria-selected="false" data-target-tab="device" data-inspector-view="device" title="Geräte- und I/O-Bindings">
+                        <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-cpu"></use></svg><span>I/O</span>
+                    </button>
+                    <button class="inspector-nav-button" type="button" role="tab" aria-selected="false" data-target-tab="hmi" data-inspector-view="hmi" title="HMI">
+                        <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-monitor"></use></svg><span>HMI</span>
+                    </button>
+                    <button class="inspector-nav-button" type="button" role="tab" aria-selected="false" data-target-tab="connections" data-inspector-view="connections" title="Verbindungen">
+                        <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-connection"></use></svg><span>Linien</span>
+                    </button>
+                    <button class="inspector-nav-button" type="button" role="tab" aria-selected="false" data-inspector-view="layers" title="Ebenen">
+                        <svg class="ico ico--sm" aria-hidden="true"><use href="#ico-layers"></use></svg><span>Ebenen</span>
+                    </button>
+                </div>
+
+                <div class="inspector-body">
+                    <div id="right-tabs" class="tabs compatibility-tabs">
+                        <div class="tab-list" role="tablist" aria-label="Kompatibilitätsnavigation">
+                            <button class="tab active" role="tab" aria-selected="true" id="tab-btn-elements" data-tab="elements" data-group="zeichnung">Elements</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-connections" data-tab="connections" data-group="zeichnung">Connections</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-device" data-tab="device" data-group="zeichnung">Device</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-hmi" data-tab="hmi" data-group="zeichnung">HMI</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-v9-automation" data-tab="v9-automation" data-group="automation" data-v9="1">Automation Studio</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-processes" data-tab="processes" data-group="automation">Processes</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-rules" data-tab="rules" data-group="automation">Rules</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-v9-states" data-tab="v9-states" data-group="automation" data-v9="1">States V9</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-v9-rules" data-tab="v9-rules" data-group="automation" data-v9="1">Rules V9</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-v9-validate" data-tab="v9-validate" data-group="rollout" data-v9="1">Validierung<span id="v9-tab-badge" class="v9-tab-badge">…</span></button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-v9-topology" data-tab="v9-topology" data-group="rollout" data-v9="1">Topologie</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-v9-cross" data-tab="v9-cross" data-group="rollout" data-v9="1">Cross V8</button>
+                            <button class="tab" role="tab" aria-selected="false" id="tab-btn-export" data-tab="export" data-group="rollout">Export</button>
+                        </div>
+
+                        <div class="tab-panels">
+                            <section class="tab-panel active" id="tab-elements" role="tabpanel" aria-labelledby="tab-btn-elements">
+                                <div id="properties-panel" class="properties-panel">
+                                    <div class="no-selection">Kein Element ausgewählt</div>
+                                </div>
+                            </section>
+                            <section class="tab-panel" id="tab-device" role="tabpanel" aria-labelledby="tab-btn-device">
+                                <div id="device-panel" class="properties-panel"></div>
+                            </section>
+                            <section class="tab-panel" id="tab-hmi" role="tabpanel" aria-labelledby="tab-btn-hmi">
+                                <div id="hmi-ui-panel" class="properties-panel"></div>
+                            </section>
+                            <section class="tab-panel" id="tab-connections" role="tabpanel" aria-labelledby="tab-btn-connections">
+                                <div class="sidebar-section inspector-section">
+                                    <h3>Verbindungen</h3>
+                                    <div id="connections-panel"></div>
+                                </div>
+                            </section>
+                            <section class="tab-panel" id="tab-processes" role="tabpanel" aria-labelledby="tab-btn-processes">
+                                <div id="processes-panel" class="properties-panel"></div>
+                            </section>
+                            <section class="tab-panel" id="tab-rules" role="tabpanel" aria-labelledby="tab-btn-rules">
+                                <div id="rules-panel" class="properties-panel"></div>
+                            </section>
+                            <section class="tab-panel" id="tab-export" role="tabpanel" aria-labelledby="tab-btn-export">
+                                <div id="export-panel" class="properties-panel workspace-export-panel">
+                                    <div class="workspace-empty-card">
+                                        <svg class="ico" aria-hidden="true"><use href="#ico-download"></use></svg>
+                                        <h3>SCADA-Bundle erzeugen</h3>
+                                        <p>SVG, Editor-Konfiguration, Runtime-HTML, Signalvorlage und Recovery-Snapshot werden gemeinsam exportiert.</p>
+                                        <button id="btn-exportieren-alt" class="btn btn-primary" type="button">
+                                            <svg class="ico" aria-hidden="true"><use href="#ico-download"></use></svg><span>SCADA-Bundle exportieren</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="tab-panel" id="tab-v9-topology" role="tabpanel" aria-labelledby="tab-btn-v9-topology">
+                                <div id="v9-topology-panel" class="v9-panel"></div>
+                            </section>
+                            <section class="tab-panel" id="tab-v9-automation" role="tabpanel" aria-labelledby="tab-btn-v9-automation">
+                                <div id="v9-automation-panel" class="v9-panel"></div>
+                            </section>
+                            <section class="tab-panel" id="tab-v9-states" role="tabpanel" aria-labelledby="tab-btn-v9-states">
+                                <div id="v9-states-panel" class="v9-panel"></div>
+                            </section>
+                            <section class="tab-panel" id="tab-v9-rules" role="tabpanel" aria-labelledby="tab-btn-v9-rules">
+                                <div id="v9-rules-panel" class="v9-panel"></div>
+                            </section>
+                            <section class="tab-panel" id="tab-v9-cross" role="tabpanel" aria-labelledby="tab-btn-v9-cross">
+                                <div id="v9-cross-panel" class="v9-panel"></div>
+                            </section>
+                            <section class="tab-panel" id="tab-v9-validate" role="tabpanel" aria-labelledby="tab-btn-v9-validate">
+                                <div id="v9-validate-panel" class="v9-panel"></div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <section id="layers-inspector" class="layers-inspector" aria-label="Ebenen">
+                        <div class="inspector-section-heading">
+                            <span class="panel-eyebrow">Zeichnung</span>
+                            <h3>Ebenen</h3>
+                        </div>
+                        <div id="layers-panel"></div>
+                    </section>
+                </div>
+
+                <div class="inspector-footer">
+                    <span class="inspector-footer-state"><span></span><span id="inspector-footer-status">Änderungen werden im Projektstatus verfolgt</span></span>
+                    <button id="inspector-apply" class="btn btn-primary inspector-apply" type="button">Übernehmen</button>
+                </div>
+            </aside>
+        </div>
+
+        <footer id="app-footer">
+            <div class="footer-left">
+                <span class="status-field" id="element-count">0 Elemente</span>
+                <span class="separator">·</span>
+                <span class="status-field" id="connection-count">0 Verbindungen</span>
+                <span class="separator">·</span>
+                <span class="status-field" id="binding-count">0 gebunden</span>
+            </div>
+            <div class="footer-center" role="status" aria-live="polite" aria-atomic="true">
+                <span id="status-contract" class="status-field"><span class="status-field__dot"></span><span id="status-contract-text">Konfiguration wird geladen</span></span>
+                <span class="separator">·</span>
+                <span id="status-message">Bereit</span>
+            </div>
+            <div class="footer-right">
+                <span class="status-field" id="status-fingerprint">fp —</span>
+                <span class="separator">|</span>
+                <span class="status-field" id="status-node">—</span>
+                <span class="separator">|</span>
+                <span class="status-field" id="mouse-position">X 0 · Y 0</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal dialogs -->
+
+    <div id="modal-projekte-laden" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-projekte-laden-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-projekte-laden-title">Projekt laden</h2>
+                <button class="modal-close" type="button" aria-label="Dialog schließen">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="projekt-liste" class="projekt-liste"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-cancel" type="button">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-template-hochladen" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-template-hochladen-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-template-hochladen-title">Symbol hinzufügen</h2>
+                <button class="modal-close" type="button" aria-label="Dialog schließen">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="template-datei">SVG-Datei:</label>
+                    <input type="file" id="template-datei" accept=".svg">
+                </div>
+                <div class="form-group">
+                    <label for="template-name">Name:</label>
+                    <input type="text" id="template-name" placeholder="Symbolname">
+                </div>
+                <div class="form-group">
+                    <label for="template-kategorie">Kategorie:</label>
+                    <input type="text" id="template-kategorie" placeholder="z. B. Pumpen, Ventile">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-cancel" type="button">Abbrechen</button>
+                <button id="btn-template-upload-confirm" type="button" class="btn btn-primary">Hochladen</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-verbindung-erstellen" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-verbindung-erstellen-title" data-window-reset-on-open="true" data-window-default-width="620" data-window-default-height="auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-verbindung-erstellen-title">Verbindung erstellen</h2>
+                <button class="modal-close" type="button" aria-label="Dialog schließen">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Von:</label>
+                    <div id="verbindung-von" class="element-info"></div>
+                </div>
+                <div class="form-group">
+                    <label>Nach:</label>
+                    <select id="verbindung-nach" class="select-input">
+                        <option value="">Element auswählen…</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="verbindung-typ">Typ:</label>
+                    <select id="verbindung-typ" class="select-input">
+                        <option value="pipe">Rohrleitung</option>
+                        <option value="signal">Signal</option>
+                        <option value="data">Daten</option>
+                        <option value="power">Energie</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-cancel" type="button">Abbrechen</button>
+                <button id="btn-verbindung-confirm" type="button" class="btn btn-primary">Erstellen</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-verbindung-bearbeiten" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-verbindung-bearbeiten-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-verbindung-bearbeiten-title">Verbindung bearbeiten</h2>
+                <button class="modal-close" type="button" aria-label="Dialog schließen">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pf-connection-editor-grid">
+                    <section class="pf-connection-editor-section" aria-labelledby="edit-endpoints-heading">
+                        <h3 id="edit-endpoints-heading">1. Start- und Zielobjekt</h3>
+                        <div class="form-group">
+                            <label for="edit-von-select">Startobjekt</label>
+                            <select id="edit-von-select" class="select-input"></select>
+                            <div id="edit-von" class="element-info" aria-live="polite"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-nach">Zielobjekt</label>
+                            <select id="edit-nach" class="select-input"></select>
+                        </div>
+                    </section>
+                    <section class="pf-connection-editor-section" aria-labelledby="edit-semantics-heading">
+                        <h3 id="edit-semantics-heading">2. Semantik und Ports</h3>
+                        <div class="form-group">
+                            <label for="edit-typ">Verbindungstyp</label>
+                            <select id="edit-typ" class="select-input">
+                                <option value="pipe">Rohrleitung</option>
+                                <option value="signal">Signal</option>
+                                <option value="data">Daten</option>
+                                <option value="power">Energie</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-von-port">Startport</label>
+                            <select id="edit-von-port" class="select-input"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-nach-port">Zielport</label>
+                            <select id="edit-nach-port" class="select-input"></select>
+                        </div>
+                    </section>
+                    <section class="pf-connection-editor-section" aria-labelledby="edit-render-heading">
+                        <h3 id="edit-render-heading">3. Darstellung</h3>
+                        <div class="form-group">
+                            <label for="edit-label">Beschriftung</label>
+                            <input id="edit-label" type="text" class="property-value" maxlength="120" placeholder="Optionaler Leitungs- oder Signalname">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-breite">Linienstärke</label>
+                            <input id="edit-breite" type="number" class="property-value" min="0.5" max="12" step="0.1" value="2">
+                        </div>
+                    </section>
+                    <section class="pf-connection-editor-section" aria-labelledby="edit-anchor-heading">
+                        <h3 id="edit-anchor-heading">4. Optionale Fixpunkte</h3>
+                        <div class="form-row form-row--split">
+                            <button id="btn-pick-from" type="button" class="btn btn-secondary">Start-Fixpunkt wählen</button>
+                            <button id="btn-pick-to" type="button" class="btn btn-secondary">End-Fixpunkt wählen</button>
+                        </div>
+                        <div class="pf-anchor-status">
+                            <span id="edit-from-anchor-status">Start: semantischer Port</span>
+                            <span id="edit-to-anchor-status">Ziel: semantischer Port</span>
+                        </div>
+                        <button id="btn-reset-anchors" type="button" class="btn btn-secondary" style="margin-top:8px;">Fixpunkte zurücksetzen</button>
+                        <div class="hint-text" style="margin-top:8px;">Fixpunkte sind ein kontrollierter Override. ESC beendet den Auswahlmodus ohne Änderung.</div>
+                    </section>
+                </div>
+                <div id="edit-connection-validation" class="hint-text" role="status" aria-live="polite"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-edit-conn-cancel" type="button" class="btn btn-secondary">Abbrechen</button>
+                <button id="btn-edit-conn-save" type="button" class="btn btn-primary">Speichern</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-shortcuts" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-shortcuts-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-shortcuts-title">Tastaturkürzel</h2>
+                <button class="modal-close" type="button" aria-label="Dialog schließen">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="shortcuts-grid">
+                    <section class="shortcut-group">
+                        <h3>Zeichenfläche</h3>
+                        <div class="shortcut-row"><span>Auswählen</span><span class="shortcut-keys"><kbd>V</kbd></span></div>
+                        <div class="shortcut-row"><span>Verschieben (Hand)</span><span class="shortcut-keys"><kbd>H</kbd></span></div>
+                        <div class="shortcut-row"><span>Temporär verschieben</span><span class="shortcut-keys"><kbd>Space</kbd></span></div>
+                        <div class="shortcut-row"><span>Raster ein/aus</span><span class="shortcut-keys"><kbd>G</kbd></span></div>
+                        <div class="shortcut-row"><span>Einrasten ein/aus</span><span class="shortcut-keys"><kbd>S</kbd></span></div>
+                        <div class="shortcut-row"><span>Mehrfachauswahl</span><span class="shortcut-keys"><kbd>Strg</kbd><span>+</span><kbd>Klick</kbd></span></div>
+                        <div class="shortcut-row"><span>Auswahl löschen</span><span class="shortcut-keys"><kbd>Entf</kbd></span></div>
+                        <div class="shortcut-row"><span>Zoom / Ansicht zurücksetzen</span><span class="shortcut-keys"><kbd>+</kbd><kbd>−</kbd><kbd>0</kbd></span></div>
+                    </section>
+                    <section class="shortcut-group">
+                        <h3>Projekt &amp; Konfiguration</h3>
+                        <div class="shortcut-row"><span>Projekt speichern</span><span class="shortcut-keys"><kbd>Strg</kbd><span>+</span><kbd>S</kbd></span></div>
+                        <div class="shortcut-row"><span>Rückgängig / Wiederholen</span><span class="shortcut-keys"><kbd>Strg</kbd><span>+</span><kbd>Z</kbd><span>/</span><kbd>Y</kbd></span></div>
+                        <div class="shortcut-row"><span>Symbolsuche fokussieren</span><span class="shortcut-keys"><kbd>Strg</kbd><span>+</span><kbd>K</kbd></span></div>
+                        <div class="shortcut-row"><span>Config rückgängig</span><span class="shortcut-keys"><kbd>Strg</kbd><span>+</span><kbd>Alt</kbd><span>+</span><kbd>Z</kbd></span></div>
+                        <div class="shortcut-row"><span>Config wiederherstellen</span><span class="shortcut-keys"><kbd>Strg</kbd><span>+</span><kbd>Alt</kbd><span>+</span><kbd>Y</kbd></span></div>
+                        <div class="shortcut-row"><span>Config speichern</span><span class="shortcut-keys"><kbd>Strg</kbd><span>+</span><kbd>Alt</kbd><span>+</span><kbd>S</kbd></span></div>
+                        <div class="shortcut-row"><span>Diese Übersicht</span><span class="shortcut-keys"><kbd>?</kbd></span></div>
+                        <div class="shortcut-row"><span>Dialog schließen</span><span class="shortcut-keys"><kbd>Esc</kbd></span></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="modal-logic-diagram" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-logic-diagram-title">
+        <div class="modal-content logic-modal-content">
+            <div class="modal-header">
+                <h2 id="modal-logic-diagram-title">Schaltplan konfigurieren</h2>
+                <button class="modal-close" type="button" aria-label="Dialog schließen">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="logic-diagram-name">Name</label>
+                    <input id="logic-diagram-name" type="text" class="property-value" maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="logic-diagram-description">Beschreibung</label>
+                    <textarea id="logic-diagram-description" class="property-value" rows="3" maxlength="500"></textarea>
+                </div>
+                <div class="form-row form-row--split">
+                    <div class="form-group">
+                        <label for="logic-diagram-scope">Ausführung</label>
+                        <select id="logic-diagram-scope" class="select-input">
+                            <option value="node_local">Node-lokal</option>
+                            <option value="cross_controller">Controller-übergreifend</option>
+                            <option value="cross_worker">Worker-übergreifend</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="logic-diagram-owner">Owner Node</label>
+                        <input id="logic-diagram-owner" type="text" class="property-value" value="fn-01">
+                    </div>
+                </div>
+                <div class="form-row form-row--split">
+                    <div class="form-group">
+                        <label for="logic-diagram-engine">Rule Engine</label>
+                        <input id="logic-diagram-engine" type="number" min="1" step="1" class="property-value" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="logic-diagram-priority">Priorität</label>
+                        <input id="logic-diagram-priority" type="number" min="0" step="1" class="property-value" value="500">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="logic-diagram-cancel" type="button" class="btn btn-secondary">Abbrechen</button>
+                <button id="logic-diagram-save" type="button" class="btn btn-primary">Übernehmen</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-logic-compile" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-logic-compile-title">
+        <div class="modal-content logic-compile-modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modal-logic-compile-title">Logik übersetzen &amp; exportieren</h2>
+                    <p class="modal-subtitle">Ein kanonischer Graph, deterministische Zielartefakte.</p>
+                </div>
+                <button class="modal-close" type="button" aria-label="Dialog schließen">&times;</button>
+            </div>
+            <div class="modal-body logic-compile-body">
+                <div id="logic-compile-summary" class="logic-compile-summary"></div>
+                <div class="logic-target-grid">
+                    <section class="logic-target-card" data-target="universal">
+                        <h3>Universal Runtime JSON</h3>
+                        <p>Vollständiger Graph einschließlich Timer, Zähler, Mathematik und Actions.</p>
+                        <span class="logic-target-status" id="logic-status-universal">–</span>
+                    </section>
+                    <section class="logic-target-card" data-target="automation">
+                        <h3>Automation_System V9/V8</h3>
+                        <p>Native Rules/States plus Bridge-Plan für zustandsbehaftete Bausteine.</p>
+                        <span class="logic-target-status" id="logic-status-automation">–</span>
+                    </section>
+                    <section class="logic-target-card" data-target="siemens">
+                        <h3>Siemens / IEC SCL</h3>
+                        <p>SCL-Funktionsbausteine und symbolische Tag-Tabelle.</p>
+                        <span class="logic-target-status" id="logic-status-siemens">–</span>
+                    </section>
+                </div>
+                <div class="logic-preview-tabs" role="tablist" aria-label="Exportvorschau">
+                    <button class="logic-preview-tab active" type="button" role="tab" aria-selected="true" data-logic-preview="report">Bericht</button>
+                    <button class="logic-preview-tab" type="button" role="tab" aria-selected="false" data-logic-preview="universal">Universal JSON</button>
+                    <button class="logic-preview-tab" type="button" role="tab" aria-selected="false" data-logic-preview="v9">V9 Rules</button>
+                    <button class="logic-preview-tab" type="button" role="tab" aria-selected="false" data-logic-preview="scl">SCL</button>
+                </div>
+                <pre id="logic-compile-preview" class="logic-compile-preview" tabindex="0"></pre>
+            </div>
+            <div class="modal-footer">
+                <button id="logic-compile-close" type="button" class="btn btn-secondary">Schließen</button>
+                <button id="logic-export-all" type="button" class="btn btn-primary">Alle Zielartefakte herunterladen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         JavaScript module order
+         =====================================================================
+         1. V9 bootstrap loads the canonical configuration once and exposes
+            the editor projection through the shared state.
+         2. Existing domain modules keep their established contracts.
+         3. v9_ui_chrome.js attaches status, rulers and selection context.
+         4. v56_workspace.js projects the routes into the new shell.
+         5. v60_ui.js adds merged palette, menus, minimap and responsive fit behavior.
+         6. PF-PID-V1 normalization is shared by registry, elements, connections and project I/O.
+         7. v61_ui.js enforces explicit optional HMI controls.
+         8. v62_ui.js adds managed modal windows, context actions and release diagnostics.
+         9. v63_logic_ui.js adds the additive PF-LOGIC-V1 FBD workspace and target compilers.
+         ES modules are deferred by definition.
+         ===================================================================== -->
+    <script type="module" src="/public/js/v9_bootstrap.js"></script>
+
+    <script type="module" src="/public/js/core.js"></script>
+    <script type="module" src="/public/js/registry.js"></script>
+    <script type="module" src="/public/js/elements.js"></script>
+    <script type="module" src="/public/js/connection_mapper.js"></script>
+    <script type="module" src="/public/js/ui.js"></script>
+    <script type="module" src="/public/js/device.js"></script>
+    <script type="module" src="/public/js/hmi.js"></script>
+    <script type="module" src="/public/js/rules_generator.js"></script>
+    <script type="module" src="/public/js/processes.js"></script>
+    <script type="module" src="/public/js/automation_tabs.js"></script>
+
+    <script type="module" src="/public/js/v9_ui_chrome.js"></script>
+    <script type="module" src="/public/js/v56_workspace.js"></script>
+    <script type="module" src="/public/js/v60_ui.js"></script>
+    <script type="module" src="/public/js/v61_ui.js"></script>
+    <script type="module" src="/public/js/v62_ui.js"></script>
+    <script type="module" src="/public/js/v63_logic_ui.js"></script>
+    <script type="module" src="/public/js/v64_plant_drawing.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+/*
+ * Plant Factory V64_r3 drawing workspace: plug-together construction layer.
+ * Additive on top of v64.css / v64_r1.css; every selector is scoped to the
+ * plant drawing workspace and reuses the existing design tokens.
+ */
+
+/* Inventory tabs ------------------------------------------------------- */
+
+.plant-drawing-inventory-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 10px;
+  background: var(--v9-surface-2, var(--bg-color));
+}
+
+.plant-drawing-inventory-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--v9-text-muted, var(--text-muted));
+  background: transparent;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.plant-drawing-inventory-tab:hover {
+  color: var(--v9-text, var(--text-color));
+}
+
+.plant-drawing-inventory-tab.active {
+  color: var(--v9-accent, var(--primary-color));
+  border-color: var(--v9-accent-line, var(--v9-border));
+  background: var(--v9-surface-0, var(--panel-bg));
+  box-shadow: var(--v9-shadow-1, 0 1px 4px rgba(15, 23, 42, 0.08));
+}
+
+.plant-drawing-inventory-tab__count {
+  min-width: 18px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  color: var(--v9-accent, var(--primary-color));
+  background: var(--v9-accent-bg, rgba(124, 58, 237, 0.12));
+  font-size: 0.62rem;
+  line-height: 1.4;
+}
+
+.plant-drawing-template-palette[hidden],
+.plant-drawing-assembly-palette[hidden],
+.plant-drawing-import-section[hidden] {
+  display: none !important;
+}
+
+.plant-drawing-assembly-grid {
+  grid-template-columns: 1fr;
+}
+
+.plant-drawing-assembly-card {
+  grid-template-rows: 96px auto auto auto;
+  min-height: 164px;
+}
+
+.plant-drawing-assembly-card .plant-drawing-template-card__preview {
+  height: 96px;
+}
+
+.plant-drawing-assembly-card .plant-drawing-template-card__preview > svg {
+  padding: 4px;
+}
+
+.plant-drawing-inventory-footer .btn--block {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.plant-drawing-import-section {
+  display: grid;
+  gap: 7px;
+  padding: 10px;
+  border: 1px dashed var(--v9-border, var(--border-color));
+  border-radius: 10px;
+  background: var(--v9-surface-0, var(--panel-bg));
+}
+
+[data-theme="dark"] .plant-drawing-import-section {
+  background: var(--v9-surface-1, var(--panel-bg));
+}
+
+.plant-drawing-import-section h3,
+.plant-drawing-import-section p {
+  margin: 0;
+}
+
+.plant-drawing-import-section h3 {
+  font-size: 0.74rem;
+}
+
+.plant-drawing-import-section p {
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.62rem;
+  line-height: 1.4;
+}
+
+/* Inspector ------------------------------------------------------------ */
+
+.plant-drawing-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.plant-drawing-action-row .btn {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-inline: 10px;
+  font-size: 0.7rem;
+}
+
+.plant-drawing-assembly-info {
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--v9-accent-line, var(--v9-border));
+  border-radius: 10px;
+  background: var(--v9-accent-bg, rgba(124, 58, 237, 0.06));
+}
+
+.plant-drawing-properties .plant-drawing-assembly-info h3 {
+  margin: 0;
+  font-size: 0.76rem;
+}
+
+.plant-drawing-inventory-group {
+  display: grid;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--v9-border, var(--border-color));
+}
+
+.plant-drawing-inventory-group__label {
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.plant-drawing-inventory-group .hint-text {
+  margin: 0;
+  font-size: 0.62rem;
+}
+
+.plant-drawing-inventory-group .plant-drawing-inventory-actions {
+  display: grid;
+  gap: 6px;
+}
+
+/* Canvas: entities, ports, joints --------------------------------------- */
+
+.plant-drawing-entity-hit {
+  pointer-events: all;
+}
+
+.plant-drawing-entity.is-dragging {
+  opacity: 0.88;
+}
+
+.plant-drawing-entity.is-assembly-member.is-selected {
+  filter: drop-shadow(0 0 6px rgba(14, 165, 233, 0.55));
+}
+
+.plant-drawing-port-hint {
+  fill: var(--v9-surface-0, #ffffff);
+  stroke: #0891b2;
+  stroke-width: 1.6;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.plant-drawing-port-hint[data-port-kind="utility"] {
+  stroke: #0ea5e9;
+}
+
+.plant-drawing-port-hint[data-port-kind="signal"] {
+  stroke: #64748b;
+}
+
+.plant-drawing-port-hint[data-port-kind="power"] {
+  stroke: #f59e0b;
+}
+
+.plant-drawing-port-hint.is-snap-target,
+.plant-drawing-port-hint.is-snap-source {
+  fill: rgba(16, 185, 129, 0.22);
+  stroke: #059669;
+  stroke-width: 2.4;
+  opacity: 1;
+  animation: plant-drawing-snap-pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes plant-drawing-snap-pulse {
+  0% { stroke-opacity: 1; }
+  50% { stroke-opacity: 0.45; }
+  100% { stroke-opacity: 1; }
+}
+
+.plant-drawing-snap-label {
+  fill: #065f46;
+  font: 700 12px/1.2 "Public Sans", Arial, sans-serif;
+  paint-order: stroke;
+  stroke: var(--drawing-canvas-bg, #ffffff);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.plant-drawing-joint {
+  cursor: pointer;
+}
+
+.plant-drawing-joint-mark {
+  fill: var(--v9-surface-0, #ffffff);
+  stroke: #0f172a;
+  stroke-width: 2;
+}
+
+.plant-drawing-joint-mark[data-kind="utility"] {
+  stroke: #0ea5e9;
+}
+
+.plant-drawing-joint-mark[data-kind="signal"] {
+  stroke: #64748b;
+}
+
+.plant-drawing-joint-mark[data-kind="power"] {
+  stroke: #f59e0b;
+}
+
+.plant-drawing-joint.is-selected .plant-drawing-joint-mark {
+  stroke: #7c3aed;
+  stroke-width: 3;
+}
+
+.plant-drawing-joint-gap {
+  stroke: #f97316;
+  stroke-width: 2.4;
+  stroke-dasharray: 6 4;
+}
+
+.plant-drawing-joint-end {
+  fill: rgba(249, 115, 22, 0.18);
+  stroke: #f97316;
+  stroke-width: 2;
+}
+
+.plant-drawing-joint.is-open .plant-drawing-joint-mark {
+  stroke: #f97316;
+}
+
+.plant-drawing-connection-hit {
+  pointer-events: stroke;
+  cursor: pointer;
+}
+
+/* Selection handles ------------------------------------------------------ */
+
+.plant-drawing-selection-box--group {
+  stroke: #0ea5e9;
+  stroke-dasharray: 10 5;
+}
+
+.plant-drawing-selection-footprint {
+  fill: rgba(124, 58, 237, 0.04);
+  stroke: rgba(124, 58, 237, 0.55);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.plant-drawing-marquee {
+  fill: rgba(124, 58, 237, 0.08);
+  stroke: #7c3aed;
+  stroke-width: 1.2;
+  stroke-dasharray: 5 4;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.plant-drawing-handle {
+  fill: var(--v9-surface-0, #ffffff);
+  stroke: #7c3aed;
+  stroke-width: 1.6;
+  pointer-events: all;
+}
+
+.plant-drawing-handle:hover {
+  fill: #ddd6fe;
+}
+
+.plant-drawing-handle--n,
+.plant-drawing-handle--s {
+  cursor: ns-resize;
+}
+
+.plant-drawing-handle--e,
+.plant-drawing-handle--w {
+  cursor: ew-resize;
+}
+
+.plant-drawing-handle--ne,
+.plant-drawing-handle--sw {
+  cursor: nesw-resize;
+}
+
+.plant-drawing-handle--nw,
+.plant-drawing-handle--se {
+  cursor: nwse-resize;
+}
+
+.plant-drawing-handle--rotate {
+  fill: #7c3aed;
+  stroke: var(--v9-surface-0, #ffffff);
+  cursor: grab;
+}
+
+.plant-drawing-handle--rotate:hover {
+  fill: #5b21b6;
+}
+
+.plant-drawing-handle-stem {
+  stroke: #7c3aed;
+  stroke-width: 1.2;
+  stroke-dasharray: 3 3;
+  pointer-events: none;
+}
+
+/* Dark themes ------------------------------------------------------------ */
+
+:root[data-theme="dark"] .plant-drawing-connection[data-kind="process"] {
+  stroke: #e2e8f0;
+}
+
+:root[data-theme="dark"] .plant-drawing-connection[data-kind="signal"] {
+  stroke: #94a3b8;
+}
+
+:root[data-theme="dark"] .plant-drawing-selection-footprint {
+  fill: rgba(167, 139, 250, 0.08);
+  stroke: rgba(167, 139, 250, 0.7);
+}
+
+:root[data-theme="dark"] .plant-drawing-joint-mark,
+:root[data-theme="dark"] .plant-drawing-handle,
+:root[data-theme="dark"] .plant-drawing-port-hint {
+  fill: var(--v9-surface-2, #111827);
+}
+
+:root[data-theme="dark"] .plant-drawing-joint-mark {
+  stroke: #e2e8f0;
+}
+
+:root[data-theme="dark"] .plant-drawing-snap-label {
+  fill: #6ee7b7;
+  stroke: var(--drawing-canvas-bg, #111827);
+}
+
+:root[data-theme="dark"] .plant-drawing-assembly-info {
+  background: color-mix(in srgb, var(--v9-accent, #8b5cf6) 14%, transparent);
+}
+
+@media (max-width: 1440px) {
+  .plant-drawing-assembly-card {
+    min-height: 150px;
+    grid-template-rows: 84px auto auto auto;
+  }
+
+  .plant-drawing-assembly-card .plant-drawing-template-card__preview {
+    height: 84px;
+  }
+}

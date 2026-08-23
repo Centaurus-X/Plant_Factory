@@ -1,0 +1,63 @@
+Plant Factory V63.4 — Verifikationsübersicht
+================================================
+
+Release: 63.4
+Status: FREIGEGEBENE SOFTWARE-BASELINE
+Releasevertrag: PF-V63.4-HMI-UX
+Geerbter UX-Vertrag: PF-V63.3-HMI-IO-UX
+
+Umgesetzte Kernpunkte
+---------------------
+- Widgetnamen werden als kompakte Aktionsbuttons statt als Links dargestellt.
+- Nur die nummerierte HMI-Workflowleiste ist sichtbar.
+- Die geerbte Untertabzeile bleibt verborgen als dokumentierter DOM-Kompatibilitätshaken.
+- Zustände und Alarme besitzen einen geführten Standardweg plus vollständige Expertenbereiche.
+- Darstellung ist in View, Widgetauswahl und Widgetdesign gegliedert.
+- Widget, P&ID-/SVG-Objekt und Datenstatus werden gemeinsam angezeigt.
+- Projekt-, Widget-, Binding-, Style-, Alarm-, Animations- und Runtime-Modelle bleiben unverändert.
+
+Freigabeprüfungen
+-----------------
+Release-Stufen:                         20/20
+PF-PID-V1:                              31/31
+PF-LOGIC-V1 JavaScript:                 66/66
+PF-LOGIC-V1 Runtime:                    35/35
+PF-AUTOMATION-V9-BRIDGE:                40/40
+V63.3 statischer Vertrag:               47/47
+Widget-/Objekt-Relation:                16/16
+V63.4 statischer Vertrag:               74/74
+V9-Kern:                               145/145
+Plant-Factory-Modellkette:              31/31
+Snapshot-Kette:                         52/52
+Python-Formatparität:                   58/58
+JavaScript-Format:                      42/42
+Externe automation_system_v0101:        29/29
+
+Chromium-Browserprüfungen
+-------------------------
+Basisvertrag:                          119/119
+V62.1 Interaktionen:                    45/45
+V63.1 Logic/FBD:                        51/51
+V63.2 Stabilitätsregressionen:           45/45
+V63.3 I/O/HMI-UX:                       60/60
+V63.4 HMI-Workflow-UX:                  57/57
+Gesamt:                                377/377
+Browser-/Konsolen-/Requestfehler:        0
+
+Archivvertrag
+-------------
+Dateien:                               387
+Interne SHA-256-Einträge:              386
+Deterministischer Doppelbuild:          byte-identisch
+Archivpfade:                            sicher
+Symlinks:                               0
+Pfadtraversal-Einträge:                 0
+.venv/node_modules/__pycache__:         nicht enthalten
+Source-Tree-Prüfung:                    bestanden
+Fresh-Extract-Prüfung:                  bestanden
+
+Hinweis zur Anlagenfreigabe
+---------------------------
+Die Tests bestätigen die reproduzierbare Software-Baseline. Für eine konkrete
+Produktionsanlage bleiben FAT/SAT, reale I/O-Punktprüfung sowie Safety-,
+Security-, SPS-/SCADA-, Feldbus- und Netzwerkabnahme erforderlich.

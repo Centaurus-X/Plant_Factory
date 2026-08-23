@@ -1,0 +1,35 @@
+{
+  "release": "64_r1",
+  "base_release": "64",
+  "package_version": "64.0.0",
+  "schema_changes": false,
+  "template_count": 35,
+  "reference_diagrams": [
+    {
+      "file": "Reaktor_PID_animiert.svg",
+      "top_level_elements": 118,
+      "smil_elements": 48
+    },
+    {
+      "file": "Rohrofen_Template_animiert.svg",
+      "top_level_elements": 85,
+      "smil_elements": 46
+    },
+    {
+      "file": "PID_Anlage_animiert.svg",
+      "top_level_elements": 94,
+      "smil_elements": 66
+    }
+  ],
+  "contracts": [
+    "PF-V64-SVG-EVENT-DRAWING",
+    "PF-V64-R1-DRAWING-UX",
+    "PF-V64-R1-REFERENCE-ROUNDTRIP"
+  ],
+  "compatibility": {
+    "projects": "additive",
+    "hmi_runtime": "preserved",
+    "automation_v9": "preserved",
+    "cross_v8": "preserved"
+  }
+}

@@ -1,0 +1,235 @@
+/*
+ * Plant Factory V64_r4 drawing workspace: geometry, inspector tabs, context
+ * menu and navigation refinements. Additive on top of v64.css / v64_r1.css /
+ * v64_r3.css; every selector is scoped to the plant drawing workspace (the
+ * context menu and the library highlight carry the same prefix) and reuses
+ * the existing design tokens.
+ */
+
+/* Sheet frame and growing canvas ---------------------------------------- */
+
+.plant-drawing-sheet-frame {
+  fill: none;
+  stroke: var(--v9-accent-line, var(--primary-color));
+  stroke-opacity: 0.35;
+  stroke-width: 1;
+  stroke-dasharray: 8 6;
+  pointer-events: none;
+}
+
+#plant-drawing-canvas.is-pan-ready {
+  cursor: grab;
+}
+
+#plant-drawing-canvas.is-panning {
+  cursor: grabbing;
+}
+
+.plant-drawing-entity-graphic {
+  pointer-events: none;
+}
+
+/* Inspector tabs --------------------------------------------------------- */
+
+.plant-drawing-inspector-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+  padding: 4px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 10px;
+  background: var(--v9-surface-2, var(--bg-color));
+}
+
+.plant-drawing-inspector-tab {
+  flex: 1 1 0;
+  min-height: 28px;
+  padding: 3px 6px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--v9-text-muted, var(--text-muted));
+  background: transparent;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.plant-drawing-inspector-tab:hover {
+  color: var(--v9-text, var(--text-color));
+}
+
+.plant-drawing-inspector-tab.active {
+  color: var(--v9-accent, var(--primary-color));
+  border-color: var(--v9-accent-line, var(--primary-color));
+  background: var(--v9-accent-bg, var(--panel-bg));
+}
+
+/* Flags (mirror, invert, auto-grow) ------------------------------------- */
+
+.plant-drawing-flag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  padding: 6px 0 2px;
+}
+
+.plant-drawing-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  color: var(--v9-text, var(--text-color));
+  cursor: pointer;
+}
+
+.plant-drawing-checkbox input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--v9-accent, var(--primary-color));
+}
+
+/* Ports tab ------------------------------------------------------------- */
+
+.plant-drawing-port-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 10px;
+  font-size: 0.72rem;
+}
+
+.plant-drawing-port-table th {
+  text-align: left;
+  padding: 4px 6px;
+  color: var(--v9-text-muted, var(--text-muted));
+  font-weight: 700;
+  border-bottom: 1px solid var(--v9-border, var(--border-color));
+}
+
+.plant-drawing-port-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--v9-border, var(--border-color));
+  vertical-align: middle;
+}
+
+.plant-drawing-port-table .select-input {
+  min-height: 26px;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+}
+
+.plant-drawing-port-status {
+  font-weight: 700;
+  color: var(--v9-accent, var(--primary-color));
+  white-space: nowrap;
+}
+
+.plant-drawing-port-status.is-free {
+  color: var(--v9-text-muted, var(--text-muted));
+  font-weight: 500;
+}
+
+/* Properties tab -------------------------------------------------------- */
+
+.plant-drawing-property-list {
+  display: grid;
+  gap: 6px;
+  margin: 6px 0 10px;
+}
+
+.plant-drawing-property-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: center;
+}
+
+.plant-drawing-property-row .text-input {
+  min-width: 0;
+}
+
+.plant-drawing-property-remove {
+  min-width: 30px;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+/* Context menu ---------------------------------------------------------- */
+
+.plant-drawing-context-menu {
+  position: fixed;
+  z-index: 1400;
+  min-width: 230px;
+  max-width: 320px;
+  padding: 6px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 12px;
+  background: var(--v9-surface-0, var(--panel-bg));
+  box-shadow: var(--v9-shadow-1, 0 12px 32px rgba(15, 23, 42, 0.22));
+  font-size: 0.76rem;
+}
+
+.plant-drawing-context-menu[hidden] {
+  display: none;
+}
+
+.plant-drawing-context-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--v9-text, var(--text-color));
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.plant-drawing-context-menu__item:hover,
+.plant-drawing-context-menu__item:focus-visible {
+  background: var(--v9-accent-bg, var(--bg-color));
+  color: var(--v9-accent, var(--primary-color));
+  outline: none;
+}
+
+.plant-drawing-context-menu__item:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.plant-drawing-context-menu__item kbd {
+  font-family: inherit;
+  font-size: 0.64rem;
+  color: var(--v9-text-muted, var(--text-muted));
+}
+
+.plant-drawing-context-menu__separator {
+  height: 1px;
+  margin: 4px 6px;
+  background: var(--v9-border, var(--border-color));
+}
+
+/* Plant library reveal of a saved custom entity ------------------------ */
+
+#template-palette .template-item.is-drawing-highlight {
+  outline: 2px solid var(--v9-accent, var(--primary-color));
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px var(--v9-accent-bg, rgba(37, 99, 235, 0.18));
+  transition: box-shadow 0.4s ease;
+}
+
+/* Dark theme ------------------------------------------------------------ */
+
+:root[data-theme="dark"] .plant-drawing-sheet-frame {
+  stroke-opacity: 0.55;
+}
+
+:root[data-theme="dark"] .plant-drawing-context-menu {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}

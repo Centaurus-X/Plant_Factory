@@ -1,0 +1,477 @@
+/* ========================================================================
+   v61.css — PF-PID-V1 object geometry, symbol library and semantic ports
+   ======================================================================== */
+
+:root {
+  --pid-outline: #334155;
+  --pid-detail: #64748b;
+  --pid-primary: #2563eb;
+  --pid-flow: #0891b2;
+  --pid-process-line: #0e7490;
+  --pid-signal-line: #b45309;
+  --pid-data-line: #2563eb;
+  --pid-power-line: #475569;
+  --pid-state: #059669;
+  --pid-state-soft: #d1fae5;
+  --pid-warning: #d97706;
+  --pid-surface: #ffffff;
+  --pid-muted-fill: #e2e8f0;
+  --pid-label-halo: rgba(255, 255, 255, 0.96);
+  --pid-port-surface: #ffffff;
+  --pid-port-process: #0891b2;
+  --pid-port-utility: #64748b;
+  --pid-port-signal: #b45309;
+  --pid-port-data: #2563eb;
+  --pid-port-power: #475569;
+}
+
+:root[data-theme="dark"] {
+  --pid-outline: #dbeafe;
+  --pid-detail: #94a3b8;
+  --pid-primary: #60a5fa;
+  --pid-flow: #22d3ee;
+  --pid-process-line: #38bdf8;
+  --pid-signal-line: #fbbf24;
+  --pid-data-line: #818cf8;
+  --pid-power-line: #cbd5e1;
+  --pid-state: #4ade80;
+  --pid-state-soft: #123523;
+  --pid-warning: #fbbf24;
+  --pid-surface: #0f172a;
+  --pid-muted-fill: #1e293b;
+  --pid-label-halo: rgba(11, 18, 32, 0.96);
+  --pid-port-surface: #0f172a;
+  --pid-port-process: #22d3ee;
+  --pid-port-utility: #94a3b8;
+  --pid-port-signal: #fbbf24;
+  --pid-port-data: #818cf8;
+  --pid-port-power: #cbd5e1;
+}
+
+:root[data-theme="dark"][data-dark-palette="brown"] {
+  --pid-outline: #f5e8d7;
+  --pid-detail: #c8ab8b;
+  --pid-primary: #7dd3fc;
+  --pid-flow: #67e8f9;
+  --pid-process-line: #67e8f9;
+  --pid-signal-line: #fcd34d;
+  --pid-data-line: #a5b4fc;
+  --pid-power-line: #ead8c3;
+  --pid-state: #86efac;
+  --pid-state-soft: #243b2d;
+  --pid-warning: #fcd34d;
+  --pid-surface: #211a17;
+  --pid-muted-fill: #3a2d27;
+  --pid-label-halo: rgba(28, 21, 18, 0.96);
+  --pid-port-surface: #211a17;
+}
+
+/* Canonical symbol rendering -------------------------------------------- */
+
+.pf-pid-v1-entity {
+  --pid-symbol-outline-width: 2.2px;
+  cursor: move;
+}
+
+.pf-pid-v1-entity .symbol-viewport {
+  overflow: visible;
+  shape-rendering: geometricPrecision;
+}
+
+.pf-pid-v1-entity .element-hit-bounds {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.pf-pid-v1-entity:hover .element-hit-bounds {
+  stroke: color-mix(in srgb, var(--v9-accent) 28%, transparent);
+  stroke-dasharray: 4 4;
+}
+
+.pf-pid-v1-entity.selected .element-hit-bounds {
+  stroke: var(--v9-accent);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 4;
+}
+
+.pf-pid-v1-entity.selected {
+  filter: drop-shadow(0 2px 4px rgba(37, 99, 235, 0.28));
+}
+
+/* Ports stay attached to normalized relative positions through resize and
+   transformation. They are shown only in a deliberate interaction state. */
+.element-port-layer {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--v9-dur-fast, 120ms) ease;
+}
+
+.svg-element:hover > .svg-element-content > .element-port-layer,
+.svg-element.selected > .svg-element-content > .element-port-layer {
+  opacity: 1;
+}
+
+.element-port-handle {
+  fill: var(--pid-port-surface);
+  stroke: var(--pid-port-process);
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.element-port-handle[data-port-kind="utility"] { stroke: var(--pid-port-utility); }
+.element-port-handle[data-port-kind="signal"] { stroke: var(--pid-port-signal); }
+.element-port-handle[data-port-kind="data"] { stroke: var(--pid-port-data); }
+.element-port-handle[data-port-kind="power"] { stroke: var(--pid-port-power); }
+
+/* Upright two-line entity labels ---------------------------------------- */
+.element-label {
+  pointer-events: none;
+  user-select: none;
+}
+
+.element-label text {
+  fill: var(--v9-ink);
+  font-family: var(--v9-font-sans);
+  text-anchor: middle;
+  paint-order: stroke fill;
+  stroke: var(--pid-label-halo);
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.element-tag-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  stroke-width: 3.5px;
+}
+
+.element-description-label {
+  fill: var(--v9-ink-muted) !important;
+  font-size: 8.5px;
+  font-weight: 600;
+  stroke-width: 3px;
+}
+
+/* Connection standard --------------------------------------------------- */
+#connections-layer {
+  pointer-events: none;
+}
+
+#connections-layer .connection-line {
+  pointer-events: stroke;
+  stroke: var(--pid-process-line);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+#connections-layer .connection-line[data-type="signal"] {
+  stroke: var(--pid-signal-line);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 5;
+}
+
+#connections-layer .connection-line[data-type="data"] {
+  stroke: var(--pid-data-line);
+  stroke-width: 1.6;
+  stroke-dasharray: 10 5;
+}
+
+#connections-layer .connection-line[data-type="power"] {
+  stroke: var(--pid-power-line);
+  stroke-width: 1.8;
+  stroke-dasharray: 2 4;
+}
+
+#connections-layer .connection-line.selected {
+  stroke: var(--v9-accent);
+  filter: drop-shadow(0 0 2px color-mix(in srgb, var(--v9-accent) 45%, transparent));
+}
+
+/* Normalized library cards --------------------------------------------- */
+#template-palette .template-item[data-standard="PF-PID-V1"] {
+  min-height: 124px;
+  grid-template-rows: minmax(72px, 1fr) auto;
+  padding-top: 12px;
+}
+
+#template-palette .template-item[data-standard="PF-PID-V1"] > svg {
+  width: 100%;
+  height: 72px;
+  overflow: visible;
+}
+
+.template-standard-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 17px;
+  padding: 0 5px;
+  border: 1px solid var(--v9-accent-line);
+  border-radius: 999px;
+  background: var(--v9-accent-bg);
+  color: var(--v9-accent);
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.template-item[data-library-role="legacy"] .template-standard-badge,
+.template-item[data-library-role="custom"] .template-standard-badge {
+  border-color: var(--v9-muted-line);
+  background: var(--v9-muted-bg);
+  color: var(--v9-ink-muted);
+}
+
+/* Inspector standard contract ----------------------------------------- */
+.v61-standard-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 21px;
+  padding: 0 7px;
+  border: 1px solid var(--v9-accent-line);
+  border-radius: 999px;
+  background: var(--v9-accent-bg);
+  color: var(--v9-accent);
+  font-size: 8px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.v61-standard-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin: 3px 0 8px;
+}
+
+.v61-standard-summary > span {
+  display: flex;
+  min-width: 0;
+  min-height: 45px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7px 8px;
+  border: 1px solid var(--v9-line);
+  border-radius: 7px;
+  background: var(--v9-surface-1);
+}
+
+.v61-standard-summary strong {
+  overflow: hidden;
+  color: var(--v9-ink);
+  font-family: var(--v9-font-mono);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.v61-standard-summary small {
+  margin-top: 3px;
+  color: var(--v9-ink-faint);
+  font-size: 8px;
+}
+
+.v61-tag-input {
+  font-family: var(--v9-font-mono);
+  font-weight: 750;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.v61-hmi-policy {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 9px;
+  border: 1px solid var(--v9-ok-line);
+  border-radius: 8px;
+  background: var(--v9-ok-bg);
+  color: var(--v9-ok-fg);
+}
+
+.v61-hmi-policy > .ico {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.v61-hmi-policy span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.v61-hmi-policy strong {
+  font-size: 9px;
+}
+
+.v61-hmi-policy small {
+  color: var(--v9-ink-muted);
+  font-size: 8px;
+  line-height: 1.4;
+}
+
+/* Layer list uses the engineering TAG as its primary identity. */
+.layer-item {
+  display: grid;
+  grid-template-columns: minmax(58px, auto) minmax(0, 1fr);
+  gap: 7px;
+  align-items: center;
+}
+
+.v61-layer-tag {
+  overflow: hidden;
+  color: var(--v9-ink);
+  font-family: var(--v9-font-mono);
+  font-size: 9px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.v61-layer-name {
+  overflow: hidden;
+  color: var(--v9-ink-muted);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Minimap remains non-interactive and shows both lines and entities. */
+#canvas-minimap-svg .element-port-layer,
+#canvas-minimap-svg .element-label,
+#canvas-minimap-svg .element-hit-bounds {
+  display: none;
+}
+
+@media (max-width: 1366px) {
+  #template-palette .template-item[data-standard="PF-PID-V1"] {
+    min-height: 112px;
+  }
+
+  #template-palette .template-item[data-standard="PF-PID-V1"] > svg {
+    height: 62px;
+  }
+
+  .v61-standard-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Release standard status and explicit optional HMI overlay --------------- */
+.symbol-standard-badge {
+  display: inline-flex;
+  min-height: 22px;
+  align-items: center;
+  padding: 0 7px;
+  border: 1px solid var(--v9-ok-line);
+  border-radius: 999px;
+  background: var(--v9-ok-bg);
+  color: var(--v9-ok-fg);
+  font-family: var(--v9-font-mono);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.symbol-standard-badge[data-valid="false"] {
+  border-color: var(--v9-warn-line);
+  background: var(--v9-warn-bg);
+  color: var(--v9-warn-fg);
+}
+
+.hmi-overlay-toggle.tool-btn {
+  width: auto;
+  min-width: 34px;
+  grid-auto-flow: column;
+  gap: 6px;
+  padding: 0 9px;
+  white-space: nowrap;
+}
+
+.hmi-overlay-toggle[aria-pressed="true"] {
+  border-color: var(--v9-accent-line);
+  background: var(--v9-accent-bg);
+  color: var(--v9-accent-hover);
+}
+
+.hmi-overlay-label {
+  font-size: 9px;
+  font-weight: 750;
+}
+
+#hmi-canvas-overlay[hidden] {
+  display: none !important;
+}
+
+#hmi-canvas-overlay .hmi-ov {
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+#hmi-canvas-overlay .hmi-ov-indicator {
+  min-width: 96px;
+  text-align: center;
+}
+
+/* Canonical runtime-state palette. State changes affect the standard state
+   targets while keeping geometry, ports, bindings and animation selectors. */
+.pf-pid-v1-entity[data-runtime-state="ready"] {
+  --pid-state: #2563eb;
+  --pid-state-soft: #dbeafe;
+}
+
+.pf-pid-v1-entity[data-runtime-state="running"] {
+  --pid-state: #059669;
+  --pid-state-soft: #d1fae5;
+}
+
+.pf-pid-v1-entity[data-runtime-state="warning"] {
+  --pid-state: #d97706;
+  --pid-state-soft: #fef3c7;
+}
+
+.pf-pid-v1-entity[data-runtime-state="alarm"] {
+  --pid-state: #dc2626;
+  --pid-state-soft: #fee2e2;
+}
+
+.pf-pid-v1-entity[data-runtime-state="maintenance"] {
+  --pid-state: #7c3aed;
+  --pid-state-soft: #ede9fe;
+}
+
+.pf-pid-v1-entity[data-runtime-state="disabled"] {
+  --pid-state: #64748b;
+  --pid-state-soft: #e2e8f0;
+  opacity: 0.62;
+}
+
+@media (max-width: 1180px) {
+  .hmi-overlay-label,
+  .symbol-standard-badge {
+    display: none;
+  }
+
+  .hmi-overlay-toggle.tool-btn {
+    width: 34px;
+    padding: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .element-port-layer {
+    transition: none;
+  }
+}

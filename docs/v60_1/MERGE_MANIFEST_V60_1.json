@@ -1,0 +1,250 @@
+{
+  "schema": "plant_factory_merge_manifest_v1",
+  "release": {
+    "name": "Automated_SVG_Integration",
+    "version": "60.1.0",
+    "display_version": "V60.1",
+    "merge_model": "semantic multi-parent merge",
+    "visual_base": "V58.2",
+    "security_base": "V57.3",
+    "workspace_feature_base": "V56.3",
+    "contract_invariant_base": "V55.2 through V58.2"
+  },
+  "source_archives": {
+    "55.2": {
+      "filename": "Code-Analyse und Design-Audit_55_2(4).zip",
+      "size": 1114632,
+      "sha256": "a5cccb11808884274d1e882140bca2eb0292674f72beed786d6721510e199928"
+    },
+    "56.3": {
+      "filename": "Automated_SVG_Integration_56_3(2).zip",
+      "size": 5709366,
+      "sha256": "dcaae41036ba6e83a559e89b19b1ee97c085b282aff5bc9622cc28fdc2f4926d"
+    },
+    "57.3": {
+      "filename": "Automated_SVG_Integration_57_3(2).zip",
+      "size": 3425929,
+      "sha256": "7025dc08c822ab9287ae1b6dcd97fdd97897ae1a58c0fd7fd12784788f2c2dd8"
+    },
+    "58.2": {
+      "filename": "Vollständige Code-Diagnose und UIUX-Optimierung_58_2(1).zip",
+      "size": 3162894,
+      "sha256": "33a3ca1be01688ef6876e920cc1df24732a47218b3f30d6b7d9c8d2095b7f3d6"
+    }
+  },
+  "inventory": {
+    "versions": {
+      "55.2": {
+        "file_count": 187,
+        "byte_count": 3259892,
+        "text_line_count": 65903,
+        "text_file_count": 184,
+        "binary_file_count": 3
+      },
+      "56.3": {
+        "file_count": 235,
+        "byte_count": 8278571,
+        "text_line_count": 71984,
+        "text_file_count": 205,
+        "binary_file_count": 30
+      },
+      "57.3": {
+        "file_count": 219,
+        "byte_count": 5795586,
+        "text_line_count": 70338,
+        "text_file_count": 201,
+        "binary_file_count": 18
+      },
+      "58.2": {
+        "file_count": 223,
+        "byte_count": 5387148,
+        "text_line_count": 70207,
+        "text_file_count": 197,
+        "binary_file_count": 26
+      },
+      "60.1": {
+        "file_count": 252,
+        "byte_count": 6641016,
+        "text_line_count": 72908,
+        "text_file_count": 213,
+        "binary_file_count": 39
+      }
+    },
+    "comparisons_to_v60_1": {
+      "55.2_to_60.1": {
+        "added": 65,
+        "removed": 0,
+        "modified": 37,
+        "unchanged": 150
+      },
+      "56.3_to_60.1": {
+        "added": 43,
+        "removed": 26,
+        "modified": 37,
+        "unchanged": 172
+      },
+      "57.3_to_60.1": {
+        "added": 54,
+        "removed": 21,
+        "modified": 33,
+        "unchanged": 165
+      },
+      "58.2_to_60.1": {
+        "added": 29,
+        "removed": 0,
+        "modified": 39,
+        "unchanged": 184
+      }
+    }
+  },
+  "invariants": {
+    "canonical_config_version": 9,
+    "canonical_config_sha256": "178d8fe87d12172e28f8e269b475313f76b2e61d3c0b617aac398e8ad2ead9da",
+    "canonical_config_identical_in_all_five_versions": true,
+    "controller_count": 5,
+    "local_v9_shards": 2,
+    "cross_v8_shards": 1,
+    "executable_rule_count": 10,
+    "configuration_sections": 26
+  },
+  "merge_decisions": [
+    {
+      "component": "Backend and write-enabled API",
+      "decision": "Restore V57.3 hardening, then refactor into function composition.",
+      "files": [
+        "_server_v9.py",
+        "svg_editor_tool.py",
+        "config/server.yaml",
+        "run.sh"
+      ],
+      "preserved_features": [
+        "10 MiB SVG limit",
+        "DOCTYPE and ENTITY rejection",
+        "active SVG sanitization",
+        "atomic writes",
+        "safe project paths",
+        "security headers",
+        "localhost binding by default",
+        "configurable host and port"
+      ]
+    },
+    {
+      "component": "Engineering workspace and inspector",
+      "decision": "Merge V56.3 interaction depth with V58.2 shell and V57.3 accessibility.",
+      "files": [
+        "public/index.html",
+        "public/js/ui.js",
+        "public/js/registry.js",
+        "public/js/connection_mapper.js",
+        "public/js/v56_workspace.js",
+        "public/js/v60_ui.js",
+        "public/css/workspace.css",
+        "public/css/v60.css"
+      ],
+      "preserved_features": [
+        "structured inspector",
+        "real binding display",
+        "favorites",
+        "auto-fit",
+        "minimap",
+        "compact menus",
+        "explicit inspector apply",
+        "keyboard navigation",
+        "focus trapping",
+        "shortcut help",
+        "responsive layout"
+      ]
+    },
+    {
+      "component": "Canvas rendering",
+      "decision": "Keep V58.2 labels and engineering palette while restoring V56.3 valid project SVGs.",
+      "files": [
+        "public/js/elements.js",
+        "public/css/workspace.css",
+        "projekte/*.svg"
+      ],
+      "preserved_features": [
+        "element labels",
+        "teal process lines",
+        "type-specific line colors",
+        "selection feedback",
+        "valid xlink namespace declarations"
+      ]
+    },
+    {
+      "component": "Theme and fonts",
+      "decision": "Preserve local V57.3 fonts and persistent blue/brown dark palettes in the merged shell.",
+      "files": [
+        "public/fonts/**",
+        "public/css/fonts.css",
+        "public/css/tokens.css",
+        "public/js/v60_ui.js"
+      ],
+      "preserved_features": [
+        "Public Sans",
+        "IBM Plex Mono",
+        "blue dark palette",
+        "brown dark palette"
+      ]
+    },
+    {
+      "component": "SVG converter",
+      "decision": "Replace duplicate class implementations with one functional implementation and compatibility launcher.",
+      "files": [
+        "public/svg_templates/svg_konverter/svg_converter.py",
+        "public/svg_templates/svg_konverter/svg_converter_.py"
+      ],
+      "preserved_features": [
+        "deterministic names",
+        "unique IDs",
+        "single defs container",
+        "icon and template sizing"
+      ]
+    },
+    {
+      "component": "Configuration, rules and shards",
+      "decision": "Keep the byte-identical canonical V9 contract and deterministic V9/V8 shard build.",
+      "files": [
+        "config/device_state_data_v9.json",
+        "config/shards/*.json",
+        "build_config.sh"
+      ],
+      "preserved_features": [
+        "V9 master",
+        "two local V9 shards",
+        "fail-closed V8 cross shard"
+      ]
+    },
+    {
+      "component": "Release verification",
+      "decision": "Union V56 browser coverage and V57 security/markup coverage; add merge, API, converter and functional-style gates.",
+      "files": [
+        "test_all.sh",
+        "test/**",
+        "_tools/check_functional_style.py",
+        "_tools/check_js_functional_style.cjs"
+      ],
+      "preserved_features": [
+        "direct browser mode",
+        "administrative-policy-only hermetic fallback"
+      ]
+    }
+  ],
+  "verification": {
+    "release_pipeline_stages": 15,
+    "javascript_regression_assertions": 270,
+    "python_format_parity_assertions": 58,
+    "javascript_format_assertions": 42,
+    "browser_assertions": 88,
+    "rule_contract_assertions": 15,
+    "known_filter_id_notices": 8,
+    "external_runtime_authority_available": false,
+    "result": "passed"
+  },
+  "deployment_boundaries": [
+    "The write-enabled API binds to 127.0.0.1 by default.",
+    "Remote deployment requires an authenticated TLS reverse proxy and an explicit host override.",
+    "The external automation_system_v0101 runtime was not included in the supplied archives; its optional type-authority checks remain environment-dependent.",
+    "The eight filter_id notices are retained as known runtime-contract notices and are not hidden."
+  ]
+}

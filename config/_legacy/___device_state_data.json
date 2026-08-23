@@ -1,0 +1,290 @@
+{
+  "node_registrar": [
+    {"ttl_s": 45,"heartbeat_s": 15,"allow_unknown_nodes": true,"admission_token": "sha256:…","policy_default": "primary_only"}
+  ],
+  "nodes": [
+    {"node_id": "fn-01","host": "192.168.0.26","zone": "plantA","priority": 100,"capabilities": ["io.modbus","control.pid"],"tags": ["heating","cooling","line1"],"limits": {"max_controllers": 4}},
+    {"node_id": "fn-02","host": "10.10.1.12","zone": "plantA","priority": 90,"capabilities": ["io.modbus"],"tags": ["pumping","line1"],"limits": {"max_controllers": 4}},
+    {"node_id": "fn-03","host": "10.10.2.21","zone": "plantB","priority": 80,"capabilities": ["io.modbus","control.pid"],"tags": ["heating","line2"],"limits": {"max_controllers": 64}}
+  ],
+  "controller_node_bindings": [
+    {"binding_id": 1,"controller_ids": [2],"primary": "fn-01","fallbacks": [""],"constraints": {"capabilities_all": ["io.modbus","control.pid"],"zones_any": ["plantA"]}},
+    {"binding_id": 2,"controller_ids": [4],"primary": "fn-02","fallbacks": [""],"constraints": {"capabilities_all": ["io.modbus"]}}
+  ],
+  "event_types": [
+    {"event_id": 1,"name": "STATE_ADDED","version": 1,"category": "state","severity": "INFO","description": "Neuer Zustand hinzugefügt","ack_required": false,"required_fields": [],"optional_fields": []},
+    {"event_id": 2,"name": "STATE_CHANGED","version": 1,"category": "state","severity": "INFO","description": "Zustand geändert","ack_required": false,"required_fields": [],"optional_fields": []},
+    {"event_id": 3,"name": "STATE_REMOVED","version": 1,"category": "state","severity": "INFO","description": "Zustand entfernt","ack_required": false,"required_fields": [],"optional_fields": []},
+    {"event_id": 4,"name": "HEARTBEAT","version": 1,"category": "system","severity": "DEBUG","description": "Lebenszeichen eines Dienstes","ack_required": false,"required_fields": ["service_name"],"optional_fields": ["uptime","node_id"]},
+    {"event_id": 5,"name": "STATUS_UPDATE","version": 1,"category": "system","severity": "INFO","description": "Statusaufzeichnung eines Subsystems","ack_required": false,"required_fields": ["service_name","status"],"optional_fields": ["details","uptime"]},
+    {"event_id": 6,"name": "ERROR_OCCURRED","version": 1,"category": "system","severity": "ERROR","description": "Ein Fehler ist im System aufgetreten","ack_required": true,"required_fields": ["error_code","message"],"optional_fields": ["context","service_name"]},
+    {"event_id": 7,"name": "CONFIG_CHANGED","version": 1,"category": "config","severity": "NOTICE","description": "Konfigurationsänderung","ack_required": false,"required_fields": ["config_name","new_value"],"optional_fields": ["old_value","user_id"]},
+    {"event_id": 8,"name": "DATA_UPDATED","version": 1,"category": "data","severity": "INFO","description": "Datenbank-Update-Event","ack_required": false,"required_fields": ["table","rows_changed"],"optional_fields": ["filter","request_id"]},
+    {"event_id": 9,"name": "AUTOMATION_STATE_CHANGED","version": 1,"category": "automation","severity": "INFO","description": "Automatisierungszustand hat sich geändert","ack_required": false,"required_fields": ["state_id"],"optional_fields": ["p_id","state_type","value","sensor_data"]},
+    {"event_id": 10,"name": "SENSOR_THRESHOLD_EXCEEDED","version": 1,"category": "sensor","severity": "WARN","description": "Sensor-Schwellwert überschritten","ack_required": false,"required_fields": ["sensor_id","value","threshold"],"optional_fields": ["timestamp","action_required"]},
+    {"event_id": 11,"name": "NEW_SENSOR_DATA","version": 1,"category": "sensor","severity": "INFO","description": "Neue Sensorwerte wurden gespeichert","ack_required": false,"required_fields": ["sensor_id","value","threshold","timestamp"],"optional_fields": ["timestamp","action_required"]},
+    {"event_id": 12,"name": "SENSOR_VALUE_UPDATE","version": 1,"category": "sensor","severity": "INFO","description": "Neue Sensorwerte wurden gespeichert","ack_required": false,"required_fields": ["sensor_id","value","threshold","timestamp"],"optional_fields": ["timestamp","action_required"]},
+    {"event_id": 13,"name": "CONTROLLER_STARTED","version": 1,"category": "controller","severity": "INFO","description": "Controller wurde gestartet","ack_required": false,"required_fields": ["controller_id"],"optional_fields": ["device_name","timestamp"]},
+    {"event_id": 14,"name": "CONTROLLER_STOPPED","version": 1,"category": "controller","severity": "NOTICE","description": "Controller wurde gestoppt","ack_required": false,"required_fields": ["controller_id"],"optional_fields": ["timestamp"]},
+    {"event_id": 15,"name": "AUTOMATION_THREAD_STARTED","version": 1,"category": "thread","severity": "INFO","description": "Automation Thread gestartet","ack_required": false,"required_fields": ["thread_index"],"optional_fields": ["timestamp"]},
+    {"event_id": 16,"name": "THREAD_MANAGER_HEARTBEAT","version": 1,"category": "thread","severity": "DEBUG","description": "Thread Manager Lebenszeichen","ack_required": false,"required_fields": [],"optional_fields": ["active_controllers","controller_count","automation_count","config_version","timestamp"]},
+    {"event_id": 17,"name": "DOWNSTREAM_READY","version": 1,"category": "automation","severity": "INFO","description": "Nachfolgender Prozess ist bereit","ack_required": false,"required_fields": [],"optional_fields": ["p_id","state_type","timestamp"]},
+    {"event_id": 18,"name": "SETPOINT_REACHED","version": 1,"category": "control","severity": "INFO","description": "Sollwert erreicht (innerhalb Toleranz)","ack_required": false,"required_fields": ["variable","setpoint","tolerance"],"optional_fields": ["p_id","state_type","timestamp"]},
+    {"event_id": 19,"name": "SAFETY_LIMIT_HIT","version": 1,"category": "safety","severity": "CRITICAL","description": "Sicherheitsgrenze wurde erreicht","ack_required": true,"required_fields": ["variable","limit","direction"],"optional_fields": ["p_id","state_type","sensor_id","timestamp"]},
+    {"event_id": 20,"name": "NODE_REGISTERED","version": 1,"category": "node","severity": "INFO","description": "Node hat sich registriert","ack_required": false,"required_fields": ["node_id"],"optional_fields": ["zone","capabilities","priority","timestamp"]},
+    {"event_id": 21,"name": "NODE_HEARTBEAT","version": 1,"category": "node","severity": "DEBUG","description": "Node Heartbeat empfangen","ack_required": false,"required_fields": ["node_id"],"optional_fields": ["timestamp"]}
+  ],
+  "controllers": [
+    {"controller_id": 1,"device_name": "wago_1","bus_type": "modbus","host": "192.168.0.51","port": 502,"unit": "0x1","tags": ["tag","line1"]},
+    {"controller_id": 2,"device_name": "wago_2","bus_type": "modbus","host": "192.168.0.33","port": 502,"unit": "0x1","tags": ["tag","io"]},
+    {"controller_id": 3,"device_name": "wago_3","bus_type": "modbus","host": "192.168.0.53","port": 502,"unit": "0x1","tags": ["tag","tag"]},
+    {"controller_id": 4,"device_name": "wago_4","bus_type": "modbus","host": "192.168.0.54","port": 502,"unit": "0x1","tags": ["tag","n/a"]}
+  ],
+  "virtual_controllers": [
+    {"virt_controller_id": 1,"controller_id": 2,"virt_active": true,"device_name": "virtual_modbus_controller","host": "192.168.0.3","port": 5020},
+    {"virt_controller_id": 2,"controller_id": 3,"virt_active": false,"device_name": "virtual_modbus_controller","host": "192.168.0.4","port": 5020},
+    {"virt_controller_id": 3,"controller_id": 4,"virt_active": false,"device_name": "virtual_modbus_controller","host": "192.168.0.121","port": 5020}
+  ],
+  "sensors": [
+    {"sensor_id": 1,"sensor_number": 1,"controller_id": 2,"bus_type": "modbus","function_type": "read_holding_registers","address": 1,"sensor_group": "S1","profile_id": 1},
+    {"sensor_id": 2,"sensor_number": 2,"controller_id": 2,"bus_type": "modbus","function_type": "read_holding_registers","address": 2,"sensor_group": "S1","profile_id": 3},
+    {"sensor_id": 3,"sensor_number": 3,"controller_id": 2,"bus_type": "modbus","function_type": "read_holding_registers","address": 3,"sensor_group": "S2"},
+    {"sensor_id": 4,"sensor_number": 4,"controller_id": 3,"bus_type": "modbus","function_type": "read_holding_registers","address": 4,"sensor_group": "S4"},
+    {"sensor_id": 5,"sensor_number": 5,"controller_id": 3,"bus_type": "modbus","function_type": "read_coil","address": 5,"sensor_group": "S5"},
+    {"sensor_id": 6,"sensor_number": 1,"controller_id": 2,"bus_type": "modbus","function_type": "read_holding_registers","address": 7,"sensor_group": "S1","profile_id": 1}
+  ],
+  "actuators": [
+    {"actuator_id": 1,"actuator_number": 1,"controller_id": 1,"bus_type": "modbus","function_type": "write_coil","address": 512,"actuator_group": "A"},
+    {"actuator_id": 2,"actuator_number": 2,"controller_id": 1,"bus_type": "modbus","function_type": "write_coil","address": 513,"actuator_group": "A"},
+    {"actuator_id": 3,"actuator_number": 3,"controller_id": 2,"bus_type": "modbus","function_type": "write_coil","address": 514,"actuator_group": "B"},
+    {"actuator_id": 4,"actuator_number": 4,"controller_id": 2,"bus_type": "modbus","function_type": "write_coil","address": 515,"actuator_group": "B"},
+    {"actuator_id": 5,"actuator_number": 5,"controller_id": 2,"bus_type": "modbus","function_type": "write_register","address": 524,"actuator_group": "C","profile_id": 2},
+    {"actuator_id": 6,"actuator_number": 6,"controller_id": 3,"bus_type": "modbus","function_type": "write_data","address": 526,"actuator_group": "C"},
+    {"actuator_id": 7,"actuator_number": 7,"controller_id": 3,"bus_type": "modbus","function_type": "write_data","address": 527,"actuator_group": "C"},
+    {"actuator_id": 8,"actuator_number": 8,"controller_id": 3,"bus_type": "modbus","function_type": "write_register","address": 543,"actuator_group": "D"},
+    {"actuator_id": 9,"actuator_number": 9,"controller_id": 3,"bus_type": "modbus","function_type": "write_register","address": 544,"actuator_group": "D"},
+    {"actuator_id": 10,"actuator_number": 10,"controller_id": 5,"bus_type": "modbus","function_type": "write_data","address": 523,"actuator_group": "E"},
+    {"actuator_id": 11,"actuator_number": 11,"controller_id": 5,"bus_type": "modbus","function_type": "write_data","address": 532,"actuator_group": "E"},
+    {"actuator_id": 12,"actuator_number": 12,"controller_id": 5,"bus_type": "modbus","function_type": "write_data","address": 534,"actuator_group": "E","profile_id": 3}
+  ],
+  "scaling_profiles": [
+    {"profile_id": 1,"name": "Temp_Standard_0_1000C","raw_min": 0,"raw_max": 65535,"eng_min": 0.0,"eng_max": 1000.0,"unit": "C"},
+    {"profile_id": 2,"name": "Voltage_0_10V","raw_min": 0,"raw_max": 65535,"eng_min": 0.0,"eng_max": 10.0,"unit": "V"},
+    {"profile_id": 3,"name": "Current_4_20mA","raw_min": 0,"raw_max": 65535,"eng_min": 4.0,"eng_max": 20.0,"unit": "mA"}
+  ],
+  "modbus_functions": [
+    {"modbus_function_id": 1,"module_type": "relay","modbus_function_type": "write_coil"},
+    {"modbus_function_id": 2,"module_type": "DA","modbus_function_type": "write_coil"},
+    {"modbus_function_id": 3,"module_type": "DI","modbus_function_type": "read_coil"},
+    {"modbus_function_id": 4,"module_type": "AO","modbus_function_type": "write_register"},
+    {"modbus_function_id": 5,"module_type": "AI","modbus_function_type": "read_holding_registers"}
+  ],
+  "sensor_types": [
+    {"sensor_types_id": 1,"sensor_type": "temperature"},
+    {"sensor_types_id": 2,"sensor_type": "pressure"},
+    {"sensor_types_id": 3,"sensor_type": "flow"},
+    {"sensor_types_id": 4,"sensor_type": "level"},
+    {"sensor_types_id": 5,"sensor_type": "light"},
+    {"sensor_types_id": 6,"sensor_type": "ph"},
+    {"sensor_types_id": 7,"sensor_type": "humidity"},
+    {"sensor_types_id": 8,"sensor_type": "gas"},
+    {"sensor_types_id": 9,"sensor_type": "motion"},
+    {"sensor_types_id": 10,"sensor_type": "sound"},
+    {"sensor_types_id": 11,"sensor_type": "vibration"},
+    {"sensor_types_id": 12,"sensor_type": "proximity"},
+    {"sensor_types_id": 13,"sensor_type": "infrared"},
+    {"sensor_types_id": 14,"sensor_type": "ultrasonic"},
+    {"sensor_types_id": 15,"sensor_type": "magnetic"},
+    {"sensor_types_id": 16,"sensor_type": "accelerometer"},
+    {"sensor_types_id": 17,"sensor_type": "gyroscope"},
+    {"sensor_types_id": 18,"sensor_type": "gps"},
+    {"sensor_types_id": 19,"sensor_type": "barcode"},
+    {"sensor_types_id": 20,"sensor_type": "rfid"},
+    {"sensor_types_id": 21,"sensor_type": "color"},
+    {"sensor_types_id": 22,"sensor_type": "humidity"},
+    {"sensor_types_id": 23,"sensor_type": "ultraviolet"},
+    {"sensor_types_id": 24,"sensor_type": "turbidity"},
+    {"sensor_types_id": 25,"sensor_type": "ozone"},
+    {"sensor_types_id": 26,"sensor_type": "carbon_dioxide"},
+    {"sensor_types_id": 27,"sensor_type": "methane"},
+    {"sensor_types_id": 28,"sensor_type": "nitrogen_dioxide"},
+    {"sensor_types_id": 29,"sensor_type": "oxygen"},
+    {"sensor_types_id": 30,"sensor_type": "water_quality"}
+  ],
+  "actuator_types": [
+    {"actuator_types_id": 1,"actuator_type": "valve"},
+    {"actuator_types_id": 2,"actuator_type": "boiling_plate"},
+    {"actuator_types_id": 3,"actuator_type": "heating_coil"},
+    {"actuator_types_id": 4,"actuator_type": "cooling_pump"},
+    {"actuator_types_id": 5,"actuator_type": "peristaltic_pump"},
+    {"actuator_types_id": 6,"actuator_type": "vacuum_pump"},
+    {"actuator_types_id": 7,"actuator_type": "water_pump"},
+    {"actuator_types_id": 8,"actuator_type": "solenoid_valve"},
+    {"actuator_types_id": 9,"actuator_type": "reflux_valve"},
+    {"actuator_types_id": 10,"actuator_type": "stirrer_motor"},
+    {"actuator_types_id": 11,"actuator_type": "agitator"},
+    {"actuator_types_id": 12,"actuator_type": "mixing_motor"},
+    {"actuator_types_id": 13,"actuator_type": "filtration_pump"},
+    {"actuator_types_id": 14,"actuator_type": "drying_heater"},
+    {"actuator_types_id": 15,"actuator_type": "distillation_column"},
+    {"actuator_types_id": 16,"actuator_type": "evaporation_unit"},
+    {"actuator_types_id": 17,"actuator_type": "condensation_system"}
+  ],
+  "state_type_parameter_schema_mappings": [
+    {"mapping_id": 100,"state_type": "heating","parameter_schema_id": "schema_heating_v1","match": {},"priority": 10,"is_default": true},
+    {"mapping_id": 110,"state_type": "heating","parameter_schema_id": "schema_heating_pid_v1","match": {"control_strategy_types_any": ["PID"]},"priority": 50},
+    {"mapping_id": 120,"state_type": "heating","parameter_schema_id": "schema_heating_method_v1","match": {"control_strategy_types_any": ["control_method"]},"priority": 50},
+    {"mapping_id": 200,"state_type": "pressure","parameter_schema_id": "schema_pressure_v1","match": {},"priority": 10,"is_default": true},
+    {"mapping_id": 210,"state_type": "pump","parameter_schema_id": "schema_pump_v1","match": {},"priority": 10,"is_default": true},
+    {"mapping_id": 220,"state_type": "cooling","parameter_schema_id": "schema_cooling_v1","match": {},"priority": 10,"is_default": true},
+    {"mapping_id": 230,"state_type": "flow","parameter_schema_id": "schema_flow_v1","match": {},"priority": 10,"is_default": true},
+    {"mapping_id": 240,"state_type": "valve","parameter_schema_id": "schema_valve_v1","match": {},"priority": 10,"is_default": true},
+    {"mapping_id": 250,"state_type": "stirring","parameter_schema_id": "schema_stirring_v1","match": {},"priority": 10,"is_default": true},
+    {"mapping_id": 260,"state_type": "inflow","parameter_schema_id": "schema_inflow_v1","match": {},"priority": 10,"is_default": true},
+    {"mapping_id": 270,"state_type": "reaction","parameter_schema_id": "schema_reaction_v1","match": {},"priority": 10,"is_default": true},
+    {"mapping_id": 280,"state_type": "receiving","parameter_schema_id": "schema_receiving_v1","match": {},"priority": 10,"is_default": true}
+  ],
+  "parameter_schemas": [
+    {"parameter_schema_id": "schema_heating_v1","description": "Heizen (generic)","fields": [{"field_id": 1,"required": true},{"field_id": 2},{"field_id": 3}],"constraints": [{"type": "range","key": "target_temp_c","min": -50,"max": 2000}]},
+    {"parameter_schema_id": "schema_heating_pid_v1","description": "Heizen (PID variant)","fields": [{"field_id": 1,"required": true},{"field_id": 2},{"field_id": 3}],"constraints": [{"type": "range","key": "target_temp_c","min": -50,"max": 2000}]},
+    {"parameter_schema_id": "schema_heating_method_v1","description": "Heizen (control_method variant)","fields": [{"field_id": 1,"required": true},{"field_id": 2},{"field_id": 3}],"constraints": [{"type": "range","key": "target_temp_c","min": -50,"max": 2000}]},
+    {"parameter_schema_id": "schema_inflow_v1","description": "Einlauf/Feed (Temperatur und/oder Durchfluss)","fields": [{"field_id": 1},{"field_id": 4}],"constraints": []},
+    {"parameter_schema_id": "schema_cooling_v1","description": "Kühlen (Solltemperatur oder Leistung)","fields": [{"field_id": 1},{"field_id": 5}],"constraints": [{"type": "one_of_required","keys": ["target_temp_c","power"],"description": "Mindestens target_temp_c oder power muss gesetzt sein"}]},
+    {"parameter_schema_id": "schema_pressure_v1","description": "Druckregelung","fields": [{"field_id": 6,"required": true},{"field_id": 7}],"constraints": []},
+    {"parameter_schema_id": "schema_pump_v1","description": "Pumpenregelung (Druck)","fields": [{"field_id": 6,"required": true},{"field_id": 7}],"constraints": []},
+    {"parameter_schema_id": "schema_flow_v1","description": "Durchflussregelung","fields": [{"field_id": 4,"required": true}],"constraints": []},
+    {"parameter_schema_id": "schema_valve_v1","description": "Ventil (Durchfluss/Öffnung)","fields": [{"field_id": 4}],"constraints": []},
+    {"parameter_schema_id": "schema_stirring_v1","description": "Rühren (Drehzahl)","fields": [{"field_id": 8,"required": true}],"constraints": []},
+    {"parameter_schema_id": "schema_reaction_v1","description": "Reaktion (optional: Temp, Rühren, Dauer, Timer)","fields": [{"field_id": 1},{"field_id": 9},{"field_id": 10},{"field_id": 11}],"constraints": []},
+    {"parameter_schema_id": "schema_receiving_v1","description": "Empfang/Annahme (keine Parameter)","fields": [],"constraints": []}
+  ],
+  "processes": [
+    {"p_id": 1,"process_name": "ketonic_decarboxylation","process_location": "Main Reactor"},
+    {"p_id": 2,"process_name": "reductive_amination","process_location": ""},
+    {"p_id": 3,"process_name": "ester_hydrolysis","process_location": ""},
+    {"p_id": 4,"process_name": "hydrogenation","process_location": ""},
+    {"p_id": 5,"process_name": "rectification","process_location": ""}
+  ],
+  "process_values": [
+    {"value_id": 1,"state_value": "activated"},
+    {"value_id": 2,"state_value": "deactivated"},
+    {"value_id": 3,"state_value": "error"},
+    {"value_id": 4,"state_value": "maintenance"}
+  ],
+  "process_modes": [
+    {"mode_id": 1,"mode": "manual"},
+    {"mode_id": 2,"mode": "automatic"},
+    {"mode_id": 3,"mode": "AI"}
+  ],
+  "pid_configs": [
+    {"pid_config_id": 1,"pid_parameters": {"kp": 0.01,"ki": 0.001,"kd": 0.0}},
+    {"pid_config_id": 2,"pid_parameters": {"kp": 0.6,"ki": 0.3,"kd": 0.15}},
+    {"pid_config_id": 3,"pid_parameters": {"kp": 1.2,"ki": 0.2,"kd": 0.045}}
+  ],
+
+  "control_method_templates": [
+    {"template_id": 1,"template_name": "ramp","template_description": "Lineare Rampe v0→v1 über t_ramp","type": "ramp","parameters": ["v0","v1","t_ramp"]},
+    {"template_id": 2,"template_name": "square","template_description": "Rechteck: low/high, Periode, Tastgrad, optionale Dauer","type": "square","parameters": ["low","high","period_s","duty","duration_s"]},
+    {"template_id": 3,"template_name": "sine","template_description": "Sinus: Amplitude, Offset, Periode, Phase, optionale Dauer","type": "sine","parameters": ["amp","offset","period_s","phase_deg","duration_s"]},
+    {"template_id": 4,"template_name": "poly2","template_description": "Quadratisch: A*(t - t0)^2 + B über eine Dauer","type": "expr","expr_id": "poly2","parameters": ["A","B","t0","duration_s"]},
+    {"template_id": 5,"template_name": "impulse","template_description": "Dirac-ähnlicher Impuls als kurze Rechtecknadel","type": "impulse","parameters": ["amp","duration_s"]},
+    {"template_id": 6,"template_name": "inv_sin","template_description": "(A/(t - t0 + eps)) * sin(2π/period_s * (t - t0)) + offset","type": "expr","expr_id": "inv_sin","parameters": ["A","period_s","t0","duration_s","eps","offset"]},
+    {"template_id": 7,"template_name": "log_n","template_description": "A * log(k*(t - t0) + 1) + B über eine Dauer","type": "expr","expr_id": "log_n","parameters": ["A","k","B","t0","duration_s"]},
+    {"template_id": 8,"template_name": "exp","template_description": "A * exp(sign*k*(t - t0)) + B über eine Dauer (sign ∈ {+1,-1})","type": "expr","expr_id": "exp","parameters": ["A","k","sign","B","t0","duration_s"]}
+  ],
+
+  "control_methods": [
+    {"method_id": 1,"template_id": 1,"args": {"v0": 20.0,"v1": 80.0,"t_ramp": 600}},
+    {"method_id": 2,"template_id": 2,"args": {"low": 80.0,"high": 120.0,"period_s": 600,"duty": 0.5,"duration_s": 1800}},
+    {"method_id": 3,"template_id": 3,"args": {"amp": 10.0,"offset": 100.0,"period_s": 300,"phase_deg": 0,"duration_s": 900}},
+    {"method_id": 4,"template_id": 5,"args": {"amp": 50.0,"duration_s": 0.25}},
+    {"method_id": 5,"template_id": 4,"args": {"A": 0.01,"B": 0.0,"t0": 0.0,"duration_s": 600}},
+    {"method_id": 6,"template_id": 6,"args": {"A": 50.0,"period_s": 120.0,"t0": 0.0,"duration_s": 600,"eps": 0.01,"offset": 0.0}},
+    {"method_id": 7,"template_id": 7,"args": {"A": 10.0,"k": 0.05,"B": 0.0,"t0": 0.0,"duration_s": 600}},
+    {"method_id": 8,"template_id": 8,"args": {"A": 1.0,"k": 0.02,"sign": 1,"B": 0.0,"t0": 0.0,"duration_s": 900}},
+    {"method_id": 9,"template_id": 8,"args": {"A": 80.0,"k": 0.03,"sign": 1,"B": 0.0,"t0": 0.0,"duration_s": 900}}
+  ],
+
+
+  "process_states": [
+    {"state_id": 1,"p_id": 1,"value_id": 1,"mode_id": 2,"state_type": "heating","parameter_schema_id": "schema_heating_pid_v1","actuator_ids": [5],"sensor_ids": [1],"parameters": {"target_temp_c": 555.0},"control_strategy": {"type": "PID","pid_config_id": 1,"anti_windup": true,"out_min": 0.0,"out_max": 10.0,"sample_time": 0.1,"error_scale": 1.0,"dt_max_s": 0.5},"setpoint_source": null},
+    {"state_id": 2,"p_id": 1,"value_id": 1,"mode_id": 2,"state_type": "pressure","parameter_schema_id": "schema_pressure_v1","actuator_ids": [1],"sensor_ids": [4],"parameters": {"target_pressure_bar": 1.5},"control_strategy": null,"setpoint_source": null},
+    {"state_id": 3,"p_id": 1,"value_id": 1,"mode_id": 1,"state_type": "cooling","parameter_schema_id": "schema_cooling_v1","actuator_ids": [8],"sensor_ids": [1,4],"parameters": {"target_temp_c": 20.0},"control_strategy": null,"setpoint_source": null},
+    {"state_id": 4,"p_id": 1,"value_id": 2,"mode_id": 1,"state_type": "flow","parameter_schema_id": "schema_flow_v1","actuator_ids": [2],"sensor_ids": [3],"parameters": {"flow_rate": 1000.0},"control_strategy": null,"setpoint_source": null},
+    {"state_id": 5,"p_id": 1,"value_id": 2,"mode_id": 1,"state_type": "receiving","parameter_schema_id": "schema_receiving_v1","actuator_ids": [],"sensor_ids": [2],"parameters": {},"control_strategy": null,"setpoint_source": null},
+    {"state_id": 9,"p_id": 1,"value_id": 2,"mode_id": 1,"state_type": "cooling","parameter_schema_id": "schema_cooling_v1","actuator_ids": [1],"sensor_ids": [],"parameters": {"power": 1},"control_strategy": null,"setpoint_source": null},
+    {"state_id": 10,"p_id": 1,"value_id": 2,"mode_id": 1,"state_type": "valve","parameter_schema_id": "schema_valve_v1","actuator_ids": [2],"sensor_ids": [],"parameters": {"flow_rate": 4.0},"control_strategy": null,"setpoint_source": null},
+    {"state_id": 11,"p_id": 1,"value_id": 1,"mode_id": 2,"state_type": "pressure","parameter_schema_id": "schema_pressure_v1","actuator_ids": [4],"sensor_ids": [2],"parameters": {"target_pressure_bar": 8,"hysteresis_bar": 0.55},"control_strategy": null,"setpoint_source": null},
+    {"state_id": 12,"p_id": 2,"value_id": 2,"mode_id": 1,"state_type": "stirring","parameter_schema_id": "schema_stirring_v1","actuator_ids": [8],"sensor_ids": [],"parameters": {"rpm": 300},"control_strategy": null,"setpoint_source": null},
+    {"state_id": 13,"p_id": 3,"value_id": 2,"mode_id": 1,"state_type": "inflow","parameter_schema_id": "schema_inflow_v1","actuator_ids": [3],"sensor_ids": [2],"parameters": {"target_temp_c": 70.0},"control_strategy": null,"setpoint_source": null},
+    {"state_id": 14,"p_id": 3,"value_id": 2,"mode_id": 1,"state_type": "heating","parameter_schema_id": "schema_heating_method_v1","actuator_ids": [9],"sensor_ids": [3],"parameters": {"target_temp_c": 80.0,"ramp_rate_c_per_min": 2.0,"hold_duration_s": 300},"control_strategy": {"type": "control_method","method_id": 1},"setpoint_source": null},
+    {"state_id": 15,"p_id": 4,"value_id": 2,"mode_id": 1,"state_type": "pump","parameter_schema_id": "schema_pump_v1","actuator_ids": [1,2],"sensor_ids": [4],"parameters": {"target_pressure_bar": 1.5,"hysteresis_bar": 0.1},"control_strategy": {"type": "control_method","method_id": 2},"setpoint_source": null},
+    {"state_id": 16,"p_id": 5,"value_id": 2,"mode_id": 1,"state_type": "cooling","parameter_schema_id": "schema_cooling_v1","actuator_ids": [7],"sensor_ids": [4],"parameters": {"target_temp_c": 25.0},"control_strategy": {"type": "control_method","method_id": 7},"setpoint_source": null},
+    {"state_id": 17,"p_id": 6,"value_id": 2,"mode_id": 1,"state_type": "reaction","parameter_schema_id": "schema_reaction_v1","actuator_ids": [10,6],"sensor_ids": [2],"parameters": {"target_temp_c": 120.0,"duration_s": 600,"stirring_rpm": 350,"timer_id": 2},"control_strategy": {"type": "control_method","method_id": 7},"setpoint_source": null},
+    {"state_id": 18,"p_id": 1,"value_id": 1,"mode_id": 2,"state_type": "heating","parameter_schema_id": "schema_heating_pid_v1","actuator_ids": [6],"sensor_ids": [12],"parameters": {"target_temp_c": 555.0},"control_strategy": {"type": "PID","pid_config_id": 1,"anti_windup": true,"out_min": 4.0,"out_max": 20.0,"sample_time": 0.1,"error_scale": 1.0,"dt_max_s": 0.5},"setpoint_source": null}
+  ],
+
+  "automation": [
+    {"automation_id": "default","description": "Standard Automation Profil","enabled": true,"engine_ids": ["default"],"filter_ids": ["smooth_temp","pressure_fast"],"automation_rule_set_ids": ["main"]}
+  ],
+  "automation_engines": [
+    {"engine_id": "default","sp_tolerance": 0.5,"debug_control": true,"debug_pid": true,"debug_pid_state_ids": [1],"debug_pid_interval_s": 1.0,"debug_pid_saturation_interval_s": 10.0,"debug_pid_log_transitions": true,"debug_pid_log_saturation": true,"debug_pid_log_clamps": true,"safety": {"default_action": "shutdown","default_state_value_id": 2,"shutdown_on_missing_sensor": true,"shutdown_on_invalid_pid": true,"max_output_delta_per_step": 2.0},"defaults": {"evaluation_mode": "on_event","exec_mode": "parallel","priority": 100}}
+  ],
+  "automation_filters": [
+    {"filter_id": "smooth_temp","apply_to": {"sensor_ids": [1]},"chain": [{"type": "median","window": 5},{"type": "moving_average","window": 5},{"type": "lowpass","alpha": 0.2},{"type": "scaler_sensor_profile"}]},
+    {"filter_id": "pressure_fast","apply_to": {"sensor_ids": [4]},"chain": [{"type": "highpass","alpha": 0.05},{"type": "sampler","period_s": 0.2}]}
+  ],
+  "automation_rule_sets": [
+    {"rule_set_id": "main","rule_set_name": "main","engine_id": "default","rules": [{"rule_id": 1,"rule_name": "pump_on_if_temp_high","process_scope": {"p_ids": [1],"state_ids": [1,2],"modes": ["automatic"],"selectors": {}},"execution": {"evaluation_mode": "on_event","exec_mode": "parallel","priority": 100},"flags": {"enabled": true,"one_shot": false,"one_shot_scope": "global","reset_mode": "never"},"when_all": [{"type": "state_value","state_id": 1,"equals": 1},{"type": "sensor_threshold","sensor_id": 1,"ge": 80.0,"filter_id": "smooth_temp"}],"when_any": [],"when_none": [],"do": [{"action": "actuator_set","actuator_id": 1,"value": 1},{"action": "actuator_set","actuator_id": 2,"value": 0}],"else_do": [{"action": "actuator_set","actuator_id": 1,"value": 0},{"action": "actuator_set","actuator_id": 2,"value": 0}],"description": "Wenn State 1 aktiv und Temp ≥ 80°C, Pumpe ein, sonst aus."},{"rule_id": 2,"rule_name": "valve_open_if_temp_high","process_scope": {"p_ids": [1],"state_ids": [1],"modes": ["automatic"],"selectors": {}},"execution": {"evaluation_mode": "on_event","exec_mode": "parallel","priority": 100},"flags": {"enabled": true,"one_shot": false,"one_shot_scope": "global","reset_mode": "never"},"when_all": [{"type": "state_value","state_id": 1,"equals": 1},{"type": "sensor_threshold","sensor_id": 1,"ge": 80.0,"filter_id": "smooth_temp"}],"when_any": [],"when_none": [],"do": [{"action": "actuator_set","actuator_id": 3,"value": 1}],"else_do": [{"action": "actuator_set","actuator_id": 4,"value": 0}],"description": "Wenn State 1 aktiv und Temp ≥ 80°C, Zulauf ein, sonst aus."}]}
+  ],
+  "timers": [
+    {"timer_id": 1,"duration": 4000,"description": "Heizdauer Timer"},
+    {"timer_id": 2,"frequency": 14,"description": "Wiederholungen pro Minute"},
+    {"timer_id": 3,"duration": 600,"description": "Abkühlphase Timer"}
+  ],
+
+  "triggers": [
+    {"trigger_id": 200,"name": "temp_reached","conditions": [{"type": "sensor","sensor_type": "temperature","operator": ">=","value": "target_temp","sensor_id": 1}]},
+    {"trigger_id": 201,"name": "temp_fell_below","conditions": [{"type": "sensor","sensor_type": "temperature","operator": "<","value": "target_temp*0.98","sensor_id": 1}]}
+  ],
+
+  "actions": [
+    {"action_id": 300,"name": "activate_valve","target": {"type": "state","state_id": 10},"changes": [{"attribute": "active","to": true},{"attribute": "value_id","to": 1}]},
+    {"action_id": 301,"name": "activate_pump","target": {"type": "state","state_id": 15},"changes": [{"attribute": "active","to": true},{"attribute": "value_id","to": 1}]},
+    {"action_id": 302,"name": "deactivate_valve","target": {"type": "state","state_id": 10},"changes": [{"attribute": "active","to": false},{"attribute": "value_id","to": 2}]},
+    {"action_id": 303,"name": "deactivate_pump","target": {"type": "state","state_id": 15},"changes": [{"attribute": "active","to": false},{"attribute": "value_id","to": 2}]}
+  ],
+
+  "transitions": [
+    {"transition_id": 400,"name": "activate_on_temp","from_type": "heating","trigger_ids": [200],"trigger_logic": "AND","action_ids": [300,301]},
+    {"transition_id": 401,"name": "deactivate_on_fall","from_type": "heating","trigger_ids": [201],"trigger_logic": "AND","action_ids": [302,303]}
+  ],
+  "events": [
+    {"event_id": 1,"event_type": "sensor_threshold","description": "Temperatur erreicht Sollwert","parameters": {"sensor_id": 1,"threshold": 150}},
+    {"event_id": 2,"event_type": "timer_elapsed","description": "Heizdauer abgelaufen","parameters": {"duration": 3600}},
+    {"event_id": 3,"event_type": "condition_met","description": "Druck überschreitet Limit","parameters": {"sensor_id": 4,"limit": 1.2}}
+  ],
+
+  "dynamic_rule_engine": {
+    "rule_sets": [
+      {
+        "set_id": "process_rules",
+        "priority": 5,
+        "evaluation": "on_event",
+        "rules": [
+          {"rule_id": "notify_heating_ready","condition": {"type": "compound","operator": "AND","conditions": [{"type": "sensor","sensor_type": "temperature","operator": ">=","value": "target_temp*0.98"},{"type": "state_type","state_type": "heating","attribute": "active","equals": true}]},"action": {"type": "notify","message": "Heating reached nominal range. Consider starting stirring."}},
+          {"rule_id": "emergency_cool_on_overpressure","condition": {"type": "sensor","sensor_type": "pressure","operator": ">","value": "max_pressure*0.9"},"action": {"type": "emergency_shutdown","target": "all"}},
+          {"rule_id": "pause_heating_on_high_reflux","condition": {"type": "compound","operator": "AND","conditions": [{"type": "sensor","sensor_type": "reflux","operator": ">=","value": 0.8},{"type": "state_type","state_type": "heating","attribute": "active","equals": true}]},"action": {"type": "state_override","target_meta_state": "ERROR","reason": "Reflux too high while heating - safety pause"}},
+          {"rule_id": "notify_process_step_complete","condition": "level >= target_level","action": {"type": "notify","message": "Filling complete -> next step can be started"}},
+          {"rule_id": "set_all_states_p1_active","condition": {"type": "sensor","sensor_type": "temperature","operator": ">=","value": 100},"action": {"type": "process_set_value","p_id": 1,"value_id": 1},"undo_action": {"type": "process_set_value","p_id": 1,"value_id": 2},"always_reversibel": true},
+          {"rule_id": "activate_pids_1_and_3","condition": {"type": "sensor","sensor_type": "temperature","operator": ">=","value": 80},"action": {"type": "process_set_active","p_ids": [1,3],"active": true},"undo_action": {"type": "process_set_active","p_ids": [1,3],"active": false},"always_reversibel": true},
+          {"rule_id": "high_pressure_shutdown","condition": {"type": "sensor","sensor_type": "pressure","operator": ">","value": 5.0,"sensor_id": 4},"action": {"type": "state_override","target_meta_state": "ERROR","reason": "Überdruck erkannt - Shutdown"},"undo_action": {"type": "state_override","target_meta_state": "IDLE","reason": "Druck normalisiert"},"always_reversibel": true},
+          {"rule_id": "low_level_pump_deactivate","condition": {"type": "sensor","sensor_type": "level","operator": "<","value": 20,"sensor_id": 17},"action": {"type": "process_set_active","p_ids": [1],"active": false},"undo_action": {"type": "process_set_active","p_ids": [1],"active": true},"always_reversibel": true},
+          {"rule_id": "deactivate_pump_on_low_level","condition": {"type": "sensor","sensor_id": 17,"operator": "<=","value": 15},"action": {"type": "process_state_set_value","state_id": 15,"value_id": 2},"undo_action": {"type": "process_state_set_value","state_id": 15,"value_id": 1},"always_reversibel": true},
+          {"rule_id": "activate_pump_on_high_level","condition": {"type": "sensor","sensor_id": 17,"operator": ">=","value": 25},"action": {"type": "process_state_set_value","state_id": 15,"value_id": 1},"undo_action": {"type": "process_state_set_value","state_id": 15,"value_id": 2},"always_reversibel": true},
+          {"rule_id": "tune_heater_setpoint","condition": {"type": "sensor","sensor_type": "temperature","operator": ">=","value": 150},"action": {"type": "config_update","payload": {"state_id": 1,"updates": {"parameters": {"target_temp_c": 555.0}}}}}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,738 @@
+/**
+ * Plant Factory V63.4 — single HMI navigation and guided state/appearance UX.
+ *
+ * The secondary V62/V63 tab row intentionally stays in the DOM as a
+ * compatibility hook. It is hidden visually because the numbered workflow
+ * buttons are the canonical navigation surface from V63.4 onward.
+ */
+
+/* Canonical HMI navigation ------------------------------------------------ */
+
+.hmi-root {
+  container-type: inline-size;
+}
+
+.hmi-legacy-tab-list,
+.hmi-legacy-tab-list[hidden] {
+  display: none !important;
+}
+
+.hmi-workflow-panels > .tab-panels {
+  margin-top: 0;
+}
+
+.hmi-workflow-step[aria-selected="true"] {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--v9-accent, var(--primary-color)) 34%, transparent);
+}
+
+/* Widget register actions ------------------------------------------------ */
+
+.hmi-widget-table__select {
+  display: inline-flex;
+  width: auto;
+  max-width: 100%;
+  min-height: 24px;
+  align-items: center;
+  padding: 4px 7px;
+  border: 1px solid color-mix(in srgb, var(--v9-accent, var(--primary-color)) 40%, var(--v9-line, var(--border-color)));
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--v9-accent, var(--primary-color)) 10%, var(--v9-surface-0, var(--bg-color)));
+  color: var(--v9-accent-hover, var(--primary-color));
+  line-height: 1.25;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.hmi-widget-table__select > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.hmi-widget-table__select:hover,
+.hmi-widget-table__select:focus-visible {
+  border-color: var(--v9-accent, var(--primary-color));
+  background: color-mix(in srgb, var(--v9-accent, var(--primary-color)) 17%, var(--v9-surface-0, var(--bg-color)));
+  color: var(--v9-accent-hover, var(--primary-color));
+  text-decoration: none;
+  outline: 2px solid color-mix(in srgb, var(--v9-accent, var(--primary-color)) 24%, transparent);
+  outline-offset: 1px;
+}
+
+.hmi-widget-table__row--active .hmi-widget-table__select {
+  border-color: var(--v9-accent, var(--primary-color));
+  background: color-mix(in srgb, var(--v9-accent, var(--primary-color)) 22%, var(--v9-surface-0, var(--bg-color)));
+}
+
+/* Shared guided configuration surfaces ---------------------------------- */
+
+.hmi-state-workflow,
+.hmi-appearance-workflow {
+  display: grid;
+  gap: 12px;
+}
+
+.hmi-config-card,
+.hmi-disclosure {
+  min-width: 0;
+  border: 1px solid var(--v9-line, var(--border-color));
+  border-radius: 10px;
+  background: var(--v9-surface-0, var(--bg-color));
+  overflow: hidden;
+}
+
+.hmi-config-card__header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--v9-line, var(--border-color));
+  background: color-mix(in srgb, var(--v9-surface-1, var(--bg-secondary)) 76%, transparent);
+}
+
+.hmi-config-card__header > div {
+  min-width: 0;
+}
+
+.hmi-config-card__header h4,
+.hmi-config-card__header p,
+.hmi-threshold-section h5,
+.hmi-threshold-section p,
+.hmi-appearance-section h5,
+.hmi-appearance-section p,
+.hmi-appearance-preview-card h5,
+.hmi-appearance-preview-card p,
+.hmi-manual-editor-section h4,
+.hmi-manual-editor-section p {
+  margin: 0;
+}
+
+.hmi-config-card__header h4,
+.hmi-manual-editor-section h4 {
+  color: var(--v9-ink, var(--text-color));
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.hmi-config-card__header p,
+.hmi-manual-editor-section p {
+  margin-top: 3px;
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.hmi-config-card__eyebrow {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--v9-accent-hover, var(--primary-color));
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hmi-config-card__body {
+  min-width: 0;
+  padding: 12px;
+}
+
+.hmi-config-badge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-height: 22px;
+  align-items: center;
+  padding: 3px 8px;
+  border: 1px solid var(--v9-line, var(--border-color));
+  border-radius: 999px;
+  background: var(--v9-surface-0, var(--bg-color));
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.hmi-config-badge--accent {
+  border-color: color-mix(in srgb, var(--v9-accent, var(--primary-color)) 45%, var(--v9-line, var(--border-color)));
+  background: color-mix(in srgb, var(--v9-accent, var(--primary-color)) 12%, var(--v9-surface-0, var(--bg-color)));
+  color: var(--v9-accent-hover, var(--primary-color));
+}
+
+.hmi-empty-state {
+  padding: 14px;
+  border: 1px dashed var(--v9-line, var(--border-color));
+  border-radius: 8px;
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+/* Disclosure components ------------------------------------------------- */
+
+.hmi-disclosure > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 11px 12px;
+  background: color-mix(in srgb, var(--v9-surface-1, var(--bg-secondary)) 76%, transparent);
+  color: var(--v9-ink, var(--text-color));
+  cursor: pointer;
+  list-style: none;
+}
+
+.hmi-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.hmi-disclosure > summary::after {
+  content: "›";
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 18px;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform 140ms ease;
+}
+
+.hmi-disclosure[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.hmi-disclosure > summary:hover,
+.hmi-disclosure > summary:focus-visible {
+  background: color-mix(in srgb, var(--v9-accent, var(--primary-color)) 8%, var(--v9-surface-1, var(--bg-secondary)));
+  outline: none;
+}
+
+.hmi-disclosure > summary > span:first-child {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.hmi-disclosure > summary strong,
+.hmi-disclosure > summary small {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.hmi-disclosure > summary strong {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.hmi-disclosure > summary small {
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.hmi-disclosure__body {
+  min-width: 0;
+  padding: 12px;
+  border-top: 1px solid var(--v9-line, var(--border-color));
+}
+
+.hmi-disclosure--nested {
+  margin-top: 10px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--v9-surface-1, var(--bg-secondary)) 45%, transparent);
+}
+
+.hmi-disclosure--nested > summary,
+.hmi-disclosure--inline > summary {
+  padding: 9px 10px;
+}
+
+.hmi-disclosure--inline {
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+/* States and alarms ------------------------------------------------------ */
+
+.hmi-view-selector-row {
+  margin: 0;
+}
+
+.hmi-preview-control {
+  display: grid;
+  gap: 10px;
+}
+
+.hmi-preview-signal-row .form-group,
+.hmi-alarm-basic-grid .form-group {
+  margin-bottom: 0;
+}
+
+.hmi-preview-slider-row input[type="range"] {
+  width: 100%;
+  accent-color: var(--v9-accent, var(--primary-color));
+}
+
+.hmi-preview-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+}
+
+.hmi-preview-presets > span {
+  margin-right: 2px;
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hmi-preview-presets .btn {
+  min-width: 0;
+  padding-inline: 9px;
+}
+
+.hmi-threshold-workflow {
+  display: grid;
+  gap: 10px;
+}
+
+.hmi-threshold-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 9px;
+  text-align: center;
+}
+
+.hmi-threshold-flow strong {
+  min-width: 0;
+  padding: 7px;
+  border-radius: 7px;
+  background: var(--v9-surface-1, var(--bg-secondary));
+  color: var(--v9-ink, var(--text-color));
+  overflow-wrap: anywhere;
+}
+
+.hmi-threshold-section,
+.hmi-appearance-section {
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid var(--v9-line, var(--border-color));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--v9-surface-1, var(--bg-secondary)) 38%, transparent);
+}
+
+.hmi-threshold-section > header,
+.hmi-appearance-section > header {
+  margin-bottom: 9px;
+}
+
+.hmi-threshold-section h5,
+.hmi-appearance-section h5,
+.hmi-appearance-preview-card h5 {
+  color: var(--v9-ink, var(--text-color));
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.hmi-threshold-section p,
+.hmi-appearance-section p,
+.hmi-appearance-preview-card p {
+  margin-top: 3px;
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.hmi-source-note {
+  margin-top: 6px;
+  padding: 7px 8px;
+  border-radius: 6px;
+  background: var(--v9-surface-0, var(--bg-color));
+}
+
+.hmi-threshold-scale {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--v9-line, var(--border-color));
+  border-radius: 7px;
+  font-size: 9px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.hmi-threshold-scale > span {
+  min-width: 0;
+  padding: 7px 5px;
+  overflow-wrap: anywhere;
+}
+
+.hmi-threshold-scale__ok {
+  background: rgba(16, 185, 129, 0.13);
+  color: color-mix(in srgb, #10b981 72%, var(--v9-ink, var(--text-color)));
+}
+
+.hmi-threshold-scale__warn {
+  background: rgba(245, 158, 11, 0.13);
+  color: color-mix(in srgb, #f59e0b 74%, var(--v9-ink, var(--text-color)));
+}
+
+.hmi-threshold-scale__alarm {
+  background: rgba(239, 68, 68, 0.13);
+  color: color-mix(in srgb, #ef4444 74%, var(--v9-ink, var(--text-color)));
+}
+
+.hmi-toggle-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.hmi-toggle-card-grid--compact {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.hmi-toggle-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  min-width: 0;
+  padding: 9px;
+  border: 1px solid var(--v9-line, var(--border-color));
+  border-radius: 7px;
+  background: var(--v9-surface-0, var(--bg-color));
+  cursor: pointer;
+}
+
+.hmi-toggle-card:has(input:checked) {
+  border-color: color-mix(in srgb, var(--v9-accent, var(--primary-color)) 55%, var(--v9-line, var(--border-color)));
+  background: color-mix(in srgb, var(--v9-accent, var(--primary-color)) 9%, var(--v9-surface-0, var(--bg-color)));
+}
+
+.hmi-toggle-card input {
+  margin-top: 2px;
+}
+
+.hmi-toggle-card > span {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.hmi-toggle-card strong {
+  color: var(--v9-ink, var(--text-color));
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.hmi-toggle-card small {
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.hmi-class-matrix {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--v9-line, var(--border-color));
+  border-radius: 7px;
+  background: var(--v9-line, var(--border-color));
+}
+
+.hmi-class-matrix__head,
+.hmi-class-matrix__row {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  padding: 7px;
+  background: var(--v9-surface-0, var(--bg-color));
+}
+
+.hmi-class-matrix__head {
+  background: var(--v9-surface-1, var(--bg-secondary));
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hmi-class-matrix__row strong {
+  color: var(--v9-ink, var(--text-color));
+  font-size: 9px;
+}
+
+.hmi-threshold-actions,
+.hmi-appearance-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.hmi-threshold-actions .btn:first-child {
+  margin-right: auto;
+}
+
+.hmi-manual-state-body {
+  display: grid;
+  gap: 14px;
+}
+
+.hmi-manual-editor-section {
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid var(--v9-line, var(--border-color));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--v9-surface-1, var(--bg-secondary)) 34%, transparent);
+}
+
+.hmi-manual-editor-section__header {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.hmi-manual-editor-grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1.3fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.hmi-editor-label {
+  display: block;
+  margin-bottom: 7px;
+}
+
+/* Appearance ------------------------------------------------------------- */
+
+.hmi-appearance-view-grid,
+.hmi-background-picker {
+  align-items: end;
+}
+
+.hmi-background-picker {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 52px;
+  gap: 8px;
+}
+
+.hmi-background-picker input[type="color"] {
+  width: 52px;
+  min-height: 34px;
+  padding: 3px;
+}
+
+.hmi-appearance-widget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 8px;
+}
+
+.hmi-appearance-widget-option {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid var(--v9-line, var(--border-color));
+  border-radius: 8px;
+  background: var(--v9-surface-0, var(--bg-color));
+  color: var(--v9-ink, var(--text-color));
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.hmi-appearance-widget-option:hover,
+.hmi-appearance-widget-option:focus-visible,
+.hmi-appearance-widget-option.active {
+  border-color: var(--v9-accent, var(--primary-color));
+  background: color-mix(in srgb, var(--v9-accent, var(--primary-color)) 10%, var(--v9-surface-0, var(--bg-color)));
+  outline: none;
+}
+
+.hmi-appearance-widget-option__main {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.hmi-appearance-widget-option__main strong,
+.hmi-appearance-widget-option__main small {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.hmi-appearance-widget-option__main strong {
+  color: var(--v9-accent-hover, var(--primary-color));
+  font-size: 10px;
+}
+
+.hmi-appearance-widget-option__main small {
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.hmi-appearance-widget-option__type {
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: var(--v9-surface-1, var(--bg-secondary));
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hmi-appearance-selection-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.hmi-appearance-selection-summary > div {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+  padding: 8px;
+  border: 1px solid var(--v9-line, var(--border-color));
+  border-radius: 7px;
+  background: var(--v9-surface-1, var(--bg-secondary));
+}
+
+.hmi-appearance-selection-summary span {
+  color: var(--v9-ink-muted, var(--text-secondary));
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hmi-appearance-selection-summary strong {
+  min-width: 0;
+  color: var(--v9-ink, var(--text-color));
+  font-size: 9px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.hmi-appearance-section + .hmi-appearance-section {
+  margin-top: 10px;
+}
+
+.hmi-appearance-preview-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, auto);
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+  padding: 11px;
+  border: 1px solid var(--v9-line, var(--border-color));
+  border-radius: 8px;
+  background: var(--v9-surface-1, var(--bg-secondary));
+}
+
+#hmi-app-preview {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px;
+  border: 1px dashed var(--v9-line, var(--border-color));
+  border-radius: 7px;
+  background: var(--v9-surface-0, var(--bg-color));
+}
+
+.hmi-appearance-actions {
+  margin-top: 10px;
+}
+
+/* Container-responsive behavior ---------------------------------------- */
+
+@container (max-width: 680px) {
+  .hmi-threshold-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .hmi-threshold-flow > span {
+    transform: rotate(90deg);
+  }
+
+  .hmi-manual-editor-grid,
+  .hmi-appearance-selection-summary,
+  .hmi-appearance-preview-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hmi-class-matrix__head {
+    display: none;
+  }
+
+  .hmi-class-matrix__row {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .hmi-class-matrix__row input:last-child {
+    grid-column: 2;
+  }
+
+  .hmi-class-matrix__row input:first-of-type::before {
+    content: "Widget";
+  }
+
+  .hmi-disclosure > summary {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .hmi-disclosure > summary .hmi-config-badge {
+    display: none;
+  }
+}
+
+@container (max-width: 480px) {
+  .hmi-config-card__header,
+  .hmi-manual-editor-section__header {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hmi-background-picker,
+  .hmi-threshold-scale,
+  .hmi-toggle-card-grid,
+  .hmi-appearance-widget-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hmi-threshold-actions,
+  .hmi-appearance-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hmi-threshold-actions .btn,
+  .hmi-appearance-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hmi-disclosure > summary::after {
+    transition: none;
+  }
+}

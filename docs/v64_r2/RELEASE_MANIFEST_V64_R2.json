@@ -1,0 +1,40 @@
+{
+  "release": "64_r2",
+  "base_release": "64",
+  "inherits": "64_r1",
+  "package_version": "64.0.0",
+  "schema_changes": false,
+  "primary_change_scope": "automation_configuration_ui",
+  "contract": "PF-AUTOMATION-STUDIO-V1",
+  "automation_views": [
+    "cockpit",
+    "states",
+    "rules",
+    "signals",
+    "library",
+    "engine",
+    "map"
+  ],
+  "writable_v9_sections": [
+    "processes",
+    "process_states",
+    "rules",
+    "filters",
+    "timers",
+    "rule_engine",
+    "parameter_generic_templates",
+    "schema_mappings",
+    "pid_configs",
+    "control_methods",
+    "control_method_templates",
+    "process_modes",
+    "process_values"
+  ],
+  "compatibility": {
+    "v64_r1_drawing": "preserved",
+    "legacy_automation_routes": "addressable_hidden",
+    "project_schema": "unchanged",
+    "v9_runtime": "canonical",
+    "v8_cross": "preserved"
+  }
+}

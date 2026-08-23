@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["regelventil","control valve","membranantrieb","stellventil"],"animierbare_bereiche":["[data-pf-state-target=\"flow\"]",".pc-state",".pc-valve"],"bindings":[],"breite":60,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"default_visual_state":"open","family":"classic-control-valve","favorite":false,"geometry_profile":"classic_valve","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":40,"id":"Classic_control_valve","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Klassik · Armaturen","layer":"process","library_role":"process","name":"Regelventil mit Membranantrieb (Klassik)","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"in","id":"inlet","kind":"process","name":"Ventil Eingang","role":"main","rx":0.0,"ry":0.5,"x":0,"y":20},{"direction":"out","id":"outlet","kind":"process","name":"Ventil Ausgang","role":"main","rx":1.0,"ry":0.5,"x":60,"y":20},{"direction":"in","id":"actuator","kind":"signal","name":"Stellsignal","role":"main","rx":0.5,"ry":0.1,"x":30,"y":4}],"profile":"classic_valve","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":221,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","style":"classic","symbol_type":"classic-control-valve","tag_prefix":"V","view_box":[0,0,60,40],"visual_states":["neutral","open","closed"]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="60" height="40" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="classic-control-valve" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<style>
+.pf-pid-v1 .pc-stroke{fill:none;stroke:#000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pf-pid-v1 .pc-wall{fill:#000}
+.pf-pid-v1 .pc-bore{fill:#fff}
+.pf-pid-v1 .pc-bore-line{fill:none;stroke:#fff;stroke-width:16}
+.pf-pid-v1 .pc-tube-line{fill:none;stroke:#000;stroke-width:22}
+.pf-pid-v1 .pc-white{fill:#fff;stroke:#000;stroke-width:2}
+.pf-pid-v1 .pc-nut{fill:#fff;stroke:#000;stroke-width:1.5}
+.pf-pid-v1 .pc-bubble{fill:#fff;stroke:#000;stroke-width:1.5}
+.pf-pid-v1 .pc-bar{fill:none;stroke:#000;stroke-width:4}
+.pf-pid-v1 .pc-pipe{fill:none;stroke:#333;stroke-width:3.5;stroke-linejoin:round}
+.pf-pid-v1 .pc-thin{fill:none;stroke:#888;stroke-width:2}
+.pf-pid-v1 .pc-dash{fill:none;stroke:#fff;stroke-width:2;stroke-dasharray:9 11;stroke-opacity:0}
+.pf-pid-v1 .pc-state{fill:#cfd4da;stroke:#000;stroke-width:2.5}
+.pf-pid-v1 .pc-valve{fill:#fff;stroke:#000;stroke-width:2}
+.pf-pid-v1 .pc-text{font-family:Arial,Helvetica,sans-serif;fill:#000}
+.pf-pid-v1 .pc-muted{font-family:Arial,Helvetica,sans-serif;fill:#444}
+.pf-pid-v1 .pc-frame{fill:#e9ecef;stroke:#555;stroke-width:1.5}
+.pf-pid-v1 .pc-ground{fill:none;stroke:#555;stroke-width:1.2}
+[data-pf-visual-state="flow"] .pf-pid-v1 .pc-dash,[data-pf-visual-state="hot"] .pf-pid-v1 .pc-dash,[data-pf-visual-state="cold"] .pf-pid-v1 .pc-dash,[data-pf-visual-state="purge"] .pf-pid-v1 .pc-dash{stroke-opacity:.95}
+[data-pf-visual-state="hot"] .pf-pid-v1 .pc-pipe{stroke:#b33a3a}
+[data-pf-visual-state="cold"] .pf-pid-v1 .pc-pipe{stroke:#2f7fb8}
+[data-pf-visual-state="purge"] .pf-pid-v1 .pc-pipe{stroke:#2db34a}
+[data-pf-visual-state="purge"] .pf-pid-v1 .pc-thin,[data-pf-visual-state="flow"] .pf-pid-v1 .pc-thin,[data-pf-visual-state="open"] .pf-pid-v1 .pc-thin{stroke:#2db34a}
+[data-pf-visual-state="heat"] .pf-pid-v1 .pc-bore,[data-pf-visual-state="heat"] .pf-pid-v1 .pc-bore-line{fill:#ffd1a8;stroke:#ffd1a8}
+[data-pf-visual-state="hot"] .pf-pid-v1 .pc-bore,[data-pf-visual-state="hot"] .pf-pid-v1 .pc-bore-line{fill:#ff9a9a;stroke:#ff9a9a}
+[data-pf-visual-state="cold"] .pf-pid-v1 .pc-bore,[data-pf-visual-state="cold"] .pf-pid-v1 .pc-bore-line{fill:#cfe6f7;stroke:#cfe6f7}
+[data-pf-visual-state="heat"] .pf-pid-v1 .pc-bore{fill:#ffd1a8}
+[data-pf-visual-state="hot"] .pf-pid-v1 .pc-bore{fill:#ff9a9a}
+[data-pf-visual-state="cold"] .pf-pid-v1 .pc-bore{fill:#cfe6f7}
+[data-pf-visual-state="heat"] .pf-pid-v1 .pc-state{fill:#f7931e}
+[data-pf-visual-state="hot"] .pf-pid-v1 .pc-state{fill:#ee1c24}
+[data-pf-visual-state="cold"] .pf-pid-v1 .pc-state{fill:#1e9be8}
+[data-pf-visual-state="cool"] .pf-pid-v1 .pc-state{fill:#6fb7e8}
+[data-pf-visual-state="open"] .pf-pid-v1 .pc-valve{fill:#2db34a}
+[data-pf-visual-state="closed"] .pf-pid-v1 .pc-valve{fill:#ee1c24}
+</style>
+<g data-pf-role="body"><path class="pc-thin" data-pf-state-target="pipe" d="M0 20 H60"/><polygon class="pc-valve" data-pf-state-target="valve" points="16,13 44,27 44,13 16,27"/><path class="pc-stroke" d="M30 20 V8"/><ellipse class="pc-white" cx="30" cy="6" rx="6" ry="3"/></g>
+</svg>

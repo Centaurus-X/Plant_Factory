@@ -1,0 +1,96 @@
+/* =========================================================================
+   fonts.css — Schriftbindung V55.1
+   =========================================================================
+   V54.2 verlangte in tokens.css "Inter" und "JetBrains Mono", lud aber keine
+   einzige Schriftdatei: das gesamte Typografiesystem kam nie auf dem
+   Bildschirm an, die Ausgabe fiel auf Segoe UI zurueck.
+
+   V55.1 bindet zwei Schriften, die zum Werkzeug passen und frei lizenziert
+   sind (SIL OFL 1.1 / Apache 2.0) — beide werden MITGELIEFERT, nicht von
+   einem CDN geladen. Das Zielsystem steht in der Regel ohne Internet.
+
+     Public Sans    Oberflaeche. Offene Formen, eindeutige 1 / l / I,
+                    fuer lange Lesestrecken entworfen.
+     IBM Plex Mono  Alles Technische: IDs, UUIDs, Fingerprints, Koordinaten,
+                    Messwerte, Dateinamen, JSON.
+
+   Die Dateien liegen unter public/fonts/. Fehlen sie, greift die
+   Rueckfallkette in tokens.css (--v9-font-sans / --v9-font-mono) und die
+   Oberflaeche bleibt vollstaendig benutzbar — nur eben in der Systemschrift.
+   public/fonts/README.md nennt die Bezugsquelle und die erwarteten Namen.
+
+   local() steht bewusst vorn: ist die Schrift auf dem Rechner installiert,
+   wird nichts geladen.
+   ========================================================================= */
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Public Sans Regular'), local('PublicSans-Regular'),
+       url('../fonts/PublicSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Public Sans Medium'), local('PublicSans-Medium'),
+       url('../fonts/PublicSans-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Public Sans SemiBold'), local('PublicSans-SemiBold'),
+       url('../fonts/PublicSans-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Public Sans Bold'), local('PublicSans-Bold'),
+       url('../fonts/PublicSans-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Public Sans Italic'), local('PublicSans-Italic'),
+       url('../fonts/PublicSans-Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('IBM Plex Mono'), local('IBMPlexMono'),
+       url('../fonts/IBMPlexMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('IBM Plex Mono Medium'), local('IBMPlexMono-Medium'),
+       url('../fonts/IBMPlexMono-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('IBM Plex Mono SemiBold'), local('IBMPlexMono-SemiBold'),
+       url('../fonts/IBMPlexMono-SemiBold.woff2') format('woff2');
+}

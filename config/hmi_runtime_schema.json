@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "description": "Export-Schnittstelle für HMI/SCADA aus dem SVG-Editor",
+
+  "hmi_ui_model": {
+    "version": "number",
+    "active_view_id": "string",
+    "views": [
+      {
+        "view_id": "string",
+        "name": "string",
+        "svg_ref": "string",
+        "tags": ["string"],
+        "config": {
+          "background": {
+            "mode": "string (auto|light|dark|color|transparent)",
+            "color": "string (CSS-Farbe, optional)"
+          }
+        }
+      }
+    ],
+    "widgets": [
+      {
+        "widget_id": "string",
+        "type": "string (text|indicator|button|toggle|slider)",
+        "name": "string",
+        "view_id": "string",
+        "config": {
+          "label": "string (button/slider)",
+          "label_on": "string (toggle)",
+          "label_off": "string (toggle)",
+          "mode": "string (text/indicator-mode, optional)",
+          "classes": "string|array (zusätzliche CSS-Klassen)",
+          "sync_mode": "string (z.B. follow_source)",
+          "min": "number (slider)",
+          "max": "number (slider)",
+          "step": "number (slider)",
+          "unit": "string (optional)"
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_id": "string",
+        "view_id": "string",
+        "widget_id": "string",
+        "element_id": "string (SVG id)",
+        "placement": {
+          "anchor": "string (top|bottom|left|right|center)",
+          "dx": "number",
+          "dy": "number"
+        },
+        "source": {
+          "kind": "string (sensor|actuator|state)",
+          "sensor_id": "number (optional)",
+          "actuator_id": "number (optional)",
+          "state_id": "number (optional)",
+          "field": "string (z.B. value|mode|active)"
+        },
+        "format": "object (frei, z.B. unit/decimals)",
+        "transform": "object (frei)",
+        "interaction": "object (frei, z.B. write_on_click etc.)"
+      }
+    ],
+    "styles": "array (Style-Regeln für Klassen, optional)",
+    "alarms": "array (Alarm-Definitionen, optional)"
+  },
+
+  "svg_data_attributes": {
+    "per_element": [
+      "data-hmi-ui-binding-id",
+      "data-hmi-ui-widget-id",
+      "data-hmi-ui-view-id",
+      "data-hmi-ui-anchor",
+      "data-hmi-ui-dx",
+      "data-hmi-ui-dy",
+      "data-hmi-ui-source-kind",
+      "data-hmi-ui-source-field",
+      "data-hmi-ui-sensor-id",
+      "data-hmi-ui-actuator-id",
+      "data-hmi-ui-state-id",
+      "data-hmi-ui-widget-type",
+      "data-hmi-ui-widget-label"
+    ]
+  }
+}

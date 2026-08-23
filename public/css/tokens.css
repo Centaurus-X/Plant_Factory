@@ -1,0 +1,273 @@
+/* =========================================================================
+   tokens.css — konsolidierte Design-Tokens V60.1
+   =========================================================================
+   EINZIGE Quelle fuer Farbe, Schrift, Mass, Bewegung.
+
+   Was sich gegenueber V54.2 geaendert hat
+   ---------------------------------------
+   1. style.css hatte einen zweiten :root-Block und wurde NACH dieser Datei
+      geladen. Er setzte --primary-color zurueck auf #2563eb und machte die
+      Abbildung auf den V52-Akzent wirkungslos: auf dem Bildschirm lagen zwei
+      Akzentblautoene gleichzeitig (Schalter #2563eb, aktiver Tab #4f46e5).
+      Der Block ist entfernt. Diese Datei definiert jetzt auch alle
+      Alt-Variablen — nichts im Bestand muss dafuer angefasst werden.
+   2. Neutralton von kuehlem Slate auf warmes Stone. Ein Werkzeug, das
+      stundenlang offen steht, soll nicht kalt wirken.
+   3. Akzent von Indigo (#4f46e5) auf Violett (#6d28d9). Indigo lag zu nah an
+      der Anlagen-Zustandsfarbe info-blue. Der Bedienakzent darf nie mit einem
+      Anlagenzustand verwechselt werden.
+   4. Zustandsfarben (ok/warn/danger/info) auf die Werte gehoben, die
+      hmi_animation.js im Anlagenbild verwendet — eine Farbfamilie fuer
+      Oberflaeche und Bild.
+
+   Farbsystem
+   ----------
+   Warme neutrale Basis, EIN Akzent, vier semantische Toene. Jeder Ton in vier
+   Auspraegungen:
+     --v9-<ton>          Flaeche/Rahmen-Akzent
+     --v9-<ton>-fg       Text auf gedaempfter Flaeche (Kontrast >= 4.5:1)
+     --v9-<ton>-bg       gedaempfte Flaeche fuer Badges/Hinweise
+     --v9-<ton>-line     Rahmen der gedaempften Flaeche
+
+   Dunkler Modus
+   -------------
+   Umschaltung ueber [data-theme="dark"] am <html> (core.js, themeManager).
+   Beide Modi halten dieselben Kontrastverhaeltnisse.
+   ========================================================================= */
+
+:root {
+  /* ─── Raster & Rhythmus (4px-Basis) ──────────────────────────────────── */
+  --v9-space-1: 0.25rem;   /*  4 */
+  --v9-space-2: 0.5rem;    /*  8 */
+  --v9-space-3: 0.75rem;   /* 12 */
+  --v9-space-4: 1rem;      /* 16 */
+  --v9-space-5: 1.5rem;    /* 24 */
+  --v9-space-6: 2rem;      /* 32 */
+  --v9-space-7: 3rem;      /* 48 */
+
+  /* ─── Radien ─────────────────────────────────────────────────────────── */
+  --v9-radius-xs: 4px;
+  --v9-radius-sm: 7px;
+  --v9-radius-md: 9px;
+  --v9-radius-lg: 12px;
+  --v9-radius-pill: 999px;
+
+  /* ─── Typografie ─────────────────────────────────────────────────────── */
+  --v9-font-sans: "Public Sans", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --v9-font-mono: "IBM Plex Mono", "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  --v9-text-2xs: 0.625rem;   /* 10 */
+  --v9-text-xs: 0.6875rem;   /* 11 */
+  --v9-text-sm: 0.75rem;     /* 12 */
+  --v9-text-md: 0.8125rem;   /* 13 */
+  --v9-text-lg: 0.875rem;    /* 14 */
+  --v9-text-xl: 1rem;        /* 16 */
+  --v9-text-2xl: 1.1875rem;  /* 19 */
+  --v9-leading-tight: 1.25;
+  --v9-leading-normal: 1.55;
+  --v9-tracking-wide: 0.06em;
+
+  /* ─── Neutrale Basis (hell) — warmes Stone ───────────────────────────── */
+  --v9-surface-0: #ffffff;
+  --v9-surface-1: #f8fafc;
+  --v9-surface-2: #eef2f6;
+  --v9-surface-3: #e2e8f0;
+  --v9-surface-inset: #f8fafc;
+  --v9-line: #e2e8f0;
+  --v9-line-strong: #cbd5e1;
+  --v9-ink: #0f172a;
+  --v9-ink-muted: #475569;
+  --v9-ink-faint: #94a3b8;
+
+  /* ─── Akzent — Violett ───────────────────────────────────────────────── */
+  --v9-accent: #2563eb;
+  --v9-accent-hover: #1d4ed8;
+  --v9-accent-fg: #ffffff;
+  --v9-accent-bg: #eff6ff;
+  --v9-accent-line: #bfdbfe;
+
+  /* ─── Semantik ───────────────────────────────────────────────────────── */
+  --v9-ok: #15803d;
+  --v9-ok-fg: #166534;
+  --v9-ok-bg: #f0fdf4;
+  --v9-ok-line: #bbf7d0;
+
+  --v9-warn: #b45309;
+  --v9-warn-fg: #92400e;
+  --v9-warn-bg: #fffbeb;
+  --v9-warn-line: #fde68a;
+
+  --v9-danger: #b91c1c;
+  --v9-danger-fg: #991b1b;
+  --v9-danger-bg: #fef2f2;
+  --v9-danger-line: #fecaca;
+
+  --v9-info: #0891b2;
+  --v9-info-fg: #0e7490;
+  --v9-info-bg: #ecfeff;
+  --v9-info-line: #a5f3fc;
+
+  --v9-muted: #64748b;
+  --v9-muted-fg: #475569;
+  --v9-muted-bg: #f1f5f9;
+  --v9-muted-line: #cbd5e1;
+
+  /* ─── Elevation — nur fuer wirklich Schwebendes ──────────────────────── */
+  --v9-shadow-1: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --v9-shadow-2: 0 2px 8px rgba(15, 23, 42, 0.10);
+  --v9-shadow-3: 0 12px 32px rgba(15, 23, 42, 0.18), 0 2px 8px rgba(15, 23, 42, 0.08);
+  --v9-ring: 0 0 0 3px rgba(37, 99, 235, 0.24);
+
+  /* ─── Bewegung ───────────────────────────────────────────────────────── */
+  --v9-ease: cubic-bezier(0.2, 0, 0.1, 1);
+  --v9-dur-fast: 110ms;
+  --v9-dur-normal: 180ms;
+
+  /* ─── Scope-Farben (Topologie/Validierung) ───────────────────────────── */
+  --v9-scope-local: var(--v9-ok);
+  --v9-scope-cross-controller: var(--v9-warn);
+  --v9-scope-cross-worker: #a21caf;
+  --v9-scope-invalid: var(--v9-danger);
+  --v9-scope-unbound: var(--v9-muted);
+
+  /* =======================================================================
+     Alt-Variablen — bis V54.2 in style.css, jetzt hier.
+     Der Bestand (style.css-Regeln, Altpanels) laeuft unveraendert weiter und
+     folgt automatisch dem neuen System.
+     ==================================================================== */
+  --primary-color: var(--v9-accent);
+  --primary-hover: var(--v9-accent-hover);
+  --secondary-color: var(--v9-muted);
+  --success-color: var(--v9-ok);
+  --danger-color: var(--v9-danger);
+  --warning-color: var(--v9-warn);
+  --accent-color: var(--v9-accent);
+
+  /* Grautoene: warme Stone-Reihe statt neutralem Gray */
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+
+  --bg-color: var(--v9-surface-0);
+  --bg-secondary: var(--v9-surface-1);
+  --text-color: var(--v9-ink);
+  --text-secondary: var(--v9-ink-muted);
+  --border-color: var(--v9-line);
+  --shadow-sm: var(--v9-shadow-1);
+  --shadow-md: var(--v9-shadow-2);
+  --shadow-lg: var(--v9-shadow-3);
+
+  --canvas-bg: #ffffff;
+  --grid-color: #cbd5e1;
+
+  --spacing-xs: var(--v9-space-1);
+  --spacing-sm: var(--v9-space-2);
+  --spacing-md: var(--v9-space-4);
+  --spacing-lg: var(--v9-space-5);
+  --spacing-xl: var(--v9-space-6);
+
+  /* Hoehen: schlanker als V54.2 (60/48/32) — der Zeichenflaeche zuliebe */
+  --header-height: 64px;
+  --toolbar-height: 48px;
+  --footer-height: 28px;
+  --sidebar-width: 270px;
+  --sidebar-rail-width: 72px;
+  --sidebar-right-collapsed: var(--sidebar-rail-width);
+  --splitter-width: 5px;
+
+  --transition-fast: var(--v9-dur-fast);
+  --transition-normal: var(--v9-dur-normal);
+  --transition-theme: 200ms;
+
+  /* Die Zeichenflaeche ist der Hauptgegenstand: die rechte Leiste startet
+     schmal. Wer mehr braucht, zieht sie am Splitter auf — die Breite wird
+     gemerkt (--sidebar-right-remember: 1). */
+  --sidebar-right-width: 360px;
+  --sidebar-right-min: 320px;
+  --sidebar-right-max: 760px;
+  --sidebar-right-remember: 1;
+}
+
+[data-theme="dark"] {
+  --v9-surface-0: #0b1220;
+  --v9-surface-1: #0f172a;
+  --v9-surface-2: #111c2e;
+  --v9-surface-3: #1e293b;
+  --v9-surface-inset: #08101d;
+  --v9-line: #223049;
+  --v9-line-strong: #334155;
+  --v9-ink: #f8fafc;
+  --v9-ink-muted: #cbd5e1;
+  --v9-ink-faint: #7c8da6;
+
+  --v9-accent: #60a5fa;
+  --v9-accent-hover: #93c5fd;
+  --v9-accent-fg: #08101d;
+  --v9-accent-bg: #102a4c;
+  --v9-accent-line: #1d4f86;
+
+  --v9-ok: #4ade80;
+  --v9-ok-fg: #86efac;
+  --v9-ok-bg: #0f2a1a;
+  --v9-ok-line: #14532d;
+
+  --v9-warn: #fbbf24;
+  --v9-warn-fg: #fcd34d;
+  --v9-warn-bg: #2e2109;
+  --v9-warn-line: #78350f;
+
+  --v9-danger: #f87171;
+  --v9-danger-fg: #fca5a5;
+  --v9-danger-bg: #2e1414;
+  --v9-danger-line: #7f1d1d;
+
+  --v9-info: #22d3ee;
+  --v9-info-fg: #67e8f9;
+  --v9-info-bg: #083344;
+  --v9-info-line: #155e75;
+
+  --v9-muted: #94a3b8;
+  --v9-muted-fg: #cbd5e1;
+  --v9-muted-bg: #1e293b;
+  --v9-muted-line: #334155;
+
+  --v9-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --v9-shadow-2: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --v9-shadow-3: 0 16px 40px rgba(0, 0, 0, 0.65), 0 2px 10px rgba(0, 0, 0, 0.4);
+  --v9-ring: 0 0 0 3px rgba(96, 165, 250, 0.30);
+
+  --v9-scope-cross-worker: #e879f9;
+
+  /* Alt-Variablen im dunklen Modus — dieselbe Abbildung, keine Sonderfaelle.
+     V54.2 hatte hier eine eigene, abweichende Graureihe und eine invertierte
+     Statusleiste, die layout.css spaeter wieder zurueckdrehte. */
+  --gray-50: #0f172a;
+  --gray-100: #111c2e;
+  --gray-200: #1e293b;
+  --gray-300: #334155;
+  --gray-400: #475569;
+  --gray-500: #64748b;
+  --gray-600: #94a3b8;
+  --gray-700: #cbd5e1;
+  --gray-800: #e2e8f0;
+  --gray-900: #f8fafc;
+
+  --canvas-bg: #111c2e;
+  --grid-color: #26344d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --v9-dur-fast: 0ms;
+    --v9-dur-normal: 0ms;
+    --transition-fast: 0ms;
+    --transition-normal: 0ms;
+    --transition-theme: 0ms;
+  }
+}

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="150 220 1000 480" width="2000" height="1000" role="img" aria-label="Plant Factory V61.1 PF-PID-V1 Demo">
+<rect x="150" y="220" width="1000" height="480" rx="10" fill="#ffffff" stroke="#dbe4ef"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M310 392 H400" stroke="#0e7490" stroke-width="2.4"/>
+<path d="M490 385 H580" stroke="#0e7490" stroke-width="2.4"/>
+<path d="M670 385 H760 V372" stroke="#0e7490" stroke-width="2.4"/>
+<path d="M860 372 H950 V391" stroke="#0e7490" stroke-width="2.4"/>
+<path d="M860 565 H885 V406 H860" stroke="#b45309" stroke-width="1.6" stroke-dasharray="5 5"/>
+</g>
+<svg x="230" y="330" data-runtime-state="ready" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 110" width="80" height="110" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="tank" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-outline" d="M18 18 C18 11 62 11 62 18 L62 91 C62 100 18 100 18 91 Z"/>
+  <path class="pid-detail" d="M18 18 C18 25 62 25 62 18 M18 91 C18 84 62 84 62 91"/>
+  <path class="pid-state-fill" data-pf-state-target="level" d="M20 72 C20 68 60 68 60 72 L60 91 C60 96 20 96 20 91 Z"/>
+  <path class="pid-flow" d="M0 62 H18 M62 62 H80"/>
+  <circle class="pid-terminal" cx="0" cy="62" r="2.5"/><circle class="pid-terminal" cx="80" cy="62" r="2.5"/>
+</g>
+</svg>
+<text x="270.0" y="458" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="11" font-weight="700" fill="#0f172a">T-101</text>
+<text x="270.0" y="471" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="8.5" fill="#64748b">Feed Tank</text>
+<svg x="400" y="345" data-runtime-state="running" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 80" width="90" height="80" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="centrifugal-pump" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-flow" d="M0 40 H17 M73 40 H90"/>
+  <circle class="pid-state-fill" data-pf-state-target="body" cx="45" cy="40" r="27"/>
+  <path class="pid-primary" data-pf-state-target="rotor" d="M34 23 L62 40 L34 57 Z"/>
+  <circle class="pid-terminal" cx="0" cy="40" r="2.5"/><circle class="pid-terminal" cx="90" cy="40" r="2.5"/>
+</g>
+</svg>
+<text x="445.0" y="443" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="11" font-weight="700" fill="#0f172a">P-101</text>
+<text x="445.0" y="456" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="8.5" fill="#64748b">Feed Pump</text>
+<svg x="580" y="345" data-runtime-state="ready" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 80" width="90" height="80" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="heat-exchanger" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-flow" d="M0 40 H17 M73 40 H90"/>
+  <circle class="pid-outline" cx="45" cy="40" r="27"/>
+  <path class="pid-primary" data-pf-state-target="heat" d="M27 42 C32 20 39 60 45 38 C51 16 58 56 63 35"/>
+</g>
+</svg>
+<text x="625.0" y="443" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="11" font-weight="700" fill="#0f172a">E-101</text>
+<text x="625.0" y="456" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="8.5" fill="#64748b">Heat Exchanger</text>
+<svg x="760" y="310" data-runtime-state="running" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="100" height="130" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="jacketed-reactor" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-warning" d="M22 18 C22 10 78 10 78 18 L78 105 C78 116 22 116 22 105 Z"/>
+  <path class="pid-outline" d="M29 23 C29 17 71 17 71 23 L71 100 C71 108 29 108 29 100 Z"/>
+  <path class="pid-detail" d="M29 23 C29 29 71 29 71 23 M29 100 C29 94 71 94 71 100"/>
+  <path class="pid-primary" data-pf-state-target="agitator" d="M50 0 V69 M38 42 H62 M38 69 L50 58 L62 69"/>
+  <path class="pid-state-fill" data-pf-state-target="level" d="M31 77 C31 73 69 73 69 77 L69 100 C69 104 31 104 31 100 Z"/>
+  <path class="pid-flow" d="M0 62 H22 M78 62 H100"/>
+  <path class="pid-warning" d="M12 34 H22 M78 34 H88 M12 96 H22 M78 96 H88"/>
+</g>
+</svg>
+<text x="810.0" y="458" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="11" font-weight="700" fill="#0f172a">R-101</text>
+<text x="810.0" y="471" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="8.5" fill="#64748b">Jacketed Reactor</text>
+<svg x="950" y="345" data-runtime-state="ready" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="control-valve" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-flow" d="M0 46 H20 M60 46 H80"/>
+  <path class="pid-outline" data-pf-state-target="valve" d="M20 30 L40 46 L20 62 Z M60 30 L40 46 L60 62 Z"/>
+  <path class="pid-primary" d="M40 46 V29"/>
+  <path class="pid-state-fill" data-pf-state-target="actuator" d="M25 8 H55 V28 H25 Z"/>
+  <path class="pid-detail" d="M40 8 V0"/>
+</g>
+</svg>
+<text x="990.0" y="443" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="11" font-weight="700" fill="#0f172a">CV-101</text>
+<text x="990.0" y="456" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="8.5" fill="#64748b">Outlet Valve</text>
+<svg x="790" y="520" data-runtime-state="ready" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 90" width="70" height="90" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="temperature-transmitter" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-detail" d="M35 0 V20 M35 70 V90"/>
+  <circle class="pid-outline" cx="35" cy="45" r="25"/>
+  <text x="35" y="42" text-anchor="middle" font-size="13" font-weight="700">TT</text>
+  <text x="35" y="55" text-anchor="middle" font-size="8">TEMP</text>
+  <circle class="pid-state-fill" data-pf-state-target="signal" cx="35" cy="45" r="3"/>
+</g>
+</svg>
+<text x="825.0" y="628" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="11" font-weight="700" fill="#0f172a">TT-101</text>
+<text x="825.0" y="641" text-anchor="middle" font-family="Public Sans,Arial,sans-serif" font-size="8.5" fill="#64748b">Reactor Temperature</text>
+</svg>

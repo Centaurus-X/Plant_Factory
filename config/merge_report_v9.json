@@ -1,0 +1,136 @@
+{
+  "notes": [
+    {
+      "section": "meta",
+      "message": "fehlt in cross_fn01.json (Katalog)"
+    },
+    {
+      "section": "sites",
+      "message": "fehlt in cross_fn01.json (Katalog)"
+    },
+    {
+      "section": "nodes",
+      "message": "fehlt in cross_fn01.json (Katalog)"
+    },
+    {
+      "section": "local_node",
+      "message": "fehlt in cross_fn01.json (Katalog)"
+    },
+    {
+      "section": "site_controller_map",
+      "message": "fehlt in cross_fn01.json (Katalog)"
+    },
+    {
+      "section": "controllers",
+      "message": "fehlt in cross_fn01.json (Katalog)"
+    },
+    {
+      "section": "virtual_controllers",
+      "message": "fehlt in cross_fn01.json (Katalog)"
+    },
+    {
+      "section": "sensors",
+      "message": "fehlt in cross_fn01.json (Katalog)"
+    },
+    {
+      "section": "actuators",
+      "message": "fehlt in cross_fn01.json (Katalog)"
+    },
+    {
+      "section": "rules",
+      "message": "fehlt in cross_fn01.json (Katalog)"
+    }
+  ],
+  "restored": [
+    {
+      "section": "rules",
+      "message": "Regel 3 aus cross_fn01.json: Execution-Metadaten wiederhergestellt (cross:fn-01.default)."
+    },
+    {
+      "section": "rules",
+      "message": "Regel 6 aus cross_fn01.json: Execution-Metadaten wiederhergestellt (cross:fn-01.default)."
+    }
+  ],
+  "merges": [
+    {
+      "section": "meta",
+      "message": "Zeile (singleton) aus node_fn01.json beibehalten, node_fn02.json abweichend."
+    },
+    {
+      "section": "sensors",
+      "message": "Zeile ('62671112-766c-59ed-b0ff-30a49d48f747', '3') aus node_fn01.json beibehalten, cross_fn01.json abweichend."
+    },
+    {
+      "section": "sensors",
+      "message": "Zeile ('82fb9eb0-3fd9-5db5-a04e-7f06e405cfdf', '1') aus node_fn01.json beibehalten, cross_fn01.json abweichend."
+    },
+    {
+      "section": "actuators",
+      "message": "Zeile ('cded47f3-4dc5-5439-9aa6-73f0fff5e335', '1') aus node_fn01.json beibehalten, cross_fn01.json abweichend."
+    },
+    {
+      "section": "actuators",
+      "message": "Zeile ('cded47f3-4dc5-5439-9aa6-73f0fff5e335', '2') aus node_fn01.json beibehalten, cross_fn01.json abweichend."
+    }
+  ],
+  "normalized": [
+    {
+      "section": "sites",
+      "message": "site_id vereinheitlicht auf 'site_main' (vorgefunden: site-main)."
+    },
+    {
+      "section": "routing",
+      "message": "18 Routing-Felder an die site_controller_map angeglichen."
+    }
+  ],
+  "provisioned": [
+    {
+      "section": "controllers",
+      "message": "ctrl_wago_3 (d11032fa-33db-56de-a4ed-7e16cca3ded7) existiert nur im Cross-Shard cross_fn01.json und wurde als Provisionierungs-Stub uebernommen."
+    },
+    {
+      "section": "controllers",
+      "message": "ctrl_wago_3: bus_type=\"modbus\", host=\"192.168.0.53\", port=502, unit=\"0x1\""
+    },
+    {
+      "section": "sensors",
+      "message": "sensor 1 auf ctrl_wago_3: address=18, bus_type=\"modbus\", function_type=\"read_holding_registers\""
+    },
+    {
+      "section": "actuators",
+      "message": "actuator 4 auf ctrl_wago_3: address=547, bus_type=\"modbus\", function_type=\"write_coil\""
+    }
+  ],
+  "stats": {
+    "meta": 1,
+    "sites": 1,
+    "nodes": 2,
+    "local_node": 2,
+    "site_controller_map": 5,
+    "controllers": 5,
+    "virtual_controllers": 2,
+    "modbus_functions": 5,
+    "scaling_profiles": 4,
+    "sensor_types": 30,
+    "actuator_types": 17,
+    "sensors": 8,
+    "actuators": 11,
+    "process_modes": 3,
+    "process_values": 4,
+    "parameter_generic_templates": 10,
+    "schema_mappings": 10,
+    "pid_configs": 3,
+    "control_method_templates": 8,
+    "control_methods": 9,
+    "processes": 4,
+    "process_states": 11,
+    "filters": 2,
+    "timers": 5,
+    "rule_engine": 1,
+    "rules": 6
+  },
+  "structure_findings": [],
+  "runtime": {
+    "available": false
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "compatibility": {
+    "automatic_normalization": "non_destructive",
+    "custom_svg_content_preserved": true,
+    "existing_bindings_preserved": true,
+    "existing_connections_preserved": true,
+    "existing_hmi_widgets_preserved": true,
+    "legacy_template_ids_preserved": true,
+    "unknown_fields_preserved": true
+  },
+  "connection_types": {
+    "data": {
+      "accepted_port_kinds": [
+        "data",
+        "io"
+      ],
+      "default_width": 1.6,
+      "marker": "open",
+      "routing": "orthogonal"
+    },
+    "pipe": {
+      "accepted_port_kinds": [
+        "process",
+        "utility"
+      ],
+      "default_width": 2.4,
+      "marker": "flow",
+      "routing": "orthogonal"
+    },
+    "power": {
+      "accepted_port_kinds": [
+        "power"
+      ],
+      "default_width": 1.8,
+      "marker": "open",
+      "routing": "orthogonal"
+    },
+    "signal": {
+      "accepted_port_kinds": [
+        "signal",
+        "io"
+      ],
+      "default_width": 1.6,
+      "marker": "open",
+      "routing": "orthogonal"
+    }
+  },
+  "coordinate_system": {
+    "base_grid": 10,
+    "connection_grid": 5,
+    "minimum_hit_size": 24,
+    "pivot": "center",
+    "preserve_aspect_ratio": "xMidYMid meet",
+    "unit": "engineering_px"
+  },
+  "geometry": {
+    "description_font_size": 8.5,
+    "label_gap": 12,
+    "port_radius": 3.2,
+    "primary_stroke_width": 2.2,
+    "process_line_width": 2.4,
+    "secondary_stroke_width": 1.4,
+    "selection_port_radius": 4.2,
+    "signal_line_width": 1.6,
+    "tag_font_size": 11,
+    "vector_effect": "non-scaling-stroke"
+  },
+  "hmi_controls": {
+    "auto_binding": false,
+    "available": [
+      "text",
+      "indicator",
+      "toggle",
+      "button",
+      "slider"
+    ],
+    "button_policy": "optional_explicit_only",
+    "default": null,
+    "process_symbol_drop_policy": "never_create_control"
+  },
+  "interaction_defaults": {
+    "animatable": true,
+    "auto_create_hmi_widgets": false,
+    "bindable": true,
+    "configurable": true,
+    "connectable": true,
+    "movable": true,
+    "resizable": true,
+    "rotatable": true,
+    "selectable": true,
+    "show_hmi_overlay_in_engineering": false
+  },
+  "label_contract": {
+    "fallback_tag_start": 101,
+    "line_1": "tag",
+    "line_2": "display_name",
+    "tag_pattern": "^[A-Z][A-Z0-9]{0,5}-[0-9]{3}[A-Z]?$",
+    "upright_after_rotation": true
+  },
+  "library": {
+    "category_order": [
+      "Behälter",
+      "Pumpen",
+      "Wärmetauscher",
+      "Ventile",
+      "Reaktoren",
+      "Messstellen",
+      "Kolonnen",
+      "Rohrbauteile",
+      "Rohrleitungen",
+      "Antriebe",
+      "I/O-Hardware",
+      "Filter",
+      "Legacy",
+      "Custom"
+    ],
+    "default_scope": "standard",
+    "hmi_label": "HMI optional",
+    "legacy_label": "Legacy-kompatibel",
+    "standard_label": "P&ID V1"
+  },
+  "port_kinds": [
+    "process",
+    "utility",
+    "signal",
+    "data",
+    "power",
+    "io"
+  ],
+  "profiles": {
+    "bottle": {
+      "height": 150,
+      "width": 70
+    },
+    "cap": {
+      "height": 60,
+      "width": 40
+    },
+    "classic_circle": {
+      "height": 150,
+      "width": 110
+    },
+    "classic_column": {
+      "height": 420,
+      "width": 160
+    },
+    "classic_cooler": {
+      "height": 160,
+      "width": 150
+    },
+    "classic_cylinder": {
+      "height": 110,
+      "width": 60
+    },
+    "classic_elbow": {
+      "height": 88,
+      "width": 88
+    },
+    "classic_fitting": {
+      "height": 40,
+      "width": 40
+    },
+    "classic_flag": {
+      "height": 40,
+      "width": 56
+    },
+    "classic_flange": {
+      "height": 48,
+      "width": 16
+    },
+    "classic_flange_bolted": {
+      "height": 48,
+      "width": 40
+    },
+    "classic_furnace": {
+      "height": 206,
+      "width": 200
+    },
+    "classic_head": {
+      "height": 10,
+      "width": 48
+    },
+    "classic_instrument": {
+      "height": 72,
+      "width": 60
+    },
+    "classic_line": {
+      "height": 40,
+      "width": 160
+    },
+    "classic_mixer": {
+      "height": 48,
+      "width": 130
+    },
+    "classic_tap": {
+      "height": 48,
+      "width": 48
+    },
+    "classic_tube": {
+      "height": 48,
+      "width": 160
+    },
+    "classic_ubend": {
+      "height": 160,
+      "width": 232
+    },
+    "classic_valve": {
+      "height": 40,
+      "width": 60
+    },
+    "column": {
+      "height": 140,
+      "width": 90
+    },
+    "compact": {
+      "height": 80,
+      "width": 80
+    },
+    "cooler_vertical": {
+      "height": 220,
+      "width": 100
+    },
+    "fitting": {
+      "height": 60,
+      "width": 60
+    },
+    "fitting_tee": {
+      "height": 60,
+      "width": 80
+    },
+    "flag": {
+      "height": 60,
+      "width": 100
+    },
+    "flange": {
+      "height": 60,
+      "width": 60
+    },
+    "frame_beam": {
+      "height": 24,
+      "width": 400
+    },
+    "frame_clamp": {
+      "height": 30,
+      "width": 40
+    },
+    "frame_floor": {
+      "height": 24,
+      "width": 300
+    },
+    "frame_foot": {
+      "height": 20,
+      "width": 60
+    },
+    "frame_post": {
+      "height": 400,
+      "width": 24
+    },
+    "furnace": {
+      "height": 220,
+      "width": 160
+    },
+    "hardware": {
+      "height": 90,
+      "width": 120
+    },
+    "horizontal_vessel": {
+      "height": 80,
+      "width": 120
+    },
+    "instrument": {
+      "height": 90,
+      "width": 70
+    },
+    "machine": {
+      "height": 80,
+      "width": 90
+    },
+    "mixer": {
+      "height": 80,
+      "width": 120
+    },
+    "pipe": {
+      "height": 60,
+      "width": 140
+    },
+    "pipe_elbow": {
+      "height": 100,
+      "width": 100
+    },
+    "pipeline": {
+      "height": 60,
+      "width": 120
+    },
+    "reactor": {
+      "height": 130,
+      "width": 100
+    },
+    "vertical_reactor": {
+      "height": 240,
+      "width": 100
+    },
+    "vessel": {
+      "height": 110,
+      "width": 80
+    }
+  },
+  "purpose": "Canonical non-destructive normalization for geometry, ports, labels, connections, runtime states and explicitly optional HMI controls.",
+  "release": "61.1",
+  "runtime_states": [
+    "ready",
+    "running",
+    "warning",
+    "alarm",
+    "disabled",
+    "maintenance"
+  ],
+  "semantic_roles": [
+    "symbol",
+    "body",
+    "outline",
+    "detail",
+    "state",
+    "flow",
+    "port",
+    "label"
+  ],
+  "standard_id": "PF-PID-V1",
+  "standard_version": "1.0",
+  "title": "Plant Factory P&ID Object and Symbol Standard V1"
+}

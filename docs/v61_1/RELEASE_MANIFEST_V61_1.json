@@ -1,0 +1,76 @@
+{
+  "schema": "plant-factory-release-manifest",
+  "schema_version": 1,
+  "release": "61.1",
+  "package_version": "61.1.0",
+  "status": "passed",
+  "object_standard": {
+    "id": "PF-PID-V1",
+    "version": "1.0",
+    "canonical_template_count": 25,
+    "normalization": "non-destructive",
+    "connection_routing": "semantic-port-pair-orthogonal"
+  },
+  "hmi_policy": {
+    "auto_create_widgets": false,
+    "process_symbol_drop_policy": "never_create_control",
+    "button_policy": "optional_explicit_only"
+  },
+  "reference_project": {
+    "file": "projekte/designziel_v1_v61_1.json",
+    "entities": 6,
+    "connections": 5,
+    "explicit_hmi_widgets": 2,
+    "explicit_optional_buttons": 1
+  },
+  "verification": {
+    "pf_pid_v1_javascript": {
+      "passed": 31,
+      "total": 31
+    },
+    "v9_core": {
+      "passed": 145,
+      "total": 145
+    },
+    "javascript_format": {
+      "passed": 42,
+      "total": 42
+    },
+    "python_format_parity": {
+      "passed": 58,
+      "total": 58
+    },
+    "plant_factory_model_chain": {
+      "passed": 31,
+      "total": 31
+    },
+    "snapshot_chain": {
+      "passed": 52,
+      "total": 52
+    },
+    "rule_contract_external_runtime": {
+      "passed": 29,
+      "total": 29
+    },
+    "chromium_browser_smoke": {
+      "passed": 119,
+      "total": 119
+    },
+    "external_runtime_authority": "automation_system_v0101",
+    "result": "passed"
+  },
+  "release_evidence": [
+    "release_evidence/v61_1_pid_light.png",
+    "release_evidence/v61_1_pid_dark.png",
+    "release_evidence/v61_1_hmi_optional.png",
+    "release_evidence/v61_1_responsive.png"
+  ],
+  "documents": [
+    "RELEASE_NOTES_V61_1_DE.md",
+    "docs/v61_1/OBJEKTSTANDARD_PF_PID_V1.md",
+    "docs/v61_1/MIGRATION_UND_KOMPATIBILITAET.md",
+    "docs/v61_1/RUNTIME_V0101_KOMPATIBILITAET.md",
+    "docs/v61_1/TEST_UND_FREIGABE.md",
+    "#_Documentation/Documentation.md"
+  ]
+}

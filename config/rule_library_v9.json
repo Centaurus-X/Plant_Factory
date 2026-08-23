@@ -1,0 +1,628 @@
+{
+  "version": 9,
+  "kind": "rule_templates",
+  "description": "V9-Regelvorlagen, erzeugt aus rule_library.json durch _tools/convert_libraries_to_v9.py. Identitaetsfelder sind null und werden beim Einfuegen aus dem Zielkontext vergeben.",
+  "templates": [
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "notify_heating_ready",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [
+          {
+            "path": "when[0]",
+            "reason": "Sensoridentitaet beim Einfuegen waehlen",
+            "set": [
+              "controller_uuid",
+              "sensor_id"
+            ],
+            "sensor_type": "temperature"
+          },
+          {
+            "path": "when[0].value",
+            "reason": "param_of_state beim Einfuegen setzen",
+            "source": "target_temp*0.98",
+            "key": "target_temp",
+            "set": [
+              "param_of_state"
+            ],
+            "scale": 0.98
+          },
+          {
+            "path": "when[1]",
+            "reason": "state_type auf eine konkrete state_id abbilden",
+            "state_type": "heating",
+            "attribute": "active",
+            "set": [
+              "state_id"
+            ]
+          }
+        ],
+        "notes": [
+          "Formel 'target_temp*0.98' wird beim Einfuegen zu {param_of_state, key, scale} — bis dahin steht ein neutraler Zahlenwert.",
+          "Bedingung ueber state_type 'heating' braucht beim Einfuegen eine konkrete state_id."
+        ]
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "notify_heating_ready",
+        "enabled": true,
+        "when": [
+          {
+            "src": "sensor",
+            "op": ">=",
+            "value": 0
+          },
+          {
+            "src": "state",
+            "op": "==",
+            "field": "value_id",
+            "value": 1
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "notify": "Heating reached nominal range. Consider starting stirring."
+          }
+        ]
+      }
+    },
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "emergency_cool_on_overpressure",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [
+          {
+            "path": "when",
+            "reason": "Sensoridentitaet beim Einfuegen waehlen",
+            "set": [
+              "controller_uuid",
+              "sensor_id"
+            ],
+            "sensor_type": "pressure"
+          },
+          {
+            "path": "when.value",
+            "reason": "param_of_state beim Einfuegen setzen",
+            "source": "max_pressure*0.9",
+            "key": "max_pressure",
+            "set": [
+              "param_of_state"
+            ],
+            "scale": 0.9
+          }
+        ],
+        "notes": [
+          "Formel 'max_pressure*0.9' wird beim Einfuegen zu {param_of_state, key, scale} — bis dahin steht ein neutraler Zahlenwert.",
+          "Aktion 'emergency_shutdown' liess sich nicht in eine V9-Aktion uebersetzen.",
+          "Ohne uebersetzbare Aktion wurde eine notify-Aktion eingesetzt."
+        ]
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "emergency_cool_on_overpressure",
+        "enabled": true,
+        "when": [
+          {
+            "src": "sensor",
+            "op": ">",
+            "value": 0
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "notify": "emergency_cool_on_overpressure"
+          }
+        ]
+      }
+    },
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "pause_heating_on_high_reflux",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [
+          {
+            "path": "when[0]",
+            "reason": "Sensoridentitaet beim Einfuegen waehlen",
+            "set": [
+              "controller_uuid",
+              "sensor_id"
+            ],
+            "sensor_type": "reflux"
+          },
+          {
+            "path": "when[1]",
+            "reason": "state_type auf eine konkrete state_id abbilden",
+            "state_type": "heating",
+            "attribute": "active",
+            "set": [
+              "state_id"
+            ]
+          }
+        ],
+        "notes": [
+          "Bedingung ueber state_type 'heating' braucht beim Einfuegen eine konkrete state_id.",
+          "Aktion 'state_override' liess sich nicht in eine V9-Aktion uebersetzen.",
+          "Ohne uebersetzbare Aktion wurde eine notify-Aktion eingesetzt."
+        ]
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "pause_heating_on_high_reflux",
+        "enabled": true,
+        "when": [
+          {
+            "src": "sensor",
+            "op": ">=",
+            "value": 0.8
+          },
+          {
+            "src": "state",
+            "op": "==",
+            "field": "value_id",
+            "value": 1
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "notify": "pause_heating_on_high_reflux"
+          }
+        ]
+      }
+    },
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "notify_process_step_complete",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [],
+        "notes": []
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "notify_process_step_complete",
+        "enabled": true,
+        "when": [
+          {
+            "src": "state",
+            "state_id": null,
+            "field": "value_id",
+            "op": "==",
+            "value": 1
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "notify": "Filling complete -> next step can be started"
+          }
+        ]
+      }
+    },
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "set_all_states_p1_active",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [
+          {
+            "path": "when",
+            "reason": "Sensoridentitaet beim Einfuegen waehlen",
+            "set": [
+              "controller_uuid",
+              "sensor_id"
+            ],
+            "sensor_type": "temperature"
+          }
+        ],
+        "notes": []
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "set_all_states_p1_active",
+        "enabled": true,
+        "when": [
+          {
+            "src": "sensor",
+            "op": ">=",
+            "value": 100
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "p_ids": [
+              1
+            ],
+            "value_id": 1
+          }
+        ]
+      }
+    },
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "activate_pids_1_and_3",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [
+          {
+            "path": "when",
+            "reason": "Sensoridentitaet beim Einfuegen waehlen",
+            "set": [
+              "controller_uuid",
+              "sensor_id"
+            ],
+            "sensor_type": "temperature"
+          }
+        ],
+        "notes": []
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "activate_pids_1_and_3",
+        "enabled": true,
+        "when": [
+          {
+            "src": "sensor",
+            "op": ">=",
+            "value": 80
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "p_ids": [
+              1,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "high_pressure_shutdown",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [
+          {
+            "path": "when",
+            "reason": "Sensoridentitaet beim Einfuegen waehlen",
+            "set": [
+              "controller_uuid"
+            ],
+            "sensor_type": "pressure"
+          }
+        ],
+        "notes": [
+          "Aktion 'state_override' liess sich nicht in eine V9-Aktion uebersetzen.",
+          "Ohne uebersetzbare Aktion wurde eine notify-Aktion eingesetzt."
+        ]
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "high_pressure_shutdown",
+        "enabled": true,
+        "when": [
+          {
+            "src": "sensor",
+            "op": ">",
+            "sensor_id": 4,
+            "value": 5
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "notify": "high_pressure_shutdown"
+          }
+        ]
+      }
+    },
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "low_level_pump_deactivate",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [
+          {
+            "path": "when",
+            "reason": "Sensoridentitaet beim Einfuegen waehlen",
+            "set": [
+              "controller_uuid"
+            ],
+            "sensor_type": "level"
+          }
+        ],
+        "notes": []
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "low_level_pump_deactivate",
+        "enabled": true,
+        "when": [
+          {
+            "src": "sensor",
+            "op": "<",
+            "sensor_id": 17,
+            "value": 20
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "p_ids": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "deactivate_pump_on_low_level",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [
+          {
+            "path": "when",
+            "reason": "Sensoridentitaet beim Einfuegen waehlen",
+            "set": [
+              "controller_uuid"
+            ]
+          }
+        ],
+        "notes": []
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "deactivate_pump_on_low_level",
+        "enabled": true,
+        "when": [
+          {
+            "src": "sensor",
+            "op": "<=",
+            "sensor_id": 17,
+            "value": 15
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "state_ids": [
+              15
+            ],
+            "value_id": 2
+          }
+        ]
+      }
+    },
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "activate_pump_on_high_level",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [
+          {
+            "path": "when",
+            "reason": "Sensoridentitaet beim Einfuegen waehlen",
+            "set": [
+              "controller_uuid"
+            ]
+          }
+        ],
+        "notes": []
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "activate_pump_on_high_level",
+        "enabled": true,
+        "when": [
+          {
+            "src": "sensor",
+            "op": ">=",
+            "sensor_id": 17,
+            "value": 25
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "state_ids": [
+              15
+            ],
+            "value_id": 1
+          }
+        ]
+      }
+    },
+    {
+      "__template__": {
+        "source_set": "process_rules",
+        "source_rule_id": "tune_heater_setpoint",
+        "evaluation": "on_event",
+        "fill_on_insert": [
+          "rule_id",
+          "owner_node_id",
+          "execution_owner",
+          "execution_scope",
+          "activation_state",
+          "deployment_status"
+        ],
+        "deferred": [
+          {
+            "path": "when",
+            "reason": "Sensoridentitaet beim Einfuegen waehlen",
+            "set": [
+              "controller_uuid",
+              "sensor_id"
+            ],
+            "sensor_type": "temperature"
+          }
+        ],
+        "notes": [
+          "Aktion 'config_update' liess sich nicht in eine V9-Aktion uebersetzen.",
+          "Ohne uebersetzbare Aktion wurde eine notify-Aktion eingesetzt."
+        ]
+      },
+      "rule": {
+        "engine_id": 1,
+        "execution_epoch": 1,
+        "deployment_status": "active_node",
+        "activation_state": "active",
+        "group": "process",
+        "priority": 5,
+        "name": "tune_heater_setpoint",
+        "enabled": true,
+        "when": [
+          {
+            "src": "sensor",
+            "op": ">=",
+            "value": 150
+          }
+        ],
+        "description": "",
+        "do": [
+          {
+            "notify": "tune_heater_setpoint"
+          }
+        ]
+      }
+    }
+  ]
+}

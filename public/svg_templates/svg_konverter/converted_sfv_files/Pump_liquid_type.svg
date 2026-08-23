@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="317px" height="169px" version="1.1" viewBox="0.0 0.0 39.688 21.167" xml:space="preserve">
+  <defs id="defs-styles">
+    
+  </defs>
+  <defs></defs>
+  <g transform="translate(-79.375 -66.41)" fill="none" stroke="#2196F3" id="gruppe-1" stroke-opacity="0.9">
+    <g id="gruppe-2">
+      <path transform="translate(68.254 66.12)" d="m15.86 10.869h5.228" stroke-width=".15" id="pfad-1"></path>
+      <path transform="translate(93.236 66.123)" d="m15.86 10.869h5.228" stroke-width=".15" id="pfad-2"></path>
+      <path transform="matrix(1 0 0 -1 68.205 87.843)" d="m31.031 18.32c2.49-2.526 4.979-5.052 7.469-7.578" stroke-width=".3" id="pfad-3"></path>
+      <path transform="translate(68.264 66.133)" d="m31.031 18.32c2.49-2.526 4.979-5.052 7.469-7.578" stroke-width=".3" id="pfad-4"></path>
+    </g>
+    <circle transform="matrix(0.3 0 0 0.3 91.737 69.49)" cx="25" cy="25" r="25" stroke-width=".99954" id="kreis-1" fill="#4CAF50" fill-opacity="0.2"></circle>
+  </g>
+</svg>

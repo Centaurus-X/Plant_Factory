@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["flange","flansch","flange pair","swagelok"],"animierbare_bereiche":["[data-pf-state-target=\"flow\"]","[data-pf-state-target=\"flange\"]"],"bindings":[],"breite":60,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"family":"flange-pair","favorite":true,"geometry_profile":"flange","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":60,"id":"Flange_pair","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Rohrbauteile","library_role":"process","name":"Flanschpaar","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"in","id":"inlet","kind":"process","name":"Flansch Eingang","role":"main","rx":0.0,"ry":0.5,"x":0,"y":30},{"direction":"out","id":"outlet","kind":"process","name":"Flansch Ausgang","role":"main","rx":1.0,"ry":0.5,"x":60,"y":30}],"profile":"flange","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":40,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","symbol_type":"flange-pair","tag_prefix":"FL","view_box":[0,0,60,60]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="flange-pair" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-flow" data-pf-state-target="flow" d="M0 30 H60"/>
+  <path class="pid-outline" data-pf-state-target="flange" d="M23 11 V49 M28 11 V49 M32 11 V49 M37 11 V49"/>
+  <path class="pid-detail" d="M18 17 H42 M18 43 H42"/>
+  <circle class="pid-terminal" cx="0" cy="30" r="3"/><circle class="pid-terminal" cx="60" cy="30" r="3"/>
+</g>
+</svg>

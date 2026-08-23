@@ -1,0 +1,745 @@
+/*
+ * Plant Factory V64 — elemental plant drawing and event-driven SVG animation.
+ *
+ * The file is additive and loads after every inherited release stylesheet.
+ */
+
+/* Workspace routing ----------------------------------------------------- */
+
+body[data-workspace-kind="drawing"] #main-content,
+body[data-workspace-kind="drawing"] #main-content:has(#sidebar-right.collapsed) {
+  grid-template-columns: 72px minmax(0, 1fr);
+}
+
+body[data-workspace-kind="drawing"] #sidebar-left,
+body[data-workspace-kind="drawing"] #workspace-center,
+body[data-workspace-kind="drawing"] #logic-workspace,
+body[data-workspace-kind="drawing"] #right-splitter,
+body[data-workspace-kind="drawing"] #sidebar-right {
+  display: none !important;
+}
+
+#plant-drawing-workspace {
+  grid-column: 2 / 6;
+  min-width: 0;
+  min-height: 0;
+}
+
+#plant-drawing-workspace[hidden] {
+  display: none !important;
+}
+
+body[data-workspace-kind="drawing"] #plant-drawing-workspace {
+  display: grid;
+}
+
+.plant-drawing-workspace {
+  --drawing-inventory-width: 286px;
+  --drawing-inspector-width: 354px;
+  display: none;
+  grid-template-columns: var(--drawing-inventory-width) minmax(0, 1fr) var(--drawing-inspector-width);
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  color: var(--v9-text, var(--text-color));
+  background: var(--v9-surface-2, var(--bg-color));
+}
+
+.plant-drawing-inventory,
+.plant-drawing-inspector {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  background: var(--v9-surface-1, var(--panel-bg));
+}
+
+.plant-drawing-inventory {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 14px;
+  border-right: 1px solid var(--v9-border, var(--border-color));
+}
+
+.plant-drawing-inspector {
+  padding: 16px;
+  border-left: 1px solid var(--v9-border, var(--border-color));
+}
+
+.plant-drawing-panel-header {
+  display: grid;
+  gap: 4px;
+}
+
+.plant-drawing-panel-header h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.plant-drawing-panel-header p {
+  margin: 0;
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.plant-drawing-inventory .library-search {
+  min-height: 38px;
+}
+
+.plant-drawing-primitives {
+  display: grid;
+  gap: 7px;
+  padding: 10px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--v9-surface-0, var(--panel-bg)) 82%, transparent);
+}
+
+.plant-drawing-primitives h3 {
+  margin: 0;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--v9-text-muted, var(--text-muted));
+}
+
+.plant-drawing-primitive-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.plant-drawing-primitive-grid button,
+.plant-drawing-kind {
+  min-height: 30px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 7px;
+  color: inherit;
+  background: var(--v9-surface-1, var(--panel-bg));
+  font: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.plant-drawing-primitive-grid button:hover,
+.plant-drawing-primitive-grid button.active,
+.plant-drawing-kind:hover,
+.plant-drawing-kind.active {
+  border-color: var(--v9-accent, var(--primary-color));
+  color: var(--v9-accent, var(--primary-color));
+  background: color-mix(in srgb, var(--v9-accent, var(--primary-color)) 12%, transparent);
+}
+
+.plant-drawing-template-palette {
+  display: grid;
+  gap: 14px;
+  padding-bottom: 10px;
+}
+
+.plant-drawing-template-category {
+  display: grid;
+  gap: 7px;
+}
+
+.plant-drawing-template-category > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.69rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.plant-drawing-template-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.plant-drawing-template-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: 72px auto;
+  gap: 6px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 10px;
+  color: inherit;
+  text-align: left;
+  background: var(--v9-surface-0, var(--panel-bg));
+  cursor: pointer;
+}
+
+.plant-drawing-template-card:hover,
+.plant-drawing-template-card.active {
+  border-color: var(--v9-accent, var(--primary-color));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--v9-accent, var(--primary-color)) 30%, transparent);
+}
+
+.plant-drawing-template-card__preview {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 7px;
+  background: #f8fafc;
+}
+
+.plant-drawing-template-card__preview svg {
+  width: 100%;
+  height: 100%;
+  max-width: 112px;
+  max-height: 68px;
+}
+
+.plant-drawing-template-card strong {
+  overflow-wrap: anywhere;
+  font-size: 0.72rem;
+  line-height: 1.25;
+}
+
+.plant-drawing-template-card small {
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.62rem;
+}
+
+.plant-drawing-inventory-footer {
+  margin-top: auto;
+  position: sticky;
+  bottom: -16px;
+  padding: 10px 0 16px;
+  background: linear-gradient(transparent, var(--v9-surface-1, var(--panel-bg)) 30%);
+}
+
+/* Canvas --------------------------------------------------------------- */
+
+.plant-drawing-main {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.plant-drawing-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--v9-border, var(--border-color));
+  background: var(--v9-surface-1, var(--panel-bg));
+}
+
+.plant-drawing-connection-kind {
+  display: flex;
+  gap: 4px;
+}
+
+.plant-drawing-kind {
+  padding: 4px 8px;
+}
+
+.plant-drawing-stage {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 30% 10%, color-mix(in srgb, var(--v9-accent, #8b5cf6) 7%, transparent), transparent 34%),
+    var(--v9-surface-2, var(--bg-color));
+}
+
+#plant-drawing-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  color: #64748b;
+  border: 1px solid color-mix(in srgb, var(--v9-border, #334155) 88%, #fff);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.14);
+  touch-action: none;
+  user-select: none;
+}
+
+#plant-drawing-grid-background.is-hidden {
+  display: none;
+}
+
+.plant-drawing-empty-state {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  display: grid;
+  gap: 5px;
+  max-width: 390px;
+  padding: 16px 20px;
+  transform: translate(-50%, -50%);
+  border: 1px dashed rgba(100, 116, 139, 0.45);
+  border-radius: 12px;
+  color: #475569;
+  text-align: center;
+  background: rgba(248, 250, 252, 0.92);
+  pointer-events: none;
+}
+
+.plant-drawing-empty-state[hidden] {
+  display: none;
+}
+
+.plant-drawing-empty-state strong {
+  color: #0f172a;
+}
+
+.plant-drawing-statusbar {
+  position: absolute;
+  right: 26px;
+  bottom: 26px;
+  display: flex;
+  gap: 12px;
+  padding: 6px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.34);
+  border-radius: 8px;
+  color: #475569;
+  background: rgba(255, 255, 255, 0.91);
+  font-size: 0.69rem;
+  pointer-events: none;
+}
+
+.plant-drawing-entity {
+  cursor: grab;
+}
+
+.plant-drawing-entity.is-selected {
+  filter: drop-shadow(0 0 5px rgba(124, 58, 237, 0.45));
+}
+
+.plant-drawing-entity:active {
+  cursor: grabbing;
+}
+
+.plant-drawing-connection {
+  fill: none;
+  stroke: #0f172a;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+
+.plant-drawing-connection[data-kind="utility"] {
+  stroke: #0ea5e9;
+  stroke-dasharray: 9 4;
+}
+
+.plant-drawing-connection[data-kind="signal"] {
+  stroke: #64748b;
+  stroke-width: 1.7;
+  stroke-dasharray: 5 4;
+}
+
+.plant-drawing-connection[data-kind="power"] {
+  stroke: #f59e0b;
+  stroke-width: 2.3;
+}
+
+.plant-drawing-connection.is-selected {
+  stroke: #7c3aed;
+  filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.45));
+}
+
+.plant-drawing-port {
+  fill: #ffffff;
+  stroke: #7c3aed;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  cursor: crosshair;
+}
+
+.plant-drawing-port:hover,
+.plant-drawing-port.is-source {
+  fill: #a78bfa;
+  stroke: #5b21b6;
+}
+
+.plant-drawing-selection-box {
+  fill: none;
+  stroke: #7c3aed;
+  stroke-width: 1.5;
+  stroke-dasharray: 6 4;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.plant-drawing-primitive {
+  stroke: #0f172a;
+  stroke-width: 2.2;
+  fill: rgba(226, 232, 240, 0.32);
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+
+.plant-drawing-primitive[data-type="line"] {
+  fill: none;
+}
+
+.plant-drawing-primitive.is-selected {
+  stroke: #7c3aed;
+}
+
+.plant-drawing-label {
+  fill: #0f172a;
+  font: 16px/1.3 "Public Sans", Arial, sans-serif;
+  cursor: pointer;
+}
+
+/* Inspector ------------------------------------------------------------ */
+
+.plant-drawing-properties,
+.plant-drawing-preview-card,
+.plant-drawing-inventory-card,
+.plant-drawing-export-card {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--v9-surface-0, var(--panel-bg)) 86%, transparent);
+}
+
+.plant-drawing-properties:empty {
+  min-height: 56px;
+}
+
+.plant-drawing-properties:empty::after {
+  content: "Objekt, Verbindung oder Form auswählen.";
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.74rem;
+}
+
+.plant-drawing-properties h3,
+.plant-drawing-preview-card h3,
+.plant-drawing-inventory-card h3,
+.plant-drawing-export-card h3 {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.plant-drawing-preview-card header p {
+  margin: 3px 0 0;
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.7rem;
+}
+
+.plant-drawing-preview {
+  display: grid;
+  place-items: center;
+  min-height: 172px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.plant-drawing-preview svg {
+  width: 100%;
+  height: 168px;
+}
+
+.plant-drawing-preview-empty {
+  max-width: 230px;
+  color: #64748b;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+.plant-drawing-property-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.plant-drawing-property-grid .form-group {
+  min-width: 0;
+}
+
+.plant-drawing-property-grid .form-group--wide {
+  grid-column: 1 / -1;
+}
+
+.plant-drawing-inventory-actions,
+.plant-drawing-export-actions {
+  display: grid;
+  gap: 7px;
+}
+
+.plant-drawing-validation {
+  display: grid;
+  gap: 5px;
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.7rem;
+}
+
+.plant-drawing-validation__ok {
+  color: #22c55e;
+}
+
+.plant-drawing-validation__warn {
+  color: #f59e0b;
+}
+
+/* HMI event designer --------------------------------------------------- */
+
+.hmi-event-animation-card {
+  overflow: hidden;
+}
+
+.hmi-event-animation-designer {
+  display: grid;
+  gap: 12px;
+}
+
+.hmi-event-preset-section {
+  display: grid;
+  gap: 8px;
+}
+
+.hmi-event-section-heading {
+  display: grid;
+  gap: 2px;
+}
+
+.hmi-event-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.hmi-event-preset-card {
+  display: grid;
+  gap: 4px;
+  min-height: 70px;
+  padding: 9px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 9px;
+  color: inherit;
+  text-align: left;
+  background: var(--v9-surface-0, var(--panel-bg));
+  cursor: pointer;
+}
+
+.hmi-event-preset-card:hover {
+  border-color: var(--v9-accent, var(--primary-color));
+  transform: translateY(-1px);
+}
+
+.hmi-event-preset-card strong {
+  font-size: 0.73rem;
+}
+
+.hmi-event-preset-card small {
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.64rem;
+  line-height: 1.3;
+}
+
+.hmi-event-validation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hmi-event-designer-layout {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.34fr) minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.hmi-event-rule-list,
+.hmi-event-rule-editor {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--v9-surface-0, var(--panel-bg)) 90%, transparent);
+}
+
+.hmi-event-rule-list__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.hmi-event-rule-option {
+  position: relative;
+  display: grid;
+  gap: 3px;
+  padding: 9px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 8px;
+  color: inherit;
+  text-align: left;
+  background: var(--v9-surface-1, var(--panel-bg));
+  cursor: pointer;
+}
+
+.hmi-event-rule-option:hover,
+.hmi-event-rule-option.active {
+  border-color: var(--v9-accent, var(--primary-color));
+}
+
+.hmi-event-rule-option strong {
+  padding-right: 48px;
+  overflow-wrap: anywhere;
+  font-size: 0.74rem;
+}
+
+.hmi-event-rule-option small {
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.64rem;
+}
+
+.hmi-event-rule-option__status {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  color: #22c55e;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+}
+
+.hmi-event-editor-section {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--v9-border, var(--border-color));
+}
+
+.hmi-event-editor-section:last-of-type {
+  border-bottom: 0;
+}
+
+.hmi-event-editor-section h5 {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--v9-accent, var(--primary-color));
+}
+
+.hmi-event-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.hmi-event-source-grid,
+.hmi-event-condition-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.hmi-event-identity-grid {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+.hmi-event-enabled-card {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 8px;
+  font-size: 0.72rem;
+}
+
+.hmi-event-editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.hmi-event-empty {
+  min-height: 100px;
+  display: grid;
+  place-items: center;
+  color: var(--v9-text-muted, var(--text-muted));
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+/* Responsive behavior -------------------------------------------------- */
+
+@media (max-width: 1440px) {
+  .plant-drawing-workspace {
+    --drawing-inventory-width: 250px;
+    --drawing-inspector-width: 326px;
+  }
+
+  .hmi-event-preset-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1120px) {
+  .plant-drawing-workspace {
+    grid-template-columns: 224px minmax(0, 1fr);
+  }
+
+  .plant-drawing-inspector {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 320px;
+    box-shadow: -10px 0 28px rgba(15, 23, 42, 0.18);
+  }
+
+  .plant-drawing-connection-kind {
+    display: none;
+  }
+
+  .hmi-event-designer-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 780px) {
+  body[data-workspace-kind="drawing"] #main-content,
+  body[data-workspace-kind="drawing"] #main-content:has(#sidebar-right.collapsed) {
+    grid-template-columns: 58px minmax(0, 1fr);
+  }
+
+  .plant-drawing-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .plant-drawing-inventory,
+  .plant-drawing-inspector {
+    display: none;
+  }
+
+  .plant-drawing-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .hmi-event-preset-grid,
+  .hmi-event-form-grid,
+  .hmi-event-source-grid,
+  .hmi-event-condition-grid {
+    grid-template-columns: 1fr;
+  }
+}

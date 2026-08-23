@@ -1,0 +1,35 @@
+# Plant Factory V60.1 local service configuration.
+server:
+  # Keep the write-enabled API local unless an authenticated reverse proxy is used.
+  host: "127.0.0.1"
+  port: 8090
+  debug: false
+
+paths:
+  static_dir: "public"
+  templates_dir: "public/svg_templates"
+  projekte_dir: "projekte"
+
+features:
+  auto_save: false
+  auto_save_interval: 300
+  max_history_size: 50
+  enable_compression: true
+
+upload:
+  max_file_size: 10485760
+  allowed_extensions:
+    - ".svg"
+
+templates:
+  auto_reload: false
+  cache_enabled: true
+
+security:
+  enable_cors: false
+  allowed_origins: []
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/server.log"

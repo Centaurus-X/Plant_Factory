@@ -1,0 +1,74 @@
+{
+  "standard": "PF-LOGIC-COMPAT-V1",
+  "release": "63.1",
+  "canonical_source": "project.logic",
+  "principles": {
+    "single_source_of_truth": true,
+    "strict_v9_sections_unchanged": true,
+    "strict_v8_cross_sections_unchanged": true,
+    "derived_artifacts_are_read_only": true,
+    "cross_transport_uses_logical_identity_only": true
+  },
+  "profiles": {
+    "universal_json": {
+      "runtime": "runtime_compat.plant_logic_runtime",
+      "supports_stateful_blocks": true,
+      "supports_math": true,
+      "supports_hmi_and_internal_signals": true,
+      "output": "*.logic.runtime.json"
+    },
+    "automation_system_v9": {
+      "native": [
+        "sensor/state conditions",
+        "boolean combinations representable as DNF",
+        "state_write",
+        "notify"
+      ],
+      "bridge": [
+        "TON",
+        "TOF",
+        "TP",
+        "CTU",
+        "CTD",
+        "state_parameter with calculated value",
+        "direct actuator_write",
+        "HMI and internal signal writes",
+        "numeric pipelines"
+      ],
+      "native_output": "*.runtime.v9.json",
+      "bridge_output": "*.logic.runtime.json"
+    },
+    "automation_system_v8_cross": {
+      "native": [
+        "cross-controller and cross-worker rules"
+      ],
+      "identity_model": "controller_uuid_plus_local_io_id",
+      "forbidden_transport_fields": [
+        "host",
+        "port",
+        "unit",
+        "address"
+      ],
+      "output": "*.runtime.v8.cross.<owner>.json"
+    },
+    "siemens_scl": {
+      "language": "SCL",
+      "iec_blocks": [
+        "TON",
+        "TOF",
+        "TP",
+        "CTU",
+        "CTD"
+      ],
+      "outputs": [
+        "*.logic.scl",
+        "*.logic.tags.csv"
+      ]
+    }
+  },
+  "ownership_modes": {
+    "direct": "The target is controlled by the existing direct/runtime binding.",
+    "logic": "The target is controlled exclusively by the canonical logic graph.",
+    "hybrid": "Manual/HMI and logic paths are explicitly combined by priority arbitration."
+  }
+}

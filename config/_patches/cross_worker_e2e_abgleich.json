@@ -1,0 +1,67 @@
+{
+  "__meta__": {
+    "name": "cross_worker_e2e_abgleich",
+    "description": "Gleicht die Feldbus-Koordinaten des cross_worker-Ziels mit der E2E-Fixture der Control-Plane ab (integration_test/e2e_v0025/fixtures/cross_worker_site-main.json). Dort steht die verbindliche Zielbeschreibung: node fn-02, controller_uuid d11032fa (wago_3), actuator_id 4, function_type write_register, address 544, state_id 14, ausgeloest von rule_id 3 mit owner fn-01. Ohne diesen Abgleich provisioniert der Merge zwar plausible, aber andere Werte - und der E2E-Test der Control-Plane laeuft gegen eine Adresse, die die Anlage nicht kennt."
+  },
+  "actuators": [
+    {
+      "local_controller_id": 2,
+      "actuator_id": 4,
+      "actuator_types_id": 4,
+      "node_id": "fn-02",
+      "site_id": "site_main",
+      "controller_uuid": "d11032fa-33db-56de-a4ed-7e16cca3ded7",
+      "controller_key": "ctrl_wago_3",
+      "enabled": true,
+      "actuator_group": "D",
+      "address": 544,
+      "bus_type": "modbus",
+      "function_type": "write_register",
+      "description": "Cross-Worker-Ziel: Kuehlung State 14, angefordert von fn-01 (E2E-Fixture cross_worker_site-main.json) Skalierung ueber profile_id 2 (Voltage_0_10V).",
+      "profile_id": 2
+    }
+  ],
+  "sensors": [
+    {
+      "local_controller_id": 2,
+      "sensor_id": 1,
+      "profile_id": 1,
+      "sensor_types_id": 1,
+      "node_id": "fn-02",
+      "site_id": "site_main",
+      "controller_uuid": "d11032fa-33db-56de-a4ed-7e16cca3ded7",
+      "controller_key": "ctrl_wago_3",
+      "enabled": true,
+      "sensor_group": "S4",
+      "address": 18,
+      "bus_type": "modbus",
+      "function_type": "read_holding_registers",
+      "description": "Rueckmeldung Kuehlkreis fn-02"
+    }
+  ],
+  "controllers": [
+    {
+      "controller_id": 3,
+      "controller_uuid": "d11032fa-33db-56de-a4ed-7e16cca3ded7",
+      "controller_key": "ctrl_wago_3",
+      "device_name": "wago_3",
+      "node_id": "fn-02",
+      "owner_node_id": "fn-02",
+      "enabled": true,
+      "tags": [
+        "tag",
+        "line2"
+      ],
+      "description": "Auf fn-02 betriebener Controller; controller_uuid wurde unter site_main.fn-01 gepraegt und bleibt beim Node-Wechsel stabil."
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "fn-02",
+      "site_id": "site_main",
+      "node_role": "worker",
+      "enabled": true,
+      "description": "Zweiter Worker: betreibt wago_3 und wago_5, Ziel der cross_worker-Ausfuehrung"
+    }
+  ]
+}
