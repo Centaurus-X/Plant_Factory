@@ -1,0 +1,407 @@
+{
+  "source": "config/_legacy/___device_state_data.json",
+  "target": "config/device_state_data_v9.json",
+  "canonical_version": 9,
+  "scope": "master_global",
+  "summary": {
+    "repair": 11,
+    "info": 20,
+    "breaking": 24,
+    "error": 1
+  },
+  "section_counts": {
+    "meta": 1,
+    "local_node": 1,
+    "sites": 1,
+    "nodes": 1,
+    "site_controller_map": 5,
+    "modbus_functions": 5,
+    "scaling_profiles": 3,
+    "controllers": 5,
+    "virtual_controllers": 3,
+    "sensors": 6,
+    "actuators": 12,
+    "sensor_types": 30,
+    "actuator_types": 17,
+    "parameter_generic_templates": 12,
+    "schema_mappings": 12,
+    "processes": 6,
+    "process_values": 4,
+    "process_modes": 3,
+    "pid_configs": 3,
+    "control_method_templates": 8,
+    "control_methods": 9,
+    "process_states": 15,
+    "rule_engine": 1,
+    "filters": 2,
+    "timers": 3,
+    "rules": 2
+  },
+  "dropped_sections": [
+    "node_registrar",
+    "controller_node_bindings",
+    "event_types",
+    "parameter_schemas",
+    "state_type_parameter_schema_mappings",
+    "automation",
+    "automation_engines",
+    "automation_filters",
+    "automation_rule_sets",
+    "triggers",
+    "actions",
+    "transitions",
+    "events",
+    "dynamic_rule_engine"
+  ],
+  "entries": [
+    {
+      "kind": "repair",
+      "section": "controllers",
+      "message": "controller_id 5 wird von sensors/actuators referenziert, war in der V50-Basis aber nie deklariert - als unkonfigurierter Platzhalter angelegt (host leer, TODO: Adresse nachtragen)"
+    },
+    {
+      "kind": "info",
+      "section": "controllers",
+      "message": "controller_uuid + controller_key additiv ergänzt",
+      "detail": {
+        "count": 5
+      }
+    },
+    {
+      "kind": "info",
+      "section": "virtual_controllers",
+      "message": "controller_id -> controller_uuid ersetzt (V9-Identitätsmodell)",
+      "detail": {
+        "count": 3
+      }
+    },
+    {
+      "kind": "info",
+      "section": "sensors",
+      "message": "flaches V9-Layout: node_id/site_id/controller_uuid/controller_key/enabled denormalisiert; sensor_number und sensor_type entfallen (nicht Teil des V9-Vertrags)",
+      "detail": {
+        "count": 6
+      }
+    },
+    {
+      "kind": "repair",
+      "section": "actuators",
+      "message": "function_type 'write_data' ist kein V9-Wert - auf 'write_register' abgebildet",
+      "detail": {
+        "id": 6
+      }
+    },
+    {
+      "kind": "repair",
+      "section": "actuators",
+      "message": "function_type 'write_data' ist kein V9-Wert - auf 'write_register' abgebildet",
+      "detail": {
+        "id": 7
+      }
+    },
+    {
+      "kind": "repair",
+      "section": "actuators",
+      "message": "function_type 'write_data' ist kein V9-Wert - auf 'write_register' abgebildet",
+      "detail": {
+        "id": 10
+      }
+    },
+    {
+      "kind": "repair",
+      "section": "actuators",
+      "message": "function_type 'write_data' ist kein V9-Wert - auf 'write_register' abgebildet",
+      "detail": {
+        "id": 11
+      }
+    },
+    {
+      "kind": "repair",
+      "section": "actuators",
+      "message": "function_type 'write_data' ist kein V9-Wert - auf 'write_register' abgebildet",
+      "detail": {
+        "id": 12
+      }
+    },
+    {
+      "kind": "info",
+      "section": "actuators",
+      "message": "flaches V9-Layout: node_id/site_id/controller_uuid/controller_key/enabled denormalisiert; actuator_number und actuator_type entfallen (nicht Teil des V9-Vertrags)",
+      "detail": {
+        "count": 12
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "parameter_schemas",
+      "message": "ersetzt durch parameter_generic_templates; fields/constraints entfallen ersatzlos (V9 kennt nur schema_id/state_type/description)",
+      "detail": {
+        "templates": 12
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "state_type_parameter_schema_mappings",
+      "message": "ersetzt durch schema_mappings; match/priority/is_default/state_type entfallen (state_type wandert in parameter_generic_templates)",
+      "detail": {
+        "mappings": 12
+      }
+    },
+    {
+      "kind": "repair",
+      "section": "processes",
+      "message": "p_id 6 wird von process_states referenziert, war in der V50-Basis aber nie deklariert - als Platzhalter angelegt (TODO: process_name nachtragen)"
+    },
+    {
+      "kind": "info",
+      "section": "processes",
+      "message": "owner_node_id ergänzt (V9-Pflichtfeld für Execution-Entities)",
+      "detail": {
+        "count": 6
+      }
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_heating_pid_v1' in state 1 -> mapping_id 110 aufgelöst"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_pressure_v1' in state 2 -> mapping_id 200 aufgelöst"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_cooling_v1' in state 3 -> mapping_id 220 aufgelöst"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_flow_v1' in state 4 -> mapping_id 230 aufgelöst"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_receiving_v1' in state 5 -> mapping_id 280 aufgelöst"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_cooling_v1' in state 9 -> mapping_id 220 aufgelöst"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_valve_v1' in state 10 -> mapping_id 240 aufgelöst"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_pressure_v1' in state 11 -> mapping_id 200 aufgelöst"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_stirring_v1' in state 12 -> mapping_id 250 aufgelöst"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_inflow_v1' in state 13 -> mapping_id 260 aufgelöst"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_heating_method_v1' in state 14 -> mapping_id 120 aufgelöst"
+    },
+    {
+      "kind": "repair",
+      "section": "process_states",
+      "message": "control_strategy.type 'control_method' in state 14 unbekannt - auf null gesetzt"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_pump_v1' in state 15 -> mapping_id 210 aufgelöst"
+    },
+    {
+      "kind": "repair",
+      "section": "process_states",
+      "message": "control_strategy.type 'control_method' in state 15 unbekannt - auf null gesetzt"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_cooling_v1' in state 16 -> mapping_id 220 aufgelöst"
+    },
+    {
+      "kind": "repair",
+      "section": "process_states",
+      "message": "control_strategy.type 'control_method' in state 16 unbekannt - auf null gesetzt"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_reaction_v1' in state 17 -> mapping_id 270 aufgelöst"
+    },
+    {
+      "kind": "repair",
+      "section": "process_states",
+      "message": "control_strategy.type 'control_method' in state 17 unbekannt - auf null gesetzt"
+    },
+    {
+      "kind": "info",
+      "section": "process_states",
+      "message": "parameter_schema_id 'schema_heating_pid_v1' in state 18 -> mapping_id 110 aufgelöst"
+    },
+    {
+      "kind": "error",
+      "section": "process_states",
+      "message": "sensor_id 12 in state 18 existiert nicht - Referenz entfernt"
+    },
+    {
+      "kind": "breaking",
+      "section": "process_states",
+      "message": "sensor_ids/actuator_ids -> io_refs{sensors[],actuators[]} mit controller_uuid; parameter_schema_id -> mapping_id; state_type entfällt (wandert nach parameter_generic_templates); automation_parameters -> parameters",
+      "detail": {
+        "count": 15
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "automation_filters",
+      "message": "umbenannt zu 'filters'; filter_id String -> int; apply_to.sensor_ids -> sensor_refs[{controller_uuid,sensor_id}]",
+      "detail": {
+        "alias": {
+          "smooth_temp": 1,
+          "pressure_fast": 2
+        }
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "timers",
+      "message": "timer 1: 'duration' -> 'duration_s' umbenannt"
+    },
+    {
+      "kind": "breaking",
+      "section": "timers",
+      "message": "timer 2: 'frequency' (14.0/min) existiert in V9 nicht - als interval_s=4.2857 übernommen"
+    },
+    {
+      "kind": "breaking",
+      "section": "timers",
+      "message": "timer 3: 'duration' -> 'duration_s' umbenannt"
+    },
+    {
+      "kind": "breaking",
+      "section": "automation_engines",
+      "message": "ersetzt durch 'rule_engine' (Singleton-Tabelle). engine_id String->int, debug_*-Flachfelder -> debug{}, safety.* -> safety.on_missing_sensor/on_invalid_pid, runtime{} additiv ergänzt"
+    },
+    {
+      "kind": "breaking",
+      "section": "automation",
+      "message": "Profil-Sektion (automation/automation_id/engine_ids/filter_ids/automation_rule_set_ids) entfällt ersatzlos - V9 hat genau eine rule_engine"
+    },
+    {
+      "kind": "breaking",
+      "section": "rules",
+      "message": "rule_set 'main' / rule 1: 'actuator_set' (actuator_id=1) existiert in V9 nicht - Aktionen adressieren States (state_ids/value_id); über io_refs aufgelöst auf state_ids=[2, 9, 15]"
+    },
+    {
+      "kind": "breaking",
+      "section": "rules",
+      "message": "rule_set 'main' / rule 1: 'actuator_set' (actuator_id=2) existiert in V9 nicht - Aktionen adressieren States (state_ids/value_id); über io_refs aufgelöst auf state_ids=[4, 10, 15]"
+    },
+    {
+      "kind": "breaking",
+      "section": "rules",
+      "message": "rule_set 'main' / rule 1: 'actuator_set' (actuator_id=1) existiert in V9 nicht - Aktionen adressieren States (state_ids/value_id); über io_refs aufgelöst auf state_ids=[2, 9, 15]"
+    },
+    {
+      "kind": "breaking",
+      "section": "rules",
+      "message": "rule_set 'main' / rule 1: 'actuator_set' (actuator_id=2) existiert in V9 nicht - Aktionen adressieren States (state_ids/value_id); über io_refs aufgelöst auf state_ids=[4, 10, 15]"
+    },
+    {
+      "kind": "breaking",
+      "section": "rules",
+      "message": "rule_set 'main' / rule 2: 'actuator_set' (actuator_id=3) existiert in V9 nicht - Aktionen adressieren States (state_ids/value_id); über io_refs aufgelöst auf state_ids=[13]"
+    },
+    {
+      "kind": "breaking",
+      "section": "rules",
+      "message": "rule_set 'main' / rule 2: 'actuator_set' (actuator_id=4) existiert in V9 nicht - Aktionen adressieren States (state_ids/value_id); über io_refs aufgelöst auf state_ids=[11]"
+    },
+    {
+      "kind": "breaking",
+      "section": "automation_rule_sets",
+      "message": "ersetzt durch flache 'rules'-Tabelle + 'rule_engine'. Entfallen: rule_set-Hierarchie, process_scope{}, execution{}, flags{one_shot,reset_mode}, when_any[], when_none[]. Neu (V9-Pflicht): owner_node_id, execution_owner, execution_scope, execution_epoch, deployment_status, activation_state, group, priority",
+      "detail": {
+        "count": 2
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "dynamic_rule_engine",
+      "message": "Sektion existiert im V9-Vertrag nicht mehr (decompose() wirft 'unsupported config sections'). Inhalte gehören in 'rules' bzw. bleiben als Editor-Bibliothek in config/_legacy/rule_library.json"
+    },
+    {
+      "kind": "breaking",
+      "section": "triggers",
+      "message": "Sektion existiert im V9-Vertrag nicht mehr und wurde entfernt (Ersatz: rules/timers bzw. sites/nodes/site_controller_map)",
+      "detail": {
+        "entries": 2
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "actions",
+      "message": "Sektion existiert im V9-Vertrag nicht mehr und wurde entfernt (Ersatz: rules/timers bzw. sites/nodes/site_controller_map)",
+      "detail": {
+        "entries": 4
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "transitions",
+      "message": "Sektion existiert im V9-Vertrag nicht mehr und wurde entfernt (Ersatz: rules/timers bzw. sites/nodes/site_controller_map)",
+      "detail": {
+        "entries": 2
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "events",
+      "message": "Sektion existiert im V9-Vertrag nicht mehr und wurde entfernt (Ersatz: rules/timers bzw. sites/nodes/site_controller_map)",
+      "detail": {
+        "entries": 3
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "event_types",
+      "message": "Sektion existiert im V9-Vertrag nicht mehr und wurde entfernt (Ersatz: rules/timers bzw. sites/nodes/site_controller_map)",
+      "detail": {
+        "entries": 21
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "node_registrar",
+      "message": "Sektion existiert im V9-Vertrag nicht mehr und wurde entfernt (Ersatz: rules/timers bzw. sites/nodes/site_controller_map)",
+      "detail": {
+        "entries": 1
+      }
+    },
+    {
+      "kind": "breaking",
+      "section": "controller_node_bindings",
+      "message": "Sektion existiert im V9-Vertrag nicht mehr und wurde entfernt (Ersatz: rules/timers bzw. sites/nodes/site_controller_map)",
+      "detail": {
+        "entries": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,552 @@
+/* =========================================================================
+   bridge.css — Bruecke Bestand → V9-Komponenten (V56.1)
+   =========================================================================
+   Ausgangslage V54.2: zwei vollstaendige Bausteinsaetze nebeneinander.
+
+     alt   .btn .btn-icon .tool-btn .card .pill .tab .table .subtab …
+           Hoehe 34, Radius 6, 14px, Schnitt 500
+     neu   .v9-btn .v9-card .v9-pill .v9-badge …
+           Hoehe 32, Radius 5, 13px, Schnitt 550
+
+   Beide erscheinen im selben Panel. Der Wechsel von "Rules" auf "Rules V9"
+   verschiebt jede Kante um ein bis zwei Pixel — sichtbar, ohne dass man den
+   Grund benennen koennte.
+
+   Diese Datei bringt die ALTEN Klassen auf die Geometrie und Farbe der
+   V9-Komponenten. Sie wird NACH style.css und components.css geladen und
+   fasst weder die Altmodule noch deren Markup an: kein JavaScript aendert
+   sich, kein innerHTML muss umgeschrieben werden. Entfernt man diese Datei
+   aus index.html, ist der Zustand von V54.2 wiederhergestellt.
+
+   Reihenfolge in index.html ist bindend:
+     tokens → fonts → style → layout → components → bridge
+   ========================================================================= */
+
+/* ─────────────────────────────────────────────── Symbolsprite ─────────── */
+
+.ico {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  display: inline-block;
+  vertical-align: -3px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.ico--sm { width: 13px; height: 13px; stroke-width: 1.8; }
+.ico--lg { width: 18px; height: 18px; }
+
+/* Der Text neben einem Symbol darf nie umbrechen. */
+.btn .ico + span,
+.v9-btn .ico + span { white-space: nowrap; }
+
+/* ───────────────────────────────────────────────────── Schalter ───────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--v9-space-2);
+  min-height: 30px;
+  padding: 0.3rem 0.75rem;
+  font-family: var(--v9-font-sans);
+  font-size: var(--v9-text-md);
+  font-weight: 550;
+  line-height: 1.2;
+  color: var(--v9-ink);
+  background: var(--v9-surface-0);
+  border: 1px solid var(--v9-line-strong);
+  border-radius: var(--v9-radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--v9-dur-fast) var(--v9-ease),
+              border-color var(--v9-dur-fast) var(--v9-ease),
+              color var(--v9-dur-fast) var(--v9-ease);
+}
+
+.btn:hover { background: var(--v9-surface-2); border-color: var(--v9-ink-faint); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn .icon { font-size: inherit; }
+
+.btn-primary,
+.btn-primary:hover { color: var(--v9-accent-fg); }
+.btn-primary { background: var(--v9-accent); border-color: var(--v9-accent); }
+.btn-primary:hover { background: var(--v9-accent-hover); border-color: var(--v9-accent-hover); }
+
+.btn-secondary { background: var(--v9-surface-0); color: var(--v9-ink); border-color: var(--v9-line-strong); }
+.btn-secondary:hover { background: var(--v9-surface-2); }
+
+/* Gruen ist im Anlagenbild die Zustandsfarbe "ok". Ein gruener Export-Schalter
+   konkurriert damit. Die Hauptaktion traegt den Akzent, nicht den Zustand. */
+.btn-success { background: var(--v9-accent); border-color: var(--v9-accent); color: var(--v9-accent-fg); }
+.btn-success:hover { background: var(--v9-accent-hover); border-color: var(--v9-accent-hover); }
+
+.btn-danger { background: var(--v9-danger); border-color: var(--v9-danger); color: #fff; }
+.btn-danger:hover { background: var(--v9-danger); filter: brightness(0.92); }
+
+.btn-small { min-height: 24px; padding: 0.1rem 0.5rem; font-size: var(--v9-text-sm); }
+
+.btn-icon {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--v9-ink-muted);
+  background: transparent;
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-sm);
+  cursor: pointer;
+  transition: background var(--v9-dur-fast) var(--v9-ease),
+              color var(--v9-dur-fast) var(--v9-ease),
+              border-color var(--v9-dur-fast) var(--v9-ease);
+}
+
+.btn-icon:hover { background: var(--v9-surface-2); color: var(--v9-ink); border-color: var(--v9-line-strong); }
+
+/* ──────────────────────────────────────────── Werkzeugschalter ────────── */
+
+.tool-btn {
+  width: 28px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--v9-ink-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--v9-radius-sm);
+  cursor: pointer;
+  transition: background var(--v9-dur-fast) var(--v9-ease),
+              color var(--v9-dur-fast) var(--v9-ease);
+}
+
+.tool-btn:hover { background: var(--v9-surface-2); color: var(--v9-ink); border-color: var(--v9-line); }
+
+/* Aktiv = Akzentfarbe auf heller Flaeche, nicht Vollflaeche. Bei acht
+   Schaltern nebeneinander sind acht farbige Kacheln zu laut; die eine
+   aktive muss sich abheben, nicht schreien. */
+.tool-btn.active {
+  color: var(--v9-accent);
+  background: var(--v9-accent-bg);
+  border-color: var(--v9-accent-line);
+}
+
+.tool-btn .icon { font-size: inherit; }
+
+/* Umschalter mit Beschriftung. Bei "Raster" und "Einrasten" ist der Zustand
+   die eigentliche Information — ein blosses Symbol beantwortet nicht, ob es
+   an oder aus ist. Steht hier und nicht in layout.css, weil .tool-btn oben in
+   derselben Datei dieselbe Spezifitaet hat und sonst gewinnt. */
+.tool-btn--labelled {
+  width: auto;
+  padding: 0 var(--v9-space-2);
+  gap: 6px;
+}
+
+.tool-btn--labelled span { font-size: var(--v9-text-xs); font-weight: 600; }
+
+.toolbar-group { gap: 2px; padding: 0 var(--v9-space-2); border-right: 1px solid var(--v9-line); }
+
+.zoom-indicator {
+  font-family: var(--v9-font-mono);
+  font-size: var(--v9-text-sm);
+  font-weight: 400;
+  color: var(--v9-ink);
+  min-width: 48px;
+}
+
+/* ───────────────────────────────────────────────── Eingabefelder ──────── */
+
+.search-input,
+.select-input,
+.property-value,
+.text-input,
+.text-area,
+.form-group input,
+.form-group select,
+.form-group textarea,
+#projekt-name {
+  width: 100%;
+  padding: 0.32rem 0.5rem;
+  font-family: var(--v9-font-sans);
+  font-size: var(--v9-text-md);
+  color: var(--v9-ink);
+  background: var(--v9-surface-0);
+  border: 1px solid var(--v9-line-strong);
+  border-radius: var(--v9-radius-sm);
+  transition: border-color var(--v9-dur-fast) var(--v9-ease),
+              box-shadow var(--v9-dur-fast) var(--v9-ease);
+}
+
+.search-input:focus,
+.select-input:focus,
+.property-value:focus,
+.text-input:focus,
+.text-area:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+#projekt-name:focus {
+  outline: none;
+  border-color: var(--v9-accent);
+  box-shadow: var(--v9-ring);
+}
+
+.text-area,
+.code,
+.rules-root .code {
+  font-family: var(--v9-font-mono);
+  font-size: var(--v9-text-sm);
+  line-height: 1.55;
+}
+
+.code {
+  background: var(--v9-surface-inset);
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-sm);
+  color: var(--v9-ink);
+}
+
+.property-label,
+.form-group label {
+  font-size: var(--v9-text-xs);
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  color: var(--v9-ink-muted);
+}
+
+/* ───────────────────────────────────────────────────── Flaechen ───────── */
+
+.card {
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-lg);
+  background: var(--v9-surface-0);
+  box-shadow: none;
+}
+
+.card-title {
+  padding: var(--v9-space-2) var(--v9-space-3);
+  font-size: var(--v9-text-lg);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--v9-ink);
+  background: linear-gradient(to bottom, var(--v9-surface-1), var(--v9-surface-0));
+  border-bottom: 1px solid var(--v9-line);
+}
+
+.card-body { padding: var(--v9-space-3); }
+
+.pill,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--v9-space-1);
+  padding: 0.1rem 0.5rem;
+  font-size: var(--v9-text-xs);
+  font-weight: 600;
+  color: var(--v9-ink-muted);
+  background: var(--v9-surface-0);
+  border: 1px solid var(--v9-muted-line);
+  border-radius: var(--v9-radius-pill);
+}
+
+.hint-text {
+  font-style: normal;
+  font-size: var(--v9-text-sm);
+  line-height: 1.55;
+  color: var(--v9-ink-faint);
+}
+
+.no-selection {
+  padding: var(--v9-space-6) var(--v9-space-4);
+  font-size: var(--v9-text-md);
+  color: var(--v9-ink-faint);
+}
+
+.sep { border-top-color: var(--v9-line); }
+
+/* ─────────────────────────────────────────────────── Listen/Items ─────── */
+
+.projekt-item,
+.connection-item,
+.rule-item,
+.layer-item {
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-sm);
+  background: var(--v9-surface-0);
+  transition: border-color var(--v9-dur-fast) var(--v9-ease),
+              background var(--v9-dur-fast) var(--v9-ease);
+}
+
+.projekt-item:hover,
+.connection-item:hover { border-color: var(--v9-accent-line); background: var(--v9-accent-bg); }
+
+.layer-item { border: 1px solid transparent; background: transparent; }
+.layer-item:hover { background: var(--v9-surface-2); }
+.layer-item.selected { background: var(--v9-accent-bg); color: var(--v9-accent); border-color: var(--v9-accent-line); }
+
+.rule-id,
+.rule-label { font-family: var(--v9-font-mono); }
+.rule-row { font-family: var(--v9-font-mono); font-size: var(--v9-text-sm); }
+
+/* ───────────────────────────────────────────────── Rastertabellen ─────── */
+
+.table .tr {
+  padding: 0.3rem var(--v9-space-2);
+  background: var(--v9-surface-0);
+  border-bottom: 1px solid var(--v9-line);
+  border-radius: 0;
+  font-size: var(--v9-text-md);
+}
+
+.table .tr:nth-child(even) { background: var(--v9-surface-1); }
+.table .tr:hover { background: var(--v9-accent-bg); }
+
+.table .th,
+.table .tr.th {
+  background: var(--v9-surface-2);
+  border: none;
+  border-bottom: 1px solid var(--v9-line);
+  font-size: var(--v9-text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--v9-tracking-wide);
+  text-transform: uppercase;
+  color: var(--v9-ink-muted);
+}
+
+.table .th:hover,
+.table .tr.th:hover { background: var(--v9-surface-2); }
+
+.table code { font-family: var(--v9-font-mono); font-size: var(--v9-text-sm); }
+
+/* ──────────────────────────────────────────────────── Untertabs ───────── */
+
+.subtabs,
+.rules-root .subtabs {
+  gap: 2px;
+  padding: 2px;
+  background: var(--v9-surface-2);
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-md);
+}
+
+.subtab,
+.rules-root .subtab {
+  padding: 0.28rem 0.7rem;
+  font-size: var(--v9-text-md);
+  font-weight: 600;
+  color: var(--v9-ink-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--v9-radius-sm);
+}
+
+.subtab:hover { color: var(--v9-ink); }
+
+.subtab.active,
+.rules-root .subtab.active {
+  color: var(--v9-ink);
+  background: var(--v9-surface-0);
+  border-color: var(--v9-line);
+  box-shadow: var(--v9-shadow-1);
+}
+
+/* ──────────────────────────────────────────────────────── Modale ──────── */
+
+.modal { background: rgba(28, 25, 23, 0.5); backdrop-filter: blur(2px); }
+
+.modal-content {
+  background: var(--v9-surface-0);
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-lg);
+  box-shadow: var(--v9-shadow-3);
+}
+
+.modal-header,
+.modal-footer {
+  padding: var(--v9-space-3) var(--v9-space-4);
+  background: var(--v9-surface-1);
+  border-color: var(--v9-line);
+}
+
+.modal-header h2 { font-size: var(--v9-text-xl); font-weight: 650; letter-spacing: -0.01em; }
+.modal-body { padding: var(--v9-space-4); }
+.modal-close { color: var(--v9-ink-muted); border-radius: var(--v9-radius-sm); }
+.modal-close:hover { background: var(--v9-surface-2); color: var(--v9-ink); }
+
+/* ───────────────────────────────────────────── Symbolvorlagen links ───── */
+
+.template-palette { padding: var(--v9-space-2); }
+
+.template-grid {
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: var(--v9-space-1);
+}
+
+.template-item {
+  padding: var(--v9-space-2);
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-sm);
+  background: var(--v9-surface-0);
+  transition: border-color var(--v9-dur-fast) var(--v9-ease),
+              background var(--v9-dur-fast) var(--v9-ease);
+}
+
+.template-item:hover {
+  border-color: var(--v9-accent);
+  background: var(--v9-accent-bg);
+  box-shadow: none;
+  transform: none;
+}
+
+.template-item:active { transform: none; }
+
+.template-item .template-name {
+  font-family: var(--v9-font-mono);
+  font-size: var(--v9-text-2xs);
+  color: var(--v9-ink-faint);
+}
+
+.kategorie-titel {
+  font-size: var(--v9-text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--v9-tracking-wide);
+  color: var(--v9-ink-faint);
+}
+
+/* ──────────────────────────────────────────────── Zeichenflaeche ──────── */
+
+.svg-element.selected { filter: drop-shadow(0 0 3px rgba(109, 40, 217, 0.55)); }
+
+.selection-box {
+  stroke: var(--v9-accent);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+  animation: none;                 /* laufende Ameisen lenken beim Zeichnen ab */
+}
+
+.anchor-handle { fill: var(--v9-accent); stroke: var(--v9-surface-0); stroke-width: 1.5; }
+
+.connection-line { stroke: var(--v9-ink-muted); }
+.connection-line.selected { stroke: var(--v9-accent); stroke-width: 2.5; }
+.connection-line[data-type="pipe"] { stroke: var(--v9-ink-muted); }
+.connection-line[data-type="signal"] { stroke: var(--v9-accent); stroke-dasharray: 5 4; }
+.connection-line[data-type="data"] { stroke: var(--v9-info); stroke-dasharray: 9 4; }
+
+.hotkey-active::after { background: var(--v9-accent); }
+
+/* ──────────────────────────────────────────────── Statusleiste ────────── */
+
+#app-footer {
+  background: var(--v9-ink);
+  color: var(--v9-line-strong);
+  border-top: none;
+  font-family: var(--v9-font-mono);
+  font-size: var(--v9-text-xs);
+  letter-spacing: 0;
+}
+
+#app-footer .separator { color: var(--v9-ink-muted); }
+
+[data-theme="dark"] #app-footer {
+  background: var(--v9-surface-inset);
+  color: var(--v9-ink-muted);
+  border-top: 1px solid var(--v9-line);
+}
+
+/* ───────────────────────────────────────────── HMI-Laufzeit-Widgets ───── */
+
+.hmi-runtime-widget {
+  font-family: var(--v9-font-mono);
+  font-size: var(--v9-text-xs);
+  border-radius: var(--v9-radius-sm);
+  border-color: var(--v9-line-strong);
+  background-color: rgba(28, 25, 23, 0.92);
+  box-shadow: var(--v9-shadow-1);
+}
+
+/* =========================================================================
+   Anlagenzustaende — EINE Definition fuer den Editor
+   =========================================================================
+   Bis V54.2 standen diese Klassen dreimal in style.css, mit abweichenden
+   Werten, plus ein viertes Mal in layout.css und ein fuenftes Mal in
+   hmi_animation.js (ANIMATION_CSS). Welche gewann, haing an der
+   Ladereihenfolge: ein Alarm blinkte im Editor anders als im exportierten
+   Bild.
+
+   Ab V55.1 gibt es genau zwei Orte, und sie fuehren dieselben Werte:
+
+     Editor   diese Datei
+     Export   public/js/hmi_animation.js → ANIMATION_CSS
+
+   Die Trennung bleibt bewusst: das exportierte SVG muss ohne die CSS-Dateien
+   des Editors funktionieren. Die Angleichung der Werte geschieht deshalb
+   nicht per Verweis zur Laufzeit, sondern durch identische Tripel — Schritt
+   3.2 des Umsetzungsplans erzeugt beide kuenftig aus derselben Quelle.
+
+   Die Tripel selbst bleiben unveraendert gegenueber V54.2: Gruen, Gelb und
+   Rot am Anlagenbild sind eine Sicherheitskonvention, keine
+   Gestaltungsentscheidung.
+   ====================================================================== */
+
+.ok-green    { --hmi-tint: 34, 197, 94; }
+.warn-yellow { --hmi-tint: 245, 158, 11; }
+.alarm-red   { --hmi-tint: 239, 68, 68; }
+.info-blue   { --hmi-tint: 59, 130, 246; }
+.idle-grey   { --hmi-tint: 148, 163, 184; }
+
+.ok-green,
+.warn-yellow,
+.alarm-red,
+.info-blue,
+.idle-grey {
+  border-color: rgba(var(--hmi-tint), 0.95) !important;
+  box-shadow: 0 0 0 2px rgba(var(--hmi-tint), 0.2);
+}
+
+svg .ok-green [data-hmi-fill="1"],
+svg .warn-yellow [data-hmi-fill="1"],
+svg .info-blue [data-hmi-fill="1"],
+svg .idle-grey [data-hmi-fill="1"] { fill: rgb(var(--hmi-tint)); fill-opacity: 0.35; }
+
+svg .alarm-red [data-hmi-fill="1"] { fill: rgb(var(--hmi-tint)); fill-opacity: 0.45; }
+
+svg .ok-green,
+svg .warn-yellow,
+svg .alarm-red,
+svg .info-blue,
+svg .idle-grey { stroke: rgb(var(--hmi-tint)); }
+
+.hmi-alarm-sev-warn,
+.hmi-alarm-sev-warning { filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.35)); }
+
+.hmi-alarm-sev-critical { filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.45)); }
+
+.hmi-alarm-active { outline: 2px solid rgba(239, 68, 68, 0.55); outline-offset: 2px; }
+
+/* hmi-anim-pulse und hmi-anim-flow fehlten dem Editor bisher ganz — sie waren
+   nur im Export definiert. Damit sah eine modellierte Animation im Editor
+   nach nichts aus. */
+@keyframes hmi-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes hmi-flow { to { stroke-dashoffset: -24; } }
+
+.hmi-anim-pulse {
+  animation: hmi-pulse 1.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.hmi-anim-flow { stroke-dasharray: 8 4; animation: hmi-flow 0.9s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hmi-anim-blink,
+  .hmi-anim-pulse,
+  .hmi-anim-flow { animation: none; }
+}

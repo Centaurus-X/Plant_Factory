@@ -1,0 +1,36 @@
+{
+  "release": "64_r3",
+  "base_release": "64",
+  "inherits": "64_r2",
+  "package_version": "64.0.0",
+  "schema_changes": false,
+  "primary_change_scope": "plant_drawing_workspace",
+  "patch_contract": "PF-V64-R3-DRAWING-ASSEMBLY",
+  "drawing_schema": "plant-factory.plant-drawing",
+  "drawing_schema_version": 1,
+  "assembly_schema": "plant-factory.plant-drawing-assembly",
+  "assembly_schema_version": 1,
+  "inventories": {
+    "drawing": ["PF-PID-V1 standard templates", "imported plant templates", "assembly templates"],
+    "plant": ["standard", "legacy", "custom entities"]
+  },
+  "transfers": {
+    "drawing_to_plant_parts": "placeSelectionInPlant",
+    "drawing_to_plant_custom_entity": "saveToInventory",
+    "assembly_to_plant_custom_entity": "transferAssemblyToPlantInventory",
+    "plant_to_drawing": "importPlantTemplateIntoDrawing"
+  },
+  "api": [
+    "GET /api/drawing-assemblies",
+    "POST /api/drawing-assemblies",
+    "POST /api/drawing-assemblies/loeschen"
+  ],
+  "compatibility": {
+    "v64_r1_drawing": "preserved",
+    "v64_r2_automation_studio": "preserved",
+    "classic_connections": "preserved",
+    "project_schema": "unchanged",
+    "v9_runtime": "canonical",
+    "v8_cross": "preserved"
+  }
+}

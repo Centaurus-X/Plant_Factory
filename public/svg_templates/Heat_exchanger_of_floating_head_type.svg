@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["floating head","schwimmkopf"],"animierbare_bereiche":[".pid-state-fill",".pid-primary",".pid-flow"],"bindings":[],"breite":120,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"family":"floating-head-exchanger","favorite":false,"geometry_profile":"horizontal_vessel","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":80,"id":"Heat_exchanger_of_floating_head_type","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Wärmetauscher","library_role":"process","name":"Wärmetauscher Floating Head","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"in","id":"shell_in","kind":"process","name":"Mantel Eingang","role":"main","rx":0.0,"ry":0.5,"x":0,"y":40},{"direction":"out","id":"shell_out","kind":"process","name":"Mantel Ausgang","role":"main","rx":1.0,"ry":0.5,"x":120,"y":40},{"direction":"in","id":"tube_in","kind":"utility","name":"Rohr Eingang","role":"main","rx":0.48333333333333334,"ry":0.0,"x":58,"y":0},{"direction":"out","id":"tube_out","kind":"utility","name":"Rohr Ausgang","role":"main","rx":0.48333333333333334,"ry":1.0,"x":58,"y":80}],"profile":"horizontal_vessel","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":40,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","symbol_type":"floating-head-exchanger","tag_prefix":"E","view_box":[0,0,120,80]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" width="120" height="80" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="floating-head-exchanger" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-flow" d="M0 40 H8 M112 40 H120"/>
+  <path class="pid-outline" d="M18 14 H96 C107 14 114 25 114 40 C114 55 107 66 96 66 H18 C11 66 6 55 6 40 C6 25 11 14 18 14 Z"/>
+  <path class="pid-detail" d="M24 14 V66 M91 14 V66 M100 20 C106 27 106 53 100 60"/>
+  <path class="pid-primary" data-pf-state-target="heat" d="M18 30 H93 M18 40 H98 M18 50 H93"/>
+  <path class="pid-detail" d="M58 0 V14 M58 66 V80"/>
+</g>
+</svg>

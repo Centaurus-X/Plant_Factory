@@ -1,0 +1,127 @@
+/*
+ * Plant Factory V64_r5 drawing workspace: classic optical variant, layers,
+ * routed lines, regions, dimensions and the animation switch. Additive on top
+ * of v64.css … v64_r4.css; every selector is scoped to the plant drawing
+ * workspace and reuses the existing design tokens.
+ */
+
+/* Layer toggles ---------------------------------------------------------- */
+
+.plant-drawing-layer-group {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--v9-border, var(--border-color));
+  border-radius: 8px;
+  background: var(--v9-surface-2, var(--bg-color));
+}
+
+.plant-drawing-layer-toggle {
+  min-height: 26px;
+  padding: 2px 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--v9-text-muted, var(--text-muted));
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.plant-drawing-layer-toggle.active {
+  color: var(--v9-accent, var(--primary-color));
+  border-color: var(--v9-accent-line, var(--primary-color));
+  background: var(--v9-accent-bg, var(--panel-bg));
+}
+
+.plant-drawing-layer-toggle:not(.active) {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Routed lines, regions and dimensions ----------------------------------- */
+
+.plant-drawing-polyline-hit {
+  cursor: move;
+}
+
+.plant-drawing-polyline.is-selected path:not(.plant-drawing-polyline-hit) {
+  filter: drop-shadow(0 0 2px var(--v9-accent, #2563eb));
+}
+
+.plant-drawing-region rect {
+  pointer-events: stroke;
+  cursor: move;
+}
+
+.plant-drawing-region text {
+  pointer-events: all;
+  cursor: move;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.plant-drawing-region.is-selected rect {
+  stroke: var(--v9-accent, #2563eb);
+}
+
+.plant-drawing-dimension {
+  cursor: move;
+}
+
+.plant-drawing-dimension text {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.plant-drawing-dimension.is-selected line,
+.plant-drawing-dimension.is-selected path {
+  stroke: var(--v9-accent, #2563eb);
+}
+
+.plant-drawing-draft-point {
+  fill: var(--v9-surface-0, #ffffff);
+  stroke: var(--v9-accent, #2563eb);
+  stroke-width: 1.5;
+}
+
+#plant-drawing-canvas[data-tool="polyline"],
+#plant-drawing-canvas[data-tool="region"],
+#plant-drawing-canvas[data-tool="dimension"] {
+  cursor: crosshair;
+}
+
+/* Classic inventory cards -------------------------------------------------- */
+
+.plant-drawing-template-card[data-style="classic"] .plant-drawing-template-card__mode {
+  color: #1f2937;
+  background: #e5e7eb;
+}
+
+.plant-drawing-template-card[data-layer="structure"] .plant-drawing-template-card__mode {
+  color: #475569;
+  background: #e2e8f0;
+}
+
+:root[data-theme="dark"] .plant-drawing-template-card[data-style="classic"] .plant-drawing-template-card__preview {
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+/* Animation toggle ----------------------------------------------------------- */
+
+#plant-drawing-animation-toggle.active .ico {
+  color: var(--v9-accent, var(--primary-color));
+}
+
+/* Dark theme ---------------------------------------------------------------- */
+
+:root[data-theme="dark"] .plant-drawing-region text,
+:root[data-theme="dark"] .plant-drawing-dimension text {
+  fill: #cbd5e1;
+}
+
+/* Free texts in the default colour follow the theme; explicit colours stay. */
+:root[data-theme="dark"] .plant-drawing-label {
+  fill: #e2e8f0;
+}

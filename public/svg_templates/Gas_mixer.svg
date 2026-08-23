@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["gas mixer","gasmischer","mischer","m-101","static mixer"],"animierbare_bereiche":["[data-pf-state-target=\"mixing\"]","[data-pf-state-target=\"flow\"]","[data-pf-state-target=\"inlet_a\"]","[data-pf-state-target=\"inlet_b\"]"],"bindings":[],"breite":120,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"family":"gas-mixer","favorite":true,"geometry_profile":"mixer","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":80,"id":"Gas_mixer","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Behälter","library_role":"process","name":"Gasphasen-Mischer","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"in","id":"inlet_a","kind":"process","name":"Eingang A","role":"main","rx":0.0,"ry":0.3,"x":0,"y":24},{"direction":"in","id":"inlet_b","kind":"process","name":"Eingang B","role":"main","rx":0.0,"ry":0.7,"x":0,"y":56},{"direction":"out","id":"outlet","kind":"process","name":"Mischgas Ausgang","role":"main","rx":0.5,"ry":1.0,"x":60,"y":80},{"direction":"bidirectional","id":"instrument","kind":"process","name":"Instrumentenanschluss","role":"main","rx":0.5,"ry":0.0,"x":60,"y":0}],"profile":"mixer","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":45,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","symbol_type":"gas-mixer","tag_prefix":"M","view_box":[0,0,120,80]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" width="120" height="80" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="gas-mixer" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-flow" data-pf-state-target="inlet_a" d="M0 24 H20"/>
+  <path class="pid-flow" data-pf-state-target="inlet_b" d="M0 56 H20"/>
+  <path class="pid-flow" data-pf-state-target="flow" d="M60 68 V80"/>
+  <path class="pid-detail" d="M60 0 V12"/>
+  <rect class="pid-outline" x="20" y="12" width="80" height="56" rx="12"/>
+  <rect class="pid-state-fill" data-pf-state-target="mixing" x="27" y="19" width="66" height="42" rx="8"/>
+  <path class="pid-detail" d="M36 26 L84 54 M36 54 L84 26 M60 19 V61"/>
+  <path class="pid-primary" data-pf-role="flow-arrow" data-pf-arrow-center="60 74" d="M55 69 L60 79 L65 69 Z"/>
+  <circle class="pid-terminal" cx="0" cy="24" r="3"/><circle class="pid-terminal" cx="0" cy="56" r="3"/><circle class="pid-terminal" cx="60" cy="80" r="3"/><circle class="pid-terminal" cx="60" cy="0" r="3"/>
+</g>
+</svg>

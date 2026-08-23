@@ -1,0 +1,170 @@
+{
+  "release": "64_r5",
+  "base_release": "64",
+  "inherits": "64_r4",
+  "package_version": "64.0.0",
+  "schema_changes": false,
+  "primary_change_scope": "plant_drawing_workspace",
+  "patch_contract": "PF-V64-R5-CLASSIC-DRAWING",
+  "inherited_patch_contract": "PF-V64-R4-DRAWING-GEOMETRY",
+  "drawing_schema": "plant-factory.plant-drawing",
+  "drawing_schema_version": 1,
+  "assembly_schema": "plant-factory.plant-drawing-assembly",
+  "assembly_schema_version": 1,
+  "entity_fields_added": [
+    "visual_state",
+    "layer"
+  ],
+  "primitive_types_added": [
+    "polyline",
+    "region",
+    "dimension"
+  ],
+  "primitive_fields_added": [
+    "points",
+    "line_style",
+    "animated",
+    "layer",
+    "label",
+    "label_position",
+    "font_family",
+    "text_anchor"
+  ],
+  "sheet_fields_added": [
+    "margin"
+  ],
+  "layers": [
+    "process",
+    "structure",
+    "annotation"
+  ],
+  "line_styles": [
+    "plain",
+    "pipe",
+    "capillary",
+    "hot",
+    "cold",
+    "coolant",
+    "purge",
+    "feed",
+    "signal"
+  ],
+  "visual_states": [
+    "neutral",
+    "flow",
+    "heat",
+    "hot",
+    "cold",
+    "cool",
+    "purge",
+    "open",
+    "closed"
+  ],
+  "connection_kinds_added": [
+    "structure"
+  ],
+  "symbol_library": {
+    "standard": "PF-PID-V1",
+    "template_count": 71,
+    "standard_symbols_unchanged": 42,
+    "classic_family": [
+      "Classic_tube",
+      "Classic_tube_flanged",
+      "Classic_tube_tap",
+      "Classic_flange",
+      "Classic_flange_bolted",
+      "Classic_tube_elbow",
+      "Classic_tube_ubend",
+      "Classic_tube_head",
+      "Classic_capillary",
+      "Classic_capillary_elbow",
+      "Classic_swagelok",
+      "Classic_line",
+      "Classic_valve",
+      "Classic_control_valve",
+      "Classic_check_valve",
+      "Classic_flag",
+      "Classic_flag_back",
+      "Classic_instrument",
+      "Classic_furnace",
+      "Classic_cooler",
+      "Classic_column",
+      "Classic_coil_circle",
+      "Classic_mixer_box",
+      "Classic_cylinder"
+    ],
+    "frame_family": [
+      "Frame_post",
+      "Frame_beam",
+      "Frame_foot",
+      "Frame_clamp",
+      "Frame_floor"
+    ],
+    "stretch_profiles_added": [
+      "Classic_tube",
+      "Classic_tube_flanged",
+      "Classic_tube_tap",
+      "Classic_tube_ubend",
+      "Classic_capillary",
+      "Classic_line",
+      "Classic_furnace",
+      "Classic_cooler",
+      "Classic_column",
+      "Frame_post",
+      "Frame_beam",
+      "Frame_floor"
+    ],
+    "animation": "SMIL stroke-dashoffset 0 → -20, 0.5 s, white dashes 9 11"
+  },
+  "editor": {
+    "classic_rendering": "scoped classic stylesheet (.pf-pid-v1 .pc-*) with state rules [data-pf-visual-state] .pf-pid-v1 .pc-*",
+    "visual_state_controls": [
+      "inspector select",
+      "Z key",
+      "context menu 'Darstellung'"
+    ],
+    "layers": "process, structure, annotation with toolbar toggles; hidden layers, their ports and joints are excluded from the export",
+    "structure_inventory_tab": true,
+    "drawing_tools_added": [
+      "polyline (L)",
+      "region (B)",
+      "dimension (D)"
+    ],
+    "animation_toggle": "canvas.pauseAnimations / unpauseAnimations",
+    "sheet_margin_field": "Rand (auto-grow margin, default 80, reference examples 4)",
+    "text_primitives": "inline font-size, font-family and fill on the canvas",
+    "label_roles": [
+      "entity-label",
+      "entity-caption",
+      "entity-tag",
+      "entity-value",
+      "entity-function",
+      "entity-number"
+    ]
+  },
+  "examples": {
+    "classic_reactor": "createClassicReactorExample (39 parts, 23 joints, 31 primitives, 1300 x 1110, margin 4)",
+    "classic_template": "createClassicTemplateExample (19 parts, 22 primitives, 1150 x 830, margin 4)",
+    "r4": "createRohrofenR4Example (31 parts, 25 joints)",
+    "r3": "createRohrofenAssemblyExample (21 parts, 17 joints)",
+    "r1": "createRohrofenPlantExample"
+  },
+  "api": [
+    "GET /api/templates (style, visual_states, default_visual_state, layer per template)",
+    "GET /api/drawing-assemblies",
+    "POST /api/drawing-assemblies (visual states, layers, routed lines, regions, dimensions persisted)",
+    "POST /api/drawing-assemblies/loeschen"
+  ],
+  "compatibility": {
+    "v64_r1_drawing": "preserved",
+    "v64_r2_automation_studio": "preserved",
+    "v64_r3_assemblies": "preserved",
+    "v64_r4_geometry": "preserved",
+    "standard_symbol_optics": "preserved (byte identical SVGs)",
+    "classic_connections": "preserved",
+    "reference_imports": "pixel identical (no auto shift)",
+    "project_schema": "unchanged",
+    "v9_runtime": "canonical",
+    "v8_cross": "preserved"
+  }
+}

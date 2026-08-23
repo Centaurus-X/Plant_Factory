@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["gas bottle","gasflasche","cylinder","versorgung"],"animierbare_bereiche":["[data-pf-state-target=\"valve\"]","[data-pf-state-target=\"level\"]"],"bindings":[],"breite":70,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"family":"gas-bottle","favorite":false,"geometry_profile":"bottle","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":150,"id":"Gas_bottle","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Behälter","library_role":"process","name":"Gasflasche","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"out","id":"gas_out","kind":"process","name":"Gas Ausgang","role":"main","rx":0.5,"ry":0.0,"x":35,"y":0},{"direction":"in","id":"service_in","kind":"process","name":"Befüllung / Service","role":"main","rx":0.5,"ry":1.0,"x":35,"y":150}],"profile":"bottle","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":40,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","symbol_type":"gas-bottle","tag_prefix":"B","view_box":[0,0,70,150]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 150" width="70" height="150" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="gas-bottle" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-outline" d="M17 31 C17 20 25 14 35 14 C45 14 53 20 53 31 V132 C53 141 17 141 17 132 Z"/>
+  <path class="pid-detail" d="M17 31 C23 37 47 37 53 31 M17 132 C23 126 47 126 53 132 M29 14 V8 H41 V14"/>
+  <rect class="pid-state-fill" data-pf-state-target="valve" x="26" y="2" width="18" height="7" rx="1"/>
+  <path class="pid-state-fill" data-pf-state-target="level" d="M20 91 H50 V131 C50 135 20 135 20 131 Z"/>
+  <path class="pid-flow" d="M35 0 V2 M35 139 V150"/>
+</g>
+</svg>

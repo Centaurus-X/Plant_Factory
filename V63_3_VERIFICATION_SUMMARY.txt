@@ -1,0 +1,61 @@
+Plant Factory V63.3 — Verifikationsübersicht
+================================================
+
+Release: 63.3
+Status: FREIGEGEBENE SOFTWARE-BASELINE
+Releasevertrag: PF-V63.3-HMI-IO-UX
+Geerbter Stabilitätsvertrag: PF-V63.2-STABILITY
+
+Umgesetzte Kernpunkte
+---------------------
+- I/O-Aktionen „Zuweisung speichern“ und „Zuweisung entfernen“ gemeinsam angeordnet.
+- Zuordnungsregister standardmäßig eingeklappt und responsiv dargestellt.
+- PF-PID-V1 auf 26 Templates erweitert: Generic_Sensor_Entity in „Messstellen“.
+- HMI-Widgetregister vollbreit oberhalb der Widget-Erzeugung.
+- Explizite Objektwahl beim Widget-Anlegen.
+- Widget und Objektbinding werden atomar gespeichert.
+- Vorhandene Sensor-/Aktorzuweisung kann die Runtime-Quelle vorbelegen.
+- Keine automatische Widget-Erzeugung aus P&ID-Objekten.
+
+Freigabeprüfungen
+-----------------
+Release-Stufen:                         19/19
+PF-PID-V1:                              31/31
+PF-LOGIC-V1 JavaScript:                 66/66
+PF-LOGIC-V1 Runtime:                    35/35
+PF-AUTOMATION-V9-BRIDGE:                40/40
+V63.3 statischer Vertrag:               47/47
+Widget-/Objekt-Relation:                16/16
+V9-Kern:                               145/145
+Plant-Factory-Modellkette:              31/31
+Snapshot-Kette:                         52/52
+Python-Formatparität:                   58/58
+JavaScript-Format:                      42/42
+Externe automation_system_v0101:        29/29
+
+Chromium-Browserprüfungen
+-------------------------
+Basisvertrag:                          119/119
+V62.1 Interaktionen:                    45/45
+V63.1 Logic/FBD:                        51/51
+V63.2 Stabilitätsregressionen:           45/45
+V63.3 I/O/HMI-UX:                       60/60
+Gesamt:                                320/320
+Browser-/Konsolen-/Requestfehler:        0
+
+Archivvertrag
+-------------
+Dateien:                               372
+Interne SHA-256-Einträge:              371
+Deterministischer Doppelbuild:          byte-identisch
+Archivpfade:                            sicher
+Symlinks:                               0
+Pfadtraversal-Einträge:                 0
+.venv/node_modules/__pycache__:         nicht enthalten
+Fresh-Extract-Prüfung:                  bestanden
+
+Hinweis zur Anlagenfreigabe
+---------------------------
+Die Tests bestätigen die reproduzierbare Software-Baseline. Für eine konkrete
+Produktionsanlage bleiben FAT/SAT, reale I/O-Punktprüfung sowie Safety-,
+Security-, SPS-/SCADA-, Feldbus- und Netzwerkabnahme erforderlich.

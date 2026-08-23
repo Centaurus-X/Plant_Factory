@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["swagelok tee","t-verschraubung","tee fitting","abzweig"],"animierbare_bereiche":["[data-pf-state-target=\"flow\"]","[data-pf-state-target=\"fitting\"]"],"bindings":[],"breite":80,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"family":"swagelok-tee","favorite":false,"geometry_profile":"fitting_tee","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":60,"id":"Swagelok_tee","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Rohrbauteile","library_role":"process","name":"Swagelok-T-Verschraubung","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"in","id":"inlet","kind":"process","name":"Verschraubung Eingang","role":"main","rx":0.0,"ry":0.5,"x":0,"y":30},{"direction":"out","id":"outlet","kind":"process","name":"Verschraubung Ausgang","role":"main","rx":1.0,"ry":0.5,"x":80,"y":30},{"direction":"bidirectional","id":"branch","kind":"process","name":"Abzweig","role":"main","rx":0.5,"ry":1.0,"x":40,"y":60}],"profile":"fitting_tee","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":42,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","symbol_type":"swagelok-tee","tag_prefix":"SW","view_box":[0,0,80,60]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 60" width="80" height="60" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="swagelok-tee" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-flow" data-pf-state-target="flow" d="M0 30 H80 M40 30 V60"/>
+  <rect class="pid-muted-fill" x="29" y="19" width="22" height="22" rx="2"/>
+  <path class="pid-outline" data-pf-state-target="fitting" d="M9 22 L13 19 H21 L25 22 V38 L21 41 H13 L9 38 Z M55 22 L59 19 H67 L71 22 V38 L67 41 H59 L55 38 Z M32 45 L35 41 H45 L48 45 V53 L45 57 H35 L32 53 Z"/>
+  <path class="pid-detail" d="M13 19 V41 M21 19 V41 M59 19 V41 M67 19 V41 M35 41 V57 M45 41 V57"/>
+  <circle class="pid-terminal" cx="0" cy="30" r="3"/><circle class="pid-terminal" cx="80" cy="30" r="3"/><circle class="pid-terminal" cx="40" cy="60" r="3"/>
+</g>
+</svg>

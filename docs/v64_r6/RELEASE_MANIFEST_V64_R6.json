@@ -1,0 +1,71 @@
+{
+  "release": "64_r6",
+  "base_release": "64",
+  "inherits": "64_r5",
+  "package_version": "64.0.0",
+  "schema_changes": false,
+  "primary_change_scope": "inventory_navigation_and_structured_drawing_assemblies",
+  "patch_contract": "PF-V64-R6-ACCESSIBLE-STRUCTURED-ASSEMBLY",
+  "inherited_patch_contract": "PF-V64-R5-CLASSIC-DRAWING",
+  "drawing_schema": "plant-factory.plant-drawing",
+  "drawing_schema_version": 1,
+  "assembly_schema": "plant-factory.plant-drawing-assembly",
+  "assembly_schema_version": 1,
+  "custom_template_fields_added": [
+    "composition_mode",
+    "assembly_template_id",
+    "assembly_template",
+    "assembly_export_bounds",
+    "assembly_part_count",
+    "assembly_connection_count"
+  ],
+  "inventory_navigation": {
+    "visible_horizontal_scrollbar": true,
+    "tablist_semantics": true,
+    "keys": ["ArrowLeft", "ArrowRight", "Home", "End"],
+    "focus_visible": true,
+    "forced_colors": true
+  },
+  "structured_assembly": {
+    "composition_mode": "structured-assembly",
+    "layout_entity": "passive pointer-events-none custom SVG",
+    "parts": "normal plant entities",
+    "connections": "normal plant connections",
+    "history": "single placement checkpoint",
+    "legacy_flat_upgrade": "explicit and signature-gated",
+    "fallback": "flat"
+  },
+  "bundled_assembly": {
+    "id": "assembly_template_mt4tvvee_tuvofeq",
+    "name": "Anlagen Entwurf",
+    "category": "Baugruppen",
+    "entities": 31,
+    "connections": 14,
+    "primitives": 45,
+    "total_parts": 90,
+    "width": 1152.0,
+    "height": 1068.0,
+    "animated": false
+  },
+  "symbol_library": {
+    "standard": "PF-PID-V1",
+    "template_count": 71,
+    "changed_template_svgs": 0
+  },
+  "compatibility": {
+    "v64_r5_classic_drawing": "preserved",
+    "v64_r4_geometry": "preserved",
+    "v64_r3_assemblies": "preserved",
+    "v64_r2_automation_studio": "preserved",
+    "flat_custom_svg": "preserved",
+    "project_schema": "unchanged",
+    "v9_runtime": "canonical",
+    "v8_cross": "preserved"
+  },
+  "evidence": [
+    "release_evidence/V64_r6_01_Accessible_Inventory_Scrollbar.png",
+    "release_evidence/V64_r6_02_Drawing_Assembly_Inventory.png",
+    "release_evidence/V64_r6_03_Structured_Assembly_Parts.png",
+    "release_evidence/V64_r6_04_Legacy_Assembly_Upgrade.png"
+  ]
+}

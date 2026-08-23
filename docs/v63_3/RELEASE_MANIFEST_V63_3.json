@@ -1,0 +1,136 @@
+{
+  "release": "63.3",
+  "status": "passed",
+  "contracts": {
+    "object_standard": "PF-PID-V1",
+    "modal_standard": "PF-MODAL-V1",
+    "hmi_standard": "PF-HMI-SETUP-V2",
+    "logic_standard": "PF-LOGIC-V1",
+    "stability_patch": "PF-V63.2-STABILITY",
+    "automation_bridge": "PF-AUTOMATION-V9-BRIDGE",
+    "ux_patch": "PF-V63.3-HMI-IO-UX"
+  },
+  "canonical_models": {
+    "devices": "project.devices.assignments",
+    "hmi_widgets": "project.hmi.hmi_ui.widgets",
+    "hmi_bindings": "project.hmi.hmi_ui.bindings",
+    "project_states": "project.processes.process_states",
+    "project_rules": "project.dynamic_rule_engine.rule_sets",
+    "logic": "project.logic"
+  },
+  "patches": {
+    "io_actions_co_located": true,
+    "io_assignment_register_default": "collapsed",
+    "io_assignment_table": "responsive_fixed_grid",
+    "widget_object_workflow": "explicit_one_step",
+    "widget_binding_transaction": "atomic",
+    "automatic_widget_creation": false
+  },
+  "symbol_library": {
+    "standard": "PF-PID-V1",
+    "template_count": 26,
+    "added_template": "Generic_Sensor_Entity",
+    "category": "Messstellen",
+    "runtime_mapping": "existing_v9_sensor_entity"
+  },
+  "verification": {
+    "release_stages": 19,
+    "status": "passed",
+    "source_tree": "passed",
+    "fresh_extract": "passed",
+    "external_runtime": {
+      "status": "passed",
+      "authority": "automation_system_v0101",
+      "passed": 29,
+      "total": 29
+    },
+    "contracts": {
+      "pf_pid_v1": {
+        "passed": 31,
+        "total": 31
+      },
+      "pf_logic_v1_javascript": {
+        "passed": 66,
+        "total": 66
+      },
+      "pf_logic_v1_runtime": {
+        "passed": 35,
+        "total": 35
+      },
+      "pf_automation_v9_bridge": {
+        "passed": 40,
+        "total": 40
+      },
+      "v63_3_static": {
+        "passed": 47,
+        "total": 47
+      },
+      "widget_object_relation": {
+        "passed": 16,
+        "total": 16
+      },
+      "v9_core": {
+        "passed": 145,
+        "total": 145
+      },
+      "plant_factory_chain": {
+        "passed": 31,
+        "total": 31
+      },
+      "snapshot_chain": {
+        "passed": 52,
+        "total": 52
+      },
+      "python_format_parity": {
+        "passed": 58,
+        "total": 58
+      },
+      "javascript_format": {
+        "passed": 42,
+        "total": 42
+      }
+    },
+    "browser_regressions": {
+      "status": "passed",
+      "baseline": {
+        "passed": 119,
+        "total": 119
+      },
+      "v62_1": {
+        "passed": 45,
+        "total": 45
+      },
+      "v63_1": {
+        "passed": 51,
+        "total": 51
+      },
+      "v63_2": {
+        "passed": 45,
+        "total": 45
+      },
+      "v63_3_ux": {
+        "passed": 60,
+        "total": 60
+      },
+      "combined": {
+        "passed": 320,
+        "total": 320
+      },
+      "console_page_request_errors": 0
+    }
+  },
+  "archive": {
+    "filename": "Automated_SVG_Integration_63_3.zip",
+    "root": "Automated_SVG_Integration_63_3",
+    "files": 372,
+    "sha256_entries": 371,
+    "deterministic": true,
+    "double_build": "byte_identical",
+    "sha256_sidecar": "Automated_SVG_Integration_63_3.zip.sha256",
+    "internal_manifest": "SHA256SUMS",
+    "safety_verification": "passed",
+    "symlinks": 0,
+    "path_traversal_entries": 0,
+    "forbidden_dependency_directories": 0
+  }
+}

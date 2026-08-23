@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["tube furnace","rohrofen","heater","h-101"],"animierbare_bereiche":["[data-pf-state-target=\"temperature\"]","[data-pf-state-target=\"heater_left\"]","[data-pf-state-target=\"heater_right\"]","[data-pf-state-target=\"process\"]"],"bindings":[],"breite":160,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"family":"tube-furnace","favorite":true,"geometry_profile":"furnace","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":220,"id":"Tube_furnace","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Reaktoren","library_role":"process","name":"Rohrofen","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"in","id":"process_in","kind":"process","name":"Prozess Eingang","role":"main","rx":0.5,"ry":0.0,"x":80,"y":0},{"direction":"out","id":"process_out","kind":"process","name":"Prozess Ausgang","role":"main","rx":0.5,"ry":1.0,"x":80,"y":220},{"direction":"in","id":"energy","kind":"power","name":"Heizleistung","role":"main","rx":1.0,"ry":0.5,"x":160,"y":110},{"direction":"out","id":"temperature","kind":"signal","name":"Temperatursignal","role":"main","rx":0.0,"ry":0.5,"x":0,"y":110}],"profile":"furnace","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":30,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","symbol_type":"tube-furnace","tag_prefix":"H","view_box":[0,0,160,220]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" width="160" height="220" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="tube-furnace" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <rect class="pid-outline" x="22" y="18" width="116" height="184" rx="3"/>
+  <rect class="pid-state-fill" data-pf-state-target="temperature" x="28" y="24" width="104" height="172" rx="2"/>
+  <path class="pid-warning" data-pf-state-target="heater_left" d="M45 38 L59 60 L45 82 L59 104 L45 126 L59 148 L45 170 L59 190"/>
+  <path class="pid-warning" data-pf-state-target="heater_right" d="M101 38 L115 60 L101 82 L115 104 L101 126 L115 148 L101 170 L115 190"/>
+  <path class="pid-flow" data-pf-state-target="process" d="M80 0 V220"/>
+  <path class="pid-detail" d="M73 0 V220 M87 0 V220 M65 20 H95 M65 200 H95"/>
+  <path class="pid-primary" d="M74 92 L80 104 L86 92 Z M74 142 L80 154 L86 142 Z"/>
+</g>
+</svg>

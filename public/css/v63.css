@@ -1,0 +1,916 @@
+/*
+ * v63.css — PF-LOGIC-V1 additive FBD workspace.
+ *
+ * The logic editor is a separate view over the canonical project model. It
+ * deliberately does not reuse the P&ID SVG layers and therefore cannot alter
+ * plant geometry, HMI placement or legacy object bindings by accident.
+ */
+
+body[data-workspace-kind="logic"] #main-content,
+body[data-workspace-kind="logic"] #main-content:has(#sidebar-right.collapsed) {
+  grid-template-columns: 72px minmax(0, 1fr);
+}
+
+body[data-workspace-kind="logic"] #sidebar-left,
+body[data-workspace-kind="logic"] #workspace-center,
+body[data-workspace-kind="logic"] #right-splitter,
+body[data-workspace-kind="logic"] #sidebar-right {
+  display: none !important;
+}
+
+#logic-workspace {
+  grid-column: 2 / 6;
+  min-width: 0;
+  min-height: 0;
+}
+
+body[data-workspace-kind="logic"] #logic-workspace {
+  display: grid;
+}
+
+.logic-workspace {
+  --logic-inventory-width: 274px;
+  --logic-inspector-width: 352px;
+  display: none;
+  grid-template-columns: var(--logic-inventory-width) minmax(0, 1fr) var(--logic-inspector-width);
+  overflow: hidden;
+  background: var(--v9-surface-1);
+  color: var(--v9-ink);
+}
+
+.logic-inventory,
+.logic-inspector {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--v9-surface-0);
+}
+
+.logic-inventory {
+  border-right: 1px solid var(--v9-line);
+}
+
+.logic-inspector {
+  border-left: 1px solid var(--v9-line);
+}
+
+.logic-inventory-header,
+.logic-inspector-header {
+  flex: 0 0 auto;
+  padding: 15px 16px 12px;
+  border-bottom: 1px solid var(--v9-line);
+}
+
+.logic-inventory-header h2,
+.logic-inspector-header h2,
+.logic-editor-header h2 {
+  margin: 2px 0 0;
+  font-size: 17px;
+  line-height: 1.25;
+  color: var(--v9-ink);
+}
+
+.logic-inspector-header p,
+.logic-editor-header p {
+  margin: 5px 0 0;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--v9-muted);
+}
+
+.logic-standard-badge,
+.logic-target-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  margin-top: 8px;
+  padding: 3px 8px;
+  border: 1px solid color-mix(in srgb, var(--v9-accent) 42%, var(--v9-line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--v9-accent) 10%, transparent);
+  color: var(--v9-accent);
+  font-size: 10px;
+  font-weight: 760;
+  letter-spacing: 0.025em;
+}
+
+.logic-inventory-tabs,
+.logic-inspector-tabs,
+.logic-preview-tabs {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 2px;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--v9-line);
+  overflow-x: auto;
+}
+
+.logic-inventory-tab,
+.logic-inspector-tab,
+.logic-preview-tab {
+  position: relative;
+  min-height: 38px;
+  padding: 0 9px;
+  border: 0;
+  background: transparent;
+  color: var(--v9-muted);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 680;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.logic-inventory-tab:hover,
+.logic-inspector-tab:hover,
+.logic-preview-tab:hover {
+  color: var(--v9-ink);
+}
+
+.logic-inventory-tab.active,
+.logic-inspector-tab.active,
+.logic-preview-tab.active {
+  color: var(--v9-accent);
+}
+
+.logic-inventory-tab.active::after,
+.logic-inspector-tab.active::after,
+.logic-preview-tab.active::after {
+  position: absolute;
+  right: 6px;
+  bottom: -1px;
+  left: 6px;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: var(--v9-accent);
+  content: "";
+}
+
+.logic-inventory-toolbar {
+  flex: 0 0 auto;
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid var(--v9-line);
+}
+
+.logic-search {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 9px;
+  border: 1px solid var(--v9-line-strong);
+  border-radius: 7px;
+  background: var(--v9-surface-1);
+  color: var(--v9-muted);
+}
+
+.logic-search:focus-within {
+  border-color: var(--v9-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--v9-accent) 15%, transparent);
+}
+
+.logic-search input,
+#logic-category-filter {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--v9-ink);
+  font: inherit;
+  font-size: 11px;
+}
+
+#logic-category-filter {
+  min-height: 34px;
+  padding: 0 8px;
+  border: 1px solid var(--v9-line-strong);
+  border-radius: 7px;
+  background: var(--v9-surface-1);
+}
+
+.logic-inventory-content,
+.logic-inspector-content {
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.logic-inventory-content {
+  padding: 10px;
+}
+
+.logic-inspector-content {
+  padding: 14px 16px 24px;
+}
+
+.logic-inventory-footer {
+  flex: 0 0 auto;
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--v9-line);
+}
+
+.logic-list,
+.logic-block-list,
+.logic-signal-list {
+  display: grid;
+  gap: 7px;
+}
+
+.logic-list-section-title {
+  margin: 9px 2px 4px;
+  color: var(--v9-muted);
+  font-size: 10px;
+  font-weight: 780;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.logic-diagram-item,
+.logic-block-item,
+.logic-signal-item {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 31px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 54px;
+  padding: 8px;
+  border: 1px solid var(--v9-line);
+  border-radius: 8px;
+  background: var(--v9-surface-1);
+  color: var(--v9-ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.logic-block-item {
+  cursor: grab;
+}
+
+.logic-diagram-item:hover,
+.logic-block-item:hover,
+.logic-signal-item:hover {
+  border-color: color-mix(in srgb, var(--v9-accent) 50%, var(--v9-line));
+  background: color-mix(in srgb, var(--v9-accent) 5%, var(--v9-surface-1));
+}
+
+.logic-diagram-item.active {
+  border-color: var(--v9-accent);
+  background: color-mix(in srgb, var(--v9-accent) 10%, var(--v9-surface-1));
+  box-shadow: inset 3px 0 0 var(--v9-accent);
+}
+
+.logic-item-icon {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--v9-surface-2);
+  color: var(--v9-accent);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.logic-item-copy {
+  min-width: 0;
+}
+
+.logic-item-copy strong,
+.logic-item-copy span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logic-item-copy strong {
+  font-size: 11px;
+}
+
+.logic-item-copy span {
+  margin-top: 3px;
+  color: var(--v9-muted);
+  font-size: 9.5px;
+}
+
+.logic-item-meta {
+  color: var(--v9-muted);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.logic-editor-shell {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--v9-surface-1);
+}
+
+.logic-editor-header {
+  flex: 0 0 auto;
+  display: flex;
+  min-height: 78px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--v9-line);
+  background: var(--v9-surface-0);
+}
+
+.logic-title-block {
+  min-width: 0;
+}
+
+.logic-title-row {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+}
+
+.logic-title-row h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logic-target-chip {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.logic-header-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+.logic-toolbar {
+  flex: 0 0 auto;
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--v9-line);
+  background: var(--v9-surface-0);
+}
+
+.logic-toolbar .spacer {
+  flex: 1 1 auto;
+}
+
+.logic-mode-hint {
+  margin-right: 5px;
+  color: var(--v9-muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.logic-canvas-viewport {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: auto;
+  outline: 0;
+  background: var(--logic-canvas-bg, #f7f9fc);
+  overscroll-behavior: contain;
+}
+
+[data-theme="dark"] .logic-canvas-viewport {
+  --logic-canvas-bg: #0b1527;
+}
+
+.logic-canvas {
+  display: block;
+  min-width: 2400px;
+  min-height: 1400px;
+  user-select: none;
+  touch-action: none;
+}
+
+.logic-canvas-background {
+  fill: url(#logic-grid-small);
+}
+
+.logic-grid-dot {
+  fill: color-mix(in srgb, var(--v9-muted) 27%, transparent);
+}
+
+[data-theme="dark"] .logic-grid-dot {
+  fill: rgba(112, 144, 190, 0.34);
+}
+
+.logic-node {
+  cursor: move;
+}
+
+.logic-node-frame {
+  fill: var(--v9-surface-0);
+  stroke: var(--v9-line-strong);
+  stroke-width: 1.25;
+  filter: url(#logic-node-shadow);
+}
+
+.logic-node.selected .logic-node-frame {
+  stroke: var(--v9-accent);
+  stroke-width: 2;
+}
+
+.logic-node.invalid .logic-node-frame {
+  stroke: var(--v9-danger);
+  stroke-dasharray: 5 3;
+}
+
+.logic-node-header {
+  fill: color-mix(in srgb, var(--v9-accent) 8%, var(--v9-surface-1));
+}
+
+.logic-node-header--timer {
+  fill: color-mix(in srgb, #8b5cf6 13%, var(--v9-surface-1));
+}
+
+.logic-node-header--counter {
+  fill: color-mix(in srgb, #f59e0b 15%, var(--v9-surface-1));
+}
+
+.logic-node-header--action {
+  fill: color-mix(in srgb, #10b981 13%, var(--v9-surface-1));
+}
+
+.logic-node-title {
+  fill: var(--v9-ink);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.logic-node-subtitle {
+  fill: var(--v9-muted);
+  font-size: 9px;
+  pointer-events: none;
+}
+
+.logic-port {
+  cursor: crosshair;
+}
+
+.logic-port-dot {
+  fill: var(--v9-surface-0);
+  stroke: var(--v9-muted);
+  stroke-width: 1.4;
+}
+
+.logic-port:hover .logic-port-dot,
+.logic-port.pending .logic-port-dot {
+  fill: var(--v9-accent);
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.logic-port[data-type="BOOL"] .logic-port-dot {
+  stroke: #16a34a;
+}
+
+.logic-port[data-type="TIME"] .logic-port-dot {
+  stroke: #8b5cf6;
+}
+
+.logic-port[data-type="INT"] .logic-port-dot,
+.logic-port[data-type="DINT"] .logic-port-dot {
+  stroke: #f59e0b;
+}
+
+.logic-port[data-type="REAL"] .logic-port-dot,
+.logic-port[data-type="NUMERIC"] .logic-port-dot {
+  stroke: #0ea5e9;
+}
+
+.logic-port-label {
+  fill: var(--v9-ink-soft, var(--v9-ink));
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 9px;
+  pointer-events: none;
+}
+
+.logic-edge-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 13;
+  cursor: pointer;
+}
+
+.logic-edge-path,
+.logic-edge-preview {
+  fill: none;
+  stroke: color-mix(in srgb, var(--v9-muted) 78%, var(--v9-line));
+  stroke-width: 2;
+  marker-end: url(#logic-edge-arrow);
+}
+
+.logic-edge.selected .logic-edge-path {
+  stroke: var(--v9-accent);
+  stroke-width: 3;
+}
+
+.logic-edge.invalid .logic-edge-path {
+  stroke: var(--v9-danger);
+  stroke-dasharray: 6 4;
+}
+
+.logic-edge-arrow {
+  fill: color-mix(in srgb, var(--v9-muted) 78%, var(--v9-line));
+}
+
+.logic-empty-state {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  width: min(390px, calc(100% - 40px));
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px;
+  border: 1px dashed var(--v9-line-strong);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--v9-surface-0) 93%, transparent);
+  text-align: center;
+  color: var(--v9-muted);
+}
+
+.logic-empty-state strong {
+  color: var(--v9-ink);
+  font-size: 15px;
+}
+
+.logic-empty-state span {
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.logic-canvas-viewport[data-empty="true"] .logic-empty-state {
+  display: flex;
+}
+
+.logic-canvas-status {
+  position: sticky;
+  right: 10px;
+  bottom: 8px;
+  left: 10px;
+  z-index: 4;
+  display: flex;
+  width: max-content;
+  max-width: calc(100% - 20px);
+  margin: -34px 10px 8px auto;
+  gap: 12px;
+  padding: 5px 9px;
+  border: 1px solid var(--v9-line);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--v9-surface-0) 92%, transparent);
+  color: var(--v9-muted);
+  font-size: 9px;
+  pointer-events: none;
+}
+
+.logic-inspector-card {
+  display: grid;
+  gap: 10px;
+}
+
+.logic-inspector-section {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--v9-line);
+}
+
+.logic-inspector-section:last-child {
+  border-bottom: 0;
+}
+
+.logic-inspector-section h3 {
+  margin: 0;
+  color: var(--v9-ink);
+  font-size: 11px;
+}
+
+.logic-field {
+  display: grid;
+  gap: 4px;
+}
+
+.logic-field label,
+.logic-field-label {
+  color: var(--v9-muted);
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.logic-field input,
+.logic-field select,
+.logic-field textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 34px;
+  padding: 7px 8px;
+  border: 1px solid var(--v9-line-strong);
+  border-radius: 6px;
+  outline: 0;
+  background: var(--v9-surface-1);
+  color: var(--v9-ink);
+  font: inherit;
+  font-size: 11px;
+}
+
+.logic-field textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.logic-field input:focus,
+.logic-field select:focus,
+.logic-field textarea:focus {
+  border-color: var(--v9-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--v9-accent) 14%, transparent);
+}
+
+.logic-field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.logic-binding-summary,
+.logic-diagnostic-list,
+.logic-ownership-note {
+  padding: 9px;
+  border: 1px solid var(--v9-line);
+  border-radius: 7px;
+  background: var(--v9-surface-2);
+  color: var(--v9-muted);
+  font-size: 10px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.logic-binding-summary strong {
+  color: var(--v9-ink);
+}
+
+.logic-diagnostic-item {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 5px;
+  margin: 4px 0;
+}
+
+.logic-diagnostic-item[data-level="error"] {
+  color: var(--v9-danger);
+}
+
+.logic-diagnostic-item[data-level="warning"] {
+  color: var(--v9-warning, #b7791f);
+}
+
+.logic-diagnostic-item[data-level="ok"] {
+  color: var(--v9-success, #15803d);
+}
+
+.logic-context-menu {
+  position: fixed;
+  z-index: 6000;
+  min-width: 210px;
+  max-width: min(310px, calc(100vw - 16px));
+  padding: 5px;
+  border: 1px solid var(--v9-line-strong);
+  border-radius: 8px;
+  background: var(--v9-surface-0);
+  box-shadow: 0 14px 38px rgba(15, 23, 42, 0.28);
+}
+
+.logic-context-menu button {
+  width: 100%;
+  min-height: 32px;
+  padding: 6px 9px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--v9-ink);
+  text-align: left;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.logic-context-menu button:hover,
+.logic-context-menu button:focus-visible {
+  outline: 0;
+  background: var(--v9-surface-2);
+}
+
+.logic-context-menu button[data-danger="true"] {
+  color: var(--v9-danger);
+}
+
+.logic-context-separator {
+  height: 1px;
+  margin: 4px 2px;
+  background: var(--v9-line);
+}
+
+.logic-modal-content {
+  width: min(620px, calc(100vw - 32px));
+}
+
+.logic-compile-modal-content {
+  width: min(1060px, calc(100vw - 32px));
+  height: min(790px, calc(100vh - 32px));
+}
+
+.logic-compile-body {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.logic-compile-summary {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.logic-summary-chip {
+  padding: 5px 8px;
+  border: 1px solid var(--v9-line);
+  border-radius: 999px;
+  background: var(--v9-surface-2);
+  color: var(--v9-muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.logic-target-grid {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.logic-target-card {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--v9-line);
+  border-radius: 9px;
+  background: var(--v9-surface-1);
+}
+
+.logic-target-card h3 {
+  margin: 0;
+  color: var(--v9-ink);
+  font-size: 12px;
+}
+
+.logic-target-card p {
+  margin: 0;
+  color: var(--v9-muted);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.logic-target-status {
+  justify-self: start;
+  margin-top: 3px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: var(--v9-surface-2);
+  color: var(--v9-muted);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.logic-target-status[data-status="OK"] {
+  background: color-mix(in srgb, #16a34a 14%, transparent);
+  color: #15803d;
+}
+
+.logic-target-status[data-status="WARNING"] {
+  background: color-mix(in srgb, #f59e0b 17%, transparent);
+  color: #b45309;
+}
+
+.logic-target-status[data-status="FAILED"] {
+  background: color-mix(in srgb, #dc2626 13%, transparent);
+  color: #dc2626;
+}
+
+.logic-preview-tabs {
+  padding: 0;
+}
+
+.logic-compile-preview {
+  min-width: 0;
+  min-height: 170px;
+  flex: 1 1 auto;
+  margin: 0;
+  overflow: auto;
+  padding: 12px;
+  border: 1px solid var(--v9-line);
+  border-radius: 8px;
+  background: #08111f;
+  color: #d8e5f5;
+  font: 10.5px/1.5 "IBM Plex Mono", ui-monospace, monospace;
+  white-space: pre;
+  tab-size: 2;
+}
+
+.logic-drop-active {
+  box-shadow: inset 0 0 0 2px var(--v9-accent);
+}
+
+@media (max-width: 1420px) {
+  .logic-workspace {
+    --logic-inventory-width: 246px;
+    --logic-inspector-width: 318px;
+  }
+
+  .logic-header-actions .btn {
+    padding-inline: 10px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .logic-workspace {
+    grid-template-columns: 230px minmax(0, 1fr);
+  }
+
+  .logic-inspector {
+    position: absolute;
+    z-index: 80;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(360px, calc(100vw - 100px));
+    box-shadow: -12px 0 30px rgba(15, 23, 42, 0.2);
+  }
+
+  .logic-target-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 780px) {
+  body[data-workspace-kind="logic"] #main-content,
+  body[data-workspace-kind="logic"] #main-content:has(#sidebar-right.collapsed) {
+    grid-template-columns: 58px minmax(0, 1fr);
+  }
+
+  .logic-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .logic-inventory {
+    position: absolute;
+    z-index: 90;
+    top: 0;
+    bottom: 0;
+    left: 58px;
+    width: min(280px, calc(100vw - 58px));
+    box-shadow: 12px 0 30px rgba(15, 23, 42, 0.2);
+  }
+
+  .logic-editor-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .logic-header-actions {
+    width: 100%;
+  }
+
+  .logic-header-actions .btn {
+    flex: 1 1 auto;
+  }
+}

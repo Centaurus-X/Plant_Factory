@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["motor","drive","antrieb"],"animierbare_bereiche":["[data-pf-state-target=\"motor\"]"],"bindings":[],"breite":90,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"family":"electric-motor","favorite":false,"geometry_profile":"machine","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":80,"id":"Electric_motor","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Antriebe","library_role":"process","name":"Elektromotor","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"out","id":"shaft","kind":"power","name":"Welle","role":"main","rx":1.0,"ry":0.5,"x":90,"y":40},{"direction":"in","id":"power","kind":"power","name":"Energie","role":"main","rx":0.0,"ry":0.5,"x":0,"y":40},{"direction":"in","id":"control","kind":"signal","name":"Steuersignal","role":"main","rx":0.5,"ry":0.0,"x":45,"y":0},{"direction":"out","id":"status","kind":"signal","name":"Status","role":"main","rx":0.5,"ry":1.0,"x":45,"y":80}],"profile":"machine","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":10,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","symbol_type":"electric-motor","tag_prefix":"M","view_box":[0,0,90,80]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 80" width="90" height="80" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="electric-motor" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-detail" d="M0 40 H16 M74 40 H90"/>
+  <circle class="pid-state-fill" data-pf-state-target="motor" cx="45" cy="40" r="27"/>
+  <text x="45" y="46" text-anchor="middle" font-size="20" font-weight="700">M</text>
+</g>
+</svg>

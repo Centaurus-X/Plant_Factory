@@ -1,0 +1,60 @@
+flowchart TB
+    subgraph Client["Browser engineering workspace"]
+        Shell["Navigation · canvas · inspector"]
+        PlantUI["Plant editor"]
+        DrawingUI["Drawing editor"]
+        HMIUI["HMI · alarms · event animation"]
+        LogicUI["PF-LOGIC-V1 · Automation Studio"]
+        Store["Canonical in-browser project store"]
+        Shell --> PlantUI
+        Shell --> DrawingUI
+        Shell --> HMIUI
+        Shell --> LogicUI
+        PlantUI <--> Store
+        DrawingUI <--> Store
+        HMIUI <--> Store
+        LogicUI <--> Store
+    end
+    subgraph Model["Functional model and contracts"]
+        PID["PF-PID-V1<br/>templates · ports · animation targets"]
+        Drawing["plant-drawing v1<br/>entities · joints · primitives · layers"]
+        Assembly["plant-drawing-assembly v1<br/>reusable structured composition"]
+        HMI["widgets · bindings · styles · alarms · interactions"]
+        Events["SVG event-animation contract"]
+        Logic["typed blocks · execution plan · SCL target"]
+        V9["Automation V9 / Cross V8 projection"]
+        PID --> Drawing --> Assembly
+        HMI --> Events
+        Logic --> V9
+    end
+    subgraph Service["Local aiohttp service"]
+        Static["Static UI and fonts"]
+        ProjectAPI["Project load/save/export API"]
+        TemplateAPI["SVG template API"]
+        AssemblyAPI["Drawing assembly API"]
+        Sanitizer["SVG sanitization · path isolation"]
+        Atomic["Atomic JSON/text persistence"]
+        TemplateAPI --> Sanitizer
+        AssemblyAPI --> Sanitizer
+        ProjectAPI --> Atomic
+        TemplateAPI --> Atomic
+        AssemblyAPI --> Atomic
+    end
+    subgraph Outputs["Integration outputs"]
+        SVG["SVG artifact"]
+        JSON["Project / drawing JSON"]
+        SCADA["HMI / SCADA export"]
+        Runtime["Node V9 / Cross V8 runtime configuration"]
+        Siemens["Siemens SCL + tag mapping"]
+    end
+    Store <--> Drawing
+    Store <--> HMI
+    Store <--> Logic
+    Store <-->|"HTTP / JSON"| ProjectAPI
+    DrawingUI <-->|"templates / assemblies"| TemplateAPI
+    DrawingUI <-->|"save / delete"| AssemblyAPI
+    Store --> SVG
+    Store --> JSON
+    Store --> SCADA
+    V9 --> Runtime
+    Logic --> Siemens

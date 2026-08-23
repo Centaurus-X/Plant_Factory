@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["pump","feed pump","centrifugal pump","pumpe"],"animierbare_bereiche":["[data-pf-state-target=\"rotor\"]","[data-pf-state-target=\"body\"]"],"bindings":[],"breite":90,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"family":"centrifugal-pump","favorite":true,"geometry_profile":"machine","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":80,"id":"Pump_liquid_type","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Pumpen","library_role":"process","name":"Flüssigkeitspumpe","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"in","id":"suction","kind":"process","name":"Saugseite","role":"main","rx":0.0,"ry":0.5,"x":0,"y":40},{"direction":"out","id":"discharge","kind":"process","name":"Druckseite","role":"main","rx":1.0,"ry":0.5,"x":90,"y":40},{"direction":"in","id":"drive","kind":"power","name":"Antrieb","role":"main","rx":0.5,"ry":1.0,"x":45,"y":80},{"direction":"out","id":"status","kind":"signal","name":"Status","role":"main","rx":0.5,"ry":0.0,"x":45,"y":0}],"profile":"machine","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":10,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","symbol_type":"centrifugal-pump","tag_prefix":"P","view_box":[0,0,90,80]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 80" width="90" height="80" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="centrifugal-pump" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-flow" d="M0 40 H17 M73 40 H90"/>
+  <circle class="pid-state-fill" data-pf-state-target="body" cx="45" cy="40" r="27"/>
+  <path class="pid-primary" data-pf-state-target="rotor" d="M34 23 L62 40 L34 57 Z"/>
+  <circle class="pid-terminal" cx="0" cy="40" r="2.5"/><circle class="pid-terminal" cx="90" cy="40" r="2.5"/>
+</g>
+</svg>

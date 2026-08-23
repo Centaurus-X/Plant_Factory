@@ -1,0 +1,458 @@
+{
+  "sensors": [
+    {
+      "local_controller_id": 1,
+      "sensor_id": 1,
+      "profile_id": 1,
+      "sensor_types_id": 1,
+      "node_id": "fn-02",
+      "site_id": "site_main",
+      "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e",
+      "controller_key": "ctrl_wago_5",
+      "enabled": true,
+      "sensor_group": "S30",
+      "address": 4,
+      "bus_type": "modbus",
+      "function_type": "read_holding_registers",
+      "description": "Ruehrwerk-Manteltemperatur fn-02"
+    },
+    {
+      "local_controller_id": 1,
+      "sensor_id": 2,
+      "profile_id": 4,
+      "sensor_types_id": 4,
+      "node_id": "fn-02",
+      "site_id": "site_main",
+      "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e",
+      "controller_key": "ctrl_wago_5",
+      "enabled": true,
+      "sensor_group": "S31",
+      "address": 5,
+      "bus_type": "modbus",
+      "function_type": "read_holding_registers",
+      "description": "Fuellstand Ruehrbehaelter fn-02"
+    },
+    {
+      "local_controller_id": 1,
+      "sensor_id": 3,
+      "profile_id": 3,
+      "sensor_types_id": 3,
+      "node_id": "fn-02",
+      "site_id": "site_main",
+      "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e",
+      "controller_key": "ctrl_wago_5",
+      "enabled": true,
+      "sensor_group": "S32",
+      "address": 6,
+      "bus_type": "modbus",
+      "function_type": "read_holding_registers",
+      "description": "Kuehlmittel-Durchfluss fn-02"
+    }
+  ],
+  "actuators": [
+    {
+      "local_controller_id": 1,
+      "actuator_id": 1,
+      "profile_id": 2,
+      "actuator_types_id": 9,
+      "node_id": "fn-02",
+      "site_id": "site_main",
+      "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e",
+      "controller_key": "ctrl_wago_5",
+      "enabled": true,
+      "actuator_group": "E",
+      "address": 523,
+      "bus_type": "modbus",
+      "function_type": "write_register",
+      "description": "Ruehrwerk-Drehzahlstellglied fn-02"
+    },
+    {
+      "local_controller_id": 1,
+      "actuator_id": 2,
+      "profile_id": 2,
+      "actuator_types_id": 4,
+      "node_id": "fn-02",
+      "site_id": "site_main",
+      "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e",
+      "controller_key": "ctrl_wago_5",
+      "enabled": true,
+      "actuator_group": "E",
+      "address": 532,
+      "bus_type": "modbus",
+      "function_type": "write_register",
+      "description": "Kuehlpumpe fn-02"
+    },
+    {
+      "local_controller_id": 1,
+      "actuator_id": 3,
+      "profile_id": 4,
+      "actuator_types_id": 1,
+      "node_id": "fn-02",
+      "site_id": "site_main",
+      "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e",
+      "controller_key": "ctrl_wago_5",
+      "enabled": true,
+      "actuator_group": "E",
+      "address": 534,
+      "bus_type": "modbus",
+      "function_type": "write_register",
+      "description": "Kuehlmittelventil fn-02 (Stellventil 0-100 %)"
+    }
+  ],
+  "processes": [
+    {
+      "p_id": 7,
+      "owner_node_id": "fn-02",
+      "execution_epoch": 1,
+      "process_name": "fn02_manual_operation",
+      "process_location": "Secondary Reactor",
+      "enabled": true,
+      "description": "Handbetrieb Ruehrwerk fn-02"
+    },
+    {
+      "p_id": 8,
+      "owner_node_id": "fn-02",
+      "execution_epoch": 1,
+      "process_name": "fn02_jacket_cooling",
+      "process_location": "Secondary Reactor",
+      "enabled": true,
+      "description": "Mantelkuehlung fn-02, auch aus fn-01 anforderbar"
+    }
+  ],
+  "process_states": [
+    {
+      "state_id": 30,
+      "p_id": 7,
+      "value_id": 2,
+      "mode_id": 2,
+      "mapping_id": 250,
+      "owner_node_id": "fn-02",
+      "execution_epoch": 1,
+      "enabled": true,
+      "io_refs": {
+        "sensors": [
+          {
+            "sensor_id": 1,
+            "filter_id": 3,
+            "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e"
+          }
+        ],
+        "actuators": [
+          {
+            "actuator_id": 1,
+            "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e"
+          }
+        ]
+      },
+      "control_strategy": {
+        "pid_config_id": 2,
+        "type": "PID",
+        "sample_time": 0.1,
+        "dt_max_s": 0.5,
+        "out_min": 0.0,
+        "out_max": 10.0,
+        "error_scale": 1.0,
+        "anti_windup": true
+      },
+      "setpoint_source": null,
+      "parameters": {
+        "rpm": 120,
+        "target_rpm": 120
+      },
+      "description": "Ruehren mit Drehzahlregelung (mapping 250 -> schema 6 stirring)"
+    },
+    {
+      "state_id": 31,
+      "p_id": 8,
+      "value_id": 2,
+      "mode_id": 2,
+      "mapping_id": 220,
+      "owner_node_id": "fn-02",
+      "execution_epoch": 1,
+      "enabled": true,
+      "io_refs": {
+        "sensors": [
+          {
+            "sensor_id": 1,
+            "filter_id": 1,
+            "controller_uuid": "62671112-766c-59ed-b0ff-30a49d48f747"
+          },
+          {
+            "sensor_id": 1,
+            "filter_id": 3,
+            "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e"
+          }
+        ],
+        "actuators": [
+          {
+            "actuator_id": 2,
+            "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e"
+          }
+        ]
+      },
+      "control_strategy": {
+        "pid_config_id": 3,
+        "type": "PID",
+        "sample_time": 0.1,
+        "dt_max_s": 0.5,
+        "out_min": 0.0,
+        "out_max": 10.0,
+        "error_scale": 1.0,
+        "anti_windup": true
+      },
+      "setpoint_source": null,
+      "parameters": {
+        "target_temp_c": 25.0
+      },
+      "description": "Mantelkuehlung fn-02, gefuehrt von der Reaktortemperatur auf fn-01 (cross_worker: zwei Controller auf zwei Nodes)"
+    },
+    {
+      "state_id": 32,
+      "p_id": 8,
+      "value_id": 2,
+      "mode_id": 1,
+      "mapping_id": 240,
+      "owner_node_id": "fn-02",
+      "execution_epoch": 1,
+      "enabled": true,
+      "io_refs": {
+        "sensors": [
+          {
+            "sensor_id": 3,
+            "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e"
+          }
+        ],
+        "actuators": [
+          {
+            "actuator_id": 3,
+            "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e"
+          }
+        ]
+      },
+      "control_strategy": {
+        "pid_config_id": 3,
+        "type": "PID",
+        "sample_time": 0.5,
+        "dt_max_s": 2.0,
+        "out_min": 0.0,
+        "out_max": 100.0,
+        "error_scale": 1.0,
+        "anti_windup": true
+      },
+      "setpoint_source": null,
+      "parameters": {
+        "setpoint": 60.0
+      },
+      "description": "Kuehlmittelventil als STELLVENTIL: Sollstellung in Prozent, PID auf 0-100 %, Skalierung ueber profile_id 4 (Level_Percent_0_100 -> Rohwert 0-10000). Damit ist eine Teiloeffnung wie 43 % moeglich, nicht nur auf/zu."
+    }
+  ],
+  "filters": [
+    {
+      "filter_id": 3,
+      "sensor_refs": [
+        {
+          "sensor_id": 1,
+          "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e"
+        }
+      ],
+      "enabled": true,
+      "chain": [
+        {
+          "type": "median",
+          "window": 5
+        },
+        {
+          "type": "moving_average",
+          "window": 5
+        },
+        {
+          "type": "lowpass",
+          "alpha": 0.2
+        },
+        {
+          "type": "scaler_sensor_profile"
+        }
+      ],
+      "description": "Glaettung der fn-02-Manteltemperatur"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": 20,
+      "engine_id": 1,
+      "owner_node_id": "fn-02",
+      "execution_owner": "fn-02",
+      "execution_scope": "node:fn-02",
+      "execution_epoch": 1,
+      "deployment_status": "active_node",
+      "activation_state": "active",
+      "group": "process",
+      "priority": 100,
+      "name": "fn02_stirring_on_level",
+      "enabled": true,
+      "when": [
+        {
+          "sensor_id": 2,
+          "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e",
+          "src": "sensor",
+          "op": ">=",
+          "value": 20.0
+        }
+      ],
+      "do": [
+        {
+          "state_ids": [
+            30
+          ],
+          "value_id": 1
+        }
+      ],
+      "else_do": [
+        {
+          "state_ids": [
+            30
+          ],
+          "value_id": 2
+        }
+      ],
+      "description": "Ruehrwerk erst ab 20 % Fuellstand freigeben"
+    },
+    {
+      "rule_id": 21,
+      "engine_id": 1,
+      "owner_node_id": "fn-02",
+      "execution_owner": "fn-02",
+      "execution_scope": "node:fn-02",
+      "execution_epoch": 1,
+      "deployment_status": "active_node",
+      "activation_state": "active",
+      "group": "process",
+      "priority": 110,
+      "name": "fn02_valve_on_low_flow",
+      "enabled": true,
+      "when": [
+        {
+          "sensor_id": 3,
+          "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e",
+          "src": "sensor",
+          "op": "<=",
+          "value": 5.0
+        }
+      ],
+      "do": [
+        {
+          "state_ids": [
+            32
+          ],
+          "value_id": 1
+        }
+      ],
+      "else_do": [
+        {
+          "state_ids": [
+            32
+          ],
+          "value_id": 2
+        }
+      ],
+      "description": "Kuehlmittelventil oeffnen, sobald der Durchfluss unter 5 mA faellt"
+    },
+    {
+      "rule_id": 22,
+      "engine_id": 1,
+      "owner_node_id": "fn-02",
+      "execution_owner": "fn-02",
+      "execution_scope": "node:fn-02",
+      "execution_epoch": 1,
+      "deployment_status": "active_node",
+      "activation_state": "active",
+      "group": "notify",
+      "priority": 10,
+      "name": "fn02_notify_stirring_nominal",
+      "enabled": true,
+      "when": [
+        {
+          "sensor_id": 1,
+          "filter_id": 3,
+          "controller_uuid": "06ab4528-f8a3-5ec7-a91f-eea79d60761e",
+          "src": "sensor",
+          "op": ">=",
+          "value": {
+            "key": "target_rpm",
+            "param_of_state": 30,
+            "scale": 0.98
+          }
+        },
+        {
+          "state_id": 30,
+          "src": "state",
+          "field": "value_id",
+          "op": "==",
+          "value": 1
+        }
+      ],
+      "do": [
+        {
+          "notify": "fn-02 stirring nominal"
+        }
+      ],
+      "description": "Meldung bei 98 % der Ruehrwerk-Solldrehzahl"
+    },
+    {
+      "rule_id": 30,
+      "engine_id": 1,
+      "owner_node_id": "fn-01",
+      "execution_owner": "fn-01",
+      "execution_scope": "cross:fn-01.default",
+      "execution_epoch": 1,
+      "deployment_status": "active_cross",
+      "activation_state": "active",
+      "group": "process",
+      "priority": 1000,
+      "name": "cross_worker_jacket_cooling_request",
+      "enabled": true,
+      "when": [
+        {
+          "sensor_id": 1,
+          "filter_id": 1,
+          "controller_uuid": "62671112-766c-59ed-b0ff-30a49d48f747",
+          "src": "sensor",
+          "op": ">=",
+          "value": 600.0
+        }
+      ],
+      "until": [
+        {
+          "sensor_id": 1,
+          "filter_id": 1,
+          "controller_uuid": "62671112-766c-59ed-b0ff-30a49d48f747",
+          "src": "sensor",
+          "op": "<=",
+          "value": 520.0
+        }
+      ],
+      "do": [
+        {
+          "state_ids": [
+            31
+          ],
+          "value_id": 1
+        }
+      ],
+      "else_do": [
+        {
+          "state_ids": [
+            31
+          ],
+          "value_id": 2
+        }
+      ],
+      "description": "Cross-Worker: die Reaktortemperatur auf fn-01 fordert die Mantelkuehlung auf fn-02 an. Beruehrt zwei Controller auf ZWEI Nodes und wird deshalb vom Site-Coordinator ausgefuehrt - priority >= rule_engine.runtime.coordinator_min_priority. Die Hysterese macht bereits \"until\"; ein latch waere hier wirkungslos, weil _apply_rule_state_machine nur auf latch=\"manual\" reagiert.",
+      "cross_domain_id": "fn-01.default"
+    }
+  ],
+  "__meta__": {
+    "name": "fn02_ausbau",
+    "description": "Baut den Worker fn-02 vom reinen Aktor-Stub zu einem vollwertigen Node aus: eigene Messtechnik, gefilterte Temperatur, drei vollstaendige Prozesszustaende, node-lokale Regeln und - als eigentlicher Zweck - EINE echte cross_worker-Regel, die einen Sensor auf fn-01 liest und einen Zustand auf fn-02 schaltet. Erst damit ist der Cross-Worker-Pfad des Rollout-Splits durch echte Daten belegt und nicht nur durch eine Fixture."
+  }
+}

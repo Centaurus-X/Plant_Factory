@@ -1,0 +1,178 @@
+{
+  "release": "64",
+  "package_version": "64.0.0",
+  "release_root": "Automated_SVG_Integration_64",
+  "baseline": "63.4",
+  "strategy": "additive",
+  "contracts": {
+    "release": "PF-V64-SVG-EVENT-DRAWING",
+    "object_standard": "PF-PID-V1",
+    "logic_standard": "PF-LOGIC-V1",
+    "automation_bridge": "PF-AUTOMATION-V9-BRIDGE",
+    "hmi_inherited": "PF-V63.4-HMI-UX",
+    "svg_event_schema": "plant-factory.svg-event-animation",
+    "plant_drawing_schema": "plant-factory.plant-drawing"
+  },
+  "features": {
+    "event_animations": {
+      "enabled": true,
+      "triggers": [
+        "signal",
+        "event",
+        "interaction",
+        "alarm"
+      ],
+      "effects": [
+        "fill",
+        "stroke",
+        "temperature",
+        "flow",
+        "blink",
+        "pulse",
+        "rotate",
+        "level",
+        "opacity",
+        "glow"
+      ],
+      "semantic_subtargets": true,
+      "editor_preview": true,
+      "scada_runtime": true
+    },
+    "plant_drawing": {
+      "enabled": true,
+      "elemental_entities": true,
+      "semantic_ports": true,
+      "connection_kinds": [
+        "process",
+        "utility",
+        "signal",
+        "power"
+      ],
+      "free_primitives": [
+        "line",
+        "rect",
+        "ellipse",
+        "text"
+      ],
+      "inventory_preview": true,
+      "custom_entity_upload": true,
+      "svg_export": true,
+      "json_export": true,
+      "project_persistence": true,
+      "v9_export": true
+    }
+  },
+  "inventory": {
+    "template_count": 35,
+    "new_template_count": 9,
+    "new_templates": [
+      "Pipe_straight",
+      "Pipe_elbow_90",
+      "Pipe_tee",
+      "Flange_pair",
+      "Gas_bottle",
+      "Tubular_reactor",
+      "Tube_furnace",
+      "Double_pipe_cooler",
+      "Plate_heat_exchanger"
+    ]
+  },
+  "reference_svg_analysis": {
+    "PID_Anlage_animiert.svg": {
+      "elements": 219,
+      "smil_elements": 66,
+      "ids": 3,
+      "semantic_data_targets": 0,
+      "main_cycle_seconds": 24
+    },
+    "Rohrofen_Template_animiert.svg": {
+      "elements": 148,
+      "smil_elements": 46,
+      "ids": 0,
+      "semantic_data_targets": 0,
+      "main_cycle_seconds": 30
+    },
+    "Reaktor_PID_animiert.svg": {
+      "elements": 216,
+      "smil_elements": 48,
+      "ids": 0,
+      "semantic_data_targets": 0,
+      "main_cycle_seconds": 30
+    }
+  },
+  "compatibility": {
+    "v63_4_projects": true,
+    "existing_hmi": true,
+    "existing_automation_v9": true,
+    "existing_v8_cross": true,
+    "existing_pf_logic_v1": true,
+    "existing_custom_svg": true,
+    "smil_preserved": true,
+    "automatic_widget_creation": false
+  },
+  "quality": {
+    "functional_python": true,
+    "functional_javascript": true,
+    "classes_in_new_code": 0,
+    "lambdas_in_new_code": 0,
+    "decorators_in_new_code": 0,
+    "arrow_functions_in_new_code": 0,
+    "status": "passed"
+  },
+  "tests": {
+    "v64_static": {
+      "status": "passed",
+      "checks": 100
+    },
+    "v64_model": {
+      "status": "passed",
+      "checks": 13
+    },
+    "inherited": {
+      "status": "passed"
+    },
+    "browser": {
+      "status": "passed",
+      "checks": 423,
+      "v64_checks": 46,
+      "console_errors": 0,
+      "page_errors": 0,
+      "request_errors": 0,
+      "remote_checks": 46,
+      "remote_test_origin": "http://192.168.0.80:8090",
+      "trusted_insecure_origin_test_flag": true,
+      "plain_http_coop_warning_documented": true
+    },
+    "server_api": {
+      "status": "passed",
+      "checks": 15
+    },
+    "security": {
+      "status": "passed",
+      "remote_checks": 16
+    },
+    "markup": {
+      "status": "passed",
+      "remote_checks": 20
+    },
+    "reference_builders": {
+      "status": "passed",
+      "normalized_text_exact": true
+    },
+    "archive": {
+      "status": "passed",
+      "files": 417,
+      "manifest_entries": 416,
+      "deterministic": true
+    },
+    "deployment": {
+      "status": "passed",
+      "url": "http://192.168.0.80:8090/",
+      "listener": "0.0.0.0:8090",
+      "process_pid": 701197,
+      "release_directory": "/home/philo/Automated_SVG_Integration_64",
+      "start_script": "/home/philo/Automated_SVG_Integration_64/start_plant_factory.sh",
+      "log": "/home/philo/plant_factory_v64_c8b59a46de3b.log"
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "schema": "plant-factory-release-manifest",
+  "schema_version": 1,
+  "release": "62.1",
+  "package_version": "62.1.0",
+  "status": "passed",
+  "product": "Plant Factory / Automated SVG Integration",
+  "object_standard": {
+    "id": "PF-PID-V1",
+    "version": "1.0",
+    "release": "61.1",
+    "canonical_template_count": 25,
+    "normalization": "non-destructive",
+    "connection_routing": "semantic-port-pair-orthogonal"
+  },
+  "ui_contracts": {
+    "modal": "PF-MODAL-V1",
+    "canvas_context": "PF-CANVAS-CONTEXT-V1",
+    "hmi_setup": "PF-HMI-SETUP-V2"
+  },
+  "hmi_policy": {
+    "auto_create_widgets": false,
+    "process_symbol_drop_policy": "never_create_control",
+    "button_policy": "optional_explicit_only"
+  },
+  "compatibility": {
+    "legacy_objects": true,
+    "custom_svg": true,
+    "animations": true,
+    "runtime_v9": true,
+    "cross_v8": true,
+    "hmi_widgets_optional": true,
+    "project_and_export_formats": "backward-compatible"
+  },
+  "reference_project": {
+    "file": "projekte/designziel_v1_v61_1.json",
+    "entities": 6,
+    "connections": 5,
+    "explicit_hmi_widgets": 2,
+    "explicit_optional_buttons": 1
+  },
+  "verification": {
+    "functional_python_style": "passed",
+    "functional_javascript_style": "passed",
+    "pf_pid_v1_javascript": {
+      "passed": 31,
+      "total": 31
+    },
+    "v9_core": {
+      "passed": 145,
+      "total": 145
+    },
+    "javascript_format": {
+      "passed": 42,
+      "total": 42
+    },
+    "python_format_parity": {
+      "passed": 58,
+      "total": 58
+    },
+    "plant_factory_model_chain": {
+      "passed": 31,
+      "total": 31
+    },
+    "snapshot_chain": {
+      "passed": 52,
+      "total": 52
+    },
+    "rule_contract_external_runtime": {
+      "passed": 29,
+      "total": 29
+    },
+    "chromium_browser_compatibility": {
+      "passed": 119,
+      "total": 119
+    },
+    "chromium_browser_v62_interactions": {
+      "passed": 45,
+      "total": 45
+    },
+    "external_runtime_authority": "automation_system_v0101",
+    "complete_release_stages": {
+      "passed": 16,
+      "total": 16
+    },
+    "result": "passed"
+  },
+  "archive": {
+    "root_directory": "Automated_SVG_Integration_62_1",
+    "file_count": 303,
+    "internal_sha256_entries": 302,
+    "internal_sha256_excludes_manifest_file": "SHA256SUMS",
+    "deterministic": true,
+    "second_build_byte_identical": true,
+    "path_traversal_entries": 0,
+    "absolute_path_entries": 0,
+    "symlinks": 0,
+    "virtual_environments": 0,
+    "node_modules": 0,
+    "python_caches": 0,
+    "fresh_extract_verification": "passed"
+  },
+  "release_evidence": [
+    "release_evidence/v62_1_connection_modal.png",
+    "release_evidence/v62_1_context_menu_inspector_rail.png",
+    "release_evidence/v62_1_hmi_setup.png"
+  ],
+  "documents": [
+    "RELEASE_NOTES_V62_1_DE.md",
+    "DIAGNOSE_UND_RELEASE_V62_1_DE.md",
+    "docs/v62_1/MODAL_STANDARD_PF_MODAL_V1.md",
+    "docs/v62_1/KONTEXTMENUE_UND_CANVAS.md",
+    "docs/v62_1/HMI_SETUP_PF_HMI_SETUP_V2.md",
+    "docs/v62_1/TEST_UND_FREIGABE.md",
+    "#_Documentation/Documentation.md"
+  ]
+}

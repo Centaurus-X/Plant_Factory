@@ -1,0 +1,58 @@
+{
+  "release": "64_r4",
+  "base_release": "64",
+  "inherits": "64_r3",
+  "package_version": "64.0.0",
+  "schema_changes": false,
+  "primary_change_scope": "plant_drawing_workspace",
+  "patch_contract": "PF-V64-R4-DRAWING-GEOMETRY",
+  "inherited_patch_contract": "PF-V64-R3-DRAWING-ASSEMBLY",
+  "drawing_schema": "plant-factory.plant-drawing",
+  "drawing_schema_version": 1,
+  "assembly_schema": "plant-factory.plant-drawing-assembly",
+  "assembly_schema_version": 1,
+  "entity_fields_added": ["flip_x", "flip_y", "inverted", "scale_mode", "stretch", "view_box"],
+  "scale_modes": ["uniform", "stretch", "free"],
+  "symbol_library": {
+    "standard": "PF-PID-V1",
+    "template_count": 42,
+    "added": ["Swagelok_union", "Swagelok_tee", "Swagelok_elbow", "Capillary_line", "Pipe_cap", "Boundary_connector", "Gas_mixer"],
+    "redrawn": ["Pipe_tee"],
+    "stretch_profiles": ["Pipe_straight", "Pipe_tee", "Capillary_line", "Jacked_pipeline"],
+    "flow_arrow_markers": ["Pipe_straight", "Pipe_tee", "Pipe_elbow_90", "Jacked_pipeline", "Capillary_line", "Gas_mixer"],
+    "entity_label_targets": ["Boundary_connector"]
+  },
+  "editor": {
+    "stretch_rendering": "fixed caps and arrows keep their scale, flexible gaps absorb the length",
+    "mirroring": "flip_x / flip_y with port mapping and arrow reversal",
+    "flow_inversion": "swaps in/out port directions and rotates marked flow arrows",
+    "growing_sheet": "fitPlantSheetToContent on every commit (never for reference imports)",
+    "grid": "covers the visible view, sheet frame shows the export area",
+    "inspector_tabs": ["part", "ports", "properties", "sheet"],
+    "context_menu": true,
+    "navigation": ["Ctrl + drag", "Ctrl + arrows", "Space / H + drag", "wheel pan", "Ctrl + wheel zoom"],
+    "keyboard_added": ["F", "Shift+F", "I", "+", "-", "Ctrl+Arrow"],
+    "custom_entity_reveal": "plant library switches to 'Eigene Symbole' and inserts at the visible centre"
+  },
+  "examples": {
+    "r4": "createRohrofenR4Example (31 parts, 25 joints)",
+    "r3": "createRohrofenAssemblyExample (21 parts, 17 joints)",
+    "r1": "createRohrofenPlantExample"
+  },
+  "api": [
+    "GET /api/templates (stretch profile per template)",
+    "GET /api/drawing-assemblies",
+    "POST /api/drawing-assemblies (geometry flags persisted)",
+    "POST /api/drawing-assemblies/loeschen"
+  ],
+  "compatibility": {
+    "v64_r1_drawing": "preserved",
+    "v64_r2_automation_studio": "preserved",
+    "v64_r3_assemblies": "preserved",
+    "classic_connections": "preserved",
+    "reference_imports": "pixel identical (no auto shift)",
+    "project_schema": "unchanged",
+    "v9_runtime": "canonical",
+    "v8_cross": "preserved"
+  }
+}

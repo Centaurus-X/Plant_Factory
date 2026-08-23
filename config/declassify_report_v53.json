@@ -1,0 +1,91 @@
+{
+  "files": 7,
+  "classes": 18,
+  "methods": 193,
+  "this": 662,
+  "new": 20,
+  "self_alias_removed": 13,
+  "detail": {
+    "public/js/connection_mapper.js": {
+      "classes": 2,
+      "methods": 27,
+      "this": 78,
+      "new": 2,
+      "self_alias_removed": 0,
+      "names": [
+        "ConnectionManager",
+        "ConnectionUIController"
+      ]
+    },
+    "public/js/core.js": {
+      "classes": 4,
+      "methods": 38,
+      "this": 153,
+      "new": 4,
+      "self_alias_removed": 0,
+      "names": [
+        "APIClient",
+        "EventBus",
+        "AppState",
+        "ThemeManager"
+      ]
+    },
+    "public/js/elements.js": {
+      "classes": 3,
+      "methods": 34,
+      "this": 138,
+      "new": 4,
+      "self_alias_removed": 0,
+      "names": [
+        "ElementManager",
+        "CanvasController",
+        "LayerSynchronizer"
+      ]
+    },
+    "public/js/processes.js": {
+      "classes": 1,
+      "methods": 24,
+      "this": 62,
+      "new": 1,
+      "self_alias_removed": 0,
+      "names": [
+        "ProcessesPanelController"
+      ]
+    },
+    "public/js/registry.js": {
+      "classes": 2,
+      "methods": 21,
+      "this": 70,
+      "new": 2,
+      "self_alias_removed": 0,
+      "names": [
+        "TemplateRegistry",
+        "TemplatePaletteController"
+      ]
+    },
+    "public/js/rules_generator.js": {
+      "classes": 1,
+      "methods": 32,
+      "this": 115,
+      "new": 1,
+      "self_alias_removed": 13,
+      "names": [
+        "RulesGeneratorController"
+      ]
+    },
+    "public/js/ui.js": {
+      "classes": 5,
+      "methods": 17,
+      "this": 46,
+      "new": 6,
+      "self_alias_removed": 0,
+      "names": [
+        "ProjektManager",
+        "PropertiesPanel",
+        "LayersPanel",
+        "StatsUpdater",
+        "ApplicationController"
+      ]
+    }
+  }
+}

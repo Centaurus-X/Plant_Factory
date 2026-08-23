@@ -1,0 +1,51 @@
+{
+  "version": 9,
+  "kind": "process_state_templates",
+  "description": "V9-Zustandsvorlagen, erzeugt aus process_library.json durch _tools/convert_libraries_to_v9.py.",
+  "templates": [
+    {
+      "__template__": {
+        "source_state_id": 20,
+        "state_type": "heating",
+        "fill_on_insert": [
+          "state_id",
+          "owner_node_id",
+          "mapping_id",
+          "io_refs.*.controller_uuid"
+        ],
+        "notes": []
+      },
+      "process_state": {
+        "state_id": null,
+        "p_id": 1,
+        "value_id": 1,
+        "mode_id": 2,
+        "mapping_id": 100,
+        "owner_node_id": null,
+        "execution_epoch": 1,
+        "enabled": true,
+        "io_refs": {
+          "sensors": [
+            {
+              "sensor_id": 7,
+              "controller_uuid": null
+            }
+          ],
+          "actuators": [
+            {
+              "actuator_id": 13,
+              "controller_uuid": null
+            }
+          ]
+        },
+        "control_strategy": {
+          "pid_config_id": 1,
+          "type": "PID"
+        },
+        "setpoint_source": null,
+        "parameters": {},
+        "description": "heating"
+      }
+    }
+  ]
+}

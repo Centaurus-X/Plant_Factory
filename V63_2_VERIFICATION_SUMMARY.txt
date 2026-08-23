@@ -1,0 +1,53 @@
+PLANT FACTORY V63.2 — VERIFIKATIONSÜBERSICHT
+============================================
+
+Release: 63.2
+Status: BESTANDEN
+Release-Stufen: 18/18
+
+VERTRÄGE UND MODELLTESTS
+------------------------
+PF-PID-V1 JavaScript:                    31/31
+PF-LOGIC-V1 JavaScript:                  66/66
+PF-LOGIC-V1 Python Runtime:              35/35
+PF-AUTOMATION-V9-BRIDGE:                 40/40
+Statischer V63.2 Releasevertrag:         86/86
+Geerbter V63.x Releasevertrag:           75/75
+Plant-Factory-Modellkette:               31/31
+Snapshot-Kette:                          52/52
+V9-Kern:                                145/145
+Externe automation_system_v0101:         29/29
+Python-Formatparität:                    58/58
+JavaScript-Formatprüfung:                42/42
+
+CHROMIUM-BROWSER
+----------------
+PF-PID/HMI-Baseline:                    119/119
+V62.1 Modal/HMI/Context:                 45/45
+V63.1 Logic/FBD:                         51/51
+V63.2 Stabilitätsregressionen:           45/45
+Browser-, Konsolen- und Requestfehler:        0
+
+V63.2 REGRESSIONEN
+------------------
+- Verbindung-erstellen-Modal startet kompakt und responsiv.
+- Gespeicherte Verbindungen werden nach gültigem SVG-Layout deterministisch gerendert.
+- Canvas-Auswahl wird direkt im I/O-Editor einschließlich bestehender Felder übernommen.
+- Timer-/Counter-Demo ergänzt vorhandene Schaltpläne additiv und zerstörungsfrei.
+- Automation verwendet eine eindeutige Projekt- und Runtime-Autorität.
+- Vollständiges Beispielprojekt wird deterministisch reproduziert.
+
+ARCHIV-GATES
+------------
+- deterministischer Doppelbuild: BESTANDEN
+- byte-identische ZIP-Dateien: BESTANDEN
+- Archivpfade, Traversal und Symlinks: BESTANDEN
+- interne SHA-256-Prüfsummen: BESTANDEN
+- vollständige Wiederholungsprüfung nach Fresh Extract: BESTANDEN
+- externe Archivprüfsumme: siehe Automated_SVG_Integration_63_2.zip.sha256
+
+BETRIEBSGRENZE
+--------------
+Die Software-Baseline ist releasefähig. Die Freigabe einer konkreten Anlage
+benötigt zusätzlich FAT/SAT, reale I/O-Punktprüfung sowie Safety-, Security-,
+SPS-/SCADA-, Feldbus- und Netzwerkabnahme.

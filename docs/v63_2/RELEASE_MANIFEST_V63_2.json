@@ -1,0 +1,79 @@
+{
+  "release": "63.2",
+  "status": "passed",
+  "contracts": {
+    "object_standard": "PF-PID-V1",
+    "modal_standard": "PF-MODAL-V1",
+    "hmi_standard": "PF-HMI-SETUP-V2",
+    "logic_standard": "PF-LOGIC-V1",
+    "stability_patch": "PF-V63.2-STABILITY",
+    "automation_bridge": "PF-AUTOMATION-V9-BRIDGE"
+  },
+  "canonical_models": {
+    "project_states": "project.processes.process_states",
+    "project_rules": "project.dynamic_rule_engine.rule_sets",
+    "logic": "project.logic",
+    "runtime_sections": [
+      "process_states",
+      "filters",
+      "timers",
+      "rule_engine",
+      "rules"
+    ],
+    "legacy_rules": "project.automation_cfg.legacy_automation_rule_sets"
+  },
+  "patches": {
+    "connection_modal_default_width_px": 620,
+    "connection_rendering": "deferred_bounded_retry",
+    "io_canvas_selection_sync": true,
+    "logic_demo_additive": true,
+    "automation_duplicate_rule_authority": false
+  },
+  "example_project": {
+    "json": "projekte/v63_2_komplettbeispiel.json",
+    "svg": "projekte/v63_2_komplettbeispiel.svg",
+    "deterministic_builder": "_tools/build_v63_2_example.mjs"
+  },
+  "verification": {
+    "release_stages": 18,
+    "status": "passed",
+    "source_tree": "passed",
+    "fresh_extract": "passed",
+    "external_runtime": {
+      "status": "passed",
+      "authority": "automation_system_v0101",
+      "checks": 29
+    },
+    "contracts": {
+      "pf_pid_v1_javascript": 31,
+      "pf_logic_v1_javascript": 66,
+      "pf_logic_v1_python_runtime": 35,
+      "pf_automation_v9_bridge": 40,
+      "static_v63_2": 86,
+      "static_v63_inherited": 75,
+      "plant_factory": 31,
+      "snapshot": 52,
+      "v9_core": 145
+    },
+    "browser_regressions": {
+      "status": "passed",
+      "baseline_pf_pid_hmi": 119,
+      "v62_modal_context_hmi": 45,
+      "v63_logic_fbd": 51,
+      "v63_2_stability": 45,
+      "console_page_request_errors": 0
+    },
+    "deterministic_example": "passed"
+  },
+  "archive": {
+    "filename": "Automated_SVG_Integration_63_2.zip",
+    "root": "Automated_SVG_Integration_63_2",
+    "deterministic": true,
+    "double_build": "byte_identical",
+    "sha256_sidecar": "Automated_SVG_Integration_63_2.zip.sha256",
+    "internal_manifest": "SHA256SUMS",
+    "safety_verification": "passed",
+    "files": 355,
+    "sha256_entries": 354
+  }
+}

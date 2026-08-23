@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["pfosten","post","gestell","aufhaengung","staender"],"animierbare_bereiche":["[data-pf-state-target=\"frame\"]"],"bindings":[],"breite":24,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"default_visual_state":"neutral","family":"frame-post","favorite":false,"geometry_profile":"frame_post","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":400,"id":"Frame_post","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Klassik · Gestell","layer":"structure","library_role":"process","name":"Gestellpfosten","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"bidirectional","id":"top","kind":"structure","name":"Oben","role":"main","rx":0.5,"ry":0.0,"x":12,"y":0},{"direction":"bidirectional","id":"bottom","kind":"structure","name":"Unten","role":"main","rx":0.5,"ry":1.0,"x":12,"y":400}],"profile":"frame_post","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":240,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","stretch":{"axis":"y","fixed":[[0,6],[394,400]]},"style":"classic","symbol_type":"frame-post","tag_prefix":"GS","view_box":[0,0,24,400],"visual_states":["neutral"]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 400" width="24" height="400" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="frame-post" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<style>
+.pf-pid-v1 .pc-stroke{fill:none;stroke:#000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pf-pid-v1 .pc-wall{fill:#000}
+.pf-pid-v1 .pc-bore{fill:#fff}
+.pf-pid-v1 .pc-bore-line{fill:none;stroke:#fff;stroke-width:16}
+.pf-pid-v1 .pc-tube-line{fill:none;stroke:#000;stroke-width:22}
+.pf-pid-v1 .pc-white{fill:#fff;stroke:#000;stroke-width:2}
+.pf-pid-v1 .pc-nut{fill:#fff;stroke:#000;stroke-width:1.5}
+.pf-pid-v1 .pc-bubble{fill:#fff;stroke:#000;stroke-width:1.5}
+.pf-pid-v1 .pc-bar{fill:none;stroke:#000;stroke-width:4}
+.pf-pid-v1 .pc-pipe{fill:none;stroke:#333;stroke-width:3.5;stroke-linejoin:round}
+.pf-pid-v1 .pc-thin{fill:none;stroke:#888;stroke-width:2}
+.pf-pid-v1 .pc-dash{fill:none;stroke:#fff;stroke-width:2;stroke-dasharray:9 11;stroke-opacity:0}
+.pf-pid-v1 .pc-state{fill:#cfd4da;stroke:#000;stroke-width:2.5}
+.pf-pid-v1 .pc-valve{fill:#fff;stroke:#000;stroke-width:2}
+.pf-pid-v1 .pc-text{font-family:Arial,Helvetica,sans-serif;fill:#000}
+.pf-pid-v1 .pc-muted{font-family:Arial,Helvetica,sans-serif;fill:#444}
+.pf-pid-v1 .pc-frame{fill:#e9ecef;stroke:#555;stroke-width:1.5}
+.pf-pid-v1 .pc-ground{fill:none;stroke:#555;stroke-width:1.2}
+[data-pf-visual-state="flow"] .pf-pid-v1 .pc-dash,[data-pf-visual-state="hot"] .pf-pid-v1 .pc-dash,[data-pf-visual-state="cold"] .pf-pid-v1 .pc-dash,[data-pf-visual-state="purge"] .pf-pid-v1 .pc-dash{stroke-opacity:.95}
+[data-pf-visual-state="hot"] .pf-pid-v1 .pc-pipe{stroke:#b33a3a}
+[data-pf-visual-state="cold"] .pf-pid-v1 .pc-pipe{stroke:#2f7fb8}
+[data-pf-visual-state="purge"] .pf-pid-v1 .pc-pipe{stroke:#2db34a}
+[data-pf-visual-state="purge"] .pf-pid-v1 .pc-thin,[data-pf-visual-state="flow"] .pf-pid-v1 .pc-thin,[data-pf-visual-state="open"] .pf-pid-v1 .pc-thin{stroke:#2db34a}
+[data-pf-visual-state="heat"] .pf-pid-v1 .pc-bore,[data-pf-visual-state="heat"] .pf-pid-v1 .pc-bore-line{fill:#ffd1a8;stroke:#ffd1a8}
+[data-pf-visual-state="hot"] .pf-pid-v1 .pc-bore,[data-pf-visual-state="hot"] .pf-pid-v1 .pc-bore-line{fill:#ff9a9a;stroke:#ff9a9a}
+[data-pf-visual-state="cold"] .pf-pid-v1 .pc-bore,[data-pf-visual-state="cold"] .pf-pid-v1 .pc-bore-line{fill:#cfe6f7;stroke:#cfe6f7}
+[data-pf-visual-state="heat"] .pf-pid-v1 .pc-bore{fill:#ffd1a8}
+[data-pf-visual-state="hot"] .pf-pid-v1 .pc-bore{fill:#ff9a9a}
+[data-pf-visual-state="cold"] .pf-pid-v1 .pc-bore{fill:#cfe6f7}
+[data-pf-visual-state="heat"] .pf-pid-v1 .pc-state{fill:#f7931e}
+[data-pf-visual-state="hot"] .pf-pid-v1 .pc-state{fill:#ee1c24}
+[data-pf-visual-state="cold"] .pf-pid-v1 .pc-state{fill:#1e9be8}
+[data-pf-visual-state="cool"] .pf-pid-v1 .pc-state{fill:#6fb7e8}
+[data-pf-visual-state="open"] .pf-pid-v1 .pc-valve{fill:#2db34a}
+[data-pf-visual-state="closed"] .pf-pid-v1 .pc-valve{fill:#ee1c24}
+</style>
+<g data-pf-role="body"><rect class="pc-frame" data-pf-state-target="frame" x="8" y="0" width="8" height="400"/></g>
+</svg>

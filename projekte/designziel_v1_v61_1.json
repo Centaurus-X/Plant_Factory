@@ -1,0 +1,1355 @@
+{
+  "automation_cfg": {
+    "automation": [],
+    "automation_engines": [],
+    "automation_filters": [],
+    "automation_rule_sets": [],
+    "version": 1
+  },
+  "connections": [
+    {
+      "from": "tank_feed",
+      "fromAnchor": {
+        "mode": "port",
+        "portId": "outlet"
+      },
+      "fromPort": "outlet",
+      "id": "conn_tank_pump",
+      "label": "",
+      "object_standard": {
+        "id": "PF-PID-V1",
+        "release": "61.1",
+        "routing": "orthogonal",
+        "semantic_ports": true,
+        "version": "1.0"
+      },
+      "properties": {},
+      "routing": "orthogonal",
+      "strokeWidth": 2.4,
+      "to": "pump_feed",
+      "toAnchor": {
+        "mode": "port",
+        "portId": "suction"
+      },
+      "toPort": "suction",
+      "type": "pipe"
+    },
+    {
+      "from": "pump_feed",
+      "fromAnchor": {
+        "mode": "port",
+        "portId": "discharge"
+      },
+      "fromPort": "discharge",
+      "id": "conn_pump_exchanger",
+      "label": "",
+      "object_standard": {
+        "id": "PF-PID-V1",
+        "release": "61.1",
+        "routing": "orthogonal",
+        "semantic_ports": true,
+        "version": "1.0"
+      },
+      "properties": {},
+      "routing": "orthogonal",
+      "strokeWidth": 2.4,
+      "to": "exchanger_feed",
+      "toAnchor": {
+        "mode": "port",
+        "portId": "process_in"
+      },
+      "toPort": "process_in",
+      "type": "pipe"
+    },
+    {
+      "from": "exchanger_feed",
+      "fromAnchor": {
+        "mode": "port",
+        "portId": "process_out"
+      },
+      "fromPort": "process_out",
+      "id": "conn_exchanger_reactor",
+      "label": "",
+      "object_standard": {
+        "id": "PF-PID-V1",
+        "release": "61.1",
+        "routing": "orthogonal",
+        "semantic_ports": true,
+        "version": "1.0"
+      },
+      "properties": {},
+      "routing": "orthogonal",
+      "strokeWidth": 2.4,
+      "to": "reactor_main",
+      "toAnchor": {
+        "mode": "port",
+        "portId": "feed"
+      },
+      "toPort": "feed",
+      "type": "pipe"
+    },
+    {
+      "from": "reactor_main",
+      "fromAnchor": {
+        "mode": "port",
+        "portId": "product"
+      },
+      "fromPort": "product",
+      "id": "conn_reactor_valve",
+      "label": "",
+      "object_standard": {
+        "id": "PF-PID-V1",
+        "release": "61.1",
+        "routing": "orthogonal",
+        "semantic_ports": true,
+        "version": "1.0"
+      },
+      "properties": {},
+      "routing": "orthogonal",
+      "strokeWidth": 2.4,
+      "to": "valve_out",
+      "toAnchor": {
+        "mode": "port",
+        "portId": "inlet"
+      },
+      "toPort": "inlet",
+      "type": "pipe"
+    },
+    {
+      "from": "temp_reactor",
+      "fromAnchor": {
+        "mode": "port",
+        "portId": "signal"
+      },
+      "fromPort": "signal",
+      "id": "conn_temperature_signal",
+      "label": "",
+      "object_standard": {
+        "id": "PF-PID-V1",
+        "release": "61.1",
+        "routing": "orthogonal",
+        "semantic_ports": true,
+        "version": "1.0"
+      },
+      "properties": {},
+      "routing": "orthogonal",
+      "strokeWidth": 1.6,
+      "to": "reactor_main",
+      "toAnchor": {
+        "mode": "port",
+        "portId": "temperature"
+      },
+      "toPort": "temperature",
+      "type": "signal"
+    }
+  ],
+  "devices": {
+    "assignments": {
+      "pump_feed": {
+        "actuator_id": "4",
+        "actuator_type": "water_pump",
+        "address": 516,
+        "alias": "Feed Pump",
+        "bus_type": "modbus",
+        "controller_id": 2,
+        "element_id": "pump_feed",
+        "function_type": "write_coil",
+        "module_type": "relay",
+        "role": "actuator"
+      },
+      "temp_reactor": {
+        "address": 1,
+        "alias": "Reactor Temperature",
+        "bus_type": "modbus",
+        "controller_id": 2,
+        "element_id": "temp_reactor",
+        "function_type": "read_holding_registers",
+        "module_type": "AI",
+        "role": "sensor",
+        "sensor_id": "1",
+        "sensor_type": "temperature"
+      },
+      "valve_out": {
+        "actuator_id": "1",
+        "actuator_type": "valve",
+        "address": 512,
+        "alias": "Outlet Valve",
+        "bus_type": "modbus",
+        "controller_id": 1,
+        "element_id": "valve_out",
+        "function_type": "write_coil",
+        "module_type": "relay",
+        "role": "actuator"
+      }
+    },
+    "version": 1
+  },
+  "display_name": "Designziel V1 · PF-PID-V1 Normalisierung",
+  "dynamic_rule_engine": {
+    "rule_sets": []
+  },
+  "elements": [
+    {
+      "animation_targets": [
+        "[data-pf-state-target=\"level\"]",
+        ".pid-flow",
+        ".pid-outline"
+      ],
+      "bindings": [],
+      "capabilities": {
+        "animatable": true,
+        "auto_create_hmi_widgets": false,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "description": "Feed Tank",
+      "family": "tank",
+      "geometry": {
+        "base_height": 110,
+        "base_width": 80,
+        "pivot": "center",
+        "preserve_aspect_ratio": "xMidYMid meet",
+        "profile": "vessel",
+        "view_box": [
+          0,
+          0,
+          80,
+          110
+        ]
+      },
+      "geometryProfile": "vessel",
+      "height": 110,
+      "hmiWidgetDefault": null,
+      "hmi_policy": {
+        "allowed_controls": [
+          "text",
+          "indicator",
+          "toggle",
+          "button",
+          "slider"
+        ],
+        "auto_create_widgets": false,
+        "button_policy": "optional_explicit_only",
+        "default_control": null
+      },
+      "id": "tank_feed",
+      "interaction": {
+        "animatable": true,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "name": "Tank / Behälter",
+      "object_standard": {
+        "canonical": true,
+        "id": "PF-PID-V1",
+        "normalized": true,
+        "release": "61.1",
+        "source_template_id": "Tank_vessel",
+        "version": "1.0"
+      },
+      "pivotMode": "center",
+      "pivotX": 40.0,
+      "pivotY": 55.0,
+      "ports": [
+        {
+          "direction": "in",
+          "id": "inlet",
+          "kind": "process",
+          "name": "Zulauf",
+          "role": "main",
+          "rx": 0.0,
+          "ry": 0.5636363636363636,
+          "x": 0,
+          "y": 62
+        },
+        {
+          "direction": "out",
+          "id": "outlet",
+          "kind": "process",
+          "name": "Ablauf",
+          "role": "main",
+          "rx": 1.0,
+          "ry": 0.5636363636363636,
+          "x": 80,
+          "y": 62
+        },
+        {
+          "direction": "out",
+          "id": "vent",
+          "kind": "utility",
+          "name": "Entlüftung",
+          "role": "main",
+          "rx": 0.5,
+          "ry": 0.0,
+          "x": 40,
+          "y": 0
+        },
+        {
+          "direction": "out",
+          "id": "drain",
+          "kind": "utility",
+          "name": "Entleerung",
+          "role": "main",
+          "rx": 0.5,
+          "ry": 1.0,
+          "x": 40,
+          "y": 110
+        }
+      ],
+      "properties": {
+        "area": "Reaktorlinie A",
+        "description": "Feed Tank",
+        "runtime_state": "ready",
+        "tag": "T-101"
+      },
+      "rotation": 0,
+      "runtimeState": "ready",
+      "scale": 1,
+      "standard": "PF-PID-V1",
+      "standardVersion": "1.0",
+      "symbolType": "tank",
+      "tag": "T-101",
+      "tag_prefix": "T",
+      "templateId": "Tank_vessel",
+      "viewBox": [
+        0,
+        0,
+        80,
+        110
+      ],
+      "width": 80,
+      "x": 230,
+      "y": 330
+    },
+    {
+      "animation_targets": [
+        "[data-pf-state-target=\"rotor\"]",
+        "[data-pf-state-target=\"body\"]"
+      ],
+      "bindings": [],
+      "capabilities": {
+        "animatable": true,
+        "auto_create_hmi_widgets": false,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "description": "Feed Pump",
+      "family": "centrifugal-pump",
+      "geometry": {
+        "base_height": 80,
+        "base_width": 90,
+        "pivot": "center",
+        "preserve_aspect_ratio": "xMidYMid meet",
+        "profile": "machine",
+        "view_box": [
+          0,
+          0,
+          90,
+          80
+        ]
+      },
+      "geometryProfile": "machine",
+      "height": 80,
+      "hmiWidgetDefault": null,
+      "hmi_policy": {
+        "allowed_controls": [
+          "text",
+          "indicator",
+          "toggle",
+          "button",
+          "slider"
+        ],
+        "auto_create_widgets": false,
+        "button_policy": "optional_explicit_only",
+        "default_control": null
+      },
+      "id": "pump_feed",
+      "interaction": {
+        "animatable": true,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "name": "Flüssigkeitspumpe",
+      "object_standard": {
+        "canonical": true,
+        "id": "PF-PID-V1",
+        "normalized": true,
+        "release": "61.1",
+        "source_template_id": "Pump_liquid_type",
+        "version": "1.0"
+      },
+      "pivotMode": "center",
+      "pivotX": 45.0,
+      "pivotY": 40.0,
+      "ports": [
+        {
+          "direction": "in",
+          "id": "suction",
+          "kind": "process",
+          "name": "Saugseite",
+          "role": "main",
+          "rx": 0.0,
+          "ry": 0.5,
+          "x": 0,
+          "y": 40
+        },
+        {
+          "direction": "out",
+          "id": "discharge",
+          "kind": "process",
+          "name": "Druckseite",
+          "role": "main",
+          "rx": 1.0,
+          "ry": 0.5,
+          "x": 90,
+          "y": 40
+        },
+        {
+          "direction": "in",
+          "id": "drive",
+          "kind": "power",
+          "name": "Antrieb",
+          "role": "main",
+          "rx": 0.5,
+          "ry": 1.0,
+          "x": 45,
+          "y": 80
+        },
+        {
+          "direction": "out",
+          "id": "status",
+          "kind": "signal",
+          "name": "Status",
+          "role": "main",
+          "rx": 0.5,
+          "ry": 0.0,
+          "x": 45,
+          "y": 0
+        }
+      ],
+      "properties": {
+        "area": "Reaktorlinie A",
+        "description": "Feed Pump",
+        "runtime_state": "running",
+        "tag": "P-101"
+      },
+      "rotation": 0,
+      "runtimeState": "running",
+      "scale": 1,
+      "standard": "PF-PID-V1",
+      "standardVersion": "1.0",
+      "symbolType": "centrifugal-pump",
+      "tag": "P-101",
+      "tag_prefix": "P",
+      "templateId": "Pump_liquid_type",
+      "viewBox": [
+        0,
+        0,
+        90,
+        80
+      ],
+      "width": 90,
+      "x": 400,
+      "y": 345
+    },
+    {
+      "animation_targets": [
+        "[data-pf-state-target=\"heat\"]",
+        ".pid-outline"
+      ],
+      "bindings": [],
+      "capabilities": {
+        "animatable": true,
+        "auto_create_hmi_widgets": false,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "description": "Heat Exchanger",
+      "family": "heat-exchanger",
+      "geometry": {
+        "base_height": 80,
+        "base_width": 90,
+        "pivot": "center",
+        "preserve_aspect_ratio": "xMidYMid meet",
+        "profile": "machine",
+        "view_box": [
+          0,
+          0,
+          90,
+          80
+        ]
+      },
+      "geometryProfile": "machine",
+      "height": 80,
+      "hmiWidgetDefault": null,
+      "hmi_policy": {
+        "allowed_controls": [
+          "text",
+          "indicator",
+          "toggle",
+          "button",
+          "slider"
+        ],
+        "auto_create_widgets": false,
+        "button_policy": "optional_explicit_only",
+        "default_control": null
+      },
+      "id": "exchanger_feed",
+      "interaction": {
+        "animatable": true,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "name": "Wärmetauscher",
+      "object_standard": {
+        "canonical": true,
+        "id": "PF-PID-V1",
+        "normalized": true,
+        "release": "61.1",
+        "source_template_id": "Heat_exchanger_(general)",
+        "version": "1.0"
+      },
+      "pivotMode": "center",
+      "pivotX": 45.0,
+      "pivotY": 40.0,
+      "ports": [
+        {
+          "direction": "in",
+          "id": "process_in",
+          "kind": "process",
+          "name": "Prozess Eingang",
+          "role": "main",
+          "rx": 0.0,
+          "ry": 0.5,
+          "x": 0,
+          "y": 40
+        },
+        {
+          "direction": "out",
+          "id": "process_out",
+          "kind": "process",
+          "name": "Prozess Ausgang",
+          "role": "main",
+          "rx": 1.0,
+          "ry": 0.5,
+          "x": 90,
+          "y": 40
+        },
+        {
+          "direction": "in",
+          "id": "utility_in",
+          "kind": "utility",
+          "name": "Medium Eingang",
+          "role": "main",
+          "rx": 0.5,
+          "ry": 0.0,
+          "x": 45,
+          "y": 0
+        },
+        {
+          "direction": "out",
+          "id": "utility_out",
+          "kind": "utility",
+          "name": "Medium Ausgang",
+          "role": "main",
+          "rx": 0.5,
+          "ry": 1.0,
+          "x": 45,
+          "y": 80
+        }
+      ],
+      "properties": {
+        "area": "Reaktorlinie A",
+        "description": "Heat Exchanger",
+        "runtime_state": "ready",
+        "tag": "E-101"
+      },
+      "rotation": 0,
+      "runtimeState": "ready",
+      "scale": 1,
+      "standard": "PF-PID-V1",
+      "standardVersion": "1.0",
+      "symbolType": "heat-exchanger",
+      "tag": "E-101",
+      "tag_prefix": "E",
+      "templateId": "Heat_exchanger_(general)",
+      "viewBox": [
+        0,
+        0,
+        90,
+        80
+      ],
+      "width": 90,
+      "x": 580,
+      "y": 345
+    },
+    {
+      "animation_targets": [
+        "[data-pf-state-target=\"agitator\"]",
+        "[data-pf-state-target=\"level\"]",
+        ".pid-warning"
+      ],
+      "bindings": [],
+      "capabilities": {
+        "animatable": true,
+        "auto_create_hmi_widgets": false,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "description": "Jacketed Reactor",
+      "family": "jacketed-reactor",
+      "geometry": {
+        "base_height": 130,
+        "base_width": 100,
+        "pivot": "center",
+        "preserve_aspect_ratio": "xMidYMid meet",
+        "profile": "reactor",
+        "view_box": [
+          0,
+          0,
+          100,
+          130
+        ]
+      },
+      "geometryProfile": "reactor",
+      "height": 130,
+      "hmiWidgetDefault": null,
+      "hmi_policy": {
+        "allowed_controls": [
+          "text",
+          "indicator",
+          "toggle",
+          "button",
+          "slider"
+        ],
+        "auto_create_widgets": false,
+        "button_policy": "optional_explicit_only",
+        "default_control": null
+      },
+      "id": "reactor_main",
+      "interaction": {
+        "animatable": true,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "name": "Doppelmantelreaktor",
+      "object_standard": {
+        "canonical": true,
+        "id": "PF-PID-V1",
+        "normalized": true,
+        "release": "61.1",
+        "source_template_id": "Jacketed_vessel_(wdeaadbem)",
+        "version": "1.0"
+      },
+      "pivotMode": "center",
+      "pivotX": 50.0,
+      "pivotY": 65.0,
+      "ports": [
+        {
+          "direction": "in",
+          "id": "feed",
+          "kind": "process",
+          "name": "Produktzulauf",
+          "role": "main",
+          "rx": 0.0,
+          "ry": 0.47692307692307695,
+          "x": 0,
+          "y": 62
+        },
+        {
+          "direction": "out",
+          "id": "product",
+          "kind": "process",
+          "name": "Produktauslauf",
+          "role": "main",
+          "rx": 1.0,
+          "ry": 0.47692307692307695,
+          "x": 100,
+          "y": 62
+        },
+        {
+          "direction": "in",
+          "id": "utility_in",
+          "kind": "utility",
+          "name": "Mantel Vorlauf",
+          "role": "main",
+          "rx": 0.0,
+          "ry": 0.26153846153846155,
+          "x": 0,
+          "y": 34
+        },
+        {
+          "direction": "out",
+          "id": "utility_out",
+          "kind": "utility",
+          "name": "Mantel Rücklauf",
+          "role": "main",
+          "rx": 1.0,
+          "ry": 0.26153846153846155,
+          "x": 100,
+          "y": 34
+        },
+        {
+          "direction": "out",
+          "id": "vent",
+          "kind": "process",
+          "name": "Entlüftung",
+          "role": "main",
+          "rx": 0.78,
+          "ry": 0.0,
+          "x": 78,
+          "y": 0
+        },
+        {
+          "direction": "in",
+          "id": "drive",
+          "kind": "power",
+          "name": "Rührerantrieb",
+          "role": "main",
+          "rx": 0.5,
+          "ry": 0.0,
+          "x": 50,
+          "y": 0
+        },
+        {
+          "direction": "in",
+          "id": "temperature",
+          "kind": "signal",
+          "name": "Temperatursignal",
+          "role": "main",
+          "rx": 1.0,
+          "ry": 0.7384615384615385,
+          "x": 100,
+          "y": 96
+        }
+      ],
+      "properties": {
+        "area": "Reaktorlinie A",
+        "description": "Jacketed Reactor",
+        "runtime_state": "running",
+        "tag": "R-101"
+      },
+      "rotation": 0,
+      "runtimeState": "running",
+      "scale": 1,
+      "standard": "PF-PID-V1",
+      "standardVersion": "1.0",
+      "symbolType": "jacketed-reactor",
+      "tag": "R-101",
+      "tag_prefix": "R",
+      "templateId": "Jacketed_vessel_(wdeaadbem)",
+      "viewBox": [
+        0,
+        0,
+        100,
+        130
+      ],
+      "width": 100,
+      "x": 760,
+      "y": 310
+    },
+    {
+      "animation_targets": [
+        "[data-pf-state-target=\"valve\"]",
+        "[data-pf-state-target=\"actuator\"]"
+      ],
+      "bindings": [],
+      "capabilities": {
+        "animatable": true,
+        "auto_create_hmi_widgets": false,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "description": "Outlet Valve",
+      "family": "control-valve",
+      "geometry": {
+        "base_height": 80,
+        "base_width": 80,
+        "pivot": "center",
+        "preserve_aspect_ratio": "xMidYMid meet",
+        "profile": "compact",
+        "view_box": [
+          0,
+          0,
+          80,
+          80
+        ]
+      },
+      "geometryProfile": "compact",
+      "height": 80,
+      "hmiWidgetDefault": null,
+      "hmi_policy": {
+        "allowed_controls": [
+          "text",
+          "indicator",
+          "toggle",
+          "button",
+          "slider"
+        ],
+        "auto_create_widgets": false,
+        "button_policy": "optional_explicit_only",
+        "default_control": null
+      },
+      "id": "valve_out",
+      "interaction": {
+        "animatable": true,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "name": "Stellventil mit Antrieb",
+      "object_standard": {
+        "canonical": true,
+        "id": "PF-PID-V1",
+        "normalized": true,
+        "release": "61.1",
+        "source_template_id": "Control_valve",
+        "version": "1.0"
+      },
+      "pivotMode": "center",
+      "pivotX": 40.0,
+      "pivotY": 40.0,
+      "ports": [
+        {
+          "direction": "in",
+          "id": "inlet",
+          "kind": "process",
+          "name": "Eingang",
+          "role": "main",
+          "rx": 0.0,
+          "ry": 0.575,
+          "x": 0,
+          "y": 46
+        },
+        {
+          "direction": "out",
+          "id": "outlet",
+          "kind": "process",
+          "name": "Ausgang",
+          "role": "main",
+          "rx": 1.0,
+          "ry": 0.575,
+          "x": 80,
+          "y": 46
+        },
+        {
+          "direction": "in",
+          "id": "control",
+          "kind": "signal",
+          "name": "Stellsignal",
+          "role": "main",
+          "rx": 0.5,
+          "ry": 0.0,
+          "x": 40,
+          "y": 0
+        }
+      ],
+      "properties": {
+        "area": "Reaktorlinie A",
+        "description": "Outlet Valve",
+        "runtime_state": "ready",
+        "tag": "CV-101"
+      },
+      "rotation": 0,
+      "runtimeState": "ready",
+      "scale": 1,
+      "standard": "PF-PID-V1",
+      "standardVersion": "1.0",
+      "symbolType": "control-valve",
+      "tag": "CV-101",
+      "tag_prefix": "CV",
+      "templateId": "Control_valve",
+      "viewBox": [
+        0,
+        0,
+        80,
+        80
+      ],
+      "width": 80,
+      "x": 950,
+      "y": 345
+    },
+    {
+      "animation_targets": [
+        "[data-pf-state-target=\"signal\"]",
+        ".pid-outline"
+      ],
+      "bindings": [],
+      "capabilities": {
+        "animatable": true,
+        "auto_create_hmi_widgets": false,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "description": "Reactor Temperature",
+      "family": "temperature-transmitter",
+      "geometry": {
+        "base_height": 90,
+        "base_width": 70,
+        "pivot": "center",
+        "preserve_aspect_ratio": "xMidYMid meet",
+        "profile": "instrument",
+        "view_box": [
+          0,
+          0,
+          70,
+          90
+        ]
+      },
+      "geometryProfile": "instrument",
+      "height": 90,
+      "hmiWidgetDefault": null,
+      "hmi_policy": {
+        "allowed_controls": [
+          "text",
+          "indicator",
+          "toggle",
+          "button",
+          "slider"
+        ],
+        "auto_create_widgets": false,
+        "button_policy": "optional_explicit_only",
+        "default_control": null
+      },
+      "id": "temp_reactor",
+      "interaction": {
+        "animatable": true,
+        "bindable": true,
+        "configurable": true,
+        "connectable": true,
+        "movable": true,
+        "resizable": true,
+        "rotatable": true,
+        "selectable": true
+      },
+      "name": "Temperaturmessstelle",
+      "object_standard": {
+        "canonical": true,
+        "id": "PF-PID-V1",
+        "normalized": true,
+        "release": "61.1",
+        "source_template_id": "Temperature_transmitter",
+        "version": "1.0"
+      },
+      "pivotMode": "center",
+      "pivotX": 35.0,
+      "pivotY": 45.0,
+      "ports": [
+        {
+          "direction": "in",
+          "id": "process",
+          "kind": "process",
+          "name": "Messstelle",
+          "role": "main",
+          "rx": 0.5,
+          "ry": 1.0,
+          "x": 35,
+          "y": 90
+        },
+        {
+          "direction": "out",
+          "id": "signal",
+          "kind": "signal",
+          "name": "Messsignal",
+          "role": "main",
+          "rx": 1.0,
+          "ry": 0.5,
+          "x": 70,
+          "y": 45
+        }
+      ],
+      "properties": {
+        "area": "Reaktorlinie A",
+        "description": "Reactor Temperature",
+        "runtime_state": "ready",
+        "tag": "TT-101"
+      },
+      "rotation": 0,
+      "runtimeState": "ready",
+      "scale": 1,
+      "standard": "PF-PID-V1",
+      "standardVersion": "1.0",
+      "symbolType": "temperature-transmitter",
+      "tag": "TT-101",
+      "tag_prefix": "TT",
+      "templateId": "Temperature_transmitter",
+      "viewBox": [
+        0,
+        0,
+        70,
+        90
+      ],
+      "width": 70,
+      "x": 790,
+      "y": 520
+    }
+  ],
+  "free_rules": {
+    "actions": [],
+    "events": [],
+    "timers": [],
+    "transitions": [],
+    "triggers": [],
+    "version": 1
+  },
+  "hmi": {
+    "active_view_id": "main",
+    "alarms": [],
+    "bindings": [
+      {
+        "binding_id": "binding_temperature_indicator",
+        "element_id": "temp_reactor",
+        "format": {
+          "decimals": 1,
+          "unit": "°C"
+        },
+        "interaction": null,
+        "placement": {
+          "anchor": "top",
+          "dx": 0,
+          "dy": -22
+        },
+        "source": {
+          "field": "value",
+          "kind": "sensor",
+          "sensor_id": 1
+        },
+        "transform": {
+          "clamp": [
+            0,
+            250
+          ],
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        "view_id": "main",
+        "widget_id": "widget_temperature_indicator"
+      },
+      {
+        "binding_id": "binding_valve_button",
+        "element_id": "valve_out",
+        "format": {
+          "decimals": 0,
+          "unit": ""
+        },
+        "interaction": {
+          "action": "set",
+          "actuator_id": 1,
+          "kind": "actuator",
+          "value": 1
+        },
+        "placement": {
+          "anchor": "top",
+          "dx": 0,
+          "dy": -24
+        },
+        "source": {
+          "actuator_id": 1,
+          "field": "value",
+          "kind": "actuator"
+        },
+        "transform": {
+          "clamp": [
+            0,
+            1
+          ],
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        "view_id": "main",
+        "widget_id": "widget_valve_button"
+      }
+    ],
+    "policy": {
+      "auto_create_widgets": false,
+      "button_policy": "optional_explicit_only",
+      "process_symbol_drop_policy": "never_create_control"
+    },
+    "styles": [],
+    "version": 1,
+    "views": [
+      {
+        "name": "Engineering / HMI",
+        "svg_ref": "main",
+        "tags": [
+          "default",
+          "v61"
+        ],
+        "view_id": "main"
+      }
+    ],
+    "widgets": [
+      {
+        "auto_created": false,
+        "config": {
+          "border_width": 1,
+          "classes": [],
+          "default_state": "ok",
+          "mode": "class",
+          "shape": "rounded",
+          "size": "sm",
+          "states": [
+            {
+              "class": "ok-green",
+              "name": "ok"
+            },
+            {
+              "class": "warn-yellow",
+              "name": "warn"
+            },
+            {
+              "class": "alarm-red",
+              "name": "alarm"
+            }
+          ],
+          "svg_target_classes": [],
+          "variant": "outline"
+        },
+        "name": "Reaktortemperatur",
+        "origin": "explicit",
+        "type": "indicator",
+        "view_id": "main",
+        "widget_id": "widget_temperature_indicator"
+      },
+      {
+        "auto_created": false,
+        "config": {
+          "border_width": 1,
+          "classes": [],
+          "confirm": {
+            "enabled": true,
+            "text": "Ausgangsventil öffnen?"
+          },
+          "debounce_ms": 200,
+          "label": "Ventil öffnen",
+          "shape": "rounded",
+          "size": "sm",
+          "svg_target_classes": [],
+          "variant": "primary"
+        },
+        "name": "Ventil bedienen (optional)",
+        "origin": "explicit",
+        "type": "button",
+        "view_id": "main",
+        "widget_id": "widget_valve_button"
+      }
+    ]
+  },
+  "hmi_ui": {
+    "active_view_id": "main",
+    "alarms": [],
+    "bindings": [
+      {
+        "binding_id": "binding_temperature_indicator",
+        "element_id": "temp_reactor",
+        "format": {
+          "decimals": 1,
+          "unit": "°C"
+        },
+        "interaction": null,
+        "placement": {
+          "anchor": "top",
+          "dx": 0,
+          "dy": -22
+        },
+        "source": {
+          "field": "value",
+          "kind": "sensor",
+          "sensor_id": 1
+        },
+        "transform": {
+          "clamp": [
+            0,
+            250
+          ],
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        "view_id": "main",
+        "widget_id": "widget_temperature_indicator"
+      },
+      {
+        "binding_id": "binding_valve_button",
+        "element_id": "valve_out",
+        "format": {
+          "decimals": 0,
+          "unit": ""
+        },
+        "interaction": {
+          "action": "set",
+          "actuator_id": 1,
+          "kind": "actuator",
+          "value": 1
+        },
+        "placement": {
+          "anchor": "top",
+          "dx": 0,
+          "dy": -24
+        },
+        "source": {
+          "actuator_id": 1,
+          "field": "value",
+          "kind": "actuator"
+        },
+        "transform": {
+          "clamp": [
+            0,
+            1
+          ],
+          "offset": 0.0,
+          "scale": 1.0
+        },
+        "view_id": "main",
+        "widget_id": "widget_valve_button"
+      }
+    ],
+    "policy": {
+      "auto_create_widgets": false,
+      "button_policy": "optional_explicit_only",
+      "process_symbol_drop_policy": "never_create_control"
+    },
+    "styles": [],
+    "version": 1,
+    "views": [
+      {
+        "name": "Engineering / HMI",
+        "svg_ref": "main",
+        "tags": [
+          "default",
+          "v61"
+        ],
+        "view_id": "main"
+      }
+    ],
+    "widgets": [
+      {
+        "auto_created": false,
+        "config": {
+          "border_width": 1,
+          "classes": [],
+          "default_state": "ok",
+          "mode": "class",
+          "shape": "rounded",
+          "size": "sm",
+          "states": [
+            {
+              "class": "ok-green",
+              "name": "ok"
+            },
+            {
+              "class": "warn-yellow",
+              "name": "warn"
+            },
+            {
+              "class": "alarm-red",
+              "name": "alarm"
+            }
+          ],
+          "svg_target_classes": [],
+          "variant": "outline"
+        },
+        "name": "Reaktortemperatur",
+        "origin": "explicit",
+        "type": "indicator",
+        "view_id": "main",
+        "widget_id": "widget_temperature_indicator"
+      },
+      {
+        "auto_created": false,
+        "config": {
+          "border_width": 1,
+          "classes": [],
+          "confirm": {
+            "enabled": true,
+            "text": "Ausgangsventil öffnen?"
+          },
+          "debounce_ms": 200,
+          "label": "Ventil öffnen",
+          "shape": "rounded",
+          "size": "sm",
+          "svg_target_classes": [],
+          "variant": "primary"
+        },
+        "name": "Ventil bedienen (optional)",
+        "origin": "explicit",
+        "type": "button",
+        "view_id": "main",
+        "widget_id": "widget_valve_button"
+      }
+    ]
+  },
+  "name": "designziel_v1_v61_1",
+  "object_standard": {
+    "auto_create_hmi_widgets": false,
+    "geometry_normalized": true,
+    "hmi_controls": "optional_explicit_only",
+    "id": "PF-PID-V1",
+    "release": "61.1",
+    "semantic_ports": true,
+    "two_line_labels": true,
+    "version": "1.0"
+  },
+  "processes": {
+    "process_states": []
+  },
+  "release": "61.1",
+  "rule_library": {
+    "rule_sets": []
+  },
+  "svgContent": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"150 220 1000 480\" width=\"2000\" height=\"1000\" role=\"img\" aria-label=\"Plant Factory V61.1 PF-PID-V1 Demo\">\n<rect x=\"150\" y=\"220\" width=\"1000\" height=\"480\" rx=\"10\" fill=\"#ffffff\" stroke=\"#dbe4ef\"/>\n<g fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<path d=\"M310 392 H400\" stroke=\"#0e7490\" stroke-width=\"2.4\"/>\n<path d=\"M490 385 H580\" stroke=\"#0e7490\" stroke-width=\"2.4\"/>\n<path d=\"M670 385 H760 V372\" stroke=\"#0e7490\" stroke-width=\"2.4\"/>\n<path d=\"M860 372 H950 V391\" stroke=\"#0e7490\" stroke-width=\"2.4\"/>\n<path d=\"M860 565 H885 V406 H860\" stroke=\"#b45309\" stroke-width=\"1.6\" stroke-dasharray=\"5 5\"/>\n</g>\n<svg x=\"230\" y=\"330\" data-runtime-state=\"ready\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 80 110\" width=\"80\" height=\"110\" role=\"img\" class=\"pf-pid-v1\" data-pf-standard=\"PF-PID-V1\" data-pf-family=\"tank\" preserveAspectRatio=\"xMidYMid meet\">\n<style>\n.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-no-fill{fill:none}\n.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}\n</style>\n<g data-pf-role=\"body\">\n  <path class=\"pid-outline\" d=\"M18 18 C18 11 62 11 62 18 L62 91 C62 100 18 100 18 91 Z\"/>\n  <path class=\"pid-detail\" d=\"M18 18 C18 25 62 25 62 18 M18 91 C18 84 62 84 62 91\"/>\n  <path class=\"pid-state-fill\" data-pf-state-target=\"level\" d=\"M20 72 C20 68 60 68 60 72 L60 91 C60 96 20 96 20 91 Z\"/>\n  <path class=\"pid-flow\" d=\"M0 62 H18 M62 62 H80\"/>\n  <circle class=\"pid-terminal\" cx=\"0\" cy=\"62\" r=\"2.5\"/><circle class=\"pid-terminal\" cx=\"80\" cy=\"62\" r=\"2.5\"/>\n</g>\n</svg>\n<text x=\"270.0\" y=\"458\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#0f172a\">T-101</text>\n<text x=\"270.0\" y=\"471\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"8.5\" fill=\"#64748b\">Feed Tank</text>\n<svg x=\"400\" y=\"345\" data-runtime-state=\"running\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 90 80\" width=\"90\" height=\"80\" role=\"img\" class=\"pf-pid-v1\" data-pf-standard=\"PF-PID-V1\" data-pf-family=\"centrifugal-pump\" preserveAspectRatio=\"xMidYMid meet\">\n<style>\n.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-no-fill{fill:none}\n.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}\n</style>\n<g data-pf-role=\"body\">\n  <path class=\"pid-flow\" d=\"M0 40 H17 M73 40 H90\"/>\n  <circle class=\"pid-state-fill\" data-pf-state-target=\"body\" cx=\"45\" cy=\"40\" r=\"27\"/>\n  <path class=\"pid-primary\" data-pf-state-target=\"rotor\" d=\"M34 23 L62 40 L34 57 Z\"/>\n  <circle class=\"pid-terminal\" cx=\"0\" cy=\"40\" r=\"2.5\"/><circle class=\"pid-terminal\" cx=\"90\" cy=\"40\" r=\"2.5\"/>\n</g>\n</svg>\n<text x=\"445.0\" y=\"443\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#0f172a\">P-101</text>\n<text x=\"445.0\" y=\"456\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"8.5\" fill=\"#64748b\">Feed Pump</text>\n<svg x=\"580\" y=\"345\" data-runtime-state=\"ready\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 90 80\" width=\"90\" height=\"80\" role=\"img\" class=\"pf-pid-v1\" data-pf-standard=\"PF-PID-V1\" data-pf-family=\"heat-exchanger\" preserveAspectRatio=\"xMidYMid meet\">\n<style>\n.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-no-fill{fill:none}\n.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}\n</style>\n<g data-pf-role=\"body\">\n  <path class=\"pid-flow\" d=\"M0 40 H17 M73 40 H90\"/>\n  <circle class=\"pid-outline\" cx=\"45\" cy=\"40\" r=\"27\"/>\n  <path class=\"pid-primary\" data-pf-state-target=\"heat\" d=\"M27 42 C32 20 39 60 45 38 C51 16 58 56 63 35\"/>\n</g>\n</svg>\n<text x=\"625.0\" y=\"443\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#0f172a\">E-101</text>\n<text x=\"625.0\" y=\"456\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"8.5\" fill=\"#64748b\">Heat Exchanger</text>\n<svg x=\"760\" y=\"310\" data-runtime-state=\"running\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 130\" width=\"100\" height=\"130\" role=\"img\" class=\"pf-pid-v1\" data-pf-standard=\"PF-PID-V1\" data-pf-family=\"jacketed-reactor\" preserveAspectRatio=\"xMidYMid meet\">\n<style>\n.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-no-fill{fill:none}\n.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}\n</style>\n<g data-pf-role=\"body\">\n  <path class=\"pid-warning\" d=\"M22 18 C22 10 78 10 78 18 L78 105 C78 116 22 116 22 105 Z\"/>\n  <path class=\"pid-outline\" d=\"M29 23 C29 17 71 17 71 23 L71 100 C71 108 29 108 29 100 Z\"/>\n  <path class=\"pid-detail\" d=\"M29 23 C29 29 71 29 71 23 M29 100 C29 94 71 94 71 100\"/>\n  <path class=\"pid-primary\" data-pf-state-target=\"agitator\" d=\"M50 0 V69 M38 42 H62 M38 69 L50 58 L62 69\"/>\n  <path class=\"pid-state-fill\" data-pf-state-target=\"level\" d=\"M31 77 C31 73 69 73 69 77 L69 100 C69 104 31 104 31 100 Z\"/>\n  <path class=\"pid-flow\" d=\"M0 62 H22 M78 62 H100\"/>\n  <path class=\"pid-warning\" d=\"M12 34 H22 M78 34 H88 M12 96 H22 M78 96 H88\"/>\n</g>\n</svg>\n<text x=\"810.0\" y=\"458\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#0f172a\">R-101</text>\n<text x=\"810.0\" y=\"471\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"8.5\" fill=\"#64748b\">Jacketed Reactor</text>\n<svg x=\"950\" y=\"345\" data-runtime-state=\"ready\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 80 80\" width=\"80\" height=\"80\" role=\"img\" class=\"pf-pid-v1\" data-pf-standard=\"PF-PID-V1\" data-pf-family=\"control-valve\" preserveAspectRatio=\"xMidYMid meet\">\n<style>\n.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-no-fill{fill:none}\n.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}\n</style>\n<g data-pf-role=\"body\">\n  <path class=\"pid-flow\" d=\"M0 46 H20 M60 46 H80\"/>\n  <path class=\"pid-outline\" data-pf-state-target=\"valve\" d=\"M20 30 L40 46 L20 62 Z M60 30 L40 46 L60 62 Z\"/>\n  <path class=\"pid-primary\" d=\"M40 46 V29\"/>\n  <path class=\"pid-state-fill\" data-pf-state-target=\"actuator\" d=\"M25 8 H55 V28 H25 Z\"/>\n  <path class=\"pid-detail\" d=\"M40 8 V0\"/>\n</g>\n</svg>\n<text x=\"990.0\" y=\"443\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#0f172a\">CV-101</text>\n<text x=\"990.0\" y=\"456\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"8.5\" fill=\"#64748b\">Outlet Valve</text>\n<svg x=\"790\" y=\"520\" data-runtime-state=\"ready\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 70 90\" width=\"70\" height=\"90\" role=\"img\" class=\"pf-pid-v1\" data-pf-standard=\"PF-PID-V1\" data-pf-family=\"temperature-transmitter\" preserveAspectRatio=\"xMidYMid meet\">\n<style>\n.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}\n.pf-pid-v1 .pid-no-fill{fill:none}\n.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}\n</style>\n<g data-pf-role=\"body\">\n  <path class=\"pid-detail\" d=\"M35 0 V20 M35 70 V90\"/>\n  <circle class=\"pid-outline\" cx=\"35\" cy=\"45\" r=\"25\"/>\n  <text x=\"35\" y=\"42\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\">TT</text>\n  <text x=\"35\" y=\"55\" text-anchor=\"middle\" font-size=\"8\">TEMP</text>\n  <circle class=\"pid-state-fill\" data-pf-state-target=\"signal\" cx=\"35\" cy=\"45\" r=\"3\"/>\n</g>\n</svg>\n<text x=\"825.0\" y=\"628\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"#0f172a\">TT-101</text>\n<text x=\"825.0\" y=\"641\" text-anchor=\"middle\" font-family=\"Public Sans,Arial,sans-serif\" font-size=\"8.5\" fill=\"#64748b\">Reactor Temperature</text>\n</svg>\n",
+  "timestamp": "2026-08-14T15:09:07.304445Z"
+}

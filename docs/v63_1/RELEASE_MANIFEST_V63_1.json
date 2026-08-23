@@ -1,0 +1,165 @@
+{
+  "schema": "plant-factory-release-manifest",
+  "schema_version": 1,
+  "release": "63.1",
+  "package_version": "63.1.0",
+  "status": "passed",
+  "product": "Plant Factory / Automated SVG Integration",
+  "object_standard": {
+    "id": "PF-PID-V1",
+    "version": "1.0",
+    "release": "61.1",
+    "canonical_template_count": 25,
+    "normalization": "non-destructive",
+    "connection_routing": "semantic-port-pair-orthogonal"
+  },
+  "logic_standard": {
+    "id": "PF-LOGIC-V1",
+    "release": "63.1",
+    "canonical_block_count": 33,
+    "inventory_category": "Schaltpläne",
+    "single_source_of_truth": "project.logic",
+    "ownership_modes": [
+      "direct",
+      "logic",
+      "hybrid"
+    ],
+    "typed_ports": true,
+    "cycle_detection": "fail-closed",
+    "writer_conflicts": "fail-closed-unless-explicit-hybrid"
+  },
+  "ui_contracts": {
+    "modal": "PF-MODAL-V1",
+    "canvas_context": "PF-CANVAS-CONTEXT-V1",
+    "hmi_setup": "PF-HMI-SETUP-V2",
+    "logic_workspace": "PF-LOGIC-V1"
+  },
+  "runtime_compatibility": {
+    "universal_json": true,
+    "automation_system_v9": true,
+    "automation_system_v8_cross": true,
+    "siemens_iec_scl": true,
+    "siemens_tag_csv": true,
+    "stateful_bridge": true,
+    "strict_v9_sections_unchanged": true,
+    "strict_v8_cross_sections_unchanged": true,
+    "cross_transport_physical_coordinates": false
+  },
+  "compatibility": {
+    "legacy_projects_without_logic": true,
+    "legacy_objects": true,
+    "custom_svg": true,
+    "animations": true,
+    "runtime_v9": true,
+    "cross_v8": true,
+    "hmi_widgets_optional": true,
+    "project_and_export_formats": "backward-compatible-additive"
+  },
+  "runtime_reference": {
+    "file": "test/fixtures/device_state_data_v9_node_fn01_runtime_reference.json",
+    "schema_version": 9,
+    "scope": "node_local",
+    "node_id": "fn-01",
+    "controllers": 4,
+    "sensors": 10,
+    "actuators": 11,
+    "process_states": 8,
+    "timers": 5,
+    "rule_engines": 1,
+    "rules": 4,
+    "identity_model": "controller_uuid_plus_local_io_id"
+  },
+  "verification": {
+    "functional_python_style": "passed",
+    "functional_javascript_style": "passed",
+    "pf_pid_v1_javascript": {
+      "passed": 31,
+      "total": 31
+    },
+    "pf_logic_v1_javascript": {
+      "passed": 66,
+      "total": 66
+    },
+    "pf_logic_v1_python_runtime": {
+      "passed": 35,
+      "total": 35
+    },
+    "v63_static_release_contract": {
+      "passed": 75,
+      "total": 75
+    },
+    "v9_core": {
+      "passed": 145,
+      "total": 145
+    },
+    "javascript_format": {
+      "passed": 42,
+      "total": 42
+    },
+    "python_format_parity": {
+      "passed": 58,
+      "total": 58
+    },
+    "plant_factory_model_chain": {
+      "passed": 31,
+      "total": 31
+    },
+    "snapshot_chain": {
+      "passed": 52,
+      "total": 52
+    },
+    "rule_contract_external_runtime": {
+      "passed": 29,
+      "total": 29
+    },
+    "chromium_browser_compatibility": {
+      "passed": 119,
+      "total": 119
+    },
+    "chromium_browser_v62_interactions": {
+      "passed": 45,
+      "total": 45
+    },
+    "chromium_browser_v63_logic": {
+      "passed": 51,
+      "total": 51
+    },
+    "external_runtime_authority": "automation_system_v0101",
+    "complete_release_stages": {
+      "passed": 17,
+      "total": 17
+    },
+    "result": "passed"
+  },
+  "archive": {
+    "root_directory": "Automated_SVG_Integration_63_1",
+    "file_count": 335,
+    "internal_sha256_entries": 334,
+    "internal_sha256_excludes_manifest_file": "SHA256SUMS",
+    "deterministic": true,
+    "second_build_byte_identical": true,
+    "path_traversal_entries": 0,
+    "absolute_path_entries": 0,
+    "symlinks": 0,
+    "virtual_environments": 0,
+    "node_modules": 0,
+    "python_caches": 0,
+    "fresh_extract_verification": "passed"
+  },
+  "release_evidence": [
+    "release_evidence/V63_1_Screenshot_01_Logic_FBD_Light.png",
+    "release_evidence/V63_1_Screenshot_02_Logic_FBD_Dark.png",
+    "release_evidence/V63_1_Screenshot_03_Universal_Compiler.png",
+    "release_evidence/V63_1_Screenshot_04_V9_Signal_Inventory.png"
+  ],
+  "documents": [
+    "RELEASE_NOTES_V63_1_DE.md",
+    "DIAGNOSE_LOGIC_V9_V8_CROSS_V63_1_DE.md",
+    "docs/v63_1/PF_LOGIC_V1_STANDARD.md",
+    "docs/v63_1/UNIVERSAL_RUNTIME_COMPATIBILITY.md",
+    "docs/v63_1/MIGRATION_UND_SINGLE_SOURCE_OF_TRUTH.md",
+    "docs/v63_1/TEST_UND_FREIGABE.md",
+    "#_Documentation/PF_LOGIC_V1_STANDARD_DE.md",
+    "#_Documentation/Documentation.md"
+  ]
+}

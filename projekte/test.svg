@@ -1,0 +1,79 @@
+<svg id="main-canvas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2000" height="2000" style="touch-action: none;">
+                        <defs>
+                            
+                            <pattern id="grid-pattern" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e0e0e0" stroke-width="0.5"></path>
+                            </pattern>
+                        </defs>
+                        
+                        
+                        
+                        
+                        
+                        <g id="elements-layer" transform="translate(-1315.3243001917394 -281.9974093967626) scale(3.1124909521200026)"><g id="inst_1766696070430_ay0uhwpge" class="svg-element" data-template-id="Compressor_vacuum_pump_(general)" transform="translate(592.6945190429688, 309.83384704589844)"><g class="svg-element-content" transform="translate(0, 0) rotate(0) scale(1) translate(0, 0)"><defs id="defs-styles">
+    
+  </defs><g transform="translate(-79.375 -66.41)" fill="none" stroke="#2196F3" id="gruppe-1" stroke-opacity="0.9">
+    <g id="gruppe-2">
+      <path transform="translate(68.254 66.12)" d="m15.86 10.869h5.228" stroke-width=".15" id="pfad-1"></path>
+      <path transform="translate(93.236 66.123)" d="m15.86 10.869h5.228" stroke-width=".15" id="pfad-2"></path>
+      <path transform="translate(68.254 66.12)" d="m26.921 17.227c3.524-0.893 7.049-1.785 10.573-2.678" stroke-width=".3" id="pfad-3"></path>
+      <path transform="matrix(1 0 0 -1 68.205 87.843)" d="m26.921 17.227c3.524-0.893 7.049-1.785 10.573-2.678" stroke-width=".3" id="pfad-4"></path>
+    </g>
+    <circle transform="matrix(0.3 0 0 0.3 91.737 69.49)" cx="25" cy="25" r="25" stroke-width=".99954" id="kreis-1" fill="#4CAF50" fill-opacity="0.2" data-hmi-fill="1" data-orig-style-fill="" data-orig-style-fill-opacity=""></circle>
+  </g></g></g><g id="inst_1766696072355_quflpdwlg" class="svg-element" data-template-id="Column" transform="translate(491.4510803222656, 222.01690673828125)"><g class="svg-element-content" transform="translate(0, 0) rotate(0) scale(1) translate(0, 0)"><defs id="defs-styles">
+    
+  </defs><defs id="defs-styles">
+    
+  </defs><g id="zylinder-hauptgruppe" transform="translate(-201.83794,-363.94746)">
+    <g id="zylinder-elemente" transform="translate(-236.55772,356.05141)">
+      <path id="linie-oben" d="m 467.5,54.5 v 5" style="fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1;" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity=""></path>
+      <path id="linie-links" d="m 455,24.5 h -5" style="fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1;" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity=""></path>
+      <path id="zylinder-koerper-unten" d="m 457.5,37 v 12.5 c 0,0 2.5,2.5 10,2.5 7.5,0 10,-2.5 10,-2.5 V 37" style="fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: var(--strichbreite, 0.5); stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1; fill-opacity: 0.2;" data-hmi-fill="1" data-orig-style-fill="rgb(76, 175, 80)" data-orig-style-fill-opacity="0.2"></path>
+      <path id="zylinder-koerper-oben" d="M 457.5,37 V 24.5 c 0,0 2.501,-2.375 10,-2.5 7.499,-0.125 10,2.5 10,2.5 V 37" style="fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: var(--strichbreite, 0.5); stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1; fill-opacity: 0.2;" data-hmi-fill="1" data-orig-style-fill="rgb(76, 175, 80)" data-orig-style-fill-opacity="0.2"></path>
+      <path id="linie-unten" d="m 467.5,19.5 v -5" style="fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1;" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity=""></path>
+      <path id="linie-rechts" d="m 485,49.5 h -5" style="fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1;" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity=""></path>
+      <path id="mittellinie-oben" d="m 457.5,27 h 20" style="fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: var(--strichbreite, 0.5); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 4px, 4px; stroke-opacity: 0.6;" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity=""></path>
+      <path id="mittellinie-unten" d="m 457.5,47 h 20" style="fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: var(--strichbreite, 0.5); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 4px, 4px; stroke-opacity: 0.6;" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity=""></path>
+    </g>
+  </g></g></g><g id="inst_1766794107551_lgwr1ih81" class="svg-element" data-template-id="Jacketed_vessel_(wdeaadbem)" transform="translate(703.1907958984375, 204.6294403076172)"><g class="svg-element-content" transform="translate(0, 0) rotate(0) scale(1) translate(0, 0)"><defs id="defs-styles">
+    
+  </defs><defs id="defs3358">
+    <pattern xlink:href="#pattern4715" xmlns:ns0="http://www.w3.org/1999/xlink" id="pattern4719" patternTransform="matrix(0.09760861,0.09760861,-0.09760861,0.09760861,263.75,184.50023)"></pattern>
+    <pattern xlink:href="#pattern4055" xmlns:ns0="http://www.w3.org/1999/xlink" id="pattern4715" patternTransform="matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102.00001)"></pattern>
+    <pattern xlink:href="#Strips1_8" xmlns:ns0="http://www.w3.org/1999/xlink" id="pattern4055" patternTransform="matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102)"></pattern>
+    <pattern id="Strips1_8" patternTransform="translate(0,0) scale(10,10)" height="1" width="9" patternUnits="userSpaceOnUse">
+      <rect id="rect3355" height="2" width="1" y="-0.5" x="0" style="fill: rgb(210, 40, 45); stroke: none; fill-opacity: 0.2;" fill="#4CAF50" fill-opacity="0.2" data-hmi-fill="1" data-orig-style-fill="rgb(76, 175, 80)" data-orig-style-fill-opacity="0.2"></rect>
+    </pattern>
+    <pattern xlink:href="#pattern4715" xmlns:ns0="http://www.w3.org/1999/xlink" id="pattern4723" patternTransform="matrix(0.09760861,0.09760861,-0.09760861,0.09760861,241.25,184.50023)"></pattern>
+    <pattern xlink:href="#pattern4055" xmlns:ns0="http://www.w3.org/1999/xlink" id="pattern4244" patternTransform="matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102.00001)"></pattern>
+    <pattern xlink:href="#Strips1_8" xmlns:ns0="http://www.w3.org/1999/xlink" id="pattern4246" patternTransform="matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102)"></pattern>
+    <pattern id="pattern4250" patternTransform="translate(0,0) scale(10,10)" height="1" width="9" patternUnits="userSpaceOnUse">
+      <rect id="rect4248" height="2" width="1" y="-0.5" x="0" style="fill: rgb(210, 40, 45); stroke: none; fill-opacity: 0.2;" fill="#4CAF50" fill-opacity="0.2" data-hmi-fill="1" data-orig-style-fill="rgb(76, 175, 80)" data-orig-style-fill-opacity="0.2"></rect>
+    </pattern>
+    <pattern xlink:href="#pattern4715" xmlns:ns0="http://www.w3.org/1999/xlink" id="pattern4727" patternTransform="matrix(0.09760861,0.09760861,-0.09760861,0.09760861,263.75,184.50023)"></pattern>
+    <pattern xlink:href="#pattern4055" xmlns:ns0="http://www.w3.org/1999/xlink" id="pattern4253" patternTransform="matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102.00001)"></pattern>
+    <pattern xlink:href="#Strips1_8" xmlns:ns0="http://www.w3.org/1999/xlink" id="pattern4255" patternTransform="matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102)"></pattern>
+    <pattern id="pattern4259" patternTransform="translate(0,0) scale(10,10)" height="1" width="9" patternUnits="userSpaceOnUse">
+      <rect id="rect4257" height="2" width="1" y="-0.5" x="0" style="fill: rgb(210, 40, 45); stroke: none; fill-opacity: 0.2;" fill="#4CAF50" fill-opacity="0.2" data-hmi-fill="1" data-orig-style-fill="rgb(76, 175, 80)" data-orig-style-fill-opacity="0.2"></rect>
+    </pattern>
+  </defs><g id="layer1" transform="translate(-165.85774,-292.25798)">
+    <g id="g8216" transform="translate(-268.85042,420.67444)">
+      <path id="path4191" d="m 470,-85.5 v 2.5 h 5" style="fill: rgb(210, 40, 45); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; fill-opacity: 0.2;" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity=""></path>
+      <path id="path4193" d="m 457.5,-108 h -5" style="fill: rgb(210, 40, 45); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; fill-opacity: 0.2;" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity=""></path>
+      <path id="path4195" d="m 460,-99.25 v 8.75 c 0,0 1.875,2.5 7.5,2.5 5.625,0 7.5,-2.5 7.5,-2.5 v -8.75" style="opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity="1"></path>
+      <path style="opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;" d="m 460,-99.25 v -8.75 c 0,0 1.876,-2.375 7.5,-2.5 5.625,-0.125 7.5,2.5 7.5,2.5 v 8.75" id="path4197" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity="1"></path>
+      <path style="fill: rgb(210, 40, 45); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; fill-opacity: 0.2;" d="m 456.25,-95.5 h -5" id="path4199" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity=""></path>
+      <path id="path4246" style="opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;" d="m 467.187,-88 h 0.626 l 0.625,1.25 m -0.625,-1.25 h -0.626 l -0.625,1.25" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity="1"></path>
+      <path style="opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;" d="m 460,-99.25 -1.25,1.25 v 8.333 c 0,0 0.915,1.182 3.211,2.041 2.041,0.763 4.601,0.876 4.601,0.876 l 0.625,-1.25" id="path4262" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity="1"></path>
+      <path id="path4266" d="m 475,-99.25 1.25,1.25 3e-5,8.333 c 0,0 -0.915,1.182 -3.212,2.041 -2.041,0.763 -4.601,0.876 -4.601,0.876 l -0.625,-1.25" style="opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity="1"></path>
+      <path style="opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;" d="m 467.5,-97.375 v -15.625" id="path4268" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity="1"></path>
+      <path style="opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;" d="m 463.75,-95.5 v -3.75 l 7.5,3.75 v -3.75" id="path4270" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity="1"></path>
+      <path style="opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;" d="m 467.5,-85.5 v 5" id="path4272" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity="1"></path>
+      <circle style="opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;" id="path4278" cx="467.49979" cy="-115.49979" r="2.5" fill="#4CAF50" fill-opacity="0.2" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity="1"></circle>
+      <path style="opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;" d="m 466.666,-114.25 v -2.5 l 0.833,1.25 0.833,-1.25 v 2.5" id="path4280" data-hmi-fill="1" data-orig-style-fill="none" data-orig-style-fill-opacity="1"></path>
+    </g>
+  </g></g></g></g>
+                        
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;<g id="connections-layer" transform="translate(-1315.3243001917394 -281.9974093967626) scale(3.1124909521200026)"><path id="conn_1766696176557_qmbe0wd0s" class="connection-line" data-type="pipe" data-from="inst_1766696072355_quflpdwlg" data-to="inst_1766696070430_ay0uhwpge" stroke="#4b5563" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="stroke-width: 3px !important; vector-effect: non-scaling-stroke !important;" d="M 538.055419921875,264.30403053128583 L 570.3190213736798,264.30403053128583 L 570.3190213736798,312.9138488769531 L 602.5826228254845,312.9138488769531" marker-end="url(#arrowhead)"></path></g>
+                    </svg>

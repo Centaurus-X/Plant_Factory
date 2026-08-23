@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="465px" height="465px" viewBox="0.0 0.0 58.208336 58.208336" version="1.1" id="svg-zylinder">
+  <defs id="defs-styles">
+    
+  </defs>
+  <defs id="defs-styles">
+    
+  </defs>
+  <g id="zylinder-hauptgruppe" transform="translate(-201.83794,-363.94746)">
+    <g id="zylinder-elemente" transform="translate(-236.55772,356.05141)">
+      <path id="linie-oben" d="m 467.5,54.5 v 5" style="fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"></path>
+      <path id="linie-links" d="m 455,24.5 h -5" style="fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"></path>
+      <path id="zylinder-koerper-unten" d="m 457.5,37 v 12.5 c 0,0 2.5,2.5 10,2.5 7.5,0 10,-2.5 10,-2.5 V 37" style="fill:#4CAF50;stroke:#2196F3;stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;fill-opacity:0.2"></path>
+      <path id="zylinder-koerper-oben" d="M 457.5,37 V 24.5 c 0,0 2.501,-2.375 10,-2.5 7.499,-0.125 10,2.5 10,2.5 V 37" style="fill:#4CAF50;stroke:#2196F3;stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;fill-opacity:0.2"></path>
+      <path id="linie-unten" d="m 467.5,19.5 v -5" style="fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"></path>
+      <path id="linie-rechts" d="m 485,49.5 h -5" style="fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"></path>
+      <path id="mittellinie-oben" d="m 457.5,27 h 20" style="fill:none;stroke:#2196F3;stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:4, 4;stroke-opacity:0.6"></path>
+      <path id="mittellinie-unten" d="m 457.5,47 h 20" style="fill:none;stroke:#2196F3;stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:4, 4;stroke-opacity:0.6"></path>
+    </g>
+  </g>
+</svg>

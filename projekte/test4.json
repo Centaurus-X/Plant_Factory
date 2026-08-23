@@ -1,0 +1,1923 @@
+{
+  "name": "test4",
+  "timestamp": "2025-12-27T04:40:00.705Z",
+  "svgContent": "<svg id=\"main-canvas\" xmlns=\"http://www.w3.org/2000/svg\" width=\"2000\" height=\"2000\" style=\"touch-action: none;\">\n                        <defs>\n                            <!-- Raster-Pattern -->\n                            <pattern id=\"grid-pattern\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n                                <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"#e0e0e0\" stroke-width=\"0.5\"/>\n                            </pattern>\n                        </defs>\n                        \n                        <!-- Raster-Hintergrund -->\n                        \n                        \n                        <!-- Haupt-Gruppe für Elemente -->\n                        <g id=\"elements-layer\" transform=\"translate(-2082.6267970134813 -650.9815562209603) scale(4.594972986357222)\"><g id=\"inst_1766696070430_ay0uhwpge\" class=\"svg-element warn-yellow\" data-template-id=\"Compressor_vacuum_pump_(general)\" transform=\"translate(628.9605102539062, 279.84202575683594)\" style=\"cursor: grab;\"><g class=\"svg-element-content\" transform=\"translate(19.84399700164795, 10.579994201660156) rotate(0) scale(1) translate(-19.84399700164795, -10.579994201660156)\"><defs id=\"defs-styles\">\n    <style type=\"text/css\">\n        :root {\n          --hauptfarbe: #2196F3;\n          --akzentfarbe: #FF9800;\n          --fuellfarbe: rgba(76, 175, 80, 0.2);\n          --strichbreite: 1.5;\n        }\n        /* Animationsklassen zur einfachen Verwendung */\n        .animierbar {\n          transition: all 0.3s ease-in-out;\n        }\n        .pulsieren {\n          animation: pulsieren 2s ease-in-out infinite;\n        }\n        .pulsieren-langsam {\n          animation: pulsieren 4s ease-in-out infinite;\n        }\n        .drehen {\n          transform-origin: center;\n          animation: drehen 3s linear infinite;\n        }\n        .drehen-langsam {\n          transform-origin: center;\n          animation: drehen 6s linear infinite;\n        }\n        .einblenden {\n          animation: einblenden 1s ease-in forwards;\n        }\n        .schweben {\n          animation: schweben 2s ease-in-out infinite;\n        }\n        .zoomen {\n          animation: zoomen 2s ease-in-out infinite;\n        }\n        /* Animationsdefinitionen */\n        @keyframes pulsieren {\n          0%, 100% { opacity: 0.4; }\n          50% { opacity: 1; }\n        }\n        @keyframes drehen {\n          from { transform: rotate(0deg); }\n          to { transform: rotate(360deg); }\n        }\n        @keyframes einblenden {\n          from { opacity: 0; }\n          to { opacity: 1; }\n        }\n        @keyframes schweben {\n          0%, 100% { transform: translateY(0); }\n          50% { transform: translateY(-10px); }\n        }\n        @keyframes zoomen {\n          0%, 100% { transform: scale(1); }\n          50% { transform: scale(1.1); }\n        }\n        /* Hover-Effekte */\n        .hover-vergroessern:hover {\n          transform: scale(1.1);\n          transition: transform 0.3s ease;\n        }\n        .hover-farbe:hover {\n          filter: brightness(1.2);\n          transition: filter 0.3s ease;\n        }\n    </style>\n  </defs><g transform=\"translate(-79.375 -66.41)\" fill=\"none\" stroke=\"#2196F3\" id=\"gruppe-1\" stroke-opacity=\"0.9\">\n    <g id=\"gruppe-2\">\n      <path transform=\"translate(68.254 66.12)\" d=\"m15.86 10.869h5.228\" stroke-width=\".15\" id=\"pfad-1\"/>\n      <path transform=\"translate(93.236 66.123)\" d=\"m15.86 10.869h5.228\" stroke-width=\".15\" id=\"pfad-2\"/>\n      <path transform=\"translate(68.254 66.12)\" d=\"m26.921 17.227c3.524-0.893 7.049-1.785 10.573-2.678\" stroke-width=\".3\" id=\"pfad-3\"/>\n      <path transform=\"matrix(1 0 0 -1 68.205 87.843)\" d=\"m26.921 17.227c3.524-0.893 7.049-1.785 10.573-2.678\" stroke-width=\".3\" id=\"pfad-4\"/>\n    </g>\n    <circle transform=\"matrix(0.3 0 0 0.3 91.737 69.49)\" cx=\"25\" cy=\"25\" r=\"25\" stroke-width=\".99954\" id=\"kreis-1\" fill=\"#4CAF50\" fill-opacity=\"0.2\" data-hmi-fill=\"1\" data-orig-style-fill=\"\" data-orig-style-fill-opacity=\"\"/>\n  </g></g></g><g id=\"inst_1766696072355_quflpdwlg\" class=\"svg-element ok-green\" data-template-id=\"Column\" transform=\"translate(496.3009338378906, 195.77809143066406)\" style=\"cursor: grab;\"><g class=\"svg-element-content\" transform=\"translate(29.104339599609375, 29.103973388671875) rotate(0) scale(1) translate(-29.104339599609375, -29.103973388671875)\"><defs id=\"defs-styles\">\n    <style type=\"text/css\">\n        :root {\n          --hauptfarbe: #2196F3;\n          --akzentfarbe: #FF9800;\n          --fuellfarbe: rgba(76, 175, 80, 0.2);\n          --strichbreite: 1.5;\n        }\n        /* Animationsklassen zur einfachen Verwendung */\n        .animierbar {\n          transition: all 0.3s ease-in-out;\n        }\n        .pulsieren {\n          animation: pulsieren 2s ease-in-out infinite;\n        }\n        .pulsieren-langsam {\n          animation: pulsieren 4s ease-in-out infinite;\n        }\n        .drehen {\n          transform-origin: center;\n          animation: drehen 3s linear infinite;\n        }\n        .drehen-langsam {\n          transform-origin: center;\n          animation: drehen 6s linear infinite;\n        }\n        .einblenden {\n          animation: einblenden 1s ease-in forwards;\n        }\n        .schweben {\n          animation: schweben 2s ease-in-out infinite;\n        }\n        .zoomen {\n          animation: zoomen 2s ease-in-out infinite;\n        }\n        /* Animationsdefinitionen */\n        @keyframes pulsieren {\n          0%, 100% { opacity: 0.4; }\n          50% { opacity: 1; }\n        }\n        @keyframes drehen {\n          from { transform: rotate(0deg); }\n          to { transform: rotate(360deg); }\n        }\n        @keyframes einblenden {\n          from { opacity: 0; }\n          to { opacity: 1; }\n        }\n        @keyframes schweben {\n          0%, 100% { transform: translateY(0); }\n          50% { transform: translateY(-10px); }\n        }\n        @keyframes zoomen {\n          0%, 100% { transform: scale(1); }\n          50% { transform: scale(1.1); }\n        }\n        /* Hover-Effekte */\n        .hover-vergroessern:hover {\n          transform: scale(1.1);\n          transition: transform 0.3s ease;\n        }\n        .hover-farbe:hover {\n          filter: brightness(1.2);\n          transition: filter 0.3s ease;\n        }\n    </style>\n  </defs><defs id=\"defs-styles\">\n    <style>\n      :root {\n        --hauptfarbe: #ffffff;\n        --akzentfarbe: #00aaff;\n        --fuellfarbe: rgba(0, 170, 255, 0.2);\n        --strichbreite: 0.5;\n      }\n    </style>\n  </defs><g id=\"zylinder-hauptgruppe\" transform=\"translate(-201.83794,-363.94746)\">\n    <g id=\"zylinder-elemente\" transform=\"translate(-236.55772,356.05141)\">\n      <path id=\"linie-oben\" d=\"m 467.5,54.5 v 5\" style=\"fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1;\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"\"/>\n      <path id=\"linie-links\" d=\"m 455,24.5 h -5\" style=\"fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1;\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"\"/>\n      <path id=\"zylinder-koerper-unten\" d=\"m 457.5,37 v 12.5 c 0,0 2.5,2.5 10,2.5 7.5,0 10,-2.5 10,-2.5 V 37\" style=\"fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: var(--strichbreite, 0.5); stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1; fill-opacity: 0.2;\" data-hmi-fill=\"1\" data-orig-style-fill=\"rgb(76, 175, 80)\" data-orig-style-fill-opacity=\"0.2\"/>\n      <path id=\"zylinder-koerper-oben\" d=\"M 457.5,37 V 24.5 c 0,0 2.501,-2.375 10,-2.5 7.499,-0.125 10,2.5 10,2.5 V 37\" style=\"fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: var(--strichbreite, 0.5); stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1; fill-opacity: 0.2;\" data-hmi-fill=\"1\" data-orig-style-fill=\"rgb(76, 175, 80)\" data-orig-style-fill-opacity=\"0.2\"/>\n      <path id=\"linie-unten\" d=\"m 467.5,19.5 v -5\" style=\"fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1;\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"\"/>\n      <path id=\"linie-rechts\" d=\"m 485,49.5 h -5\" style=\"fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: 1;\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"\"/>\n      <path id=\"mittellinie-oben\" d=\"m 457.5,27 h 20\" style=\"fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: var(--strichbreite, 0.5); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 4px, 4px; stroke-opacity: 0.6;\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"\"/>\n      <path id=\"mittellinie-unten\" d=\"m 457.5,47 h 20\" style=\"fill: rgb(248, 28, 3); stroke: rgb(33, 150, 243); stroke-width: var(--strichbreite, 0.5); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 4px, 4px; stroke-opacity: 0.6;\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"\"/>\n    </g>\n  </g></g></g><g id=\"inst_1766794107551_lgwr1ih81\" class=\"svg-element ok-green\" data-template-id=\"Jacketed_vessel_(wdeaadbem)\" transform=\"translate(691.3298950195312, 204.45187377929688)\" style=\"cursor: grab;\"><g class=\"svg-element-content\" transform=\"translate(29.041824340820312, 29.166580200195312) rotate(0) scale(1) translate(-29.041824340820312, -29.166580200195312)\"><defs id=\"defs-styles\">\n    <style type=\"text/css\">\n        :root {\n          --hauptfarbe: #2196F3;\n          --akzentfarbe: #FF9800;\n          --fuellfarbe: rgba(76, 175, 80, 0.2);\n          --strichbreite: 1.5;\n        }\n        /* Animationsklassen zur einfachen Verwendung */\n        .animierbar {\n          transition: all 0.3s ease-in-out;\n        }\n        .pulsieren {\n          animation: pulsieren 2s ease-in-out infinite;\n        }\n        .pulsieren-langsam {\n          animation: pulsieren 4s ease-in-out infinite;\n        }\n        .drehen {\n          transform-origin: center;\n          animation: drehen 3s linear infinite;\n        }\n        .drehen-langsam {\n          transform-origin: center;\n          animation: drehen 6s linear infinite;\n        }\n        .einblenden {\n          animation: einblenden 1s ease-in forwards;\n        }\n        .schweben {\n          animation: schweben 2s ease-in-out infinite;\n        }\n        .zoomen {\n          animation: zoomen 2s ease-in-out infinite;\n        }\n        /* Animationsdefinitionen */\n        @keyframes pulsieren {\n          0%, 100% { opacity: 0.4; }\n          50% { opacity: 1; }\n        }\n        @keyframes drehen {\n          from { transform: rotate(0deg); }\n          to { transform: rotate(360deg); }\n        }\n        @keyframes einblenden {\n          from { opacity: 0; }\n          to { opacity: 1; }\n        }\n        @keyframes schweben {\n          0%, 100% { transform: translateY(0); }\n          50% { transform: translateY(-10px); }\n        }\n        @keyframes zoomen {\n          0%, 100% { transform: scale(1); }\n          50% { transform: scale(1.1); }\n        }\n        /* Hover-Effekte */\n        .hover-vergroessern:hover {\n          transform: scale(1.1);\n          transition: transform 0.3s ease;\n        }\n        .hover-farbe:hover {\n          filter: brightness(1.2);\n          transition: filter 0.3s ease;\n        }\n    </style>\n  </defs><defs id=\"defs3358\">\n    <pattern ns0:href=\"#pattern4715\" xmlns:ns0=\"http://www.w3.org/1999/xlink\" id=\"pattern4719\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,263.75,184.50023)\"/>\n    <pattern ns0:href=\"#pattern4055\" xmlns:ns0=\"http://www.w3.org/1999/xlink\" id=\"pattern4715\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102.00001)\"/>\n    <pattern ns0:href=\"#Strips1_8\" xmlns:ns0=\"http://www.w3.org/1999/xlink\" id=\"pattern4055\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102)\"/>\n    <pattern id=\"Strips1_8\" patternTransform=\"translate(0,0) scale(10,10)\" height=\"1\" width=\"9\" patternUnits=\"userSpaceOnUse\">\n      <rect id=\"rect3355\" height=\"2\" width=\"1\" y=\"-0.5\" x=\"0\" style=\"fill: rgb(210, 40, 45); stroke: none; fill-opacity: 0.2;\" fill=\"#4CAF50\" fill-opacity=\"0.2\" data-hmi-fill=\"1\" data-orig-style-fill=\"rgb(76, 175, 80)\" data-orig-style-fill-opacity=\"0.2\"/>\n    </pattern>\n    <pattern ns0:href=\"#pattern4715\" xmlns:ns0=\"http://www.w3.org/1999/xlink\" id=\"pattern4723\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,241.25,184.50023)\"/>\n    <pattern ns0:href=\"#pattern4055\" xmlns:ns0=\"http://www.w3.org/1999/xlink\" id=\"pattern4244\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102.00001)\"/>\n    <pattern ns0:href=\"#Strips1_8\" xmlns:ns0=\"http://www.w3.org/1999/xlink\" id=\"pattern4246\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102)\"/>\n    <pattern id=\"pattern4250\" patternTransform=\"translate(0,0) scale(10,10)\" height=\"1\" width=\"9\" patternUnits=\"userSpaceOnUse\">\n      <rect id=\"rect4248\" height=\"2\" width=\"1\" y=\"-0.5\" x=\"0\" style=\"fill: rgb(210, 40, 45); stroke: none; fill-opacity: 0.2;\" fill=\"#4CAF50\" fill-opacity=\"0.2\" data-hmi-fill=\"1\" data-orig-style-fill=\"rgb(76, 175, 80)\" data-orig-style-fill-opacity=\"0.2\"/>\n    </pattern>\n    <pattern ns0:href=\"#pattern4715\" xmlns:ns0=\"http://www.w3.org/1999/xlink\" id=\"pattern4727\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,263.75,184.50023)\"/>\n    <pattern ns0:href=\"#pattern4055\" xmlns:ns0=\"http://www.w3.org/1999/xlink\" id=\"pattern4253\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102.00001)\"/>\n    <pattern ns0:href=\"#Strips1_8\" xmlns:ns0=\"http://www.w3.org/1999/xlink\" id=\"pattern4255\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102)\"/>\n    <pattern id=\"pattern4259\" patternTransform=\"translate(0,0) scale(10,10)\" height=\"1\" width=\"9\" patternUnits=\"userSpaceOnUse\">\n      <rect id=\"rect4257\" height=\"2\" width=\"1\" y=\"-0.5\" x=\"0\" style=\"fill: rgb(210, 40, 45); stroke: none; fill-opacity: 0.2;\" fill=\"#4CAF50\" fill-opacity=\"0.2\" data-hmi-fill=\"1\" data-orig-style-fill=\"rgb(76, 175, 80)\" data-orig-style-fill-opacity=\"0.2\"/>\n    </pattern>\n  </defs><g id=\"layer1\" transform=\"translate(-165.85774,-292.25798)\">\n    <g id=\"g8216\" transform=\"translate(-268.85042,420.67444)\">\n      <path id=\"path4191\" d=\"m 470,-85.5 v 2.5 h 5\" style=\"fill: rgb(210, 40, 45); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; fill-opacity: 0.2;\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"\"/>\n      <path id=\"path4193\" d=\"m 457.5,-108 h -5\" style=\"fill: rgb(210, 40, 45); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; fill-opacity: 0.2;\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"\"/>\n      <path id=\"path4195\" d=\"m 460,-99.25 v 8.75 c 0,0 1.875,2.5 7.5,2.5 5.625,0 7.5,-2.5 7.5,-2.5 v -8.75\" style=\"opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"1\"/>\n      <path style=\"opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;\" d=\"m 460,-99.25 v -8.75 c 0,0 1.876,-2.375 7.5,-2.5 5.625,-0.125 7.5,2.5 7.5,2.5 v 8.75\" id=\"path4197\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"1\"/>\n      <path style=\"fill: rgb(210, 40, 45); stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; fill-opacity: 0.2;\" d=\"m 456.25,-95.5 h -5\" id=\"path4199\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"\"/>\n      <path id=\"path4246\" style=\"opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;\" d=\"m 467.187,-88 h 0.626 l 0.625,1.25 m -0.625,-1.25 h -0.626 l -0.625,1.25\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"1\"/>\n      <path style=\"opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;\" d=\"m 460,-99.25 -1.25,1.25 v 8.333 c 0,0 0.915,1.182 3.211,2.041 2.041,0.763 4.601,0.876 4.601,0.876 l 0.625,-1.25\" id=\"path4262\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"1\"/>\n      <path id=\"path4266\" d=\"m 475,-99.25 1.25,1.25 3e-5,8.333 c 0,0 -0.915,1.182 -3.212,2.041 -2.041,0.763 -4.601,0.876 -4.601,0.876 l -0.625,-1.25\" style=\"opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"1\"/>\n      <path style=\"opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;\" d=\"m 467.5,-97.375 v -15.625\" id=\"path4268\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"1\"/>\n      <path style=\"opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;\" d=\"m 463.75,-95.5 v -3.75 l 7.5,3.75 v -3.75\" id=\"path4270\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"1\"/>\n      <path style=\"opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;\" d=\"m 467.5,-85.5 v 5\" id=\"path4272\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"1\"/>\n      <circle style=\"opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.5px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;\" id=\"path4278\" cx=\"467.49979\" cy=\"-115.49979\" r=\"2.5\" fill=\"#4CAF50\" fill-opacity=\"0.2\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"1\"/>\n      <path style=\"opacity: 1; fill: rgb(210, 40, 45); fill-opacity: 0.2; stroke: rgb(33, 150, 243); stroke-width: 0.25px; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-opacity: 1; paint-order: normal;\" d=\"m 466.666,-114.25 v -2.5 l 0.833,1.25 0.833,-1.25 v 2.5\" id=\"path4280\" data-hmi-fill=\"1\" data-orig-style-fill=\"none\" data-orig-style-fill-opacity=\"1\"/>\n    </g>\n  </g></g></g></g>\n                        \n\t\t\t\t\t\t<!-- Verbindungen -->\n\t\t\t\t\t\t<g id=\"connections-layer\" transform=\"translate(-2082.6267970134813 -650.9815562209603) scale(4.594972986357222)\"><path id=\"conn_1766696176557_qmbe0wd0s\" class=\"connection-line\" data-type=\"pipe\" data-from=\"inst_1766696072355_quflpdwlg\" data-to=\"inst_1766696070430_ay0uhwpge\" stroke=\"#4b5563\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\" style=\"stroke-width: 3px !important; vector-effect: non-scaling-stroke !important;\" d=\"M 540.7271728515625,237.4293670654297 L 587.7053049190074,237.4293670654297 L 587.7053049190074,282.9220275878906 L 634.6834369864524,282.9220275878906\" marker-end=\"url(#arrowhead)\"/></g>\n                    </svg>",
+  "elements": [
+    {
+      "id": "inst_1766696070430_ay0uhwpge",
+      "templateId": "Compressor_vacuum_pump_(general)",
+      "name": "Compressor Vacuum Pump (General)",
+      "x": 628.9605102539062,
+      "y": 279.84202575683594,
+      "width": 100,
+      "height": 100,
+      "rotation": 0,
+      "scale": 1,
+      "pivotMode": "center",
+      "pivotX": 0,
+      "pivotY": 0,
+      "properties": {},
+      "bindings": [],
+      "svgContent": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"317px\" height=\"169px\" version=\"1.1\" viewBox=\"0.0 0.0 39.688 21.167\">\n  <defs id=\"defs-styles\">\n    <style type=\"text/css\">\n        :root {\n          --hauptfarbe: #2196F3;\n          --akzentfarbe: #FF9800;\n          --fuellfarbe: rgba(76, 175, 80, 0.2);\n          --strichbreite: 1.5;\n        }\n        /* Animationsklassen zur einfachen Verwendung */\n        .animierbar {\n          transition: all 0.3s ease-in-out;\n        }\n        .pulsieren {\n          animation: pulsieren 2s ease-in-out infinite;\n        }\n        .pulsieren-langsam {\n          animation: pulsieren 4s ease-in-out infinite;\n        }\n        .drehen {\n          transform-origin: center;\n          animation: drehen 3s linear infinite;\n        }\n        .drehen-langsam {\n          transform-origin: center;\n          animation: drehen 6s linear infinite;\n        }\n        .einblenden {\n          animation: einblenden 1s ease-in forwards;\n        }\n        .schweben {\n          animation: schweben 2s ease-in-out infinite;\n        }\n        .zoomen {\n          animation: zoomen 2s ease-in-out infinite;\n        }\n        /* Animationsdefinitionen */\n        @keyframes pulsieren {\n          0%, 100% { opacity: 0.4; }\n          50% { opacity: 1; }\n        }\n        @keyframes drehen {\n          from { transform: rotate(0deg); }\n          to { transform: rotate(360deg); }\n        }\n        @keyframes einblenden {\n          from { opacity: 0; }\n          to { opacity: 1; }\n        }\n        @keyframes schweben {\n          0%, 100% { transform: translateY(0); }\n          50% { transform: translateY(-10px); }\n        }\n        @keyframes zoomen {\n          0%, 100% { transform: scale(1); }\n          50% { transform: scale(1.1); }\n        }\n        /* Hover-Effekte */\n        .hover-vergroessern:hover {\n          transform: scale(1.1);\n          transition: transform 0.3s ease;\n        }\n        .hover-farbe:hover {\n          filter: brightness(1.2);\n          transition: filter 0.3s ease;\n        }\n    </style>\n  </defs>\n  <g transform=\"translate(-79.375 -66.41)\" fill=\"none\" stroke=\"#2196F3\" id=\"gruppe-1\" stroke-opacity=\"0.9\">\n    <g id=\"gruppe-2\">\n      <path transform=\"translate(68.254 66.12)\" d=\"m15.86 10.869h5.228\" stroke-width=\".15\" id=\"pfad-1\"/>\n      <path transform=\"translate(93.236 66.123)\" d=\"m15.86 10.869h5.228\" stroke-width=\".15\" id=\"pfad-2\"/>\n      <path transform=\"translate(68.254 66.12)\" d=\"m26.921 17.227c3.524-0.893 7.049-1.785 10.573-2.678\" stroke-width=\".3\" id=\"pfad-3\"/>\n      <path transform=\"matrix(1 0 0 -1 68.205 87.843)\" d=\"m26.921 17.227c3.524-0.893 7.049-1.785 10.573-2.678\" stroke-width=\".3\" id=\"pfad-4\"/>\n    </g>\n    <circle transform=\"matrix(0.3 0 0 0.3 91.737 69.49)\" cx=\"25\" cy=\"25\" r=\"25\" stroke-width=\".99954\" id=\"kreis-1\" fill=\"#4CAF50\" fill-opacity=\"0.2\"/>\n  </g>\n</svg>",
+      "ports": [
+        {
+          "id": "left",
+          "name": "Links",
+          "x": 4.738997459411621,
+          "y": 10.579994201660156,
+          "kind": "io"
+        },
+        {
+          "id": "right",
+          "name": "Rechts",
+          "x": 34.94899654388428,
+          "y": 10.579994201660156,
+          "kind": "io"
+        },
+        {
+          "id": "top",
+          "name": "Oben",
+          "x": 19.84399700164795,
+          "y": 3.0799942016601562,
+          "kind": "io"
+        },
+        {
+          "id": "bottom",
+          "name": "Unten",
+          "x": 19.84399700164795,
+          "y": 18.079994201660156,
+          "kind": "io"
+        }
+      ]
+    },
+    {
+      "id": "inst_1766696072355_quflpdwlg",
+      "templateId": "Column",
+      "name": "Column",
+      "x": 496.3009338378906,
+      "y": 195.77809143066406,
+      "width": 100,
+      "height": 100,
+      "rotation": 0,
+      "scale": 1,
+      "pivotMode": "center",
+      "pivotX": 0,
+      "pivotY": 0,
+      "properties": {},
+      "bindings": [],
+      "svgContent": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"465px\" height=\"465px\" viewBox=\"0.0 0.0 58.208336 58.208336\" version=\"1.1\" id=\"svg-zylinder\">\n  <defs id=\"defs-styles\">\n    <style type=\"text/css\">\n        :root {\n          --hauptfarbe: #2196F3;\n          --akzentfarbe: #FF9800;\n          --fuellfarbe: rgba(76, 175, 80, 0.2);\n          --strichbreite: 1.5;\n        }\n        /* Animationsklassen zur einfachen Verwendung */\n        .animierbar {\n          transition: all 0.3s ease-in-out;\n        }\n        .pulsieren {\n          animation: pulsieren 2s ease-in-out infinite;\n        }\n        .pulsieren-langsam {\n          animation: pulsieren 4s ease-in-out infinite;\n        }\n        .drehen {\n          transform-origin: center;\n          animation: drehen 3s linear infinite;\n        }\n        .drehen-langsam {\n          transform-origin: center;\n          animation: drehen 6s linear infinite;\n        }\n        .einblenden {\n          animation: einblenden 1s ease-in forwards;\n        }\n        .schweben {\n          animation: schweben 2s ease-in-out infinite;\n        }\n        .zoomen {\n          animation: zoomen 2s ease-in-out infinite;\n        }\n        /* Animationsdefinitionen */\n        @keyframes pulsieren {\n          0%, 100% { opacity: 0.4; }\n          50% { opacity: 1; }\n        }\n        @keyframes drehen {\n          from { transform: rotate(0deg); }\n          to { transform: rotate(360deg); }\n        }\n        @keyframes einblenden {\n          from { opacity: 0; }\n          to { opacity: 1; }\n        }\n        @keyframes schweben {\n          0%, 100% { transform: translateY(0); }\n          50% { transform: translateY(-10px); }\n        }\n        @keyframes zoomen {\n          0%, 100% { transform: scale(1); }\n          50% { transform: scale(1.1); }\n        }\n        /* Hover-Effekte */\n        .hover-vergroessern:hover {\n          transform: scale(1.1);\n          transition: transform 0.3s ease;\n        }\n        .hover-farbe:hover {\n          filter: brightness(1.2);\n          transition: filter 0.3s ease;\n        }\n    </style>\n  </defs>\n  <defs id=\"defs-styles\">\n    <style>\n      :root {\n        --hauptfarbe: #ffffff;\n        --akzentfarbe: #00aaff;\n        --fuellfarbe: rgba(0, 170, 255, 0.2);\n        --strichbreite: 0.5;\n      }\n    </style>\n  </defs>\n  <g id=\"zylinder-hauptgruppe\" transform=\"translate(-201.83794,-363.94746)\">\n    <g id=\"zylinder-elemente\" transform=\"translate(-236.55772,356.05141)\">\n      <path id=\"linie-oben\" d=\"m 467.5,54.5 v 5\" style=\"fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1\"/>\n      <path id=\"linie-links\" d=\"m 455,24.5 h -5\" style=\"fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1\"/>\n      <path id=\"zylinder-koerper-unten\" d=\"m 457.5,37 v 12.5 c 0,0 2.5,2.5 10,2.5 7.5,0 10,-2.5 10,-2.5 V 37\" style=\"fill:#4CAF50;stroke:#2196F3;stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;fill-opacity:0.2\"/>\n      <path id=\"zylinder-koerper-oben\" d=\"M 457.5,37 V 24.5 c 0,0 2.501,-2.375 10,-2.5 7.499,-0.125 10,2.5 10,2.5 V 37\" style=\"fill:#4CAF50;stroke:#2196F3;stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;fill-opacity:0.2\"/>\n      <path id=\"linie-unten\" d=\"m 467.5,19.5 v -5\" style=\"fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1\"/>\n      <path id=\"linie-rechts\" d=\"m 485,49.5 h -5\" style=\"fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1\"/>\n      <path id=\"mittellinie-oben\" d=\"m 457.5,27 h 20\" style=\"fill:none;stroke:#2196F3;stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:4, 4;stroke-opacity:0.6\"/>\n      <path id=\"mittellinie-unten\" d=\"m 457.5,47 h 20\" style=\"fill:none;stroke:#2196F3;stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:4, 4;stroke-opacity:0.6\"/>\n    </g>\n  </g>\n</svg>",
+      "ports": [
+        {
+          "id": "left",
+          "name": "Links",
+          "x": 11.604339599609375,
+          "y": 29.103973388671875,
+          "kind": "io"
+        },
+        {
+          "id": "right",
+          "name": "Rechts",
+          "x": 46.604339599609375,
+          "y": 29.103973388671875,
+          "kind": "io"
+        },
+        {
+          "id": "top",
+          "name": "Oben",
+          "x": 29.104339599609375,
+          "y": 6.603973388671875,
+          "kind": "io"
+        },
+        {
+          "id": "bottom",
+          "name": "Unten",
+          "x": 29.104339599609375,
+          "y": 51.603973388671875,
+          "kind": "io"
+        }
+      ],
+      "paint_fill_enabled": true,
+      "paint_fill_color": "#f81c03"
+    },
+    {
+      "id": "inst_1766794107551_lgwr1ih81",
+      "templateId": "Jacketed_vessel_(wdeaadbem)",
+      "name": "Jacketed Vessel (Wdeaadbem)",
+      "x": 691.3298950195312,
+      "y": 204.45187377929688,
+      "width": 100,
+      "height": 100,
+      "rotation": 0,
+      "scale": 1,
+      "pivotMode": "center",
+      "pivotX": 0,
+      "pivotY": 0,
+      "properties": {},
+      "bindings": [],
+      "svgContent": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns:ns0=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"465px\" height=\"465px\" viewBox=\"0.0 0.0 58.208336 58.208336\" version=\"1.1\" id=\"svg3361\">\n  <defs id=\"defs-styles\">\n    <style type=\"text/css\">\n        :root {\n          --hauptfarbe: #2196F3;\n          --akzentfarbe: #FF9800;\n          --fuellfarbe: rgba(76, 175, 80, 0.2);\n          --strichbreite: 1.5;\n        }\n        /* Animationsklassen zur einfachen Verwendung */\n        .animierbar {\n          transition: all 0.3s ease-in-out;\n        }\n        .pulsieren {\n          animation: pulsieren 2s ease-in-out infinite;\n        }\n        .pulsieren-langsam {\n          animation: pulsieren 4s ease-in-out infinite;\n        }\n        .drehen {\n          transform-origin: center;\n          animation: drehen 3s linear infinite;\n        }\n        .drehen-langsam {\n          transform-origin: center;\n          animation: drehen 6s linear infinite;\n        }\n        .einblenden {\n          animation: einblenden 1s ease-in forwards;\n        }\n        .schweben {\n          animation: schweben 2s ease-in-out infinite;\n        }\n        .zoomen {\n          animation: zoomen 2s ease-in-out infinite;\n        }\n        /* Animationsdefinitionen */\n        @keyframes pulsieren {\n          0%, 100% { opacity: 0.4; }\n          50% { opacity: 1; }\n        }\n        @keyframes drehen {\n          from { transform: rotate(0deg); }\n          to { transform: rotate(360deg); }\n        }\n        @keyframes einblenden {\n          from { opacity: 0; }\n          to { opacity: 1; }\n        }\n        @keyframes schweben {\n          0%, 100% { transform: translateY(0); }\n          50% { transform: translateY(-10px); }\n        }\n        @keyframes zoomen {\n          0%, 100% { transform: scale(1); }\n          50% { transform: scale(1.1); }\n        }\n        /* Hover-Effekte */\n        .hover-vergroessern:hover {\n          transform: scale(1.1);\n          transition: transform 0.3s ease;\n        }\n        .hover-farbe:hover {\n          filter: brightness(1.2);\n          transition: filter 0.3s ease;\n        }\n    </style>\n  </defs>\n  <defs id=\"defs3358\">\n    <pattern ns0:href=\"#pattern4715\" id=\"pattern4719\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,263.75,184.50023)\"/>\n    <pattern ns0:href=\"#pattern4055\" id=\"pattern4715\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102.00001)\"/>\n    <pattern ns0:href=\"#Strips1_8\" id=\"pattern4055\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102)\"/>\n    <pattern id=\"Strips1_8\" patternTransform=\"translate(0,0) scale(10,10)\" height=\"1\" width=\"9\" patternUnits=\"userSpaceOnUse\">\n      <rect id=\"rect3355\" height=\"2\" width=\"1\" y=\"-0.5\" x=\"0\" style=\"fill:#4CAF50;stroke:none;fill-opacity:0.2\" fill=\"#4CAF50\" fill-opacity=\"0.2\"/>\n    </pattern>\n    <pattern ns0:href=\"#pattern4715\" id=\"pattern4723\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,241.25,184.50023)\"/>\n    <pattern ns0:href=\"#pattern4055\" id=\"pattern4244\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102.00001)\"/>\n    <pattern ns0:href=\"#Strips1_8\" id=\"pattern4246\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102)\"/>\n    <pattern id=\"pattern4250\" patternTransform=\"translate(0,0) scale(10,10)\" height=\"1\" width=\"9\" patternUnits=\"userSpaceOnUse\">\n      <rect id=\"rect4248\" height=\"2\" width=\"1\" y=\"-0.5\" x=\"0\" style=\"fill:#4CAF50;stroke:none;fill-opacity:0.2\" fill=\"#4CAF50\" fill-opacity=\"0.2\"/>\n    </pattern>\n    <pattern ns0:href=\"#pattern4715\" id=\"pattern4727\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,263.75,184.50023)\"/>\n    <pattern ns0:href=\"#pattern4055\" id=\"pattern4253\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102.00001)\"/>\n    <pattern ns0:href=\"#Strips1_8\" id=\"pattern4255\" patternTransform=\"matrix(0.09760861,0.09760861,-0.09760861,0.09760861,-16.125,102)\"/>\n    <pattern id=\"pattern4259\" patternTransform=\"translate(0,0) scale(10,10)\" height=\"1\" width=\"9\" patternUnits=\"userSpaceOnUse\">\n      <rect id=\"rect4257\" height=\"2\" width=\"1\" y=\"-0.5\" x=\"0\" style=\"fill:#4CAF50;stroke:none;fill-opacity:0.2\" fill=\"#4CAF50\" fill-opacity=\"0.2\"/>\n    </pattern>\n  </defs>\n  <g id=\"layer1\" transform=\"translate(-165.85774,-292.25798)\">\n    <g id=\"g8216\" transform=\"translate(-268.85042,420.67444)\">\n      <path id=\"path4191\" d=\"m 470,-85.5 v 2.5 h 5\" style=\"fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\"/>\n      <path id=\"path4193\" d=\"m 457.5,-108 h -5\" style=\"fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\"/>\n      <path id=\"path4195\" d=\"m 460,-99.25 v 8.75 c 0,0 1.875,2.5 7.5,2.5 5.625,0 7.5,-2.5 7.5,-2.5 v -8.75\" style=\"opacity:1;fill:none;fill-opacity:1;stroke:#2196F3;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal\"/>\n      <path style=\"opacity:1;fill:none;fill-opacity:1;stroke:#2196F3;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal\" d=\"m 460,-99.25 v -8.75 c 0,0 1.876,-2.375 7.5,-2.5 5.625,-0.125 7.5,2.5 7.5,2.5 v 8.75\" id=\"path4197\"/>\n      <path style=\"fill:none;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" d=\"m 456.25,-95.5 h -5\" id=\"path4199\"/>\n      <path id=\"path4246\" style=\"opacity:1;fill:none;fill-opacity:1;stroke:#2196F3;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal\" d=\"m 467.187,-88 h 0.626 l 0.625,1.25 m -0.625,-1.25 h -0.626 l -0.625,1.25\"/>\n      <path style=\"opacity:1;fill:none;fill-opacity:1;stroke:#2196F3;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal\" d=\"m 460,-99.25 -1.25,1.25 v 8.333 c 0,0 0.915,1.182 3.211,2.041 2.041,0.763 4.601,0.876 4.601,0.876 l 0.625,-1.25\" id=\"path4262\"/>\n      <path id=\"path4266\" d=\"m 475,-99.25 1.25,1.25 3e-5,8.333 c 0,0 -0.915,1.182 -3.212,2.041 -2.041,0.763 -4.601,0.876 -4.601,0.876 l -0.625,-1.25\" style=\"opacity:1;fill:none;fill-opacity:1;stroke:#2196F3;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal\"/>\n      <path style=\"opacity:1;fill:none;fill-opacity:1;stroke:#2196F3;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal\" d=\"m 467.5,-97.375 v -15.625\" id=\"path4268\"/>\n      <path style=\"opacity:1;fill:none;fill-opacity:1;stroke:#2196F3;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal\" d=\"m 463.75,-95.5 v -3.75 l 7.5,3.75 v -3.75\" id=\"path4270\"/>\n      <path style=\"opacity:1;fill:none;fill-opacity:1;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal\" d=\"m 467.5,-85.5 v 5\" id=\"path4272\"/>\n      <circle style=\"opacity:1;fill:none;fill-opacity:1;stroke:#2196F3;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal\" id=\"path4278\" cx=\"467.49979\" cy=\"-115.49979\" r=\"2.5\" fill=\"#4CAF50\" fill-opacity=\"0.2\"/>\n      <path style=\"opacity:1;fill:none;fill-opacity:1;stroke:#2196F3;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal\" d=\"m 466.666,-114.25 v -2.5 l 0.833,1.25 0.833,-1.25 v 2.5\" id=\"path4280\"/>\n    </g>\n  </g>\n</svg>",
+      "paint_fill_enabled": true,
+      "paint_fill_opacity": 0.2,
+      "paint_fill_selector": "",
+      "paint_fill_color": "#d2282d"
+    }
+  ],
+  "connections": [
+    {
+      "id": "conn_1766696176557_qmbe0wd0s",
+      "from": "inst_1766696072355_quflpdwlg",
+      "to": "inst_1766696070430_ay0uhwpge",
+      "type": "pipe",
+      "fromAnchor": {
+        "mode": "fixed",
+        "x": 44.42621612548828,
+        "y": 41.651283264160156
+      },
+      "toAnchor": {
+        "mode": "auto"
+      },
+      "strokeWidth": 3,
+      "label": "",
+      "properties": {}
+    }
+  ],
+  "devices": {
+    "version": 1,
+    "assignments": {
+      "inst_1766696070430_ay0uhwpge": {
+        "element_id": "inst_1766696070430_ay0uhwpge",
+        "role": "actuator",
+        "controller_id": 2,
+        "bus_type": "modbus",
+        "address": 675,
+        "function_type": "write_register",
+        "module_type": "",
+        "alias": "",
+        "actuator_id": "13",
+        "actuator_type": "cooling_pump"
+      },
+      "inst_1766696072355_quflpdwlg": {
+        "element_id": "inst_1766696072355_quflpdwlg",
+        "role": "sensor",
+        "controller_id": 2,
+        "bus_type": "modbus",
+        "address": 9,
+        "function_type": "read_holding_registers",
+        "module_type": "",
+        "alias": "",
+        "sensor_id": "7",
+        "sensor_type": "pressure"
+      },
+      "inst_1766794107551_lgwr1ih81": {
+        "element_id": "inst_1766794107551_lgwr1ih81",
+        "role": "actuator",
+        "controller_id": 2,
+        "bus_type": "modbus",
+        "address": 641,
+        "function_type": "write_coil",
+        "module_type": "",
+        "alias": "",
+        "actuator_id": "14",
+        "actuator_type": "mixing_motor"
+      }
+    }
+  },
+  "hmi": {
+    "version": 1,
+    "bindings": [
+      {
+        "binding_id": "b_mjm9kcin_2h3b",
+        "view_id": "main",
+        "widget_id": "w_mjm9kcin_8e6e",
+        "element_id": "inst_1766696070430_ay0uhwpge",
+        "source": {
+          "kind": "actuator",
+          "actuator_id": 13,
+          "field": "value"
+        },
+        "format": {
+          "unit": "",
+          "decimals": 0
+        },
+        "transform": {
+          "scale": 1,
+          "offset": 0,
+          "clamp": [
+            null,
+            null
+          ]
+        },
+        "placement": {
+          "anchor": "top",
+          "dx": 0,
+          "dy": -31
+        },
+        "interaction": null
+      },
+      {
+        "binding_id": "b_mjnif06b_h6im",
+        "view_id": "main",
+        "widget_id": "w_mjnif06b_d92m",
+        "element_id": "inst_1766696072355_quflpdwlg",
+        "source": {
+          "kind": "sensor",
+          "sensor_id": 7,
+          "field": "value"
+        },
+        "format": {
+          "unit": "",
+          "decimals": 0
+        },
+        "transform": {
+          "scale": 1,
+          "offset": 0,
+          "clamp": [
+            null,
+            null
+          ]
+        },
+        "placement": {
+          "anchor": "center",
+          "dx": 0,
+          "dy": -16
+        },
+        "interaction": null
+      },
+      {
+        "binding_id": "b_mjnkrlv9_1scr",
+        "view_id": "main",
+        "widget_id": "w_mjnkrlv9_jmz5",
+        "element_id": "inst_1766794107551_lgwr1ih81",
+        "source": {
+          "kind": "actuator",
+          "actuator_id": 14,
+          "field": "value"
+        },
+        "format": {
+          "unit": "",
+          "decimals": 0
+        },
+        "transform": {
+          "scale": 1,
+          "offset": 0,
+          "clamp": [
+            null,
+            null
+          ]
+        },
+        "placement": {
+          "anchor": "center",
+          "dx": 0,
+          "dy": -95
+        },
+        "interaction": null
+      }
+    ],
+    "active_view_id": "main",
+    "views": [
+      {
+        "view_id": "main",
+        "name": "Main",
+        "svg_ref": "main",
+        "tags": [
+          "default"
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_id": "w_mjm9kcin_8e6e",
+        "type": "toggle",
+        "name": "Toggle",
+        "view_id": "main",
+        "config": {
+          "label_on": "ON",
+          "label_off": "OFF",
+          "sync_mode": "follow_source",
+          "variant": "default",
+          "size": "md",
+          "shape": "pill",
+          "classes": [],
+          "bg_color": "",
+          "text_color": "",
+          "border_color": "",
+          "border_width": 1,
+          "svg_target_classes": []
+        }
+      },
+      {
+        "widget_id": "w_mjnif06b_d92m",
+        "type": "indicator",
+        "name": "Indicator",
+        "view_id": "main",
+        "config": {
+          "mode": "class",
+          "default_state": "ok",
+          "states": [
+            {
+              "name": "ok",
+              "class": "ok-green"
+            },
+            {
+              "name": "warn",
+              "class": "warn-yellow"
+            },
+            {
+              "name": "alarm",
+              "class": "alarm-red"
+            }
+          ],
+          "variant": "default",
+          "size": "md",
+          "shape": "square",
+          "classes": [],
+          "bg_color": "",
+          "text_color": "",
+          "border_color": "",
+          "border_width": 2,
+          "svg_target_classes": []
+        }
+      },
+      {
+        "widget_id": "w_mjnkrlv9_jmz5",
+        "type": "button",
+        "name": "Button",
+        "view_id": "main",
+        "config": {
+          "label": "Button",
+          "confirm": {
+            "enabled": false,
+            "text": ""
+          },
+          "debounce_ms": 200,
+          "variant": "default",
+          "size": "md",
+          "shape": "pill",
+          "classes": [],
+          "bg_color": "",
+          "text_color": "",
+          "border_color": "",
+          "border_width": 1,
+          "svg_target_classes": []
+        }
+      }
+    ],
+    "styles": [
+      {
+        "style_id": "s_mjnreae6_9nsq",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnif06b_h6im"
+        },
+        "when": {
+          "type": "sensor_cmp",
+          "sensor_id": 7,
+          "field": "value",
+          "op": "<",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "ok-green"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "ok-green"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "ok-green"
+          ],
+          "classes_remove": []
+        },
+        "priority": 50,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnif06b_h6im",
+          "level": "ok",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnreae6_314t",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnif06b_h6im"
+        },
+        "when": {
+          "type": "sensor_cmp",
+          "sensor_id": 7,
+          "field": "value",
+          "op": ">=",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "warn-yellow"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "warn-yellow"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "warn-yellow"
+          ],
+          "classes_remove": []
+        },
+        "priority": 100,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnif06b_h6im",
+          "level": "warn",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnreae6_6iuq",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnif06b_h6im"
+        },
+        "when": {
+          "type": "sensor_cmp",
+          "sensor_id": 7,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [
+            "warn-yellow"
+          ],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [
+            "warn-yellow"
+          ],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": [
+            "warn-yellow"
+          ]
+        },
+        "priority": 200,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnif06b_h6im",
+          "level": "alarm",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnsmaz4_d5vj",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnkrlv9_1scr"
+        },
+        "when": {
+          "type": "sensor_cmp",
+          "sensor_id": 1,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "apply": {
+          "classes_add_widget": [
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "hmi-anim-blink"
+          ],
+          "classes_remove": []
+        },
+        "priority": 100
+      },
+      {
+        "style_id": "s_mjnt1mdd_e461",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnkrlv9_1scr"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 14,
+          "field": "value",
+          "op": "<",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "ok-green"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "ok-green"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "ok-green"
+          ],
+          "classes_remove": []
+        },
+        "priority": 50,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnkrlv9_1scr",
+          "level": "ok",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnt1mdd_e4ab",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnkrlv9_1scr"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 14,
+          "field": "value",
+          "op": ">=",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "warn-yellow"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "warn-yellow"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "warn-yellow"
+          ],
+          "classes_remove": []
+        },
+        "priority": 100,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnkrlv9_1scr",
+          "level": "warn",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnt1mdd_hrlk",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnkrlv9_1scr"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 14,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [
+            "warn-yellow"
+          ],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [
+            "warn-yellow"
+          ],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": [
+            "warn-yellow"
+          ]
+        },
+        "priority": 200,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnkrlv9_1scr",
+          "level": "alarm",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnta1c4_kn80",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjm9kcin_2h3b"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 13,
+          "field": "value",
+          "op": "<",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "ok-green"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "ok-green"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "ok-green"
+          ],
+          "classes_remove": []
+        },
+        "priority": 50,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjm9kcin_2h3b",
+          "level": "ok",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnta1c4_jdxj",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjm9kcin_2h3b"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 13,
+          "field": "value",
+          "op": ">=",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "warn-yellow"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "warn-yellow"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "warn-yellow"
+          ],
+          "classes_remove": []
+        },
+        "priority": 100,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjm9kcin_2h3b",
+          "level": "warn",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnta1c4_e1i4",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjm9kcin_2h3b"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 13,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [
+            "warn-yellow"
+          ],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [
+            "warn-yellow"
+          ],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": [
+            "warn-yellow"
+          ]
+        },
+        "priority": 200,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjm9kcin_2h3b",
+          "level": "alarm",
+          "warn": 50,
+          "alarm": 80
+        }
+      }
+    ],
+    "alarms": [
+      {
+        "alarm_id": "a_mjnreae6_199p",
+        "view_id": "main",
+        "source": {
+          "kind": "sensor",
+          "sensor_id": 7,
+          "field": "value"
+        },
+        "condition": {
+          "type": "sensor_cmp",
+          "sensor_id": 7,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "severity": "WARN",
+        "latching": true,
+        "ack_required": false,
+        "message": "Threshold Alarm",
+        "target": {
+          "binding_id": ""
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": []
+        },
+        "visual": {
+          "blink": true,
+          "blink_class": "hmi-anim-blink"
+        },
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnif06b_h6im",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "alarm_id": "a_mjnt1mdd_a1nz",
+        "view_id": "main",
+        "source": {
+          "kind": "actuator",
+          "actuator_id": 14,
+          "field": "value"
+        },
+        "condition": {
+          "type": "actuator_cmp",
+          "actuator_id": 14,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "severity": "CRITICAL",
+        "latching": false,
+        "ack_required": false,
+        "message": "Threshold Alarm",
+        "target": {
+          "binding_id": "b_mjnkrlv9_1scr"
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": []
+        },
+        "visual": {
+          "blink": true,
+          "blink_class": "hmi-anim-blink"
+        },
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnkrlv9_1scr",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "alarm_id": "a_mjnta1c4_59g1",
+        "view_id": "main",
+        "source": {
+          "kind": "actuator",
+          "actuator_id": 13,
+          "field": "value"
+        },
+        "condition": {
+          "type": "actuator_cmp",
+          "actuator_id": 13,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "severity": "WARN",
+        "latching": true,
+        "ack_required": true,
+        "message": "Threshold Alarm",
+        "target": {
+          "binding_id": "b_mjm9kcin_2h3b"
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": []
+        },
+        "visual": {
+          "blink": true,
+          "blink_class": "hmi-anim-blink"
+        },
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjm9kcin_2h3b",
+          "warn": 50,
+          "alarm": 80
+        }
+      }
+    ]
+  },
+  "hmi_ui": {
+    "version": 1,
+    "bindings": [
+      {
+        "binding_id": "b_mjm9kcin_2h3b",
+        "view_id": "main",
+        "widget_id": "w_mjm9kcin_8e6e",
+        "element_id": "inst_1766696070430_ay0uhwpge",
+        "source": {
+          "kind": "actuator",
+          "actuator_id": 13,
+          "field": "value"
+        },
+        "format": {
+          "unit": "",
+          "decimals": 0
+        },
+        "transform": {
+          "scale": 1,
+          "offset": 0,
+          "clamp": [
+            null,
+            null
+          ]
+        },
+        "placement": {
+          "anchor": "top",
+          "dx": 0,
+          "dy": -31
+        },
+        "interaction": null
+      },
+      {
+        "binding_id": "b_mjnif06b_h6im",
+        "view_id": "main",
+        "widget_id": "w_mjnif06b_d92m",
+        "element_id": "inst_1766696072355_quflpdwlg",
+        "source": {
+          "kind": "sensor",
+          "sensor_id": 7,
+          "field": "value"
+        },
+        "format": {
+          "unit": "",
+          "decimals": 0
+        },
+        "transform": {
+          "scale": 1,
+          "offset": 0,
+          "clamp": [
+            null,
+            null
+          ]
+        },
+        "placement": {
+          "anchor": "center",
+          "dx": 0,
+          "dy": -16
+        },
+        "interaction": null
+      },
+      {
+        "binding_id": "b_mjnkrlv9_1scr",
+        "view_id": "main",
+        "widget_id": "w_mjnkrlv9_jmz5",
+        "element_id": "inst_1766794107551_lgwr1ih81",
+        "source": {
+          "kind": "actuator",
+          "actuator_id": 14,
+          "field": "value"
+        },
+        "format": {
+          "unit": "",
+          "decimals": 0
+        },
+        "transform": {
+          "scale": 1,
+          "offset": 0,
+          "clamp": [
+            null,
+            null
+          ]
+        },
+        "placement": {
+          "anchor": "center",
+          "dx": 0,
+          "dy": -95
+        },
+        "interaction": null
+      }
+    ],
+    "active_view_id": "main",
+    "views": [
+      {
+        "view_id": "main",
+        "name": "Main",
+        "svg_ref": "main",
+        "tags": [
+          "default"
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "widget_id": "w_mjm9kcin_8e6e",
+        "type": "toggle",
+        "name": "Toggle",
+        "view_id": "main",
+        "config": {
+          "label_on": "ON",
+          "label_off": "OFF",
+          "sync_mode": "follow_source",
+          "variant": "default",
+          "size": "md",
+          "shape": "pill",
+          "classes": [],
+          "bg_color": "",
+          "text_color": "",
+          "border_color": "",
+          "border_width": 1,
+          "svg_target_classes": []
+        }
+      },
+      {
+        "widget_id": "w_mjnif06b_d92m",
+        "type": "indicator",
+        "name": "Indicator",
+        "view_id": "main",
+        "config": {
+          "mode": "class",
+          "default_state": "ok",
+          "states": [
+            {
+              "name": "ok",
+              "class": "ok-green"
+            },
+            {
+              "name": "warn",
+              "class": "warn-yellow"
+            },
+            {
+              "name": "alarm",
+              "class": "alarm-red"
+            }
+          ],
+          "variant": "default",
+          "size": "md",
+          "shape": "square",
+          "classes": [],
+          "bg_color": "",
+          "text_color": "",
+          "border_color": "",
+          "border_width": 2,
+          "svg_target_classes": []
+        }
+      },
+      {
+        "widget_id": "w_mjnkrlv9_jmz5",
+        "type": "button",
+        "name": "Button",
+        "view_id": "main",
+        "config": {
+          "label": "Button",
+          "confirm": {
+            "enabled": false,
+            "text": ""
+          },
+          "debounce_ms": 200,
+          "variant": "default",
+          "size": "md",
+          "shape": "pill",
+          "classes": [],
+          "bg_color": "",
+          "text_color": "",
+          "border_color": "",
+          "border_width": 1,
+          "svg_target_classes": []
+        }
+      }
+    ],
+    "styles": [
+      {
+        "style_id": "s_mjnreae6_9nsq",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnif06b_h6im"
+        },
+        "when": {
+          "type": "sensor_cmp",
+          "sensor_id": 7,
+          "field": "value",
+          "op": "<",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "ok-green"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "ok-green"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "ok-green"
+          ],
+          "classes_remove": []
+        },
+        "priority": 50,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnif06b_h6im",
+          "level": "ok",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnreae6_314t",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnif06b_h6im"
+        },
+        "when": {
+          "type": "sensor_cmp",
+          "sensor_id": 7,
+          "field": "value",
+          "op": ">=",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "warn-yellow"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "warn-yellow"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "warn-yellow"
+          ],
+          "classes_remove": []
+        },
+        "priority": 100,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnif06b_h6im",
+          "level": "warn",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnreae6_6iuq",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnif06b_h6im"
+        },
+        "when": {
+          "type": "sensor_cmp",
+          "sensor_id": 7,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [
+            "warn-yellow"
+          ],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [
+            "warn-yellow"
+          ],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": [
+            "warn-yellow"
+          ]
+        },
+        "priority": 200,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnif06b_h6im",
+          "level": "alarm",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnsmaz4_d5vj",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnkrlv9_1scr"
+        },
+        "when": {
+          "type": "sensor_cmp",
+          "sensor_id": 1,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "apply": {
+          "classes_add_widget": [
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "hmi-anim-blink"
+          ],
+          "classes_remove": []
+        },
+        "priority": 100
+      },
+      {
+        "style_id": "s_mjnt1mdd_e461",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnkrlv9_1scr"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 14,
+          "field": "value",
+          "op": "<",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "ok-green"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "ok-green"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "ok-green"
+          ],
+          "classes_remove": []
+        },
+        "priority": 50,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnkrlv9_1scr",
+          "level": "ok",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnt1mdd_e4ab",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnkrlv9_1scr"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 14,
+          "field": "value",
+          "op": ">=",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "warn-yellow"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "warn-yellow"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "warn-yellow"
+          ],
+          "classes_remove": []
+        },
+        "priority": 100,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnkrlv9_1scr",
+          "level": "warn",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnt1mdd_hrlk",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjnkrlv9_1scr"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 14,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [
+            "warn-yellow"
+          ],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [
+            "warn-yellow"
+          ],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": [
+            "warn-yellow"
+          ]
+        },
+        "priority": 200,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnkrlv9_1scr",
+          "level": "alarm",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnta1c4_kn80",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjm9kcin_2h3b"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 13,
+          "field": "value",
+          "op": "<",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "ok-green"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "ok-green"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "ok-green"
+          ],
+          "classes_remove": []
+        },
+        "priority": 50,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjm9kcin_2h3b",
+          "level": "ok",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnta1c4_jdxj",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjm9kcin_2h3b"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 13,
+          "field": "value",
+          "op": ">=",
+          "value": 50
+        },
+        "apply": {
+          "classes_add_widget": [
+            "warn-yellow"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "warn-yellow"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "warn-yellow"
+          ],
+          "classes_remove": []
+        },
+        "priority": 100,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjm9kcin_2h3b",
+          "level": "warn",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "style_id": "s_mjnta1c4_e1i4",
+        "view_id": "main",
+        "target": {
+          "binding_id": "b_mjm9kcin_2h3b"
+        },
+        "when": {
+          "type": "actuator_cmp",
+          "actuator_id": 13,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [
+            "warn-yellow"
+          ],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [
+            "warn-yellow"
+          ],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": [
+            "warn-yellow"
+          ]
+        },
+        "priority": 200,
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjm9kcin_2h3b",
+          "level": "alarm",
+          "warn": 50,
+          "alarm": 80
+        }
+      }
+    ],
+    "alarms": [
+      {
+        "alarm_id": "a_mjnreae6_199p",
+        "view_id": "main",
+        "source": {
+          "kind": "sensor",
+          "sensor_id": 7,
+          "field": "value"
+        },
+        "condition": {
+          "type": "sensor_cmp",
+          "sensor_id": 7,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "severity": "WARN",
+        "latching": true,
+        "ack_required": false,
+        "message": "Threshold Alarm",
+        "target": {
+          "binding_id": ""
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": []
+        },
+        "visual": {
+          "blink": true,
+          "blink_class": "hmi-anim-blink"
+        },
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnif06b_h6im",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "alarm_id": "a_mjnt1mdd_a1nz",
+        "view_id": "main",
+        "source": {
+          "kind": "actuator",
+          "actuator_id": 14,
+          "field": "value"
+        },
+        "condition": {
+          "type": "actuator_cmp",
+          "actuator_id": 14,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "severity": "CRITICAL",
+        "latching": false,
+        "ack_required": false,
+        "message": "Threshold Alarm",
+        "target": {
+          "binding_id": "b_mjnkrlv9_1scr"
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": []
+        },
+        "visual": {
+          "blink": true,
+          "blink_class": "hmi-anim-blink"
+        },
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjnkrlv9_1scr",
+          "warn": 50,
+          "alarm": 80
+        }
+      },
+      {
+        "alarm_id": "a_mjnta1c4_59g1",
+        "view_id": "main",
+        "source": {
+          "kind": "actuator",
+          "actuator_id": 13,
+          "field": "value"
+        },
+        "condition": {
+          "type": "actuator_cmp",
+          "actuator_id": 13,
+          "field": "value",
+          "op": ">=",
+          "value": 80
+        },
+        "severity": "WARN",
+        "latching": true,
+        "ack_required": true,
+        "message": "Threshold Alarm",
+        "target": {
+          "binding_id": "b_mjm9kcin_2h3b"
+        },
+        "apply": {
+          "classes_add_widget": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_widget": [],
+          "classes_add_svg": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove_svg": [],
+          "classes_add": [
+            "alarm-red",
+            "hmi-anim-blink"
+          ],
+          "classes_remove": []
+        },
+        "visual": {
+          "blink": true,
+          "blink_class": "hmi-anim-blink"
+        },
+        "meta": {
+          "generator": "threshold_wizard",
+          "binding_id": "b_mjm9kcin_2h3b",
+          "warn": 50,
+          "alarm": 80
+        }
+      }
+    ]
+  },
+  "processes": {
+    "process_states": [
+      {
+        "state_id": 20,
+        "p_id": 1,
+        "p_groups": [
+          1
+        ],
+        "actuator_id": [
+          13
+        ],
+        "sensor_id": [
+          7
+        ],
+        "p__type": "pressure",
+        "value_id": 1,
+        "mode_id": 2,
+        "automation_parameters": {
+          "control_method": "PID",
+          "pid_config_id": 1
+        }
+      },
+      {
+        "state_id": 22,
+        "p_id": 2,
+        "p_groups": [
+          2
+        ],
+        "actuator_id": [
+          13
+        ],
+        "sensor_id": [
+          7
+        ],
+        "p__type": "heating",
+        "value_id": 1,
+        "mode_id": 1,
+        "automation_parameters": {
+          "control_method": "on_off",
+          "heating_control_method": "on_off"
+        }
+      }
+    ]
+  },
+  "dynamic_rule_engine": {
+    "rule_sets": [
+      {
+        "set_id": "process_rules",
+        "priority": 5,
+        "evaluation": "on_event",
+        "rules": [
+          {
+            "rule_id": "test_123",
+            "condition": {
+              "type": "sensor",
+              "operator": ">=",
+              "value": 80,
+              "sensor_id": 5,
+              "sensor_type": "pressure"
+            },
+            "action": {
+              "type": "process_set_value",
+              "p_id": 1,
+              "value_id": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rule_library": {
+    "rule_sets": [
+      {
+        "set_id": "process_rules",
+        "priority": 5,
+        "evaluation": "on_event",
+        "rules": [
+          {
+            "rule_id": "notify_heating_ready",
+            "condition": {
+              "type": "compound",
+              "operator": "AND",
+              "conditions": [
+                {
+                  "type": "sensor",
+                  "sensor_type": "temperature",
+                  "operator": ">=",
+                  "value": "target_temp*0.98"
+                },
+                {
+                  "type": "state_type",
+                  "state_type": "heating",
+                  "attribute": "active",
+                  "equals": true
+                }
+              ]
+            },
+            "action": {
+              "type": "notify",
+              "message": "Heating reached nominal range. Consider starting stirring."
+            }
+          },
+          {
+            "rule_id": "emergency_cool_on_overpressure",
+            "condition": {
+              "type": "sensor",
+              "sensor_type": "pressure",
+              "operator": ">",
+              "value": "max_pressure*0.9"
+            },
+            "action": {
+              "type": "emergency_shutdown",
+              "target": "all"
+            }
+          },
+          {
+            "rule_id": "pause_heating_on_high_reflux",
+            "condition": {
+              "type": "compound",
+              "operator": "AND",
+              "conditions": [
+                {
+                  "type": "sensor",
+                  "sensor_type": "reflux",
+                  "operator": ">=",
+                  "value": 0.8
+                },
+                {
+                  "type": "state_type",
+                  "state_type": "heating",
+                  "attribute": "active",
+                  "equals": true
+                }
+              ]
+            },
+            "action": {
+              "type": "state_override",
+              "target_meta_state": "ERROR",
+              "reason": "Reflux too high while heating - safety pause"
+            }
+          },
+          {
+            "rule_id": "notify_process_step_complete",
+            "condition": "level >= target_level",
+            "action": {
+              "type": "notify",
+              "message": "Filling complete -> next step can be started"
+            }
+          },
+          {
+            "rule_id": "set_all_states_p1_active",
+            "condition": {
+              "type": "sensor",
+              "sensor_type": "temperature",
+              "operator": ">=",
+              "value": 100
+            },
+            "action": {
+              "type": "process_set_value",
+              "p_id": 1,
+              "value_id": 1
+            },
+            "undo_action": {
+              "type": "process_set_value",
+              "p_id": 1,
+              "value_id": 2
+            },
+            "always_reversibel": true
+          },
+          {
+            "rule_id": "activate_pids_1_and_3",
+            "condition": {
+              "type": "sensor",
+              "sensor_type": "temperature",
+              "operator": ">=",
+              "value": 80
+            },
+            "action": {
+              "type": "process_set_active",
+              "p_ids": [
+                1,
+                3
+              ],
+              "active": true
+            },
+            "undo_action": {
+              "type": "process_set_active",
+              "p_ids": [
+                1,
+                3
+              ],
+              "active": false
+            },
+            "always_reversibel": true
+          },
+          {
+            "rule_id": "high_pressure_shutdown",
+            "condition": {
+              "type": "sensor",
+              "sensor_type": "pressure",
+              "operator": ">",
+              "value": 5,
+              "sensor_id": 4
+            },
+            "action": {
+              "type": "state_override",
+              "target_meta_state": "ERROR",
+              "reason": "Überdruck erkannt - Shutdown"
+            },
+            "undo_action": {
+              "type": "state_override",
+              "target_meta_state": "IDLE",
+              "reason": "Druck normalisiert"
+            },
+            "always_reversibel": true
+          },
+          {
+            "rule_id": "low_level_pump_deactivate",
+            "condition": {
+              "type": "sensor",
+              "sensor_type": "level",
+              "operator": "<",
+              "value": 20,
+              "sensor_id": 17
+            },
+            "action": {
+              "type": "process_set_active",
+              "p_ids": [
+                1
+              ],
+              "active": false
+            },
+            "undo_action": {
+              "type": "process_set_active",
+              "p_ids": [
+                1
+              ],
+              "active": true
+            },
+            "always_reversibel": true
+          },
+          {
+            "rule_id": "deactivate_pump_on_low_level",
+            "condition": {
+              "type": "sensor",
+              "sensor_id": 17,
+              "operator": "<=",
+              "value": 15
+            },
+            "action": {
+              "type": "process_state_set_value",
+              "state_id": 15,
+              "value_id": 2
+            },
+            "undo_action": {
+              "type": "process_state_set_value",
+              "state_id": 15,
+              "value_id": 1
+            },
+            "always_reversibel": true
+          },
+          {
+            "rule_id": "activate_pump_on_high_level",
+            "condition": {
+              "type": "sensor",
+              "sensor_id": 17,
+              "operator": ">=",
+              "value": 25
+            },
+            "action": {
+              "type": "process_state_set_value",
+              "state_id": 15,
+              "value_id": 1
+            },
+            "undo_action": {
+              "type": "process_state_set_value",
+              "state_id": 15,
+              "value_id": 2
+            },
+            "always_reversibel": true
+          },
+          {
+            "rule_id": "tune_heater_setpoint",
+            "condition": {
+              "type": "sensor",
+              "sensor_type": "temperature",
+              "operator": ">=",
+              "value": 150
+            },
+            "action": {
+              "type": "config_update",
+              "payload": {
+                "state_id": 1,
+                "updates": {
+                  "parameters": {
+                    "target_temp_c": 555
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "free_rules": {
+    "version": 1,
+    "timers": [],
+    "triggers": [],
+    "actions": [],
+    "transitions": [],
+    "events": []
+  }
+}

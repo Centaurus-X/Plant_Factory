@@ -1,0 +1,1295 @@
+/* ========================================
+   HMI/P&ID SVG Editor - Stylesheet
+   Mit Dark/Light Mode Support
+   ======================================== */
+
+/* === Reset & Base === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* V55.1: Die Token-Bloecke (:root hell und [data-theme="dark"]) sind entfallen.
+   Sie standen NACH tokens.css und setzten --primary-color zurueck auf #2563eb —
+   dadurch lagen zwei Akzentfarben gleichzeitig auf dem Bildschirm.
+   Alle Variablen, auch die alten, stehen jetzt in public/css/tokens.css. */
+/* */
+
+body {
+    font-family: var(--v9-font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-color);
+    background: var(--bg-secondary);
+    overflow: hidden;
+    transition: background-color var(--transition-theme), color var(--transition-theme);
+}
+
+/* === Layout === */
+#app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* === Header === */
+#app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+    padding: 0 var(--spacing-lg);
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    z-index: 100;
+    transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.header-left h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: color var(--transition-theme);
+}
+
+.version {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 2px 8px;
+    background: var(--gray-100);
+    border-radius: 4px;
+    transition: background-color var(--transition-theme), color var(--transition-theme);
+}
+
+.header-center {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 var(--spacing-xl);
+}
+
+#projekt-name {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all var(--transition-fast);
+}
+
+#projekt-name:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.header-right {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* === Main Content === */
+#main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* === Sidebar === */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-color);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+/* Rechte Sidebar: eigene Breitenvariable benutzen */
+#sidebar-right {
+  position: relative;
+
+  /* >>> NEU: rechte Sidebar steuert sich NICHT über --sidebar-width <<< */
+  width: var(--sidebar-right-width);
+  min-width: var(--sidebar-right-min);
+  max-width: var(--sidebar-right-max);
+  flex: 0 0 var(--sidebar-right-width);      /* Flex-Basis = Breite */
+
+  /* Rail & Optik */
+  padding-left: var(--sidebar-rail-width);
+  border-right: none;                         /* rechte Kante der linken Sidebar bleibt */
+  border-left: 1px solid var(--border-color);
+
+  transition: width var(--transition-normal), padding-left var(--transition-normal),
+              border-color var(--transition-theme), background-color var(--transition-theme);
+}
+
+/* Collapsed: auch Flex-Basis anpassen, damit der Rail sauber greift */
+#sidebar-right.collapsed {
+  width: var(--sidebar-right-collapsed) !important;
+  flex: 0 0 var(--sidebar-right-collapsed) !important;
+  min-width: 0 !important;
+  padding-left: 0 !important;
+  overflow: hidden;
+  border-left: 1px solid var(--border-color);
+}
+
+
+/* Nur Rail (Button) bleibt sichtbar – Inhalte ausblenden */
+#sidebar-right.collapsed .sidebar-header h2,
+#sidebar-right.collapsed .tab-list,
+#sidebar-right.collapsed .tab-panels,
+#sidebar-right.collapsed .sidebar-section {
+  display: none !important;
+}
+
+/* Vertikaler Splitter zwischen Canvas und rechter Sidebar */
+.splitter {
+  flex: none;
+  background: var(--border-color);
+  transition: background-color var(--transition-theme), opacity var(--transition-fast);
+}
+
+.splitter-right {
+  width: var(--splitter-width);
+  cursor: col-resize;
+}
+
+.splitter-right:hover {
+  opacity: 0.85;
+}
+
+#sidebar-right.collapsed + .anything { /* Platzhalter, nicht benötigt */ }
+
+/* Splitter im Collapse-Zustand ausblenden (wird via JS Klasse .hidden gesetzt) */
+.splitter.hidden {
+  display: none;
+}
+
+/* --- Rail-Button (">") links festpinnen --- */
+#sidebar-right .collapse-btn {
+  position: absolute;
+  left: 0;
+  top: var(--spacing-sm);
+  width: var(--sidebar-rail-width);
+  height: 28px;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 8px 8px 0;
+  z-index: 5;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: none;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Visuelles Feedback */
+#sidebar-right .collapse-btn:hover {
+  filter: brightness(1.05);
+}
+
+/* Pfeilrichtung allein über ARIA steuern */
+#sidebar-right .collapse-btn[aria-expanded="false"] .collapse-icon {
+  transform: rotate(180deg);
+}
+
+/* Headline "Eigenschaften": 4px nach rechts, fett + kleines Icon */
+#sidebar-right .sidebar-header h2 {
+  margin-left: 4px;          /* Verschiebung nach rechts */
+  font-weight: 700;          /* fett */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;                  /* Abstand Icon ↔ Text */
+}
+
+#sidebar-right .sidebar-header h2::before {
+  /* V58.1: Emoji-Glyphe entfernt (Regel im V56+-Markup inaktiv; Ikonografie
+     kommt kanonisch aus dem SVG-Sprite). */
+  content: none;
+}
+/* Tabs/Pane bleiben scrollbar und überdecken den Rail nicht */
+#sidebar-right .tabs,
+#sidebar-right .sidebar-section {
+  /* kein zusätzliches Padding links – Rail ist durch aside padding bereits herausgenommen */
+}
+
+/* Tabs im rechten Eigenschaften-Panel */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* wichtig für korrektes Scrollen */
+  flex: 1;
+}
+
+.tab-list {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.tab {
+  appearance: none;
+  border: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 13px;
+  line-height: 1.2;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color var(--transition-theme), border-color var(--transition-fast), background-color var(--transition-fast);
+  border-radius: 6px 6px 0 0;
+}
+
+.tab:hover {
+  color: var(--text-color);
+}
+
+.tab.active {
+  color: var(--text-color);
+  border-color: var(--border-color);
+  border-bottom-color: var(--bg-color);
+  background: var(--bg-color);
+}
+
+.tab-panels {
+  flex: 1;
+  min-height: 0; /* damit overflow funktioniert */
+  overflow: auto;
+  background: var(--bg-color);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Collapse-Button im Header */
+.collapse-btn {
+  margin-left: auto;
+}
+
+.collapse-icon {
+  display: inline-block;
+  transform: translateY(1px); /* optisches Feintuning */
+  transition: transform var(--transition-fast);
+}
+
+/* Pfeil umdrehen, wenn collapsed */
+/* Fallback-Hinweis: falls DOM anders geflowt wird, bitte hier einen alternativen Selector ergänzen. */
+
+/* #sidebar-right.collapsed + * {} */
+#sidebar-right.collapsed .collapse-icon {
+  transform: translateY(1px) rotate(180deg);
+}
+
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+.sidebar-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: color var(--transition-theme);
+}
+
+.sidebar-section {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color var(--transition-theme);
+}
+
+.sidebar-section h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+    transition: color var(--transition-theme);
+}
+
+.sidebar-footer {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+    transition: border-color var(--transition-theme);
+}
+
+/* === Template-Palette === */
+.template-palette {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-md);
+}
+
+.template-kategorie {
+    margin-bottom: var(--spacing-lg);
+}
+
+.kategorie-titel {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-sm);
+    padding: 0 var(--spacing-sm);
+    transition: color var(--transition-theme);
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.template-item {
+    aspect-ratio: 1;
+    padding: var(--spacing-sm);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-color);
+    cursor: grab;
+    transition: all var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.template-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.template-item:active {
+    cursor: grabbing;
+    transform: scale(0.95);
+}
+
+.template-item svg {
+    max-width: 100%;
+    max-height: 60px;
+    pointer-events: none;
+}
+
+.template-item .template-name {
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: var(--spacing-xs);
+    word-break: break-word;
+    transition: color var(--transition-theme);
+}
+
+/* === Properties Panel === */
+.properties-panel {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.no-selection {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: var(--spacing-xl);
+    transition: color var(--transition-theme);
+}
+
+.property-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.property-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xs);
+    transition: color var(--transition-theme);
+}
+
+.property-value {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 13px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all var(--transition-fast);
+}
+
+.property-value:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* === Canvas === */
+#canvas-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-secondary);
+    overflow: hidden;
+    transition: background-color var(--transition-theme);
+}
+
+.canvas-toolbar {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    height: var(--toolbar-height);
+    padding: 0 var(--spacing-md);
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+.toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0 var(--spacing-sm);
+    border-right: 1px solid var(--border-color);
+}
+
+.toolbar-group:last-child {
+    border-right: none;
+}
+
+.tool-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tool-btn:hover {
+    background: var(--bg-secondary);
+    border-color: var(--gray-300);
+}
+
+.tool-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.tool-btn .icon {
+    font-size: 16px;
+}
+
+.zoom-indicator {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    min-width: 45px;
+    text-align: center;
+    transition: color var(--transition-theme);
+}
+
+.canvas-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* .canvas-container {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+} */
+
+#main-canvas {
+    display: block;
+    background: var(--canvas-bg);
+    transition: background-color var(--transition-theme);
+}
+
+.grid-layer.hidden {
+    display: none;
+}
+
+/* Dark Mode - Grid Pattern Anpassung */
+[data-theme="dark"] #grid-pattern path {
+    stroke: var(--grid-color);
+}
+
+/* === SVG-Element-Styles === */
+.svg-element {
+    cursor: move;
+}
+
+.svg-element.selected {
+    filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.6));
+}
+
+.selection-box {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 2;
+    stroke-dasharray: 5, 5;
+    animation: dash 20s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -200;
+    }
+}
+
+/* === Verbindungen === */
+.connection-line {
+    stroke: var(--gray-400);
+    stroke-width: 2;
+    fill: none;
+    cursor: pointer;
+    transition: stroke var(--transition-theme);
+}
+
+.connection-line.selected {
+    stroke: var(--primary-color);
+    stroke-width: 3;
+}
+
+.connection-line[data-type="pipe"] {
+    stroke: var(--gray-600);
+}
+
+.connection-line[data-type="signal"] {
+    stroke: var(--warning-color);
+    stroke-dasharray: 5, 5;
+}
+
+.connection-line[data-type="data"] {
+    stroke: var(--primary-color);
+    stroke-dasharray: 10, 5;
+}
+
+/* === Buttons === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.btn .icon {
+    font-size: 16px;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.btn-secondary {
+    background: var(--gray-100);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: var(--gray-200);
+}
+
+.btn-success {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background: #059669;
+}
+
+.btn-small {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 12px;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-danger{
+  background: var(--danger-color);
+  color:#fff;
+}
+.btn-danger:hover{ background:#dc2626; }
+
+
+.btn-icon:hover {
+    background: var(--gray-100);
+}
+
+.btn-icon .icon {
+    font-size: 16px;
+}
+
+/* Theme Toggle Animation */
+#theme-toggle {
+    position: relative;
+}
+
+#theme-toggle .theme-icon {
+    transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover .theme-icon {
+    transform: rotate(20deg) scale(1.1);
+}
+
+/* === Inputs === */
+.search-input,
+.select-input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 13px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all var(--transition-fast);
+}
+
+.search-input:focus,
+.select-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* === Modal === */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn var(--transition-normal);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp var(--transition-normal);
+    transition: background-color var(--transition-theme);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color var(--transition-theme);
+}
+
+.modal-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: color var(--transition-theme);
+}
+
+.modal-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+    background: var(--gray-100);
+    color: var(--text-color);
+}
+
+.modal-body {
+    flex: 1;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    transition: border-color var(--transition-theme);
+}
+
+/* === Form === */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xs);
+    transition: color var(--transition-theme);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all var(--transition-fast);
+}
+
+/* === Projekt-Liste === */
+.projekt-liste {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.projekt-item {
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.projekt-item:hover {
+    border-color: var(--primary-color);
+    background: var(--bg-secondary);
+}
+
+.projekt-item h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xs);
+    transition: color var(--transition-theme);
+}
+
+.projekt-item .projekt-info {
+    font-size: 12px;
+    color: var(--text-secondary);
+    transition: color var(--transition-theme);
+}
+
+/* === Layers Panel === */
+#layers-panel {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.layer-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.layer-item:hover {
+    background: var(--bg-secondary);
+}
+
+.layer-item.selected {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* === Connections Panel === */
+#connections-panel {
+    font-size: 13px;
+}
+
+
+/* V55.1: entfernt — Aussehen war hier an :nth-of-type gebunden. Die Schalter
+   kommen jetzt aus bridge.css und tragen in beiden Modi dieselbe Geometrie. */
+/* */
+
+
+.connection-item {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: var(--spacing-xs);
+    transition: border-color var(--transition-theme);
+}
+
+.hint-text {
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-style: italic;
+    transition: color var(--transition-theme);
+}
+
+/* === Footer === */
+#app-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--footer-height);
+    padding: 0 var(--spacing-md);
+    background: var(--gray-800);
+    color: var(--gray-300);
+    font-size: 12px;
+    border-top: 1px solid var(--gray-700);
+    transition: all var(--transition-theme);
+}
+
+.footer-left,
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.separator {
+    color: var(--gray-600);
+    transition: color var(--transition-theme);
+}
+
+/* === Utilities === */
+/* V55.1: .hidden und [hidden] stehen kanonisch in layout.css. Hier standen sie
+   ein zweites Mal — einmal mit !important, einmal ohne, an zwei Dateistellen. */
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-secondary);
+}
+
+/* --- Patch: Verbindungen & Ports --- */
+.connection-line {
+    vector-effect: non-scaling-stroke;  /* Linienstärke bleibt bei Zoom konstant */
+}
+
+/* Unsichtbare Ports (für Interaktion per UI umschaltbar) */
+.cm-port {
+    fill: none;
+    stroke: none;
+    pointer-events: none;  /* standardmäßig nicht „im Weg“ */
+}
+
+/* Wenn Ports interaktiv sein sollen, einfach diese Klasse setzen/entfernen */
+.cm-port.cm-interactive {
+    pointer-events: all;
+    cursor: crosshair;
+}
+
+/* Debug-Ansicht (optional): Ports sichtbar machen */
+.cm-port.cm-debug {
+    stroke: var(--primary-color);
+    fill: var(--primary-color);
+    fill-opacity: 0.15;
+    stroke-opacity: 0.8;
+}
+
+/* Fixpunkt/Anker-Handle */
+.anchor-handle {
+  fill: var(--primary-color);
+  stroke: #fff;
+  stroke-width: 2;
+  pointer-events: none; /* nur der Canvas fängt Clicks */
+}
+
+/* Live-Hinweis: Ctrl-Hotkey aktiv */
+.hotkey-active {
+  position: relative;
+}
+.hotkey-active::after {
+  content: "CTRL";
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  font-size: 9px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: #2f4b8f;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* ====== APPEND: HMI & Rules Generator Styles ====== */
+.hmi-root .grid-2, .rules-root .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+.rules-root .grid-3, .rules-root .grid-1, .hmi-root .grid-3, .hmi-root .grid-1 { display: grid; gap: 12px; }
+.rules-root .grid-3, .hmi-root .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.rules-root .grid-1, .hmi-root .grid-1 { grid-template-columns: 1fr; }
+
+.dynamic-grid { margin-top: 8px; }
+.sep { border: 0; border-top: 1px solid var(--border-color); margin: 12px 0; }
+
+.table { display: grid; gap: 6px; }
+.table .tr { display: grid; grid-template-columns: 1.2fr .8fr 1fr .8fr .7fr .8fr 1fr 1fr; align-items: center; padding: 6px 8px; background: var(--bg-secondary); border-radius: 6px; }
+.table .th { font-weight: 600; background: transparent; border: 1px dashed var(--border-color); }
+
+.text-area { width: 100%; min-height: 220px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; }
+
+.rules-root .wizard { background: var(--bg-secondary); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); }
+.rules-root .wizard-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.rules-root .wizard-col { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; }
+
+.rule-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.card { border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-color); box-shadow: var(--shadow-sm); margin-bottom: 10px; }
+.card-title { font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 8px; }
+.card-body { padding: 10px 12px; }
+.btn-row { display: flex; gap: 8px; margin-top: 8px; }
+.pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; background: var(--bg-secondary); border: 1px solid var(--border-color); }
+
+.rule-list { display: grid; gap: 8px; }
+.rule-item { border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-secondary); padding: 8px; }
+.rule-id { font-weight: 600; margin-bottom: 4px; }
+.rule-row { display: flex; gap: 8px; align-items: center; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; }
+.rule-label { min-width: 52px; display: inline-block; color: var(--text-secondary); }
+
+.modal .modal-content.large { width: 960px; max-width: 96vw; }
+.code { white-space: pre; overflow: auto; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; }
+
+/* ===== Processes Wizard ===== */
+.proc-root .wizard { background: var(--bg-secondary); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); }
+.proc-root .wizard-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.proc-root .wizard-col { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; }
+
+/* Tagging */
+.tag-input { display: flex; gap: 8px; align-items: center; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tag { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 999px; padding: 2px 8px; display: inline-flex; align-items: center; gap: 6px; }
+.tag-x { border: none; background: transparent; cursor: pointer; font-size: 14px; }
+
+/* Key/Value parameter grid */
+.kv-grid { display: grid; grid-template-columns: 1fr 1fr auto; gap: 6px; }
+.kv-row { display: contents; }
+.kv-row .k, .kv-row .v { padding: 6px 8px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; }
+.kv-row .tag-x { align-self: center; }
+
+/* Kleinzeug */
+.inline { display: flex; gap: 8px; align-items: center; }
+/* V55.1: .hidden war doppelt definiert (einmal ohne !important). Kanonisch in layout.css. */
+/* */
+
+
+/* ===== Subtabs (Processes / Rules) ===== */
+.subtabs {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.subtab {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.subtab.active {
+  border-color: var(--accent-color);
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.subview.hidden {
+  display: none;
+}
+
+/* ===== Table variants ===== */
+.table-proc .tr {
+  grid-template-columns: .7fr .6fr .9fr 1.2fr 1.2fr .7fr .7fr 1.1fr;
+}
+
+.table-rules .tr {
+  grid-template-columns: 1fr 1fr 1.8fr 1.8fr .3fr .3fr .3fr 1.1fr;
+}
+
+.table code {
+  white-space: nowrap;
+}
+
+/* Pfeil umdrehen, wenn collapsed */
+#sidebar-right.collapsed .collapse-icon {
+  transform: translateY(1px) rotate(180deg);
+}
+
+/* Fallback (falls DOM anders geflowt wird) */
+#sidebar-right.collapsed + * .collapse-icon {
+  transform: translateY(1px) rotate(180deg);
+}
+
+
+/* ===== Rules UI – sichtbare Verbesserungen (Wizard + Subtabs) ===== */
+.rules-root .subtabs{
+  display:flex;
+  gap:6px;
+  padding:6px;
+  margin:10px 0 14px;
+  background:var(--bg-secondary);
+  border:1px solid var(--border-color);
+  border-radius:10px;
+  flex-wrap: wrap; 
+}
+.rules-root .subtab{
+  padding:8px 12px;
+  border-radius:8px;
+  background:transparent;
+  border:1px solid transparent;
+  color:var(--text-color);
+  cursor:pointer;
+}
+.rules-root .subtab.active{
+  background:var(--bg-color);
+  border-color:var(--border-color);
+  box-shadow:0 1px 3px rgba(0,0,0,0.25);
+}
+
+.rules-root label.required::after{
+  content:" *";
+  color:var(--danger-color);
+  font-weight:700;
+}
+
+.rules-root .wizard-meta{
+  padding:10px;
+  border:1px solid var(--border-color);
+  border-radius:10px;
+  background:var(--bg-secondary);
+  margin-bottom:12px;
+}
+
+.rules-root .newset-fields{
+  margin-top:10px;
+  padding:10px;
+  border:1px dashed var(--border-color);
+  border-radius:10px;
+  background:var(--bg-color);
+}
+
+.rules-root .wizard-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-top:12px;
+}
+
+.rules-root .text-area{
+  min-height:120px;
+}
+
+.rules-root .rule-list .rule-item{
+  border:1px solid var(--border-color);
+  border-radius:10px;
+  padding:10px;
+  margin-bottom:10px;
+  background:var(--bg-secondary);
+}
+.rules-root .rule-id{
+  font-weight:700;
+  margin-bottom:6px;
+}
+.rules-root .rule-row{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  margin:2px 0;
+}
+.rules-root .rule-label{
+  opacity:.75;
+  min-width:28px;
+}
+
+.rules-root .hint-text{
+  opacity:.85;
+  font-size:13px;
+  line-height:1.35;
+}
+
+/* ===== Rules UX: kein horizontales Scrollen ===== */
+.rules-root .code,
+.rules-root .code.code-wrap {
+    white-space: pre-wrap;
+    overflow-x: hidden;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.rules-root .rule-row {
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.rules-root .rule-row span {
+    min-width: 0;
+}
+
+.rules-root .rule-row span:last-child {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.rules-root .card-body {
+    overflow-x: hidden;
+}
+
+.rules-root .rule-frame {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.rules-root .btn-row {
+    flex-wrap: wrap;
+}
+
+/* ====== HMI Runtime Overlay & Widgets ====== */
+
+.hmi-runtime-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* z-index wird im JS gesetzt, damit es über dem SVG liegt */
+}
+
+.hmi-runtime-widget {
+    position: absolute;
+    pointer-events: auto;
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: nowrap;
+    border-radius: 999px;
+    border: 1px solid var(--primary-color);
+    background-color: rgba(15, 23, 42, 0.95);
+    color: #ffffff;
+    padding: 4px 8px;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Typ-spezifische Varianten */
+.hmi-runtime-widget--button,
+.hmi-runtime-widget--toggle {
+    padding: 6px 10px;
+}
+
+.hmi-runtime-widget--indicator {
+    border-radius: 6px;
+}
+
+/* Incomplete/Fehlerfall */
+.hmi-runtime-widget--incomplete {
+    border-style: dashed;
+    opacity: 0.8;
+}
+
+/* V55.1: HMI-Zustands- und Animationsklassen stehen jetzt an EINER Stelle —
+   Editor: public/css/bridge.css (Abschnitt "Anlagenzustaende")
+   Export: public/js/hmi_animation.js (ANIMATION_CSS)
+   Bis V54.2 lagen hier drei weitere, abweichende Definitionen. */
+/* */

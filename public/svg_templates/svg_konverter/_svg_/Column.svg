@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<svg width="58.208336mm" height="158.208336mm" viewBox="0 0 58.208336 58.208336" version="1.1" id="svg-zylinder" xmlns="http://www.w3.org/2000/svg">
+  
+  <defs id="defs-styles">
+    
+    
+  </defs>
+  
+  <g id="zylinder-hauptgruppe" transform="translate(-201.83794,-363.94746)">
+    <g id="zylinder-elemente" transform="translate(-236.55772,356.05141)">
+      
+      
+      <path id="linie-oben" d="m 467.49982,54.50022 v 5.00002" style="fill:none;stroke:var(--hauptfarbe, #ffffff);stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"></path>
+      
+      
+      <path id="linie-links" d="m 454.99982,24.50021 h -5.00001" style="fill:none;stroke:var(--hauptfarbe, #ffffff);stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"></path>
+      
+      
+      <path id="zylinder-koerper-unten" d="m 457.49982,37.0002 v 12.50001 c 0,0 2.49999,2.49999 10,2.49999 7.49999,0 9.99998,-2.49999 9.99998,-2.49999 V 37.0002" style="fill:var(--fuellfarbe, rgba(0, 170, 255, 0.2));stroke:var(--hauptfarbe, #ffffff);stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"></path>
+      
+      
+      <path id="zylinder-koerper-oben" d="M 457.49982,37.0002 V 24.50021 c 0,0 2.50102,-2.37501 10,-2.5 7.49899,-0.125 9.99998,2.5 9.99998,2.5 V 37.0002" style="fill:var(--fuellfarbe, rgba(0, 170, 255, 0.2));stroke:var(--hauptfarbe, #ffffff);stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"></path>
+      
+      
+      <path id="linie-unten" d="m 467.49982,19.50021 v -5" style="fill:none;stroke:var(--hauptfarbe, #ffffff);stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"></path>
+      
+      
+      <path id="linie-rechts" d="m 484.99982,49.50021 h -4.99999" style="fill:none;stroke:var(--hauptfarbe, #ffffff);stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"></path>
+      
+      
+      <path id="mittellinie-oben" d="m 457.49982,27.00021 h 20.00001" style="fill:none;stroke:var(--akzentfarbe, #00aaff);stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:4, 4;stroke-opacity:0.6"></path>
+      
+      
+      <path id="mittellinie-unten" d="m 457.49982,47.00021 h 20.00001" style="fill:none;stroke:var(--akzentfarbe, #00aaff);stroke-width:var(--strichbreite, 0.5);stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:4, 4;stroke-opacity:0.6"></path>
+    </g>
+  </g>
+</svg>

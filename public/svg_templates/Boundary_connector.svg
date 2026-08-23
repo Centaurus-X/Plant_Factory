@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- META: {"aliases":["connector","anschluss","grenzstelle","off-page","vent","n2","edukt","kühlwasser"],"animierbare_bereiche":["[data-pf-state-target=\"flow\"]","[data-pf-state-target=\"flag\"]"],"bindings":[],"breite":100,"capabilities":{"animatable":true,"auto_create_hmi_widgets":false,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"default_visible":true,"family":"boundary-connector","favorite":true,"geometry_profile":"flag","hmi_policy":{"allowed_controls":["text","indicator","toggle","button","slider"],"auto_create_widgets":false,"button_policy":"optional_explicit_only","default_control":null},"hmi_widget_default":null,"hoehe":60,"id":"Boundary_connector","interaction":{"animatable":true,"bindable":true,"configurable":true,"connectable":true,"movable":true,"resizable":true,"rotatable":true,"selectable":true},"kategorie":"Rohrbauteile","library_role":"process","name":"Anschluss / Grenzstelle","object_standard":{"id":"PF-PID-V1","release":"61.1","version":"1.0"},"ports":[{"direction":"bidirectional","id":"line","kind":"process","name":"Leitung","role":"main","rx":0.0,"ry":0.5,"x":0,"y":30},{"direction":"bidirectional","id":"signal","kind":"signal","name":"Signalreferenz","role":"main","rx":0.57,"ry":0.26666666666666666,"x":57,"y":16}],"profile":"flag","runtime_states":["ready","running","warning","alarm","disabled","maintenance"],"sort_order":46,"standard":"PF-PID-V1","standard_id":"PF-PID-V1","standard_version":"1.0","symbol_type":"boundary-connector","tag_prefix":"X","view_box":[0,0,100,60]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="100" height="60" role="img" class="pf-pid-v1" data-pf-standard="PF-PID-V1" data-pf-family="boundary-connector" preserveAspectRatio="xMidYMid meet">
+<style>
+.pf-pid-v1 .pid-outline{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-detail{fill:none;stroke:var(--pid-detail,#64748b);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-primary{fill:none;stroke:var(--pid-primary,#2563eb);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-flow{fill:none;stroke:var(--pid-flow,#0891b2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-state-fill{fill:var(--pid-state-soft,#d1fae5);stroke:var(--pid-state,#10b981);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-warning{fill:none;stroke:var(--pid-warning,#f59e0b);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-muted-fill{fill:var(--pid-muted-fill,#e2e8f0);stroke:var(--pid-detail,#64748b);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-terminal{fill:var(--pid-surface,#ffffff);stroke:var(--pid-outline,#334155);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pf-pid-v1 .pid-no-fill{fill:none}
+.pf-pid-v1 text{font-family:Public Sans,Arial,sans-serif;fill:var(--pid-outline,#334155)}
+</style>
+<g data-pf-role="body">
+  <path class="pid-flow" data-pf-state-target="flow" d="M0 30 H26"/>
+  <path class="pid-outline" data-pf-state-target="flag" d="M26 16 H78 L96 30 L78 44 H26 Z"/>
+  <text data-pf-role="entity-label" x="57" y="34" text-anchor="middle" font-size="10" font-weight="600">Anschluss</text>
+  <circle class="pid-terminal" cx="0" cy="30" r="3"/>
+</g>
+</svg>

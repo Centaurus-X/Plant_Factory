@@ -1,0 +1,1284 @@
+{
+  "standard": {
+    "id": "PF-LOGIC-V1",
+    "version": 1,
+    "release": "63.1",
+    "source_of_truth": "canonical_project_model"
+  },
+  "data_types": [
+    "BOOL",
+    "INT",
+    "DINT",
+    "REAL",
+    "TIME",
+    "STRING",
+    "ENUM",
+    "ANY",
+    "NUMERIC"
+  ],
+  "categories": [
+    "Schaltpläne",
+    "Signale & Bindings",
+    "Konstanten",
+    "Boolesche Logik",
+    "Vergleicher",
+    "Timer",
+    "Zähler",
+    "Mathematik",
+    "Runtime-Aktionen"
+  ],
+  "targets": {
+    "universal_json": {
+      "label": "Universal JSON Runtime",
+      "description": "Vollständiger kanonischer Graph für den mitgelieferten funktionalen Runtime-Layer."
+    },
+    "automation_system_v9": {
+      "label": "Automation_System V9",
+      "description": "Native Übersetzung nach rule_engine/rules/process_states; zustandsbehaftete Blöcke nutzen den Bridge-Layer."
+    },
+    "siemens_scl": {
+      "label": "Siemens PLC / SCL",
+      "description": "IEC-nahe SCL-Ausgabe mit TON/TOF/TP/CTU/CTD und deterministischem Tag-Mapping."
+    }
+  },
+  "blocks": [
+    {
+      "block_type": "signal_in",
+      "name": "Signalquelle",
+      "category": "Signale & Bindings",
+      "description": "Liest einen kanonischen Entity-, I/O-, State-, Timer- oder HMI-Signalpfad.",
+      "icon": "input",
+      "ports": [
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "ANY",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "data_type": "BOOL",
+        "default_value": false
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "constant_bool",
+      "name": "BOOL-Konstante",
+      "category": "Konstanten",
+      "description": "Konstanter Wahrheitswert.",
+      "icon": "constant",
+      "ports": [
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "value": false
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "constant_int",
+      "name": "INT-Konstante",
+      "category": "Konstanten",
+      "description": "Konstanter Ganzzahlwert.",
+      "icon": "constant",
+      "ports": [
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "INT",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "value": 0
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "unsupported",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "constant_real",
+      "name": "REAL-Konstante",
+      "category": "Konstanten",
+      "description": "Konstanter Gleitkommawert.",
+      "icon": "constant",
+      "ports": [
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "REAL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "value": 0.0
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "unsupported",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "constant_time",
+      "name": "TIME-Konstante",
+      "category": "Konstanten",
+      "description": "Konstante Zeitdauer in Millisekunden.",
+      "icon": "clock",
+      "ports": [
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "TIME",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "value_ms": 500
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "bridge",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "not",
+      "name": "NOT",
+      "category": "Boolesche Logik",
+      "description": "Negiert ein BOOL-Signal.",
+      "icon": "gate",
+      "ports": [
+        {
+          "id": "IN",
+          "label": "IN",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "and",
+      "name": "AND",
+      "category": "Boolesche Logik",
+      "description": "UND-Verknüpfung mit zwei Eingängen.",
+      "icon": "gate",
+      "ports": [
+        {
+          "id": "IN1",
+          "label": "IN1",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "IN2",
+          "label": "IN2",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "or",
+      "name": "OR",
+      "category": "Boolesche Logik",
+      "description": "ODER-Verknüpfung mit zwei Eingängen.",
+      "icon": "gate",
+      "ports": [
+        {
+          "id": "IN1",
+          "label": "IN1",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "IN2",
+          "label": "IN2",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "xor",
+      "name": "XOR",
+      "category": "Boolesche Logik",
+      "description": "Exklusiv-ODER-Verknüpfung.",
+      "icon": "gate",
+      "ports": [
+        {
+          "id": "IN1",
+          "label": "IN1",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "IN2",
+          "label": "IN2",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "compare_eq",
+      "name": "Gleich",
+      "category": "Vergleicher",
+      "description": "Prüft A == B.",
+      "icon": "compare",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "ANY",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "ANY",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "compare_ne",
+      "name": "Ungleich",
+      "category": "Vergleicher",
+      "description": "Prüft A != B.",
+      "icon": "compare",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "ANY",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "ANY",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "compare_gt",
+      "name": "Größer",
+      "category": "Vergleicher",
+      "description": "Prüft A > B.",
+      "icon": "compare",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "compare_ge",
+      "name": "Größer/gleich",
+      "category": "Vergleicher",
+      "description": "Prüft A >= B.",
+      "icon": "compare",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "compare_lt",
+      "name": "Kleiner",
+      "category": "Vergleicher",
+      "description": "Prüft A < B.",
+      "icon": "compare",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "compare_le",
+      "name": "Kleiner/gleich",
+      "category": "Vergleicher",
+      "description": "Prüft A <= B.",
+      "icon": "compare",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "ton",
+      "name": "TON",
+      "category": "Timer",
+      "description": "IEC-Einschaltverzögerung.",
+      "icon": "clock",
+      "ports": [
+        {
+          "id": "IN",
+          "label": "IN",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "PT",
+          "label": "PT",
+          "direction": "in",
+          "data_type": "TIME",
+          "required": false,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "ET",
+          "label": "ET",
+          "direction": "out",
+          "data_type": "TIME",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "pt_ms": 500
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "bridge",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "tof",
+      "name": "TOF",
+      "category": "Timer",
+      "description": "IEC-Ausschaltverzögerung.",
+      "icon": "clock",
+      "ports": [
+        {
+          "id": "IN",
+          "label": "IN",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "PT",
+          "label": "PT",
+          "direction": "in",
+          "data_type": "TIME",
+          "required": false,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "ET",
+          "label": "ET",
+          "direction": "out",
+          "data_type": "TIME",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "pt_ms": 500
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "bridge",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "tp",
+      "name": "TP",
+      "category": "Timer",
+      "description": "IEC-Impulsgeber.",
+      "icon": "clock",
+      "ports": [
+        {
+          "id": "IN",
+          "label": "IN",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "PT",
+          "label": "PT",
+          "direction": "in",
+          "data_type": "TIME",
+          "required": false,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "ET",
+          "label": "ET",
+          "direction": "out",
+          "data_type": "TIME",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "pt_ms": 500
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "bridge",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "ctu",
+      "name": "CTU",
+      "category": "Zähler",
+      "description": "IEC-Aufwärtszähler.",
+      "icon": "counter",
+      "ports": [
+        {
+          "id": "CU",
+          "label": "CU",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "R",
+          "label": "R",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": false,
+          "multi": false
+        },
+        {
+          "id": "PV",
+          "label": "PV",
+          "direction": "in",
+          "data_type": "INT",
+          "required": false,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "CV",
+          "label": "CV",
+          "direction": "out",
+          "data_type": "INT",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "pv": 10
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "bridge",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "ctd",
+      "name": "CTD",
+      "category": "Zähler",
+      "description": "IEC-Abwärtszähler.",
+      "icon": "counter",
+      "ports": [
+        {
+          "id": "CD",
+          "label": "CD",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "LD",
+          "label": "LD",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": false,
+          "multi": false
+        },
+        {
+          "id": "PV",
+          "label": "PV",
+          "direction": "in",
+          "data_type": "INT",
+          "required": false,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "CV",
+          "label": "CV",
+          "direction": "out",
+          "data_type": "INT",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "pv": 10
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "bridge",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "add",
+      "name": "ADD",
+      "category": "Mathematik",
+      "description": "Addiert A und B.",
+      "icon": "math",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "unsupported",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "sub",
+      "name": "SUB",
+      "category": "Mathematik",
+      "description": "Subtrahiert B von A.",
+      "icon": "math",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "unsupported",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "mul",
+      "name": "MUL",
+      "category": "Mathematik",
+      "description": "Multipliziert A und B.",
+      "icon": "math",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "unsupported",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "div",
+      "name": "DIV",
+      "category": "Mathematik",
+      "description": "Dividiert A durch B mit Nullschutz.",
+      "icon": "math",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "REAL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "unsupported",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "min",
+      "name": "MIN",
+      "category": "Mathematik",
+      "description": "Kleinster Eingangswert.",
+      "icon": "math",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "unsupported",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "max",
+      "name": "MAX",
+      "category": "Mathematik",
+      "description": "Größter Eingangswert.",
+      "icon": "math",
+      "ports": [
+        {
+          "id": "A",
+          "label": "A",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "B",
+          "label": "B",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "unsupported",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "limit",
+      "name": "LIMIT",
+      "category": "Mathematik",
+      "description": "Begrenzt IN auf MIN/MAX.",
+      "icon": "math",
+      "ports": [
+        {
+          "id": "MIN",
+          "label": "MIN",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "IN",
+          "label": "IN",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "MAX",
+          "label": "MAX",
+          "direction": "in",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "Q",
+          "label": "Q",
+          "direction": "out",
+          "data_type": "NUMERIC",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {},
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "unsupported",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "state_write",
+      "name": "State schreiben",
+      "category": "Runtime-Aktionen",
+      "description": "Schreibt value_id eines bestehenden process_state. Der State bleibt die einzige Wahrheit.",
+      "icon": "output",
+      "ports": [
+        {
+          "id": "EN",
+          "label": "EN",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "state_id": null,
+        "value_id_true": 1,
+        "value_id_false": 2,
+        "write_false": true,
+        "ownership_mode": "logic",
+        "priority": 500
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "state_parameter",
+      "name": "State-Parameter",
+      "category": "Runtime-Aktionen",
+      "description": "Schreibt einen Parameter eines bestehenden process_state.",
+      "icon": "output",
+      "ports": [
+        {
+          "id": "EN",
+          "label": "EN",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "VALUE",
+          "label": "VALUE",
+          "direction": "in",
+          "data_type": "ANY",
+          "required": false,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "state_id": null,
+        "parameter_key": "setpoint",
+        "value": 0,
+        "ownership_mode": "logic",
+        "priority": 500
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "bridge",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "notify",
+      "name": "Meldung",
+      "category": "Runtime-Aktionen",
+      "description": "Erzeugt eine Runtime-Benachrichtigung.",
+      "icon": "output",
+      "ports": [
+        {
+          "id": "EN",
+          "label": "EN",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "message": "Logic event",
+        "priority": 100
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "native",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "actuator_write",
+      "name": "Aktor schreiben",
+      "category": "Runtime-Aktionen",
+      "description": "Schreibt einen Aktor über den universellen Bridge-Layer oder direkt im PLC-Ziel.",
+      "icon": "output",
+      "ports": [
+        {
+          "id": "EN",
+          "label": "EN",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "VALUE",
+          "label": "VALUE",
+          "direction": "in",
+          "data_type": "ANY",
+          "required": false,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "value": true,
+        "ownership_mode": "logic",
+        "priority": 500
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "bridge",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "hmi_write",
+      "name": "HMI-Wert schreiben",
+      "category": "Runtime-Aktionen",
+      "description": "Schreibt einen HMI-Widgetwert über den universellen Bridge-Layer.",
+      "icon": "output",
+      "ports": [
+        {
+          "id": "EN",
+          "label": "EN",
+          "direction": "in",
+          "data_type": "BOOL",
+          "required": true,
+          "multi": false
+        },
+        {
+          "id": "VALUE",
+          "label": "VALUE",
+          "direction": "in",
+          "data_type": "ANY",
+          "required": false,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "value": true,
+        "ownership_mode": "logic",
+        "priority": 200
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "bridge",
+        "siemens_scl": "native"
+      }
+    },
+    {
+      "block_type": "signal_out",
+      "name": "Universeller Ausgang",
+      "category": "Runtime-Aktionen",
+      "description": "Publiziert ein Signal für Feldbus-, PLC- oder externe Adapter.",
+      "icon": "output",
+      "ports": [
+        {
+          "id": "VALUE",
+          "label": "VALUE",
+          "direction": "in",
+          "data_type": "ANY",
+          "required": true,
+          "multi": false
+        }
+      ],
+      "defaults": {
+        "ownership_mode": "logic"
+      },
+      "targets": {
+        "universal_json": "native",
+        "automation_system_v9": "bridge",
+        "siemens_scl": "native"
+      }
+    }
+  ]
+}

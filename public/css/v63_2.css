@@ -1,0 +1,101 @@
+/**
+ * Plant Factory V63.2 stability and Automation V9 bridge styles.
+ */
+
+#modal-verbindung-erstellen .modal-content {
+  width: min(620px, calc(100vw - 32px)) !important;
+  max-width: min(620px, calc(100vw - 32px)) !important;
+  height: auto !important;
+  max-height: min(620px, calc(100vh - 32px)) !important;
+  min-height: 0;
+}
+
+#modal-verbindung-erstellen .modal-body {
+  overflow: auto;
+  min-height: 0;
+}
+
+.connection-line[data-render-state="pending"] {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.connection-line[data-render-state="ready"] {
+  visibility: visible;
+}
+
+.pf-automation-authority {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border: 1px solid var(--border-color, var(--border));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--primary-color, #7c3aed) 8%, var(--bg-secondary, #171717));
+}
+
+.pf-automation-authority__copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.pf-automation-authority__copy strong {
+  color: var(--text-primary);
+}
+
+.pf-automation-authority__copy span {
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.pf-automation-authority__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.pf-automation-bridge-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pf-automation-bridge-card {
+  padding: 12px;
+  border: 1px solid var(--border-color, var(--border));
+  border-radius: 8px;
+  background: var(--bg-secondary, rgba(255, 255, 255, 0.02));
+}
+
+.pf-automation-bridge-card h5 {
+  margin: 0 0 8px;
+}
+
+.pf-automation-runtime-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.pf-automation-runtime-sections code {
+  padding: 3px 7px;
+  border: 1px solid var(--border-color, var(--border));
+  border-radius: 999px;
+  background: var(--bg-tertiary, rgba(255, 255, 255, 0.04));
+}
+
+@media (max-width: 900px) {
+  .pf-automation-authority,
+  .pf-automation-bridge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pf-automation-authority__actions {
+    justify-content: flex-start;
+  }
+}

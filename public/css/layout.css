@@ -1,0 +1,613 @@
+/* =========================================================================
+   layout.css — Aufwertung der Bestandsoberfläche (additiv), V56.1
+   =========================================================================
+   Überschreibt gezielt Darstellungsregeln aus style.css, ohne diese Datei zu
+   verändern. Alle Selektoren nutzen dieselbe oder eine höhere Spezifität und
+   werden nach style.css geladen.
+
+   Neu in V55.1
+     * Zwei Navigationsebenen im rechten Panel (Gruppen + Tabs der Gruppe)
+       statt zwölf gleichrangiger Tabs in einer umbrechenden Reihe.
+     * Werkzeugumgebung der Zeichenfläche: Lineale, schwebender Zoom-Block,
+       Auswahl-Chip, Blattmaß.
+     * Statusleiste mit Feldern statt drei Textbrocken.
+     * Die Breitenregel, die die rechte Leiste unter 1200 px auf 460 setzte,
+       ist entfallen — der Standard ist jetzt selbst 400.
+   ========================================================================= */
+
+/* ------------------------------------------------------------ Grundgerüst */
+
+body {
+  font-family: var(--v9-font-sans);
+  font-size: var(--v9-text-lg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#app-header {
+  height: var(--header-height);
+  padding: 0 var(--v9-space-3);
+  gap: var(--v9-space-4);
+  background: var(--v9-surface-0);
+  border-bottom: 1px solid var(--v9-line);
+  box-shadow: none;
+}
+
+#app-header h1 {
+  white-space: nowrap;
+  font-size: var(--v9-text-lg);
+  font-weight: 650;
+  letter-spacing: -0.012em;
+  color: var(--v9-ink);
+}
+
+#app-header .version {
+  white-space: nowrap;
+  font-family: var(--v9-font-mono);
+  font-size: var(--v9-text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--v9-tracking-wide);
+  color: var(--v9-ink-faint);
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-xs);
+  padding: 2px 6px;
+}
+
+/* Im Kopf konkurrieren drei Gruppen um die Breite. Wer nicht schrumpfen darf,
+   drueckt die anderen auf Null — deshalb ist NUR das Namensfeld unantastbar:
+   es ist ein Eingabefeld, ein 18 px breites Eingabefeld ist kaputt. Marke und
+   Kontextangaben duerfen kuerzen, die Versionsangabe zuerst. */
+.header-left { gap: var(--v9-space-2); flex: 0 1 auto; min-width: 0; overflow: hidden; }
+.header-left h1 { flex: 0 0 auto; }
+.header-left .version { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+/* "V5…" ist keine Versionsangabe. Wird es eng, verschwindet die Angabe ganz —
+   sie steht in der Statusleiste, im README und in VERSION. */
+@media (max-width: 1180px) { .header-left .version { display: none; } }
+.header-center { flex: 1 1 220px; max-width: 360px; min-width: 168px; margin: 0 var(--v9-space-4); }
+.header-right { flex: 0 0 auto; }
+
+/* Das Namensfeld sitzt im Kontextrahmen und muss schrumpfen duerfen,
+   sonst wird der Text abgeschnitten statt das Feld schmaler. */
+#projekt-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: var(--v9-text-md);
+}
+
+#projekt-name:focus { box-shadow: none; }
+.header-right { gap: var(--v9-space-2); align-items: center; }
+
+/* Die Kopfmarke: ein ruhiges Zeichen statt eines Emoji-Umfelds. */
+.app-mark {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--v9-radius-sm);
+  background: var(--v9-ink);
+  color: var(--v9-surface-0);
+}
+
+.app-mark .ico { width: 16px; height: 16px; stroke-width: 1.7; }
+
+/* Kontext: welcher Node, welcher Standort. Bis V54.2 nirgends sichtbar. */
+.v9-context {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--v9-space-2);
+  height: 28px;
+  padding: 0 var(--v9-space-2);
+  font-family: var(--v9-font-mono);
+  font-size: var(--v9-text-xs);
+  color: var(--v9-ink);
+  background: var(--v9-surface-1);
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-sm);
+}
+
+.v9-context__dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--v9-ok);
+}
+
+.v9-context__dot--warn { background: var(--v9-warn); }
+.v9-context__dot--danger { background: var(--v9-danger); }
+.v9-context__dot--idle { background: var(--v9-muted); }
+
+.header-divider { width: 1px; height: 20px; background: var(--v9-line); flex: none; }
+
+.v9-context--project { width: 100%; }
+
+.btn--block { width: 100%; }
+
+.form-row--split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--v9-space-2); }
+
+/* Ungespeicherte Projektänderung — am Namen, nicht in einer Meldung. */
+.dirty-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--v9-warn);
+  flex: none;
+  opacity: 0;
+  transition: opacity var(--v9-dur-fast) var(--v9-ease);
+}
+
+.is-dirty .dirty-dot { opacity: 1; }
+
+.sidebar { background: var(--v9-surface-1); border-color: var(--v9-line); }
+
+.sidebar-header {
+  height: 34px;
+  padding: 0 var(--v9-space-3);
+  background: var(--v9-surface-1);
+  border-bottom: 1px solid var(--v9-line);
+}
+
+.sidebar-header h2 {
+  font-size: var(--v9-text-2xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--v9-ink-faint);
+}
+
+#sidebar-right .sidebar-header h2::before { content: none; }
+
+.sidebar-section { padding: var(--v9-space-2) var(--v9-space-3); border-bottom: 1px solid var(--v9-line); }
+.sidebar-section h3 {
+  font-size: var(--v9-text-2xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--v9-ink-faint);
+  margin-bottom: var(--v9-space-2);
+}
+.sidebar-footer { padding: var(--v9-space-2) var(--v9-space-3); border-top: 1px solid var(--v9-line); }
+
+/* Suche und Kategorie in eine Zeile — sparte zwei Zeilen Höhe. */
+.sidebar-filter { display: flex; gap: var(--v9-space-2); align-items: center; }
+.sidebar-filter .search-input { flex: 1 1 auto; }
+.sidebar-filter .select-input { flex: 0 0 90px; }
+
+/* Reicht die Breite nicht, wird gerollt statt abgeschnitten. Mit
+   `overflow-x: auto` erscheint der Balken nur dann, wenn er gebraucht wird —
+   und "Loeschen" bleibt erreichbar, statt hinter der Kante zu verschwinden.
+   Eine Regel, nicht zwei: sonst liest die Pruefung in test_all.sh die
+   falsche Haelfte. */
+.canvas-toolbar {
+  height: var(--toolbar-height);
+  gap: var(--v9-space-2);
+  padding: 0 var(--v9-space-3);
+  background: var(--v9-surface-1);
+  border-bottom: 1px solid var(--v9-line);
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--v9-line-strong) transparent;
+}
+.canvas-toolbar::-webkit-scrollbar { height: 6px; }
+.canvas-toolbar::-webkit-scrollbar-thumb {
+  background: var(--v9-line-strong);
+  border-radius: 3px;
+}
+.canvas-toolbar::-webkit-scrollbar-track { background: transparent; }
+.canvas-toolbar .spacer { flex: 1 1 auto; min-width: var(--v9-space-2); }
+.canvas-toolbar > .toolbar-group { flex: none; }
+
+/* Auf schmalen Fenstern zaehlen die Werkzeuge mehr als die Nebenangaben.
+   Der Vertragszustand bleibt am laengsten stehen — er steht zusaetzlich in
+   der Statusleiste unten. */
+@media (max-width: 1500px) { #fingerprint-chip { display: none; } }
+@media (max-width: 1280px) { #contract-chip .v9-status__text { display: none; } }
+@media (max-width: 1080px) { #contract-chip { display: none; } }
+
+/* -------------------------------------------------- Navigation, zwei Ebenen */
+
+/* Ebene 1 — drei Gruppen. Ein Segmentumschalter, keine Tabs:
+   Tabs innerhalb von Tabs lesen sich nicht. */
+.v9-groupbar {
+  display: flex;
+  gap: 2px;
+  margin: var(--v9-space-2) var(--v9-space-2) 0;
+  padding: 2px;
+  background: var(--v9-surface-2);
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-md);
+}
+
+.v9-groupbar__item {
+  flex: 1 1 0;
+  appearance: none;
+  padding: 0.3rem 0.4rem;
+  font: inherit;
+  font-size: var(--v9-text-md);
+  font-weight: 600;
+  color: var(--v9-ink-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--v9-radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--v9-dur-fast) var(--v9-ease),
+              color var(--v9-dur-fast) var(--v9-ease);
+}
+
+.v9-groupbar__item:hover { color: var(--v9-ink); }
+
+.v9-groupbar__item[aria-selected="true"] {
+  color: var(--v9-ink);
+  background: var(--v9-surface-0);
+  border-color: var(--v9-line);
+  box-shadow: var(--v9-shadow-1);
+}
+
+.v9-groupbar__item:focus-visible { outline: none; box-shadow: var(--v9-ring); }
+
+/* Ebene 2 — die Tabs der aktiven Gruppe: eine Zeile, kein Umbruch. Wird die
+   Leiste schmal gezogen (Minimum 300 px), rollt die Zeile waagerecht. Kein
+   Tab darf hinter der Kante verschwinden — genau das war der Mangel der
+   zwoelf gleichrangigen Tabs. */
+#right-tabs .tab-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--v9-space-3);
+  padding: 0 var(--v9-space-3);
+  margin-top: var(--v9-space-2);
+  background: transparent;
+  border-bottom: 1px solid var(--v9-line);
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--v9-line-strong) transparent;
+}
+#right-tabs .tab-list::-webkit-scrollbar { height: 6px; }
+#right-tabs .tab-list::-webkit-scrollbar-thumb {
+  background: var(--v9-line-strong);
+  border-radius: 3px;
+}
+#right-tabs .tab-list::-webkit-scrollbar-track { background: transparent; }
+
+/* Schmale Leiste: erst rueckt der Abstand zusammen, dann wird gerollt. */
+#sidebar-right { container-type: inline-size; container-name: rightbar; }
+@container rightbar (max-width: 360px) {
+  #right-tabs .tab-list { gap: var(--v9-space-2); padding: 0 var(--v9-space-2); }
+}
+
+#right-tabs .tab {
+  display: inline-flex;
+  flex: none;
+  scroll-snap-align: start;
+  align-items: center;
+  gap: 5px;
+  padding: 0.35rem 0;
+  font-size: var(--v9-text-md);
+  font-weight: 550;
+  color: var(--v9-ink-muted);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--v9-dur-fast) var(--v9-ease),
+              box-shadow var(--v9-dur-fast) var(--v9-ease);
+}
+
+#right-tabs .tab:hover { color: var(--v9-ink); }
+
+#right-tabs .tab.active {
+  color: var(--v9-accent);
+  font-weight: 650;
+  background: transparent;
+  box-shadow: inset 0 -2px 0 var(--v9-accent);
+}
+
+#right-tabs .tab:focus-visible { outline: none; box-shadow: var(--v9-ring); }
+
+/* Die Kennzeichnung der V9-Tabs per linkem Rand entfällt: die Gruppe sagt
+   jetzt, worum es geht. */
+#right-tabs .tab[data-v9] { border-left: none; }
+
+/* Tabs, die nicht zur aktiven Gruppe gehören, sind nicht da — nicht bloß
+   ausgegraut. Gesetzt von v9_ui_chrome.js. */
+#right-tabs .tab[hidden] { display: none !important; }
+
+.subtabs .subtab { font-size: var(--v9-text-md); font-weight: 600; color: var(--v9-ink-muted); }
+.subtabs .subtab.active { color: var(--v9-ink); }
+
+/* ------------------------------------------------- Werkzeugumgebung Canvas */
+
+#canvas-area { background: var(--v9-surface-2); }
+
+/* Lineale: zwei Streifen, gezeichnet aus einem Verlaufsmuster. Kein Canvas,
+   kein JS-Neuzeichnen bei jedem Frame — nur die Marke wandert. */
+.canvas-stage {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  grid-template-rows: 16px 1fr;
+  background: var(--v9-surface-1);
+}
+
+.canvas-corner {
+  border-right: 1px solid var(--v9-line);
+  border-bottom: 1px solid var(--v9-line);
+  background: var(--v9-surface-1);
+}
+
+.canvas-ruler {
+  position: relative;
+  overflow: hidden;
+  background: var(--v9-surface-1);
+  --ruler-step: 20px;
+  --ruler-major: 100px;
+}
+
+.canvas-ruler--h {
+  border-bottom: 1px solid var(--v9-line);
+  background:
+    repeating-linear-gradient(to right, var(--v9-line-strong) 0 1px, transparent 1px var(--ruler-major))
+      left bottom / 100% 9px no-repeat,
+    repeating-linear-gradient(to right, var(--v9-line) 0 1px, transparent 1px var(--ruler-step))
+      left bottom / 100% 4px no-repeat,
+    var(--v9-surface-1);
+}
+
+.canvas-ruler--v {
+  border-right: 1px solid var(--v9-line);
+  background:
+    repeating-linear-gradient(to bottom, var(--v9-line-strong) 0 1px, transparent 1px var(--ruler-major))
+      right top / 9px 100% no-repeat,
+    repeating-linear-gradient(to bottom, var(--v9-line) 0 1px, transparent 1px var(--ruler-step))
+      right top / 4px 100% no-repeat,
+    var(--v9-surface-1);
+}
+
+/* Die Zeigerposition am Lineal — beantwortet "wo bin ich" ohne Blick nach unten. */
+.canvas-ruler__cursor {
+  position: absolute;
+  background: var(--v9-accent);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.canvas-ruler--h .canvas-ruler__cursor { top: 0; bottom: 0; width: 1px; }
+.canvas-ruler--v .canvas-ruler__cursor { left: 0; right: 0; height: 1px; }
+
+.canvas-container { position: relative; background: var(--canvas-bg); }
+
+/* Schwebende Blöcke über der Zeichenfläche. Hier ist Schatten richtig:
+   sie liegen tatsächlich über etwas. */
+.canvas-float {
+  position: absolute;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background: var(--v9-surface-0);
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-md);
+  box-shadow: var(--v9-shadow-2);
+}
+
+.canvas-float--zoom { right: 12px; bottom: 12px; }
+
+.canvas-float--zoom .zoom-indicator {
+  font-family: var(--v9-font-mono);
+  font-size: var(--v9-text-xs);
+  min-width: 46px;
+  text-align: center;
+  color: var(--v9-ink);
+}
+
+.canvas-float .tool-btn { width: 26px; height: 24px; }
+
+.canvas-note {
+  white-space: nowrap;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 6;
+  padding: 3px 7px;
+  font-family: var(--v9-font-mono);
+  font-size: var(--v9-text-2xs);
+  color: var(--v9-ink-faint);
+  background: color-mix(in srgb, var(--v9-surface-1) 92%, transparent);
+  border: 1px solid var(--v9-line);
+  border-radius: var(--v9-radius-xs);
+  pointer-events: none;
+}
+
+/* Auswahl-Chip: was ist gewählt und woran hängt es. Bis V54.2 musste man
+   dafür in den Eigenschaften-Tab wechseln. */
+.canvas-selection-chip {
+  position: absolute;
+  z-index: 7;
+  display: none;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 8px;
+  font-family: var(--v9-font-mono);
+  font-size: var(--v9-text-2xs);
+  color: var(--v9-accent-fg);
+  background: var(--v9-accent);
+  border-radius: var(--v9-radius-xs);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.canvas-selection-chip[data-visible="1"] { display: inline-flex; }
+.canvas-selection-chip__sep { width: 1px; height: 10px; background: rgba(255, 255, 255, 0.4); }
+.canvas-selection-chip__meta { opacity: 0.8; }
+
+/* --------------------------------------------------------- Statusleiste */
+
+#app-footer {
+  height: var(--footer-height);
+  padding: 0 var(--v9-space-3);
+  gap: var(--v9-space-4);
+}
+
+#app-footer .footer-left,
+#app-footer .footer-center,
+#app-footer .footer-right {
+  display: flex;
+  align-items: center;
+  gap: var(--v9-space-2);
+}
+
+#app-footer .footer-center { flex: 1 1 auto; min-width: 0; justify-content: center; }
+
+/* Meldungen koennen lang werden (Ladefehler nennen die URL). Die Leiste ist
+   28 px hoch — sie darf davon nicht zweizeilig werden. */
+#status-message {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.status-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.status-field__dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--v9-muted);
+}
+
+.status-field--ok .status-field__dot { background: var(--v9-ok); }
+.status-field--warn .status-field__dot { background: var(--v9-warn); }
+.status-field--danger .status-field__dot { background: var(--v9-danger); }
+
+#app-footer .separator { opacity: 0.5; }
+
+/* Meldungen aus showStatus() — kurzlebig, deshalb farbig statt formatiert. */
+#status-message.status-success { color: var(--v9-ok); }
+#status-message.status-warning { color: var(--v9-warn); }
+#status-message.status-error { color: var(--v9-danger); }
+
+/* ------------------------------------------------- Fokus & Tastaturbedienung */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: none;
+  box-shadow: var(--v9-ring);
+  border-radius: var(--v9-radius-xs);
+}
+
+.v9-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 4000;
+  padding: 0.5rem 0.9rem;
+  background: var(--v9-accent);
+  color: var(--v9-accent-fg);
+  border-radius: 0 0 var(--v9-radius-sm) 0;
+  font-size: var(--v9-text-md);
+  font-weight: 600;
+}
+
+.v9-skip-link:focus { left: 0; }
+
+/* Nur für Screenreader — die Symbolschalter tragen ihre Bedeutung im Bild,
+   nicht im Text. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* -------------------------------------------------------- Alt-Inkonsistenzen */
+
+/* Die einzige Blink-Definition der Oberfläche. Zustands- und
+   Animationsklassen des Anlagenbilds stehen in bridge.css. */
+@keyframes hmi-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.38; }
+}
+
+.hmi-anim-blink { animation: hmi-blink 1s steps(1, end) infinite; }
+
+.hidden,
+[hidden] { display: none !important; }
+
+.form-row { display: flex; gap: var(--v9-space-2); align-items: center; flex-wrap: wrap; }
+.small { font-size: var(--v9-text-sm); }
+
+/* Scrollbars — eine Definition für das ganze Dokument. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--v9-line-strong) transparent;
+}
+
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background: var(--v9-line-strong);
+  border-radius: var(--v9-radius-pill);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover { background: var(--v9-ink-faint); background-clip: content-box; }
+
+/* ---------------------------------------------------------------- Responsiv */
+
+@media (max-width: 1100px) {
+  :root { --sidebar-right-width: 340px; --sidebar-width: 220px; }
+  .v9-form--grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  #main-content { flex-direction: column; }
+  #sidebar-left, #sidebar-right { width: 100% !important; max-height: 42vh; }
+  #right-splitter { display: none; }
+  .v9-panel { padding: var(--v9-space-3); }
+  .v9-form--grid { grid-template-columns: 1fr; }
+  .canvas-stage { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+  .canvas-ruler, .canvas-corner { display: none; }
+}
+
+@media print {
+  #sidebar-left, #right-splitter, .canvas-toolbar, #app-footer,
+  .canvas-float, .canvas-note, .canvas-ruler, .canvas-corner { display: none !important; }
+  .v9-card { break-inside: avoid; box-shadow: none; }
+}

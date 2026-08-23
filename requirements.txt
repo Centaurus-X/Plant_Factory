@@ -1,0 +1,5 @@
+# Runtime dependency for the local Plant Factory HTTP service.
+aiohttp>=3.9,<4
+
+# Optional deep validation against the external runtime type authority:
+# PYTHONPATH=/path/to/automation_system_v0101 python3 svg_editor_tool.py

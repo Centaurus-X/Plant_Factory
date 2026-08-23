@@ -1,0 +1,235 @@
+{
+  "rule_sets": [
+    {
+      "set_id": "process_rules",
+      "priority": 5,
+      "evaluation": "on_event",
+      "rules": [
+        {
+          "rule_id": "notify_heating_ready",
+          "condition": {
+            "type": "compound",
+            "operator": "AND",
+            "conditions": [
+              {
+                "type": "sensor",
+                "sensor_type": "temperature",
+                "operator": ">=",
+                "value": "target_temp*0.98"
+              },
+              {
+                "type": "state_type",
+                "state_type": "heating",
+                "attribute": "active",
+                "equals": true
+              }
+            ]
+          },
+          "action": {
+            "type": "notify",
+            "message": "Heating reached nominal range. Consider starting stirring."
+          }
+        },
+        {
+          "rule_id": "emergency_cool_on_overpressure",
+          "condition": {
+            "type": "sensor",
+            "sensor_type": "pressure",
+            "operator": ">",
+            "value": "max_pressure*0.9"
+          },
+          "action": {
+            "type": "emergency_shutdown",
+            "target": "all"
+          }
+        },
+        {
+          "rule_id": "pause_heating_on_high_reflux",
+          "condition": {
+            "type": "compound",
+            "operator": "AND",
+            "conditions": [
+              {
+                "type": "sensor",
+                "sensor_type": "reflux",
+                "operator": ">=",
+                "value": 0.8
+              },
+              {
+                "type": "state_type",
+                "state_type": "heating",
+                "attribute": "active",
+                "equals": true
+              }
+            ]
+          },
+          "action": {
+            "type": "state_override",
+            "target_meta_state": "ERROR",
+            "reason": "Reflux too high while heating - safety pause"
+          }
+        },
+        {
+          "rule_id": "notify_process_step_complete",
+          "condition": "level >= target_level",
+          "action": {
+            "type": "notify",
+            "message": "Filling complete -> next step can be started"
+          }
+        },
+        {
+          "rule_id": "set_all_states_p1_active",
+          "condition": {
+            "type": "sensor",
+            "sensor_type": "temperature",
+            "operator": ">=",
+            "value": 100
+          },
+          "action": {
+            "type": "process_set_value",
+            "p_id": 1,
+            "value_id": 1
+          },
+          "undo_action": {
+            "type": "process_set_value",
+            "p_id": 1,
+            "value_id": 2
+          },
+          "always_reversibel": true
+        },
+        {
+          "rule_id": "activate_pids_1_and_3",
+          "condition": {
+            "type": "sensor",
+            "sensor_type": "temperature",
+            "operator": ">=",
+            "value": 80
+          },
+          "action": {
+            "type": "process_set_active",
+            "p_ids": [
+              1,
+              3
+            ],
+            "active": true
+          },
+          "undo_action": {
+            "type": "process_set_active",
+            "p_ids": [
+              1,
+              3
+            ],
+            "active": false
+          },
+          "always_reversibel": true
+        },
+        {
+          "rule_id": "high_pressure_shutdown",
+          "condition": {
+            "type": "sensor",
+            "sensor_type": "pressure",
+            "operator": ">",
+            "value": 5,
+            "sensor_id": 4
+          },
+          "action": {
+            "type": "state_override",
+            "target_meta_state": "ERROR",
+            "reason": "Überdruck erkannt - Shutdown"
+          },
+          "undo_action": {
+            "type": "state_override",
+            "target_meta_state": "IDLE",
+            "reason": "Druck normalisiert"
+          },
+          "always_reversibel": true
+        },
+        {
+          "rule_id": "low_level_pump_deactivate",
+          "condition": {
+            "type": "sensor",
+            "sensor_type": "level",
+            "operator": "<",
+            "value": 20,
+            "sensor_id": 17
+          },
+          "action": {
+            "type": "process_set_active",
+            "p_ids": [
+              1
+            ],
+            "active": false
+          },
+          "undo_action": {
+            "type": "process_set_active",
+            "p_ids": [
+              1
+            ],
+            "active": true
+          },
+          "always_reversibel": true
+        },
+        {
+          "rule_id": "deactivate_pump_on_low_level",
+          "condition": {
+            "type": "sensor",
+            "sensor_id": 17,
+            "operator": "<=",
+            "value": 15
+          },
+          "action": {
+            "type": "process_state_set_value",
+            "state_id": 15,
+            "value_id": 2
+          },
+          "undo_action": {
+            "type": "process_state_set_value",
+            "state_id": 15,
+            "value_id": 1
+          },
+          "always_reversibel": true
+        },
+        {
+          "rule_id": "activate_pump_on_high_level",
+          "condition": {
+            "type": "sensor",
+            "sensor_id": 17,
+            "operator": ">=",
+            "value": 25
+          },
+          "action": {
+            "type": "process_state_set_value",
+            "state_id": 15,
+            "value_id": 1
+          },
+          "undo_action": {
+            "type": "process_state_set_value",
+            "state_id": 15,
+            "value_id": 2
+          },
+          "always_reversibel": true
+        },
+        {
+          "rule_id": "tune_heater_setpoint",
+          "condition": {
+            "type": "sensor",
+            "sensor_type": "temperature",
+            "operator": ">=",
+            "value": 150
+          },
+          "action": {
+            "type": "config_update",
+            "payload": {
+              "state_id": 1,
+              "updates": {
+                "parameters": {
+                  "target_temp_c": 555
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

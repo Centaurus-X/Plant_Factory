@@ -1,0 +1,13 @@
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+*.log
+*.tmp
+.release_test.*/
+.release_build.*/
+.release_extract.*/

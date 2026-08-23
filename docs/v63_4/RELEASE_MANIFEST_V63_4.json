@@ -1,0 +1,141 @@
+{
+  "release": "63.4",
+  "status": "passed",
+  "contracts": {
+    "object_standard": "PF-PID-V1",
+    "modal_standard": "PF-MODAL-V1",
+    "hmi_standard": "PF-HMI-SETUP-V2",
+    "logic_standard": "PF-LOGIC-V1",
+    "stability_patch": "PF-V63.2-STABILITY",
+    "inherited_ux_patch": "PF-V63.3-HMI-IO-UX",
+    "automation_bridge": "PF-AUTOMATION-V9-BRIDGE",
+    "ux_patch": "PF-V63.4-HMI-UX"
+  },
+  "canonical_models": {
+    "devices": "project.devices.assignments",
+    "hmi_widgets": "project.hmi.hmi_ui.widgets",
+    "hmi_bindings": "project.hmi.hmi_ui.bindings",
+    "hmi_styles": "project.hmi.hmi_ui.styles",
+    "hmi_alarms": "project.hmi.hmi_ui.alarms",
+    "project_states": "project.processes.process_states",
+    "project_rules": "project.dynamic_rule_engine.rule_sets",
+    "logic": "project.logic"
+  },
+  "patches": {
+    "widget_register_actions": "compact_buttons",
+    "hmi_navigation": "single_guided_tablist",
+    "legacy_tabs": "hidden_compatibility_only",
+    "states_alarms": "guided_with_advanced_disclosure",
+    "appearance": "view_widget_design",
+    "model_migration_required": false,
+    "configuration_fields_removed": 0
+  },
+  "verification": {
+    "release_stages": 20,
+    "status": "passed",
+    "source_tree": "passed",
+    "fresh_extract": "passed",
+    "external_runtime": {
+      "status": "passed",
+      "authority": "automation_system_v0101",
+      "passed": 29,
+      "total": 29
+    },
+    "contracts": {
+      "pf_pid_v1": {
+        "passed": 31,
+        "total": 31
+      },
+      "pf_logic_v1_javascript": {
+        "passed": 66,
+        "total": 66
+      },
+      "pf_logic_v1_runtime": {
+        "passed": 35,
+        "total": 35
+      },
+      "pf_automation_v9_bridge": {
+        "passed": 40,
+        "total": 40
+      },
+      "v63_3_static": {
+        "passed": 47,
+        "total": 47
+      },
+      "widget_object_relation": {
+        "passed": 16,
+        "total": 16
+      },
+      "v63_4_static": {
+        "passed": 74,
+        "total": 74
+      },
+      "v9_core": {
+        "passed": 145,
+        "total": 145
+      },
+      "plant_factory_chain": {
+        "passed": 31,
+        "total": 31
+      },
+      "snapshot_chain": {
+        "passed": 52,
+        "total": 52
+      },
+      "python_format_parity": {
+        "passed": 58,
+        "total": 58
+      },
+      "javascript_format": {
+        "passed": 42,
+        "total": 42
+      }
+    },
+    "browser_regressions": {
+      "status": "passed",
+      "baseline": {
+        "passed": 119,
+        "total": 119
+      },
+      "v62_1": {
+        "passed": 45,
+        "total": 45
+      },
+      "v63_1": {
+        "passed": 51,
+        "total": 51
+      },
+      "v63_2": {
+        "passed": 45,
+        "total": 45
+      },
+      "v63_3_ux": {
+        "passed": 60,
+        "total": 60
+      },
+      "v63_4_ux": {
+        "passed": 57,
+        "total": 57
+      },
+      "combined": {
+        "passed": 377,
+        "total": 377
+      },
+      "console_page_request_errors": 0
+    }
+  },
+  "archive": {
+    "filename": "Automated_SVG_Integration_63_4.zip",
+    "root": "Automated_SVG_Integration_63_4",
+    "files": 387,
+    "sha256_entries": 386,
+    "deterministic": true,
+    "double_build": "byte_identical",
+    "sha256_sidecar": "Automated_SVG_Integration_63_4.zip.sha256",
+    "internal_manifest": "SHA256SUMS",
+    "safety_verification": "passed",
+    "symlinks": 0,
+    "path_traversal_entries": 0,
+    "forbidden_dependency_directories": 0
+  }
+}

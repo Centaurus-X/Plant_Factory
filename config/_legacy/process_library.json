@@ -1,0 +1,28 @@
+{
+  "process_states": [
+    {
+      "state_id": 20,
+      "p_id": 1,
+      "p_groups": [],
+      "actuator_id": [
+        13
+      ],
+      "sensor_id": [
+        7
+      ],
+      "p__type": "heating",
+      "value_id": 1,
+      "mode_id": 2,
+      "automation_parameters": {
+        "control_method": "PID",
+        "pid_config_id": 1,
+        "pid_parameters": {
+          "kp": 1,
+          "ki": 0.1,
+          "kd": 0.01
+        },
+        "heating_control_method": "PID"
+      }
+    }
+  ]
+}
