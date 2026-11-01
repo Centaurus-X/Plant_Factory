@@ -47,7 +47,7 @@
     "release:r6": "python3 _tools/build_release_archive.py && python3 _tools/verify_release_archive.py"
   },
   "devDependencies": {
-    "playwright": "1.62.1",
+    "playwright": "1.64.1",
     "typescript": "5.8.3"
   }
 }
